@@ -1,0 +1,11 @@
+{
+    "name": "illustra",
+    "version": "1.0.0",
+    "description": "Illustra is an object-oriented, high level image processing library for Node.js",
+    "main": "src/index.ts",
+    "repository": "https://github.com/APixelVisuals/illustra",
+    "author": "APixel Visuals",
+    "dependencies": {
+        "@types/node": "^14.11.2"
+    }
+}

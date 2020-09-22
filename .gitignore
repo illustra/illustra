@@ -1,0 +1,8 @@
+# Build
+out/
+
+# Node modules
+node_modules/
+
+# TS Temp Build Graph
+tsconfig.tsbuildinfo
