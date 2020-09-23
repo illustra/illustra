@@ -1,0 +1,1 @@
+export { default as Document, DocumentData } from "./classes/Document/Document";
