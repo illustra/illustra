@@ -5,6 +5,10 @@
     "main": "src/index.ts",
     "repository": "https://github.com/APixelVisuals/illustra",
     "author": "APixel Visuals",
+    "scripts": {
+        "dev": "echo \"Building...\" && tsc && echo \"Running...\" && node testing/index.js",
+        "build": "echo \"Building...\" && tsc"
+    },
     "dependencies": {
         "@types/node": "^14.11.2"
     }

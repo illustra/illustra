@@ -4,5 +4,8 @@ out/
 # Node modules
 node_modules/
 
+# Testing
+testing/
+
 # TS Temp Build Graph
 tsconfig.tsbuildinfo
