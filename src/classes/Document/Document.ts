@@ -1,19 +1,35 @@
-import sharp, { Sharp } from "sharp";
-import exportTo, { ExportTypes, Format, Output } from "./exportTo";
+import Layer from "../Layer/Layer";
+import createLayer from "./createLayer";
 
 export interface DocumentData {
     width: number;
     height: number;
+    layerName: string;
 }
 
 export default class Document {
 
     /**
-     * Canvas
+     * Width
      *
-     * The Sharp instance
+     * The width of this document
      */
-    canvas: Sharp;
+    width: number;
+
+    /**
+     * Height
+     *
+     * The height of this document
+     */
+    height: number;
+
+    /**
+     * Layers
+     *
+     * This document's layers
+     * The lower the layer's index, the lower the layer is in the stack
+     */
+    layers: Layer[];
 
     /**
      * Document
@@ -21,32 +37,43 @@ export default class Document {
      * @param documentData Options to initialize this document with
      * @param documentData.width The width of the document in pixels
      * @param documentData.height The height of the document in pixels
+     * @param documentData.layerName The name of the initial layer
      */
     constructor(documentData: DocumentData) {
 
-        // Create sharp canvas
-        this.canvas = sharp({
-            create: {
-                width: documentData.width,
-                height: documentData.height,
-                channels: 4,
-                background: { r: 0, g: 0, b: 0, alpha: 0 }
-            }
-        });
+        // Set width and height
+        this.width = documentData.width;
+        this.height = documentData.height;
+
+        // Set layers
+        this.layers = [];
+
+        // Create layer
+        this.createLayer(documentData.layerName);
     }
 
     /**
-     * Export To
+     * Create Layer
      *
-     * Export this document
+     * Create a new layer
      *
-     * @param format The format to export in - One of: 'png', 'jpeg', 'webp', 'gif', 'tiff', 'heif', 'raw', or 'tile'
-     * @param exportType How this document should be exported - Either 'file' or 'buffer'
-     * @param path The path to write the file to if the `exportType` is 'file'
-     *
-     * @throws {Error} Path must be specified if exportType is 'file'
-     *
-     * @returns {undefined | Buffer} `undefined` if the `exportType` is 'file' or `Buffer` if the `exportType` is 'buffer'
+     * @returns {Document} This document
      */
-    exportTo = <ExportType extends ExportTypes>(format: Format, exportType: ExportType, path?: string): Promise<Output<ExportType> | undefined> => exportTo(this, format, exportType, path);
+    createLayer = (name: string): Document => createLayer(this, name);
+
+    /**
+     * Get Layer
+     *
+     * Get a layer by name or index
+     *
+     * @returns {Layer | undefined} The layer if found or `undefined`
+     */
+    getLayer = (nameOrIndex: string | number): Layer | undefined => {
+
+        // Get by index
+        if (typeof nameOrIndex === "string") return this.layers.find((l: Layer) => l.name === nameOrIndex);
+
+        // Get by index
+        else if (typeof nameOrIndex === "number") return this.layers[nameOrIndex];
+    }
 }

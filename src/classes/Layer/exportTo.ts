@@ -1,4 +1,4 @@
-import Document from "./Document";
+import Layer from "./Layer";
 
 /**
  * Format
@@ -21,11 +21,11 @@ export type ExportTypes = "file" | "buffer";
  */
 export type Output<ExportType> = ExportType extends "file" ? undefined : Buffer;
 
-export default async function exportTo<ExportType extends ExportTypes>(document: Document, format: Format, exportType: ExportType, path?: string): Promise<Output<ExportType> | undefined> {
+export default async function exportTo<ExportType extends ExportTypes>(layer: Layer, format: Format, exportType: ExportType, path?: string): Promise<Output<ExportType> | undefined> {
 
     // Convert to format
     // https://sharp.pixelplumbing.com/api-output#toformat
-    document.canvas.toFormat(format);
+    layer.canvas.toFormat(format);
 
     // Export to file
     // https://sharp.pixelplumbing.com/api-output#tofile
@@ -35,10 +35,10 @@ export default async function exportTo<ExportType extends ExportTypes>(document:
         if (!path) throw new Error("Path must be specified if exportType is 'file'");
 
         // Export
-        await document.canvas.toFile(path);
+        await layer.canvas.toFile(path);
     }
 
     // Export as buffer
     // https://sharp.pixelplumbing.com/api-output#tobuffer
-    else if (exportType === "buffer") return await document.canvas.toBuffer() as Output<ExportType>;
+    else if (exportType === "buffer") return await layer.canvas.toBuffer() as Output<ExportType>;
 }
