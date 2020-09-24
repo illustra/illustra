@@ -63,9 +63,9 @@ export default class Document {
      * @param layerData.name The name of the layer
      * @param layerData.backgroundColor The background color of the layer
      *
-     * @returns {Document} This document
+     * @returns {Layer} This document
      */
-    createLayer = (layerData: LayerData): Document => createLayer(this, layerData);
+    createLayer = (layerData: LayerData): Layer => createLayer(this, layerData);
 
     /**
      * Get Layer
