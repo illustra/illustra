@@ -5,6 +5,7 @@ import exportTo, { ExportTypes, Format, Output } from "./exportTo";
 
 export interface LayerData {
     name: string;
+    data?: string | Buffer;
     backgroundColor?: sharp.Color;
 }
 
@@ -44,6 +45,7 @@ export default class Layer {
      * @param document The document this layer is a part of
      * @param layerData Date for the layer
      * @param layerData.name The name of the layer
+     * @param layerData.data The image data of the layer
      * @param layerData.backgroundColor The background color of the layer
      */
     constructor(document: Document, layerData: LayerData) {
@@ -67,6 +69,9 @@ export default class Layer {
 
         // Add to document
         document.layers.push(this);
+
+        // Composite image
+        if (layerData.data) this.composite(layerData.data);
     }
 
     /**

@@ -39,6 +39,7 @@ export default class Document {
      * @param documentData.height The height of the document in pixels
      * @param documentData.layer Data for the initial layer
      * @param documentData.layer.name The name of the initial layer
+     * @param documentData.layer.data The image data of the initial layer
      * @param documentData.layer.backgroundColor The background color of the initial layer
      */
     constructor(documentData: DocumentData) {
@@ -61,6 +62,7 @@ export default class Document {
      *
      * @param layerData Date for the layer
      * @param layerData.name The name of the layer
+     * @param documentData.layer.data The image data of the layer
      * @param layerData.backgroundColor The background color of the layer
      *
      * @returns {Layer} This document
