@@ -23,6 +23,9 @@ export type Output<ExportType> = ExportType extends "file" ? undefined : Buffer;
 
 export default async function exportTo<ExportType extends ExportTypes>(layer: Layer, format: Format, exportType: ExportType, path?: string): Promise<Output<ExportType> | undefined> {
 
+    // Composite
+    layer.canvas.composite(layer.compositions);
+
     // Convert to format
     // https://sharp.pixelplumbing.com/api-output#toformat
     layer.canvas.toFormat(format);

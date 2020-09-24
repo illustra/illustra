@@ -1,5 +1,6 @@
 import sharp, { Sharp } from "sharp";
 import Document from "../Document/Document";
+import composite from "./composite";
 import exportTo, { ExportTypes, Format, Output } from "./exportTo";
 
 export interface LayerData {
@@ -31,6 +32,13 @@ export default class Layer {
     name: string;
 
     /**
+     * Compositions
+     *
+     * This layer's compositions
+     */
+    compositions: sharp.OverlayOptions[];
+
+    /**
      * Layer
      *
      * @param document The document this layer is a part of
@@ -53,12 +61,24 @@ export default class Layer {
         // Set document
         this.document = document;
 
-        // Set name
+        // Set data
         this.name = layerData.name;
+        this.compositions = [];
 
         // Add to document
         document.layers.push(this);
     }
+
+    /**
+     * Composite
+     *
+     * Composite an image onto this layer
+     *
+     * @param data The image data to composite
+     *
+     * @returns {Layer} This layer
+     */
+    composite = (data: string | Buffer): Layer => composite(this, data);
 
     /**
      * Export To
