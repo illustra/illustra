@@ -64,6 +64,9 @@ export default class Document {
      * @param layerData.name The name of the layer
      * @param layerData.data The image data of the layer
      * @param layerData.backgroundColor The background color of the layer
+     * @param layerData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
+     * Omit to add the layer to the top of the stack (highest index).
+     * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
      *
      * @returns {Layer} This document
      */

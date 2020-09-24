@@ -7,6 +7,7 @@ export interface LayerData {
     name: string;
     data?: string | Buffer;
     backgroundColor?: sharp.Color;
+    position?: number;
 }
 
 export default class Layer {
@@ -47,6 +48,9 @@ export default class Layer {
      * @param layerData.name The name of the layer
      * @param layerData.data The image data of the layer
      * @param layerData.backgroundColor The background color of the layer
+     * @param layerData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
+     * Omit to add the layer to the top of the stack (highest index).
+     * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
      */
     constructor(document: Document, layerData: LayerData) {
 
@@ -68,7 +72,7 @@ export default class Layer {
         this.compositions = [];
 
         // Add to document
-        document.layers.push(this);
+        document.layers.splice(layerData.position || document.layers.length, 0, this);
 
         // Composite image
         if (layerData.data) this.composite(layerData.data);
