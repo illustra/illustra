@@ -2,6 +2,11 @@ import sharp, { Sharp } from "sharp";
 import Document from "../Document/Document";
 import exportTo, { ExportTypes, Format, Output } from "./exportTo";
 
+export interface LayerData {
+    name: string;
+    backgroundColor?: sharp.Color;
+}
+
 export default class Layer {
 
     /**
@@ -29,8 +34,11 @@ export default class Layer {
      * Layer
      *
      * @param document The document this layer is a part of
+     * @param layerData Date for the layer
+     * @param layerData.name The name of the layer
+     * @param layerData.backgroundColor The background color of the layer
      */
-    constructor(document: Document, name: string) {
+    constructor(document: Document, layerData: LayerData) {
 
         // Create sharp canvas
         this.canvas = sharp({
@@ -38,7 +46,7 @@ export default class Layer {
                 width: document.width,
                 height: document.height,
                 channels: 4,
-                background: { r: 0, g: 0, b: 0, alpha: 0 }
+                background: layerData.backgroundColor || { r: 0, g: 0, b: 0, alpha: 0 }
             }
         });
 
@@ -46,7 +54,7 @@ export default class Layer {
         this.document = document;
 
         // Set name
-        this.name = name;
+        this.name = layerData.name;
 
         // Add to document
         document.layers.push(this);

@@ -1,10 +1,10 @@
-import Layer from "../Layer/Layer";
+import Layer, { LayerData } from "../Layer/Layer";
 import createLayer from "./createLayer";
 
 export interface DocumentData {
     width: number;
     height: number;
-    layerName: string;
+    layer: LayerData;
 }
 
 export default class Document {
@@ -37,7 +37,9 @@ export default class Document {
      * @param documentData Options to initialize this document with
      * @param documentData.width The width of the document in pixels
      * @param documentData.height The height of the document in pixels
-     * @param documentData.layerName The name of the initial layer
+     * @param documentData.layer Data for the initial layer
+     * @param documentData.layer.name The name of the initial layer
+     * @param documentData.layer.backgroundColor The background color of the initial layer
      */
     constructor(documentData: DocumentData) {
 
@@ -49,7 +51,7 @@ export default class Document {
         this.layers = [];
 
         // Create layer
-        this.createLayer(documentData.layerName);
+        this.createLayer(documentData.layer);
     }
 
     /**
@@ -57,9 +59,13 @@ export default class Document {
      *
      * Create a new layer
      *
+     * @param layerData Date for the layer
+     * @param layerData.name The name of the layer
+     * @param layerData.backgroundColor The background color of the layer
+     *
      * @returns {Document} This document
      */
-    createLayer = (name: string): Document => createLayer(this, name);
+    createLayer = (layerData: LayerData): Document => createLayer(this, layerData);
 
     /**
      * Get Layer
