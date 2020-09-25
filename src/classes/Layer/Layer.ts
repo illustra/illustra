@@ -1,6 +1,7 @@
 import sharp, { Sharp } from "sharp";
 import Document from "../Document/Document";
 import composite from "./composite";
+import duplicate from "./duplicate";
 import exportTo, { ExportTypes, Format, Output } from "./exportTo";
 
 export interface LayerData {
@@ -32,6 +33,31 @@ export default class Layer {
      * This layer's name
      */
     name: string;
+
+    /**
+     * Position
+     *
+     * This layer's position
+     */
+    get position(): number {
+        return this.document.layers.findIndex((l: Layer) => l === this);
+    }
+
+    /**
+     * Background color (private)
+     *
+     * This layer's background color
+     */
+    private _backgroundColor: sharp.Color | undefined;
+
+    /**
+     * Background color
+     *
+     * This layer's background color
+     */
+    get backgroundColor(): sharp.Color {
+        return this._backgroundColor || { r: 0, g: 0, b: 0, alpha: 0 };
+    }
 
     /**
      * Compositions
@@ -69,6 +95,7 @@ export default class Layer {
 
         // Set data
         this.name = layerData.name;
+        this._backgroundColor = layerData.backgroundColor;
         this.compositions = [];
 
         // Add to document
@@ -88,6 +115,20 @@ export default class Layer {
      * @returns {Layer} This layer
      */
     composite = (data: string | Buffer): Layer => composite(this, data);
+
+    /**
+     * Duplicate
+     *
+     * Duplicate this layer
+     *
+     * @param name The name of the new layer. Omit to copy the name of the layer being duplicated
+     * @param position The position index of the layer. The lower the index, the lower the layer is in the stack.
+     * Omit to add the layer above the layer being duplicated.
+     * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
+     *
+     * @returns {Layer} The new layer
+     */
+    duplicate = (name?: string, position?: number): Layer => duplicate(this, name, position);
 
     /**
      * Export To
