@@ -1,6 +1,7 @@
 import sharp, { Sharp } from "sharp";
 import Document from "../Document/Document";
 import composite from "./composite";
+import deleteLayer from "./delete";
 import duplicate from "./duplicate";
 import exportTo, { ExportTypes, Format, Output } from "./exportTo";
 
@@ -129,6 +130,13 @@ export default class Layer {
      * @returns {Layer} The new layer
      */
     duplicate = (name?: string, position?: number): Layer => duplicate(this, name, position);
+
+    /**
+     * Delete
+     *
+     * Delete this layer
+     */
+    delete = () => deleteLayer(this);
 
     /**
      * Export To
