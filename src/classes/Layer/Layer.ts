@@ -70,7 +70,7 @@ export default class Layer {
      * Layer
      *
      * @param document The document this layer is a part of
-     * @param layerData Date for the layer
+     * @param layerData Data for the layer
      * @param layerData.name The name of the layer
      * @param layerData.data The image data of the layer
      * @param layerData.backgroundColor The background color of the layer

@@ -60,7 +60,7 @@ export default class Document {
      *
      * Create a new layer
      *
-     * @param layerData Date for the layer
+     * @param layerData Data for the layer
      * @param layerData.name The name of the layer
      * @param layerData.data The image data of the layer
      * @param layerData.backgroundColor The background color of the layer
@@ -68,7 +68,7 @@ export default class Document {
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
      *
-     * @returns {Layer} This document
+     * @returns {Layer} The created layer
      */
     createLayer = (layerData: LayerData): Layer => createLayer(this, layerData);
 
