@@ -21,7 +21,13 @@ export type ExportTypes = "file" | "buffer";
  */
 export type Output<ExportType> = ExportType extends "file" ? undefined : Buffer;
 
-export default async function exportTo<ExportType extends ExportTypes>(layer: Layer, format: Format, exportType: ExportType, path?: string): Promise<Output<ExportType> | undefined> {
+export default async function exportTo<ExportType extends ExportTypes>(layer: Layer, format: Format, exportType: ExportType, path?: string): Promise<Output<ExportType>> {
+
+    // Invalid format
+    if (!["png", "jpeg", "webp", "gif", "tiff", "heif", "raw", "tile"].includes(format)) throw new Error("Invalid format");
+
+    // Invalid export type
+    if (!["file", "buffer"].includes(exportType)) throw new Error("Invalid export type");
 
     // Composite
     layer.canvas.composite(layer.compositions);
@@ -39,9 +45,12 @@ export default async function exportTo<ExportType extends ExportTypes>(layer: La
 
         // Export
         await layer.canvas.toFile(path);
+
+        // Return
+        return undefined as Output<ExportType>;
     }
 
     // Export as buffer
     // https://sharp.pixelplumbing.com/api-output#tobuffer
-    else if (exportType === "buffer") return await layer.canvas.toBuffer() as Output<ExportType>;
+    return await layer.canvas.toBuffer() as Output<ExportType>;
 }
