@@ -4,6 +4,8 @@ import composite from "./composite";
 import deleteLayer from "./delete";
 import duplicate from "./duplicate";
 import exportTo, { ExportTypes, Format, Output } from "./exportTo";
+import translate from "./translate";
+import translateTo from "./translateTo";
 
 export interface LayerData {
     name: string;
@@ -120,6 +122,30 @@ export default class Layer {
      * @returns {Layer} This layer
      */
     _composite = (data: string | Buffer, top?: number, left?: number): Layer => composite(this, data, top, left);
+
+    /**
+     * Translate
+     *
+     * Translate this layer relative to its current location
+     *
+     * @param x The amount of pixels to move this layer horizontally
+     * @param y The amount of pixels to move this layer vertically
+     *
+     * @returns {Layer} This layer
+     */
+    translate = (x?: number, y?: number): Layer => translate(this, x, y);
+
+    /**
+     * Translate To
+     *
+     * Translate this layer to a specified position
+     *
+     * @param top The vertical offset from the top to place this layer
+     * @param left The horizontal offset from the left to place this layer
+     *
+     * @returns {Layer} This layer
+     */
+    translateTo = (top?: number, left?: number): Layer => translateTo(this, top, left);
 
     /**
      * Duplicate
