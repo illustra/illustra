@@ -10,7 +10,7 @@ export default function duplicate(layer: Layer, name?: string, position?: number
     });
 
     // Set compositions
-    duplicatedLayer.compositions = [...layer.compositions];
+    duplicatedLayer._compositions = [...layer._compositions];
 
     // Return
     return duplicatedLayer;

@@ -46,7 +46,7 @@ export default async function mergeLayers(document: Document, name: string, inpu
     });
 
     // Composite layers
-    exportedLayers.forEach((l: Buffer) => newLayer.composite(l));
+    exportedLayers.forEach((l: Buffer) => newLayer._composite(l));
 
     // Delete layers
     if (!copy) layers.forEach((l: Layer) => l.delete());

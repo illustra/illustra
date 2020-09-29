@@ -30,7 +30,7 @@ export default async function exportTo<ExportType extends ExportTypes>(layer: La
     if (!["file", "buffer"].includes(exportType)) throw new Error("Invalid export type");
 
     // Composite
-    layer.canvas.composite(layer.compositions);
+    layer.canvas.composite(layer._compositions);
 
     // Convert to format
     // https://sharp.pixelplumbing.com/api-output#toformat

@@ -65,7 +65,7 @@ export default class Layer {
      *
      * This layer's compositions
      */
-    compositions: sharp.OverlayOptions[];
+    _compositions: sharp.OverlayOptions[];
 
     /**
      * Layer
@@ -97,13 +97,13 @@ export default class Layer {
         // Set data
         this.name = layerData.name;
         this._backgroundColor = layerData.backgroundColor;
-        this.compositions = [];
+        this._compositions = [];
 
         // Add to document
         document.layers.splice(layerData.position || document.layers.length, 0, this);
 
         // Composite image
-        if (layerData.data) this.composite(layerData.data);
+        if (layerData.data) this._composite(layerData.data);
     }
 
     /**
@@ -115,7 +115,7 @@ export default class Layer {
      *
      * @returns {Layer} This layer
      */
-    composite = (data: string | Buffer): Layer => composite(this, data);
+    _composite = (data: string | Buffer): Layer => composite(this, data);
 
     /**
      * Duplicate
