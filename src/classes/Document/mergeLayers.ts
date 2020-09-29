@@ -1,7 +1,7 @@
 import Layer from "../Layer/Layer";
 import Document from "./Document";
 
-export default async function flattenLayers(document: Document, name: string, inputLayers?: Array<Layer | string | number>): Promise<Layer> {
+export default async function mergeLayers(document: Document, name: string, inputLayers?: Array<Layer | string | number>, copy?: boolean): Promise<Layer> {
 
     // Define layers
     let layers: Layer[];
@@ -32,8 +32,8 @@ export default async function flattenLayers(document: Document, name: string, in
     }
     else layers = [...document.layers];
 
-    // Get highest position
-    const position: number = Math.max(...layers.map((l: Layer) => l.position));
+    // Get position
+    const position: number = Math.max(...layers.map((l: Layer) => l.position)) + 1;
 
     // Export layers
     const exportedLayersPromises: Array<Promise<Buffer>> = layers.map((l: Layer) => l.exportTo("png", "buffer"));
@@ -49,7 +49,7 @@ export default async function flattenLayers(document: Document, name: string, in
     exportedLayers.forEach((l: Buffer) => newLayer.composite(l));
 
     // Delete layers
-    layers.forEach((l: Layer) => l.delete());
+    if (!copy) layers.forEach((l: Layer) => l.delete());
 
     // Return
     return newLayer;

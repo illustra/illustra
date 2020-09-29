@@ -1,6 +1,6 @@
 import Layer, { LayerData } from "../Layer/Layer";
 import createLayer from "./createLayer";
-import flattenLayers from "./flattenLayers";
+import mergeLayers from "./mergeLayers";
 
 export interface DocumentData {
     width: number;
@@ -90,17 +90,19 @@ export default class Document {
     }
 
     /**
-     * Flatten Layers
+     * Merge Layers
      *
-     * Flatten some or all layers
-     * The new layer will be placed at the same index as the layer with the highest index being flattened
+     * Merge some or all layers
+     * The new layer will be placed above the highest layer being merged
      *
      * @param name The name of the new layer
-     * @param layers An array of the layers to flatten
+     * @param layers An array of the layers to merge
      * The array can contain a mix of `Layer` objects, layer names, or layer indexes
-     * Omit to flatten all layers
+     * Omit to merge all layers
+     * @param copy Set to `true` to keep the merged layers
+     * Omit or set to `false` to delete the merged layers
      *
      * @returns {Layer} The new layer
      */
-    flattenLayers = (name: string, layers?: Array<Layer | string | number>): Promise<Layer> => flattenLayers(this, name, layers);
+    mergeLayers = (name: string, layers?: Array<Layer | string | number>, copy?: boolean): Promise<Layer> => mergeLayers(this, name, layers, copy);
 }
