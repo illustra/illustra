@@ -1,5 +1,7 @@
 import Layer, { LayerData } from "../Layer/Layer";
+import { ExportTypes, Format, Output } from "../Layer/exportTo";
 import createLayer from "./createLayer";
+import exportTo from "./exportTo";
 import mergeLayers from "./mergeLayers";
 
 export interface DocumentData {
@@ -105,4 +107,19 @@ export default class Document {
      * @returns {Layer} The new layer
      */
     mergeLayers = (name: string, layers?: Array<Layer | string | number>, copy?: boolean): Promise<Layer> => mergeLayers(this, name, layers, copy);
+
+    /**
+     * Export To
+     *
+     * Export this document
+     *
+     * @param format The format to export in - One of: 'png', 'jpeg', 'webp', 'gif', 'tiff', 'heif', 'raw', or 'tile'
+     * @param exportType How this document should be exported - Either 'file' or 'buffer'
+     * @param path The path to write the file to if the `exportType` is 'file'
+     *
+     * @throws {Error} Path must be specified if exportType is 'file'
+     *
+     * @returns {undefined | Buffer} `undefined` if the `exportType` is 'file' or `Buffer` if the `exportType` is 'buffer'
+     */
+    exportTo = <ExportType extends ExportTypes>(format: Format, exportType: ExportType, path?: string): Promise<Output<ExportType>> => exportTo(this, format, exportType, path);
 }
