@@ -1,5 +1,6 @@
 import Layer, { LayerData } from "../Layer/Layer";
 import createLayer from "./createLayer";
+import flattenLayers from "./flattenLayers";
 
 export interface DocumentData {
     width: number;
@@ -87,4 +88,19 @@ export default class Document {
         // Get by index
         else if (typeof nameOrIndex === "number") return this.layers[nameOrIndex];
     }
+
+    /**
+     * Flatten Layers
+     *
+     * Flatten some or all layers
+     * The new layer will be placed at the same index as the layer with the highest index being flattened
+     *
+     * @param name The name of the new layer
+     * @param layers An array of the layers to flatten
+     * The array can contain a mix of `Layer` objects, layer names, or layer indexes
+     * Omit to flatten all layers
+     *
+     * @returns {Layer} The new layer
+     */
+    flattenLayers = (name: string, layers?: Array<Layer | string | number>): Promise<Layer> => flattenLayers(this, name, layers);
 }
