@@ -8,6 +8,8 @@ import exportTo, { ExportTypes, Format, Output } from "./exportTo";
 export interface LayerData {
     name: string;
     data?: string | Buffer;
+    top?: number;
+    left?: number;
     backgroundColor?: sharp.Color;
     position?: number;
 }
@@ -74,6 +76,8 @@ export default class Layer {
      * @param layerData Data for the layer
      * @param layerData.name The name of the layer
      * @param layerData.data The image data of the layer
+     * @param layerData.top The vertical offset from the top to place the `layerData.data`
+     * @param layerData.left The horizontal offset from the left to place the `layerData.data`
      * @param layerData.backgroundColor The background color of the layer
      * @param layerData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
      * Omit to add the layer to the top of the stack (highest index).
@@ -103,7 +107,7 @@ export default class Layer {
         document.layers.splice(layerData.position || document.layers.length, 0, this);
 
         // Composite image
-        if (layerData.data) this._composite(layerData.data);
+        if (layerData.data) this._composite(layerData.data, layerData.top, layerData.left);
     }
 
     /**
@@ -115,7 +119,7 @@ export default class Layer {
      *
      * @returns {Layer} This layer
      */
-    _composite = (data: string | Buffer): Layer => composite(this, data);
+    _composite = (data: string | Buffer, top?: number, left?: number): Layer => composite(this, data, top, left);
 
     /**
      * Duplicate

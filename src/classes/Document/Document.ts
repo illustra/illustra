@@ -43,6 +43,8 @@ export default class Document {
      * @param documentData.layer Data for the initial layer
      * @param documentData.layer.name The name of the initial layer
      * @param documentData.layer.data The image data of the initial layer
+     * @param documentData.layer.top The vertical offset from the top to place the `documentData.layer.data`
+     * @param documentData.layer.left The horizontal offset from the left to place the `documentData.layer.data`
      * @param documentData.layer.backgroundColor The background color of the initial layer
      */
     constructor(documentData: DocumentData) {
