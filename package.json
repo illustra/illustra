@@ -6,7 +6,7 @@
     "repository": "https://github.com/APixelVisuals/illustra",
     "author": "APixel Visuals",
     "scripts": {
-        "dev": "echo \"Building...\" && tsc && echo \"Running...\" && node out/testing/index.js",
+        "dev": "echo \"Building...\"; tsc; echo \"Running...\"; node out/testing/index.js",
         "build": "echo \"Building...\" && tsc"
     },
     "dependencies": {
