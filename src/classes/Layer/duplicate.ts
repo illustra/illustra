@@ -12,7 +12,7 @@ export default async function duplicate(layer: Layer, name?: string, position?: 
     });
 
     // Set rotation
-    duplicatedLayer.rotateTo(layer.rotation);
+    duplicatedLayer.rotate(layer.rotation);
 
     // Return
     return duplicatedLayer;

@@ -4,11 +4,11 @@ import deleteLayer from "./delete";
 import duplicate from "./duplicate";
 import exportTo, { ExportTypes, Format, Output } from "./exportTo";
 import resize from "./resize";
-import resizeTo from "./resizeTo";
+import resizeBy from "./resizeBy";
 import rotate from "./rotate";
-import rotateTo from "./rotateTo";
+import rotateBy from "./rotateBy";
 import translate from "./translate";
-import translateTo from "./translateTo";
+import translateBy from "./translateBy";
 
 export interface LayerData {
     name: string;
@@ -153,7 +153,7 @@ export default class Layer {
     }
 
     /**
-     * Translate To
+     * Translate
      *
      * Translate this layer to a specified position
      *
@@ -162,10 +162,10 @@ export default class Layer {
      *
      * @returns {Layer} This layer
      */
-    translateTo = (top?: number, left?: number): Layer => translateTo(this, top, left);
+    translate = (top?: number, left?: number): Layer => translate(this, top, left);
 
     /**
-     * Translate
+     * Translate By
      *
      * Translate this layer relative to its current location
      *
@@ -174,23 +174,12 @@ export default class Layer {
      *
      * @returns {Layer} This layer
      */
-    translate = (x?: number, y?: number): Layer => translate(this, x, y);
-
-    /**
-     * Rotate To
-     *
-     * Rotate this layer to a specified rotation
-     *
-     * @param degrees The amount of degrees to rotate this layer
-     *
-     * @returns {Layer} This layer
-     */
-    rotateTo = (degrees: number): Layer => rotateTo(this, degrees);
+    translateBy = (x?: number, y?: number): Layer => translateBy(this, x, y);
 
     /**
      * Rotate
      *
-     * Rotate this layer relative to its current rotation
+     * Rotate this layer to a specified rotation
      *
      * @param degrees The amount of degrees to rotate this layer
      *
@@ -199,7 +188,18 @@ export default class Layer {
     rotate = (degrees: number): Layer => rotate(this, degrees);
 
     /**
-     * Resize To
+     * Rotate By
+     *
+     * Rotate this layer relative to its current rotation
+     *
+     * @param degrees The amount of degrees to rotate this layer
+     *
+     * @returns {Layer} This layer
+     */
+    rotateBy = (degrees: number): Layer => rotateBy(this, degrees);
+
+    /**
+     * Resize
      *
      * Resize this layer to specified dimensions
      *
@@ -210,10 +210,10 @@ export default class Layer {
      *
      * @returns {Layer} This layer
      */
-    resizeTo = (width?: number | null, height?: number | null): Layer => resizeTo(this, width, height);
+    resize = (width?: number | null, height?: number | null): Layer => resize(this, width, height);
 
     /**
-     * Resize
+     * Resize By
      *
      * Resize this layer relative to its current dimensions
      *
@@ -225,7 +225,7 @@ export default class Layer {
      *
      * @returns {Layer} This layer
      */
-    resize = (width?: number | null, height?: number | null, scale?: boolean): Layer => resize(this, width, height, scale);
+    resizeBy = (width?: number | null, height?: number | null, scale?: boolean): Layer => resizeBy(this, width, height, scale);
 
     /**
      * Duplicate
