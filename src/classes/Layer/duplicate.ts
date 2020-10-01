@@ -5,12 +5,14 @@ export default function duplicate(layer: Layer, name?: string, position?: number
     // Create layer
     const duplicatedLayer: Layer = layer.document.createLayer({
         name: name || layer.name,
-        backgroundColor: layer.backgroundColor,
+        data: layer._data,
+        top: layer.top,
+        left: layer.left,
         position: position || layer.position
     });
 
-    // Set compositions
-    duplicatedLayer._compositions = [...layer._compositions];
+    // Set rotation
+    duplicatedLayer.rotateTo(layer.rotation);
 
     // Return
     return duplicatedLayer;

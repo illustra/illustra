@@ -1,9 +1,10 @@
 import sharp, { Sharp } from "sharp";
 import Document from "../Document/Document";
-import composite from "./composite";
 import deleteLayer from "./delete";
 import duplicate from "./duplicate";
 import exportTo, { ExportTypes, Format, Output } from "./exportTo";
+import rotate from "./rotate";
+import rotateTo from "./rotateTo";
 import translate from "./translate";
 import translateTo from "./translateTo";
 
@@ -12,7 +13,6 @@ export interface LayerData {
     data?: string | Buffer;
     top?: number;
     left?: number;
-    backgroundColor?: sharp.Color;
     position?: number;
 }
 
@@ -33,11 +33,32 @@ export default class Layer {
     document: Document;
 
     /**
+     * Data
+     *
+     * This layer's input data
+     */
+    _data?: string | Buffer;
+
+    /**
      * Name
      *
      * This layer's name
      */
     name: string;
+
+    /**
+     * Top
+     *
+     * The vertical offset from the top to place this layer
+     */
+    top: number;
+
+    /**
+     * Left
+     *
+     * The horizontal offset from the left to place this layer
+     */
+    left: number;
 
     /**
      * Position
@@ -49,27 +70,11 @@ export default class Layer {
     }
 
     /**
-     * Background color (private)
+     * Rotation
      *
-     * This layer's background color
+     * This layer's rotation
      */
-    private _backgroundColor: sharp.Color | undefined;
-
-    /**
-     * Background color
-     *
-     * This layer's background color
-     */
-    get backgroundColor(): sharp.Color {
-        return this._backgroundColor || { r: 0, g: 0, b: 0, alpha: 0 };
-    }
-
-    /**
-     * Compositions
-     *
-     * This layer's compositions
-     */
-    _compositions: sharp.OverlayOptions[];
+    rotation: number;
 
     /**
      * Layer
@@ -78,9 +83,8 @@ export default class Layer {
      * @param layerData Data for the layer
      * @param layerData.name The name of the layer
      * @param layerData.data The image data of the layer
-     * @param layerData.top The vertical offset from the top to place the `layerData.data`
-     * @param layerData.left The horizontal offset from the left to place the `layerData.data`
-     * @param layerData.backgroundColor The background color of the layer
+     * @param layerData.top The vertical offset from the top to place this layer
+     * @param layerData.left The horizontal offset from the left to place this layer
      * @param layerData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
@@ -88,40 +92,21 @@ export default class Layer {
     constructor(document: Document, layerData: LayerData) {
 
         // Create sharp canvas
-        this.canvas = sharp({
-            create: {
-                width: document.width,
-                height: document.height,
-                channels: 4,
-                background: layerData.backgroundColor || { r: 0, g: 0, b: 0, alpha: 0 }
-            }
-        });
+        this.canvas = sharp(layerData.data);
 
         // Set document
         this.document = document;
 
         // Set data
+        this._data = layerData.data;
         this.name = layerData.name;
-        this._backgroundColor = layerData.backgroundColor;
-        this._compositions = [];
+        this.top = layerData.top || 0;
+        this.left = layerData.left || 0;
+        this.rotation = 0;
 
         // Add to document
         document.layers.splice(layerData.position || document.layers.length, 0, this);
-
-        // Composite image
-        if (layerData.data) this._composite(layerData.data, layerData.top, layerData.left);
     }
-
-    /**
-     * Composite
-     *
-     * Composite an image onto this layer
-     *
-     * @param data The image data to composite
-     *
-     * @returns {Layer} This layer
-     */
-    _composite = (data: string | Buffer, top?: number, left?: number): Layer => composite(this, data, top, left);
 
     /**
      * Translate
@@ -146,6 +131,28 @@ export default class Layer {
      * @returns {Layer} This layer
      */
     translateTo = (top?: number, left?: number): Layer => translateTo(this, top, left);
+
+    /**
+     * Rotate
+     *
+     * Rotate this layer relative to its current rotation
+     *
+     * @param degrees The amount of degrees to rotate this layer
+     *
+     * @returns {Layer} This layer
+     */
+    rotate = (degrees: number): Layer => rotate(this, degrees);
+
+    /**
+     * Rotate To
+     *
+     * Rotate this layer to a specified rotation
+     *
+     * @param degrees The amount of degrees to rotate this layer
+     *
+     * @returns {Layer} This layer
+     */
+    rotateTo = (degrees: number): Layer => rotateTo(this, degrees);
 
     /**
      * Duplicate

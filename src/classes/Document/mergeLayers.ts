@@ -1,3 +1,4 @@
+import sharp from "sharp";
 import Layer from "../Layer/Layer";
 import Document from "./Document";
 
@@ -39,14 +40,32 @@ export default async function mergeLayers(document: Document, name: string, inpu
     const exportedLayersPromises: Array<Promise<Buffer>> = layers.map((l: Layer) => l.exportTo("png", "buffer"));
     const exportedLayers: Buffer[] = await Promise.all(exportedLayersPromises);
 
+    // Create sharp canvas
+    const canvas: sharp.Sharp = sharp({
+        create: {
+            width: document.width,
+            height: document.height,
+            channels: 4,
+            background: { r: 0, g: 0, b: 0, alpha: 0 }
+        }
+    });
+
+    // Composite
+    canvas.composite(exportedLayers.map((l: Buffer, index: number) => ({
+        input: l,
+        top: layers[index].top,
+        left: layers[index].left
+    })));
+
+    // Export canvas
+    const mergedLayer: Buffer = await canvas.toFormat("png").toBuffer();
+
     // Create layer
     const newLayer: Layer = new Layer(document, {
         name,
+        data: mergedLayer,
         position
     });
-
-    // Composite layers
-    exportedLayers.forEach((l: Buffer) => newLayer._composite(l));
 
     // Delete layers
     if (!copy) layers.forEach((l: Layer) => l.delete());

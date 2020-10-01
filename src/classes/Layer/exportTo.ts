@@ -29,8 +29,10 @@ export default async function exportTo<ExportType extends ExportTypes>(layer: La
     // Invalid export type
     if (!["file", "buffer"].includes(exportType)) throw new Error("Invalid export type");
 
-    // Composite
-    layer.canvas.composite(layer._compositions);
+    // Rotate
+    if (layer.rotation) layer.canvas.rotate(layer.rotation, {
+        background: { r: 0, g: 0, b: 0, alpha: 0 }
+    });
 
     // Convert to format
     // https://sharp.pixelplumbing.com/api-output#toformat
