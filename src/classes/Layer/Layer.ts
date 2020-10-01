@@ -153,18 +153,6 @@ export default class Layer {
     }
 
     /**
-     * Translate
-     *
-     * Translate this layer relative to its current location
-     *
-     * @param x The amount of pixels to move this layer horizontally
-     * @param y The amount of pixels to move this layer vertically
-     *
-     * @returns {Layer} This layer
-     */
-    translate = (x?: number, y?: number): Layer => translate(this, x, y);
-
-    /**
      * Translate To
      *
      * Translate this layer to a specified position
@@ -177,15 +165,16 @@ export default class Layer {
     translateTo = (top?: number, left?: number): Layer => translateTo(this, top, left);
 
     /**
-     * Rotate
+     * Translate
      *
-     * Rotate this layer relative to its current rotation
+     * Translate this layer relative to its current location
      *
-     * @param degrees The amount of degrees to rotate this layer
+     * @param x The amount of pixels to move this layer horizontally
+     * @param y The amount of pixels to move this layer vertically
      *
      * @returns {Layer} This layer
      */
-    rotate = (degrees: number): Layer => rotate(this, degrees);
+    translate = (x?: number, y?: number): Layer => translate(this, x, y);
 
     /**
      * Rotate To
@@ -197,6 +186,17 @@ export default class Layer {
      * @returns {Layer} This layer
      */
     rotateTo = (degrees: number): Layer => rotateTo(this, degrees);
+
+    /**
+     * Rotate
+     *
+     * Rotate this layer relative to its current rotation
+     *
+     * @param degrees The amount of degrees to rotate this layer
+     *
+     * @returns {Layer} This layer
+     */
+    rotate = (degrees: number): Layer => rotate(this, degrees);
 
     /**
      * Resize To
