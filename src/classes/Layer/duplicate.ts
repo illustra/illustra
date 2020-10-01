@@ -1,9 +1,9 @@
 import Layer from "./Layer";
 
-export default function duplicate(layer: Layer, name?: string, position?: number): Layer {
+export default async function duplicate(layer: Layer, name?: string, position?: number): Promise<Layer> {
 
     // Create layer
-    const duplicatedLayer: Layer = layer.document.createLayer({
+    const duplicatedLayer: Layer = await layer.document.createLayer({
         name: name || layer.name,
         data: layer._data,
         top: layer.top,

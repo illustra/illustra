@@ -34,6 +34,11 @@ export default async function exportTo<ExportType extends ExportTypes>(layer: La
         background: { r: 0, g: 0, b: 0, alpha: 0 }
     });
 
+    // Resize
+    if (layer._isResized) layer.canvas.resize(layer.width, layer.height, {
+        fit: "fill"
+    });
+
     // Convert to format
     // https://sharp.pixelplumbing.com/api-output#toformat
     layer.canvas.toFormat(format);

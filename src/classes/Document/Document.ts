@@ -7,7 +7,6 @@ import mergeLayers from "./mergeLayers";
 export interface DocumentData {
     width: number;
     height: number;
-    layer: LayerData;
 }
 
 export default class Document {
@@ -40,11 +39,6 @@ export default class Document {
      * @param documentData Options to initialize this document with
      * @param documentData.width The width of the document in pixels
      * @param documentData.height The height of the document in pixels
-     * @param documentData.layer Data for the initial layer
-     * @param documentData.layer.name The name of the initial layer
-     * @param documentData.layer.data The image data of the initial layer
-     * @param documentData.layer.top The vertical offset from the top to place the initial layer
-     * @param documentData.layer.left The horizontal offset from the left to place the initial layer
      */
     constructor(documentData: DocumentData) {
 
@@ -54,9 +48,6 @@ export default class Document {
 
         // Set layers
         this.layers = [];
-
-        // Create layer
-        this.createLayer(documentData.layer);
     }
 
     /**
@@ -67,14 +58,15 @@ export default class Document {
      * @param layerData Data for the layer
      * @param layerData.name The name of the layer
      * @param layerData.data The image data of the layer
-     * @param layerData.backgroundColor The background color of the layer
+     * @param layerData.top The vertical offset from the top to place this layer
+     * @param layerData.left The horizontal offset from the left to place this layer
      * @param layerData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
      *
      * @returns {Layer} The created layer
      */
-    createLayer = (layerData: LayerData): Layer => createLayer(this, layerData);
+    createLayer = (layerData: LayerData): Promise<Layer> => createLayer(this, layerData);
 
     /**
      * Get Layer

@@ -3,6 +3,8 @@ import Document from "../Document/Document";
 import deleteLayer from "./delete";
 import duplicate from "./duplicate";
 import exportTo, { ExportTypes, Format, Output } from "./exportTo";
+import resize from "./resize";
+import resizeTo from "./resizeTo";
 import rotate from "./rotate";
 import rotateTo from "./rotateTo";
 import translate from "./translate";
@@ -33,6 +35,13 @@ export default class Layer {
     document: Document;
 
     /**
+     * Initialize
+     *
+     * A promise for when this layer will be initialized
+     */
+    _initialize: Promise<void>;
+
+    /**
      * Data
      *
      * This layer's input data
@@ -45,6 +54,27 @@ export default class Layer {
      * This layer's name
      */
     name: string;
+
+    /**
+     * Width
+     *
+     * The width of this layer
+     */
+    width: number;
+
+    /**
+     * Height
+     *
+     * The height of this layer
+     */
+    height: number;
+
+    /**
+     * Is Resized
+     *
+     * Whether or not this layer has been resized
+     */
+    _isResized?: boolean;
 
     /**
      * Top
@@ -104,6 +134,20 @@ export default class Layer {
         this.left = layerData.left || 0;
         this.rotation = 0;
 
+        // Initialize
+        this._initialize = new Promise(async (resolve) => {
+
+            // Get metadata
+            const metadata: sharp.Metadata = await this.canvas.metadata();
+
+            // Set data
+            this.width = metadata.width || 0;
+            this.height = metadata.height || 0;
+
+            // Resolve
+            resolve();
+        });
+
         // Add to document
         document.layers.splice(layerData.position || document.layers.length, 0, this);
     }
@@ -155,6 +199,35 @@ export default class Layer {
     rotateTo = (degrees: number): Layer => rotateTo(this, degrees);
 
     /**
+     * Resize To
+     *
+     * Resize this layer to specified dimensions
+     *
+     * @param width The amount of pixels this layer's width should be
+     * Pass `null` to stretch or `undefined` to automatically scale based on the `height`
+     * @param height The amount of pixels this layer's height should be
+     * Pass `null` to stretch or `undefined` to automatically scale based on the `width`
+     *
+     * @returns {Layer} This layer
+     */
+    resizeTo = (width?: number | null, height?: number | null): Layer => resizeTo(this, width, height);
+
+    /**
+     * Resize
+     *
+     * Resize this layer relative to its current dimensions
+     *
+     * @param width The amount of pixels to increase this layer's width
+     * Pass `null` to allow the `height` to stretch or `undefined` to automatically scale it`
+     * @param height The amount of pixels to increase this layer's height
+     * Pass `null` to allow the `width` to stretch or `undefined` to automatically scale it
+     * @param scale Passing `true` will consider `width` and `height` to be a percent of this layer's current size
+     *
+     * @returns {Layer} This layer
+     */
+    resize = (width?: number | null, height?: number | null, scale?: boolean): Layer => resize(this, width, height, scale);
+
+    /**
      * Duplicate
      *
      * Duplicate this layer
@@ -166,7 +239,7 @@ export default class Layer {
      *
      * @returns {Layer} The new layer
      */
-    duplicate = (name?: string, position?: number): Layer => duplicate(this, name, position);
+    duplicate = (name?: string, position?: number): Promise<Layer> => duplicate(this, name, position);
 
     /**
      * Delete

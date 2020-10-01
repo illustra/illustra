@@ -66,6 +66,7 @@ export default async function mergeLayers(document: Document, name: string, inpu
         data: mergedLayer,
         position
     });
+    await newLayer._initialize;
 
     // Delete layers
     if (!copy) layers.forEach((l: Layer) => l.delete());
