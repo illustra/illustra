@@ -1,5 +1,6 @@
 import sharp from "sharp";
 import Document from "../Document/Document";
+import align, { AlignOptions } from "./align";
 import deleteLayer from "./delete";
 import duplicate from "./duplicate";
 import exportTo, { ExportTypes, Format, Output } from "./exportTo";
@@ -169,6 +170,27 @@ export default class Layer {
      * @returns {Layer} This layer
      */
     translateBy = (x?: number, y?: number): Layer => translateBy(this, x, y);
+
+    /**
+     * Align
+     *
+     * Align this layer to the document
+     *
+     * @param alignOptions Options for aligning this layer
+     * @param alignOptions.top How this layer should be aligned vertically
+     * Either 'start', 'center' (default), or 'end'
+     * @param alignOptions.left How this layer should be aligned horizontally
+     * Either 'start', 'center' (default), or 'end'
+     * @param alignOptions.topOffset The offset for aligning this layer vertically
+     * @param alignOptions.leftOffset The offset for aligning this layer horizontally
+     * @param alignOptions.topOffsetUnits The units for offsetting this layer vertically
+     * Either 'pixels' (default) or 'percent'
+     * @param alignOptions.leftOffsetUnits The units for offsetting this layer horizontally
+     * Either 'pixels' (default) or 'percent'
+     *
+     * @returns {Layer} This layer
+     */
+    align = (alignOptions?: AlignOptions): Layer => align(this, alignOptions);
 
     /**
      * Rotate
