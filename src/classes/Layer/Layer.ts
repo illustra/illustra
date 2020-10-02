@@ -1,8 +1,9 @@
-import sharp, { Sharp } from "sharp";
+import sharp from "sharp";
 import Document from "../Document/Document";
 import deleteLayer from "./delete";
 import duplicate from "./duplicate";
 import exportTo, { ExportTypes, Format, Output } from "./exportTo";
+import reflect from "./reflect";
 import resize from "./resize";
 import resizeBy from "./resizeBy";
 import rotate from "./rotate";
@@ -10,10 +11,11 @@ import translate from "./translate";
 import translateBy from "./translateBy";
 
 interface Transformation {
-    type: "rotation" | "resize";
+    type: "rotation" | "resize" | "reflection";
     degrees?: number;
     width?: number;
     height?: number;
+    direction?: "vertical" | "horizontal";
 }
 
 export interface LayerData {
@@ -207,6 +209,18 @@ export default class Layer {
      * @returns {Layer} This layer
      */
     resizeBy = (width?: number | null, height?: number | null, scale?: boolean): Layer => resizeBy(this, width, height, scale);
+
+    /**
+     * Reflect
+     *
+     * Reflect this layer
+     *
+     * @param direction The direction to reflect this layer
+     * Either 'vertical' or 'horizontal'
+     *
+     * @returns {Layer} This layer
+     */
+    reflect = (direction: "vertical" | "horizontal"): Layer => reflect(this, direction);
 
     /**
      * Duplicate

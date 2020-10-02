@@ -46,6 +46,9 @@ export default async function exportTo<ExportType extends ExportTypes>(layer: La
             fit: "fill"
         });
 
+        // Reflect
+        else if (transformation.type === "reflection") transformation.direction === "vertical" ? canvas.flip() : canvas.flop();
+
         // Export and import
         const exported: Buffer = await canvas.toFormat("png").toBuffer();
         canvas = sharp(exported);
