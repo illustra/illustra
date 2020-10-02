@@ -11,11 +11,8 @@ export default async function duplicate(layer: Layer, name?: string, position?: 
         position: position || layer.position
     });
 
-    // Set rotation
-    duplicatedLayer.rotate(layer.rotation);
-
-    // Set dimensions
-    duplicatedLayer.resize(layer.width, layer.height);
+    // Set transformations
+    duplicatedLayer._transformations = [...layer._transformations];
 
     // Return
     return duplicatedLayer;

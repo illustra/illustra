@@ -1,3 +1,4 @@
+import sharp from "sharp";
 import Layer from "./Layer";
 
 /**
@@ -29,19 +30,30 @@ export default async function exportTo<ExportType extends ExportTypes>(layer: La
     // Invalid export type
     if (!["file", "buffer"].includes(exportType)) throw new Error("Invalid export type");
 
-    // Rotate
-    if (layer.rotation) layer.canvas.rotate(layer.rotation, {
-        background: { r: 0, g: 0, b: 0, alpha: 0 }
-    });
+    // Create canvas
+    let canvas: sharp.Sharp = sharp(layer._data);
 
-    // Resize
-    if (layer._isResized) layer.canvas.resize(layer.width, layer.height, {
-        fit: "fill"
-    });
+    // Transformations
+    for (let transformation of layer._transformations) {
+
+        // Rotate
+        if (transformation.type === "rotation") canvas.rotate(transformation.degrees, {
+            background: { r: 0, g: 0, b: 0, alpha: 0 }
+        });
+
+        // Resize
+        else if (transformation.type === "resize") canvas.resize(transformation.width, transformation.height, {
+            fit: "fill"
+        });
+
+        // Export and import
+        const exported: Buffer = await canvas.toFormat("png").toBuffer();
+        canvas = sharp(exported);
+    }
 
     // Convert to format
     // https://sharp.pixelplumbing.com/api-output#toformat
-    layer.canvas.toFormat(format);
+    canvas.toFormat(format);
 
     // Export to file
     // https://sharp.pixelplumbing.com/api-output#tofile
@@ -51,7 +63,7 @@ export default async function exportTo<ExportType extends ExportTypes>(layer: La
         if (!path) throw new Error("Path must be specified if exportType is 'file'");
 
         // Export
-        await layer.canvas.toFile(path);
+        await canvas.toFile(path);
 
         // Return
         return undefined as Output<ExportType>;
@@ -59,5 +71,5 @@ export default async function exportTo<ExportType extends ExportTypes>(layer: La
 
     // Export as buffer
     // https://sharp.pixelplumbing.com/api-output#tobuffer
-    return await layer.canvas.toBuffer() as Output<ExportType>;
+    return await canvas.toBuffer() as Output<ExportType>;
 }

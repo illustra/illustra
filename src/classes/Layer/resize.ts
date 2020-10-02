@@ -2,9 +2,6 @@ import Layer from "./Layer";
 
 export default function resize(layer: Layer, width?: number | null, height?: number | null): Layer {
 
-    // Set is resized
-    layer._isResized = true;
-
     // Get original width and height
     const originalWidth: number = layer.width;
     const originalHeight: number = layer.height;
@@ -42,6 +39,13 @@ export default function resize(layer: Layer, width?: number | null, height?: num
             layer.width = Math.round(layer.height * widthScale);
         }
     }
+
+    // Add to transformations
+    layer._transformations.push({
+        type: "resize",
+        width: layer.width,
+        height: layer.height
+    });
 
     // Return
     return layer;

@@ -6,9 +6,15 @@ import exportTo, { ExportTypes, Format, Output } from "./exportTo";
 import resize from "./resize";
 import resizeBy from "./resizeBy";
 import rotate from "./rotate";
-import rotateBy from "./rotateBy";
 import translate from "./translate";
 import translateBy from "./translateBy";
+
+interface Transformation {
+    type: "rotation" | "resize";
+    degrees?: number;
+    width?: number;
+    height?: number;
+}
 
 export interface LayerData {
     name: string;
@@ -19,13 +25,6 @@ export interface LayerData {
 }
 
 export default class Layer {
-
-    /**
-     * Canvas
-     *
-     * The Sharp instance
-     */
-    canvas: Sharp;
 
     /**
      * Document
@@ -70,13 +69,6 @@ export default class Layer {
     height: number;
 
     /**
-     * Is Resized
-     *
-     * Whether or not this layer has been resized
-     */
-    _isResized?: boolean;
-
-    /**
      * Top
      *
      * The vertical offset from the top to place this layer
@@ -100,11 +92,11 @@ export default class Layer {
     }
 
     /**
-     * Rotation
+     * Transformations
      *
-     * This layer's rotation
+     * The transformations for this layer
      */
-    rotation: number;
+    _transformations: Transformation[];
 
     /**
      * Layer
@@ -121,9 +113,6 @@ export default class Layer {
      */
     constructor(document: Document, layerData: LayerData) {
 
-        // Create sharp canvas
-        this.canvas = sharp(layerData.data);
-
         // Set document
         this.document = document;
 
@@ -132,13 +121,16 @@ export default class Layer {
         this.name = layerData.name;
         this.top = layerData.top || 0;
         this.left = layerData.left || 0;
-        this.rotation = 0;
+        this._transformations = [];
 
         // Initialize
         this._initialize = new Promise(async (resolve) => {
 
+            // Create sharp canvas
+            const canvas: sharp.Sharp = sharp(layerData.data);
+
             // Get metadata
-            const metadata: sharp.Metadata = await this.canvas.metadata();
+            const metadata: sharp.Metadata = await canvas.metadata();
 
             // Set data
             this.width = metadata.width || 0;
@@ -179,24 +171,13 @@ export default class Layer {
     /**
      * Rotate
      *
-     * Rotate this layer to a specified rotation
+     * Rotate this layer
      *
      * @param degrees The amount of degrees to rotate this layer
      *
      * @returns {Layer} This layer
      */
     rotate = (degrees: number): Layer => rotate(this, degrees);
-
-    /**
-     * Rotate By
-     *
-     * Rotate this layer relative to its current rotation
-     *
-     * @param degrees The amount of degrees to rotate this layer
-     *
-     * @returns {Layer} This layer
-     */
-    rotateBy = (degrees: number): Layer => rotateBy(this, degrees);
 
     /**
      * Resize
