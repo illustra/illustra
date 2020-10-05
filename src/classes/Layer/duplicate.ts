@@ -8,7 +8,7 @@ export default async function duplicate(layer: Layer, name?: string, position?: 
         data: layer._data,
         top: layer.top,
         left: layer.left,
-        position: position || layer.position
+        position: position || layer.position + 1
     });
 
     // Set transformations
