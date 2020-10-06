@@ -23,7 +23,10 @@ test("duplicates a layer", async () => {
     // Duplicate layer
     await logo.duplicate("duplicate");
 
+    // Duplicate layer and name
+    await logo.duplicate();
+
     // Expect layer order
     let layers: string[] = document.layers.map((l: Layer) => l.name);
-    expect(layers).toStrictEqual(["background", "logo", "duplicate"]);
+    expect(layers).toStrictEqual(["background", "logo", "logo", "duplicate"]);
 });
