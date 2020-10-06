@@ -86,3 +86,18 @@ test("resizes a layer relative to its current dimensions", async () => {
     // Expect
     expect(exportedImage).toBe(expectedImage);
 });
+
+test("resizes a layer by scaling relative to its current dimensions", async () => {
+
+    // Resize layer
+    logo.resizeBy(50, 25, true);
+
+    // Export document
+    const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+
+    // Get expected image
+    const expectedImage: string = fs.readFileSync("test/layer/exports/resize/resizeScale.png").toString("base64");
+
+    // Expect
+    expect(exportedImage).toBe(expectedImage);
+});
