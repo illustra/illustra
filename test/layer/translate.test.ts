@@ -56,3 +56,19 @@ test("translates a layer relative to its current position", async () => {
     // Expect
     expect(exportedImage).toBe(expectedImage);
 });
+
+test("translates a layer using default params", async () => {
+
+    // Translate layer
+    logo.translate();
+    logo.translateBy();
+
+    // Export document
+    const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+
+    // Get expected image
+    const expectedImage: string = fs.readFileSync("test/layer/exports/translate/defaultParams.png").toString("base64");
+
+    // Expect
+    expect(exportedImage).toBe(expectedImage);
+});
