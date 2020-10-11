@@ -30,6 +30,9 @@ export default async function exportTo<ExportType extends ExportTypes>(layer: La
     // Invalid export type
     if (!["file", "buffer"].includes(exportType)) throw new Error("Invalid export type");
 
+    // Debug
+    layer._debug(`Exporting as ${exportType}${exportType === "file" ? ` to ${path}` : ""}`);
+
     // Create canvas
     let canvas: sharp.Sharp = sharp(layer._data);
 

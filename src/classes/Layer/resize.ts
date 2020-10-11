@@ -47,6 +47,9 @@ export default function resize(layer: Layer, width?: number | null, height?: num
         height: layer.height
     });
 
+    // Debug
+    layer._debug(`Resizing to ${layer.width}px (width) by ${layer.height}px (height)`);
+
     // Return
     return layer;
 }

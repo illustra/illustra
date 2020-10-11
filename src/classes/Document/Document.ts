@@ -1,15 +1,25 @@
 import Layer, { LayerData } from "../Layer/Layer";
 import { ExportTypes, Format, Output } from "../Layer/exportTo";
 import createLayer from "./createLayer";
+import debug from "./debug";
 import exportTo from "./exportTo";
 import mergeLayers from "./mergeLayers";
 
 export interface DocumentData {
+    name?: string;
     width: number;
     height: number;
+    debugMode?: boolean;
 }
 
 export default class Document {
+
+    /**
+     * Name
+     *
+     * The name of this document
+     */
+    name: string;
 
     /**
      * Width
@@ -34,20 +44,41 @@ export default class Document {
     layers: Layer[];
 
     /**
+     * Debug Mode
+     *
+     * Whether or not this document is in debug mode
+     */
+    debugMode: boolean;
+
+    /**
+     * Debug Group Depth
+     *
+     * The depth of the debug groups
+     */
+    _debugGroupDepth: number;
+
+    /**
      * Document
      *
      * @param documentData Options to initialize this document with
+     * @param documentData.name The name of the document
      * @param documentData.width The width of the document in pixels
      * @param documentData.height The height of the document in pixels
+     * @param documentData.debugMode Set to `true` to log debug info to the console
      */
     constructor(documentData: DocumentData) {
 
-        // Set width and height
+        // Set data
+        this.name = documentData.name || "Unnamed Document";
         this.width = documentData.width;
         this.height = documentData.height;
 
         // Set layers
         this.layers = [];
+
+        // Set debug mode
+        this.setDebugMode(documentData.debugMode || false);
+        this._debugGroupDepth = 0;
     }
 
     /**
@@ -63,6 +94,7 @@ export default class Document {
      * @param layerData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
+     * @param layerData.debugMode Set to `true` to log debug info to the console
      *
      * @returns {Layer} The created layer
      */
@@ -115,4 +147,32 @@ export default class Document {
      * @returns {undefined | Buffer} `undefined` if the `exportType` is 'file' or `Buffer` if the `exportType` is 'buffer'
      */
     exportTo = <ExportType extends ExportTypes>(format: Format, exportType: ExportType, path?: string): Promise<Output<ExportType>> => exportTo(this, format, exportType, path);
+
+    /**
+     * Set Debug Mode
+     *
+     * @param debugMode Set to `true` to log debug info to the console
+     */
+    setDebugMode = (debugMode: boolean) => this.debugMode = debugMode;
+
+    /**
+     * Debug
+     *
+     * Log debug info
+     *
+     * @param info Debug info to log
+     * @param layer The layer that was modified
+     * @param startGroup Whether or not to start a group of logs
+     */
+    _debug = (info: string, layer?: Layer, startGroup?: boolean) => debug(this, info, layer, startGroup);
+
+    /**
+     * End Debug Group
+     *
+     * End a debug group
+     */
+    _endDebugGroup = () => {
+        this._debugGroupDepth--;
+        if (this._debugGroupDepth < 0) this._debugGroupDepth = 0;
+    }
 }

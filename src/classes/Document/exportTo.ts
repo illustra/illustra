@@ -10,6 +10,9 @@ export default async function exportTo<ExportType extends ExportTypes>(document:
     // Invalid export type
     if (!["file", "buffer"].includes(exportType)) throw new Error("Invalid export type");
 
+    // Debug
+    document._debug(`Exporting as ${exportType}${exportType === "file" ? ` to ${path}` : ""}`, undefined, true);
+
     // Merge layers
     const mergedLayer: Layer = await document.mergeLayers("merged", undefined, true);
 
@@ -18,6 +21,9 @@ export default async function exportTo<ExportType extends ExportTypes>(document:
 
     // Delete merged layer
     mergedLayer.delete();
+
+    // End Debug Group
+    document._endDebugGroup();
 
     // Return
     return exported;

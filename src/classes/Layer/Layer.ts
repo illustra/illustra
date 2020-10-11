@@ -25,6 +25,7 @@ export interface LayerData {
     top?: number;
     left?: number;
     position?: number;
+    debugMode?: boolean;
 }
 
 export default class Layer {
@@ -102,6 +103,13 @@ export default class Layer {
     _transformations: Transformation[];
 
     /**
+     * Debug Mode
+     *
+     * Whether or not this layer is in debug mode
+     */
+    debugMode: boolean;
+
+    /**
      * Layer
      *
      * @param document The document this layer is a part of
@@ -113,6 +121,7 @@ export default class Layer {
      * @param layerData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
+     * @param layerData.debugMode Set to `true` to log debug info to the console
      */
     constructor(document: Document, layerData: LayerData) {
 
@@ -125,6 +134,9 @@ export default class Layer {
         this.top = layerData.top || 0;
         this.left = layerData.left || 0;
         this._transformations = [];
+
+        // Set debug mode
+        this.setDebugMode(layerData.debugMode || false);
 
         // Initialize
         this._initialize = new Promise(async (resolve) => {
@@ -253,10 +265,11 @@ export default class Layer {
      * @param position The position index of the layer. The lower the index, the lower the layer is in the stack.
      * Omit to add the layer above the layer being duplicated.
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
+     * @param debugMode Set to `true` to log debug info to the console
      *
      * @returns {Layer} The new layer
      */
-    duplicate = (name?: string, position?: number): Promise<Layer> => duplicate(this, name, position);
+    duplicate = (name?: string, position?: number, debugMode?: boolean): Promise<Layer> => duplicate(this, name, position, debugMode);
 
     /**
      * Delete
@@ -279,4 +292,28 @@ export default class Layer {
      * @returns {undefined | Buffer} `undefined` if the `exportType` is 'file' or `Buffer` if the `exportType` is 'buffer'
      */
     exportTo = <ExportType extends ExportTypes>(format: Format, exportType: ExportType, path?: string): Promise<Output<ExportType>> => exportTo(this, format, exportType, path);
+
+    /**
+     * Set Debug Mode
+     *
+     * @param debugMode Set to `true` to log debug info to the console
+     */
+    setDebugMode = (debugMode: boolean) => this.debugMode = debugMode;
+
+    /**
+     * Debug
+     *
+     * Log debug info
+     *
+     * @param info Debug info to log
+     * @param startGroup Whether or not to start a group of logs
+     */
+    _debug = (info: string, startGroup?: boolean) => this.document._debug(info, this, startGroup);
+
+    /**
+     * End Debug Group
+     *
+     * End a debug group
+     */
+    _endDebugGroup = () => this.document._endDebugGroup();
 }

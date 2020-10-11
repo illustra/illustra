@@ -43,8 +43,14 @@ export default function align(layer: Layer, alignOptions: AlignOptions = {}): La
     // Set alignment left offset
     if (alignOptions.leftOffset) left = left + leftOffset;
 
+    // Debug
+    layer._debug(`Aligning to ${alignOptions.top || "center"} (top) and ${alignOptions.left || "center"} (left) with an offset of ${topOffset}px (top) and ${leftOffset}px (left)`, true);
+
     // Translate
     layer.translate(top, left);
+
+    // End Debug Group
+    layer._endDebugGroup();
 
     // Return
     return layer;
