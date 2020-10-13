@@ -34,7 +34,7 @@ export default async function exportTo<ExportType extends ExportTypes>(layer: La
     layer._debug(`Exporting as ${exportType}${exportType === "file" ? ` to ${path}` : ""}`);
 
     // Create canvas
-    let canvas: sharp.Sharp = sharp(layer._data);
+    let canvas: sharp.Sharp = sharp(layer._inputData);
 
     // Transformations
     for (let transformation of layer._transformations) {

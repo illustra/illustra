@@ -13,7 +13,7 @@ beforeAll(async () => {
     // Create background
     await document.createLayer({
         name: "background",
-        data: "test/assets/black.png"
+        file: "test/assets/black.png"
     });
 });
 

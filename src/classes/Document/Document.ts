@@ -88,7 +88,9 @@ export default class Document {
      *
      * @param layerData Data for the layer
      * @param layerData.name The name of the layer
-     * @param layerData.data The image data of the layer
+     * @param layerData.file An image file to use for this layer
+     * @param layerData.buffer An image buffer to use for this layer
+     * @param layerData.svg An SVG string to use for this layer
      * @param layerData.top The vertical offset from the top to place this layer
      * @param layerData.left The horizontal offset from the left to place this layer
      * @param layerData.position The position index of the layer. The lower the index, the lower the layer is in the stack.

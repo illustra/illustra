@@ -66,7 +66,7 @@ export default async function mergeLayers(document: Document, name: string, inpu
     // Create layer
     const newLayer: Layer = new Layer(document, {
         name,
-        data: mergedLayer,
+        buffer: mergedLayer,
         position
     });
     await newLayer._initialize;

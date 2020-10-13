@@ -16,7 +16,7 @@ beforeAll(async () => {
     // Create background
     background = await document.createLayer({
         name: "background",
-        data: "test/assets/black.png"
+        file: "test/assets/black.png"
     });
 
     // Get expected image

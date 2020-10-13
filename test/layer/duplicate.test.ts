@@ -11,13 +11,13 @@ test("duplicates a layer", async () => {
     // Create background
     await document.createLayer({
         name: "background",
-        data: "test/assets/black.png"
+        file: "test/assets/black.png"
     });
 
     // Add logo
     const logo: Layer = await document.createLayer({
         name: "logo",
-        data: "test/assets/apixel.png"
+        file: "test/assets/apixel.png"
     });
 
     // Duplicate layer

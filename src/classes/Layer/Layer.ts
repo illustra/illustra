@@ -21,7 +21,9 @@ interface Transformation {
 
 export interface LayerData {
     name: string;
-    data?: string | Buffer;
+    file?: string;
+    buffer?: Buffer;
+    svg?: string;
     top?: number;
     left?: number;
     position?: number;
@@ -45,11 +47,11 @@ export default class Layer {
     _initialize: Promise<void>;
 
     /**
-     * Data
+     * Input Data
      *
      * This layer's input data
      */
-    _data?: string | Buffer;
+    _inputData: string | Buffer;
 
     /**
      * Name
@@ -115,21 +117,30 @@ export default class Layer {
      * @param document The document this layer is a part of
      * @param layerData Data for the layer
      * @param layerData.name The name of the layer
-     * @param layerData.data The image data of the layer
+     * @param layerData.file An image file to use for this layer
+     * @param layerData.buffer An image buffer to use for this layer
+     * @param layerData.svg An SVG string to use for this layer
      * @param layerData.top The vertical offset from the top to place this layer
      * @param layerData.left The horizontal offset from the left to place this layer
      * @param layerData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
      * @param layerData.debugMode Set to `true` to log debug info to the console
+     * @param inputData Internal: Image data to use for this layer
      */
-    constructor(document: Document, layerData: LayerData) {
+    constructor(document: Document, layerData: LayerData, inputData?: string | Buffer) {
 
         // Set document
         this.document = document;
 
+        // Parse input data
+        if (layerData.file) inputData = layerData.file;
+        else if (layerData.buffer) inputData = layerData.buffer;
+        else if (layerData.svg?.trim().startsWith("<svg")) inputData = Buffer.from(layerData.svg);
+        else if (!inputData) throw new Error("Missing input data when creating a layer");
+
         // Set data
-        this._data = layerData.data;
+        this._inputData = inputData;
         this.name = layerData.name;
         this.top = layerData.top || 0;
         this.left = layerData.left || 0;
@@ -142,7 +153,7 @@ export default class Layer {
         this._initialize = new Promise(async (resolve) => {
 
             // Create sharp canvas
-            const canvas: sharp.Sharp = sharp(layerData.data);
+            const canvas: sharp.Sharp = sharp(inputData);
 
             // Get metadata
             const metadata: sharp.Metadata = await canvas.metadata();

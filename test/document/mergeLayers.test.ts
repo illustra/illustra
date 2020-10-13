@@ -14,25 +14,25 @@ test("merges layers", async () => {
     // Create background
     await document.createLayer({
         name: "background",
-        data: "test/assets/black.png"
+        file: "test/assets/black.png"
     });
 
     // Add apixel logo
     const apixelLogo: Layer = await document.createLayer({
         name: "apixelLogo",
-        data: "test/assets/apixel.png"
+        file: "test/assets/apixel.png"
     });
 
     // Add typescript logo
     const typescriptLogo: Layer = await document.createLayer({
         name: "typescriptLogo",
-        data: "test/assets/typescript.png"
+        file: "test/assets/typescript.png"
     });
 
     // Add javascript logo
     await document.createLayer({
         name: "javascriptLogo",
-        data: "test/assets/javascript.png"
+        file: "test/assets/javascript.png"
     });
 
     // Create other document
@@ -44,7 +44,7 @@ test("merges layers", async () => {
     // Create other layer
     const otherLayer: Layer = await otherDocument.createLayer({
         name: "layer",
-        data: "test/assets/apixel.png"
+        file: "test/assets/apixel.png"
     });
 
     // Merge errors
