@@ -1,5 +1,5 @@
 import Layer, { LayerData } from "../Layer/Layer";
-import { ExportTypes, Format, Output } from "../Layer/exportTo";
+import { ExportTypes, Format, Output, PathOrWithMetadataOptions } from "../Layer/exportTo";
 import createLayer from "./createLayer";
 import debug from "./debug";
 import exportTo from "./exportTo";
@@ -142,13 +142,13 @@ export default class Document {
      *
      * @param format The format to export in - One of: 'png', 'jpeg', 'webp', 'gif', 'tiff', 'heif', 'raw', or 'tile'
      * @param exportType How this document should be exported - Either 'file' or 'buffer'
-     * @param path The path to write the file to if the `exportType` is 'file'
+     * @param pathOrWithMetadata The path to write the file to if the `exportType` is 'file' or whether or not to return metadata if the `exportType` is 'buffer'
      *
      * @throws {Error} Path must be specified if exportType is 'file'
      *
-     * @returns {undefined | Buffer} `undefined` if the `exportType` is 'file' or `Buffer` if the `exportType` is 'buffer'
+     * @returns {undefined | Buffer | ExportMetadata} `undefined` if the `exportType` is 'file', `Buffer` if the `exportType` is 'buffer' and `pathOrWithMetadata` is false, or `ExportMetadata` if the `exportType` is 'buffer' and `pathOrWithMetadata` is true
      */
-    exportTo = <ExportType extends ExportTypes>(format: Format, exportType: ExportType, path?: string): Promise<Output<ExportType>> => exportTo(this, format, exportType, path);
+    exportTo = <ExportType extends ExportTypes, PathOrWithMetadata extends PathOrWithMetadataOptions = false>(format: Format, exportType: ExportType, pathOrWithMetadata?: PathOrWithMetadata): Promise<Output<ExportType, PathOrWithMetadata>> => exportTo(this, format, exportType, pathOrWithMetadata);
 
     /**
      * Set Debug Mode

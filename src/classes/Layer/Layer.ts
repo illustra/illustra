@@ -3,7 +3,7 @@ import Document from "../Document/Document";
 import align, { AlignOptions } from "./align";
 import deleteLayer from "./delete";
 import duplicate from "./duplicate";
-import exportTo, { ExportTypes, Format, Output } from "./exportTo";
+import exportTo, { ExportTypes, Format, Output, PathOrWithMetadataOptions } from "./exportTo";
 import reflect from "./reflect";
 import resize from "./resize";
 import resizeBy from "./resizeBy";
@@ -296,13 +296,13 @@ export default class Layer {
      *
      * @param format The format to export in - One of: 'png', 'jpeg', 'webp', 'gif', 'tiff', 'heif', 'raw', or 'tile'
      * @param exportType How this document should be exported - Either 'file' or 'buffer'
-     * @param path The path to write the file to if the `exportType` is 'file'
+     * @param pathOrWithMetadata The path to write the file to if the `exportType` is 'file' or whether or not to return metadata if the `exportType` is 'buffer'
      *
      * @throws {Error} Path must be specified if exportType is 'file'
      *
-     * @returns {undefined | Buffer} `undefined` if the `exportType` is 'file' or `Buffer` if the `exportType` is 'buffer'
+     * @returns {undefined | Buffer | ExportMetadata} `undefined` if the `exportType` is 'file' or `Buffer` if the `exportType` is 'buffer'
      */
-    exportTo = <ExportType extends ExportTypes>(format: Format, exportType: ExportType, path?: string): Promise<Output<ExportType>> => exportTo(this, format, exportType, path);
+    exportTo = <ExportType extends ExportTypes, PathOrWithMetadata extends PathOrWithMetadataOptions = false>(format: Format, exportType: ExportType, pathOrWithMetadata?: PathOrWithMetadata): Promise<Output<ExportType, PathOrWithMetadata>> => exportTo(this, format, exportType, pathOrWithMetadata);
 
     /**
      * Set Debug Mode

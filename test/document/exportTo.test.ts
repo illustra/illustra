@@ -1,5 +1,5 @@
 import fs from "fs";
-import { Document } from "../../";
+import { Document, ExportMetadata } from "../../";
 
 let document: Document;
 let expectedImage: string;
@@ -61,4 +61,15 @@ test("exports a layer as a buffer", async () => {
 
     // Expect
     expect(exportedImage).toBe(expectedImage);
+});
+
+test("exports a layer as a buffer with metadata", async () => {
+
+    // Export layer
+    const exportedImage: ExportMetadata = await document.exportTo("png", "buffer", true);
+
+    // Expect
+    expect(exportedImage.data.toString("base64")).toBe(expectedImage);
+    expect(exportedImage.width).toBe(1920);
+    expect(exportedImage.height).toBe(1080);
 });

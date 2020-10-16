@@ -1,2 +1,6 @@
+// Document
 export { default as Document, DocumentData } from "./classes/Document/Document";
+
+// Layer
 export { default as Layer } from "./classes/Layer/Layer";
+export { ExportMetadata } from "./classes/Layer/exportTo";

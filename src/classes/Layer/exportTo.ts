@@ -1,6 +1,12 @@
 import sharp from "sharp";
 import Layer from "./Layer";
 
+export interface ExportMetadata {
+    data: Buffer;
+    width: number;
+    height: number;
+}
+
 /**
  * Format
  *
@@ -16,13 +22,20 @@ export type Format = "png" | "jpeg" | "webp" | "gif" | "tiff" | "heif" | "raw" |
 export type ExportTypes = "file" | "buffer";
 
 /**
+ * Path or With Metadata Options
+ *
+ * The available types for `pathOrWithMetadata`
+ */
+export type PathOrWithMetadataOptions = string | boolean;
+
+/**
  * Output
  *
  * The return value, which will be `undefined` if the `exportType` is 'file' or `Buffer` if the `exportType` is 'buffer'
  */
-export type Output<ExportType> = ExportType extends "file" ? undefined : Buffer;
+export type Output<ExportType, PathOrWithMetadata> = ExportType extends "file" ? undefined : (PathOrWithMetadata extends true ? ExportMetadata : Buffer);
 
-export default async function exportTo<ExportType extends ExportTypes>(layer: Layer, format: Format, exportType: ExportType, path?: string): Promise<Output<ExportType>> {
+export default async function exportTo<ExportType extends ExportTypes, PathOrWithMetadata extends PathOrWithMetadataOptions = false>(layer: Layer, format: Format, exportType: ExportType, pathOrWithMetadata?: PathOrWithMetadata): Promise<Output<ExportType, PathOrWithMetadata>> {
 
     // Invalid format
     if (!["png", "jpeg", "webp", "gif", "tiff", "heif", "raw", "tile"].includes(format)) throw new Error("Invalid format");
@@ -31,7 +44,7 @@ export default async function exportTo<ExportType extends ExportTypes>(layer: La
     if (!["file", "buffer"].includes(exportType)) throw new Error("Invalid export type");
 
     // Debug
-    layer._debug(`Exporting as ${exportType}${exportType === "file" ? ` to ${path}` : ""}`);
+    layer._debug(`Exporting as ${exportType}${exportType === "file" ? ` to ${pathOrWithMetadata}` : ""}`);
 
     // Create canvas
     let canvas: sharp.Sharp = sharp(layer._inputData);
@@ -66,16 +79,26 @@ export default async function exportTo<ExportType extends ExportTypes>(layer: La
     if (exportType === "file") {
 
         // No path
-        if (!path) throw new Error("Path must be specified if exportType is 'file'");
+        if (typeof pathOrWithMetadata !== "string") throw new Error("Path must be specified if exportType is 'file'");
 
         // Export
-        await canvas.toFile(path);
+        await canvas.toFile(pathOrWithMetadata);
 
         // Return
-        return undefined as Output<ExportType>;
+        return undefined as Output<ExportType, PathOrWithMetadata>;
     }
 
     // Export as buffer
     // https://sharp.pixelplumbing.com/api-output#tobuffer
-    return await canvas.toBuffer() as Output<ExportType>;
+    const exported = await canvas.toBuffer({ resolveWithObject: true });
+
+    // Return export metadata
+    if (pathOrWithMetadata) return {
+        data: exported.data,
+        width: exported.info.width,
+        height: exported.info.height
+    } as Output<ExportType, PathOrWithMetadata>;
+
+    // Return buffer
+    return exported.data as Output<ExportType, PathOrWithMetadata>;
 }
