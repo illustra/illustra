@@ -111,15 +111,16 @@ export default class Document {
      *
      * @param shapeLayerData Data for the layer
      * @param shapeLayerData.name The name of the layer
-     * @param shapeLayerData.type The type of shape
+     * @param shapeLayerData.shape The data for the shape
+     * @param shapeLayerData.shape.type The type of shape
      * Either 'polygon' or 'ellipse'
-     * @param shapeLayerData.width The width of this shape
-     * @param shapeLayerData.height The height of this shape
-     * @param shapeLayerData.sides The number of sides this shape has if it's a polygon
-     * @param shapeLayerData.cornerRadius The radius of this shape's corners if it's a polygon
-     * @param shapeLayerData.fill The color of this shape's fill
-     * @param shapeLayerData.stroke The color of this shape's stroke
-     * @param shapeLayerData.strokeWidth The width of this shape's stroke in pixels
+     * @param shapeLayerData.shape.width The width of this shape
+     * @param shapeLayerData.shape.height The height of this shape
+     * @param shapeLayerData.shape.sides The number of sides this shape has if it's a polygon
+     * @param shapeLayerData.shape.cornerRadius The radius of this shape's corners if it's a polygon
+     * @param shapeLayerData.shape.fill The color of this shape's fill
+     * @param shapeLayerData.shape.stroke The color of this shape's stroke
+     * @param shapeLayerData.shape.strokeWidth The width of this shape's stroke in pixels
      * @param shapeLayerData.top The vertical offset from the top to place this layer
      * @param shapeLayerData.left The horizontal offset from the left to place this layer
      * @param shapeLayerData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
