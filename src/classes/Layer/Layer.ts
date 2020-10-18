@@ -51,7 +51,7 @@ export default class Layer {
      *
      * This layer's input data
      */
-    _inputData: string | Buffer;
+    _inputData?: string | Buffer;
 
     /**
      * Name
@@ -137,7 +137,6 @@ export default class Layer {
         if (layerData.file) inputData = layerData.file;
         else if (layerData.buffer) inputData = layerData.buffer;
         else if (layerData.svg?.trim().startsWith("<svg")) inputData = Buffer.from(layerData.svg);
-        else if (!inputData) throw new Error("Missing input data when creating a layer");
 
         // Set data
         this._inputData = inputData;
@@ -151,6 +150,9 @@ export default class Layer {
 
         // Initialize
         this._initialize = new Promise(async (resolve) => {
+
+            // No input data ie. for shape layers
+            if (!this._inputData) return resolve();
 
             // Create sharp canvas
             const canvas: sharp.Sharp = sharp(inputData);
@@ -300,7 +302,7 @@ export default class Layer {
      *
      * @throws {Error} Path must be specified if exportType is 'file'
      *
-     * @returns {undefined | Buffer | ExportMetadata} `undefined` if the `exportType` is 'file' or `Buffer` if the `exportType` is 'buffer'
+     * @returns {undefined | Buffer | ExportMetadata} `undefined` if the `exportType` is 'file', `Buffer` if the `exportType` is 'buffer' and `pathOrWithMetadata` is false, or `ExportMetadata` if the `exportType` is 'buffer' and `pathOrWithMetadata` is true
      */
     exportTo = <ExportType extends ExportTypes, PathOrWithMetadata extends PathOrWithMetadataOptions = false>(format: Format, exportType: ExportType, pathOrWithMetadata?: PathOrWithMetadata): Promise<Output<ExportType, PathOrWithMetadata>> => exportTo(this, format, exportType, pathOrWithMetadata);
 

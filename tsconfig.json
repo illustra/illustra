@@ -16,6 +16,7 @@
     },
     "include": [
         "src/",
-        "testing/"
+        "testing/",
+        "decs.d.ts"
     ]
 }

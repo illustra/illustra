@@ -8,11 +8,6 @@ test("creates a layer", async () => {
         height: 1080
     });
 
-    // Create layer errors
-    expect(async () => await document.createLayer({
-        name: "background"
-    })).rejects.toThrow("Missing input data when creating a layer");
-
     // Create background
     const background: Layer = await document.createLayer({
         name: "background",

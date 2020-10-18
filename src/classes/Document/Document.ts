@@ -1,6 +1,8 @@
 import Layer, { LayerData } from "../Layer/Layer";
 import { ExportTypes, Format, Output, PathOrWithMetadataOptions } from "../Layer/exportTo";
+import ShapeLayer, { ShapeLayerData } from "../ShapeLayer/ShapeLayer";
 import createLayer from "./createLayer";
+import createShapeLayer from "./createShapeLayer";
 import debug from "./debug";
 import exportTo from "./exportTo";
 import mergeLayers from "./mergeLayers";
@@ -41,7 +43,7 @@ export default class Document {
      * This document's layers
      * The lower the layer's index, the lower the layer is in the stack
      */
-    layers: Layer[];
+    layers: Array<Layer | ShapeLayer>;
 
     /**
      * Debug Mode
@@ -103,16 +105,43 @@ export default class Document {
     createLayer = (layerData: LayerData): Promise<Layer> => createLayer(this, layerData);
 
     /**
+     * Create Shape Layer
+     *
+     * Create a new shape layer
+     *
+     * @param shapeLayerData Data for the layer
+     * @param shapeLayerData.name The name of the layer
+     * @param shapeLayerData.type The type of shape
+     * Either 'polygon' or 'ellipse'
+     * @param shapeLayerData.width The width of this shape
+     * @param shapeLayerData.height The height of this shape
+     * @param shapeLayerData.sides The number of sides this shape has if it's a polygon
+     * @param shapeLayerData.cornerRadius The radius of this shape's corners if it's a polygon
+     * @param shapeLayerData.fill The color of this shape's fill
+     * @param shapeLayerData.stroke The color of this shape's stroke
+     * @param shapeLayerData.strokeWidth The width of this shape's stroke in pixels
+     * @param shapeLayerData.top The vertical offset from the top to place this layer
+     * @param shapeLayerData.left The horizontal offset from the left to place this layer
+     * @param shapeLayerData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
+     * Omit to add the layer to the top of the stack (highest index).
+     * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
+     * @param shapeLayerData.debugMode Set to `true` to log debug info to the console
+     *
+     * @returns {ShapeLayer} The created shape layer
+     */
+    createShapeLayer = (shapeLayerData: ShapeLayerData): ShapeLayer => createShapeLayer(this, shapeLayerData);
+
+    /**
      * Get Layer
      *
      * Get a layer by name or index
      *
-     * @returns {Layer | undefined} The layer if found or `undefined`
+     * @returns {Layer | ShapeLayer | undefined} The layer if found or `undefined`
      */
-    getLayer = (nameOrIndex: string | number): Layer | undefined => {
+    getLayer = (nameOrIndex: string | number): Layer | ShapeLayer | undefined => {
 
         // Get by index
-        if (typeof nameOrIndex === "string") return this.layers.find((l: Layer) => l.name === nameOrIndex);
+        if (typeof nameOrIndex === "string") return this.layers.find((l: Layer | ShapeLayer) => l.name === nameOrIndex);
 
         // Get by index
         else if (typeof nameOrIndex === "number") return this.layers[nameOrIndex];

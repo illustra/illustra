@@ -1,4 +1,5 @@
 import sharp from "sharp";
+import { ShapeLayer } from "../../";
 import Layer from "./Layer";
 
 export interface ExportMetadata {
@@ -46,8 +47,14 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
     // Debug
     layer._debug(`Exporting as ${exportType}${exportType === "file" ? ` to ${pathOrWithMetadata}` : ""}`);
 
+    // Define input data
+    let inputData: string | Buffer | undefined = layer._inputData;
+
+    // Create image buffer from shape layer
+    if (layer instanceof ShapeLayer) inputData = layer.toBuffer();
+
     // Create canvas
-    let canvas: sharp.Sharp = sharp(layer._inputData);
+    let canvas: sharp.Sharp = sharp(inputData);
 
     // Transformations
     for (let transformation of layer._transformations) {
