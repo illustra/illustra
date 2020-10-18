@@ -1,4 +1,4 @@
-import sharp from "sharp";
+import { parseColor, Color } from "../../color";
 import Document from "../Document/Document";
 import Layer from "../Layer/Layer";
 import shapeSVG from "./shapeSVG";
@@ -9,8 +9,8 @@ type Shape = "polygon" | "ellipse";
 interface CommonShapeData {
     width: number;
     height: number;
-    fill?: sharp.Color;
-    stroke?: sharp.Color;
+    fill?: Color;
+    stroke?: Color;
     strokeWidth?: number;
 }
 
@@ -63,14 +63,14 @@ export default class ShapeLayer extends Layer {
      *
      * The color of this shape's fill
      */
-    fill?: sharp.Color;
+    fill?: string;
 
     /**
      * Stroke
      *
      * The color of this shape's stroke
      */
-    stroke?: sharp.Color;
+    stroke?: string;
 
     /**
      * Stroke Width
@@ -113,8 +113,8 @@ export default class ShapeLayer extends Layer {
         this.height = shapeLayerData.shape.height;
         if (shapeLayerData.shape.type === "polygon") this.sides = shapeLayerData.shape.sides;
         if (shapeLayerData.shape.type === "polygon") this.cornerRadius = shapeLayerData.shape.cornerRadius;
-        this.fill = shapeLayerData.shape.fill;
-        this.stroke = shapeLayerData.shape.stroke;
+        if (shapeLayerData.shape.fill) this.fill = parseColor(shapeLayerData.shape.fill);
+        if (shapeLayerData.shape.stroke) this.stroke = parseColor(shapeLayerData.shape.stroke);
         this.strokeWidth = shapeLayerData.shape.strokeWidth;
     }
 

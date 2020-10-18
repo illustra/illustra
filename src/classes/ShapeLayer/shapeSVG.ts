@@ -1,4 +1,5 @@
 import Path from "paths-js/path";
+import { parseColor } from "../../color";
 import { ShapeData } from "./ShapeLayer";
 
 export default function shapeSVG(shapeData: ShapeData): string {
@@ -58,7 +59,7 @@ export default function shapeSVG(shapeData: ShapeData): string {
         // Get svg code
         svgCode = `
             <svg viewBox="0 0 ${shapeData.width + (shapeData.strokeWidth || 0)} ${shapeData.height + (shapeData.strokeWidth || 0)}" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="${path.points().map((p: number[]) => p.join(",")).join(" ")}"${shapeData.fill ? ` fill="${shapeData.fill}"` : ""}${shapeData.stroke ? ` stroke="${shapeData.stroke}"` : ""}${shapeData.strokeWidth ? ` stroke-width="${shapeData.strokeWidth}"` : ""} />
+                <polygon points="${path.points().map((p: number[]) => p.join(",")).join(" ")}"${shapeData.fill ? ` fill="${parseColor(shapeData.fill)}"` : ""}${shapeData.stroke ? ` stroke="${parseColor(shapeData.stroke)}"` : ""}${shapeData.strokeWidth ? ` stroke-width="${shapeData.strokeWidth}"` : ""} />
             </svg>
         `;
     }
@@ -67,7 +68,7 @@ export default function shapeSVG(shapeData: ShapeData): string {
         // Get svg code
         svgCode = `
             <svg viewBox="0 0 ${shapeData.width + (shapeData.strokeWidth || 0)} ${shapeData.height + (shapeData.strokeWidth || 0)}" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="${(shapeData.width / 2) + (shapeData.strokeWidth ? shapeData.strokeWidth / 2 : 0)}" cy="${(shapeData.height / 2) + (shapeData.strokeWidth ? shapeData.strokeWidth / 2 : 0)}" rx="${shapeData.width / 2}" ry="${shapeData.height / 2}"${shapeData.fill ? ` fill="${shapeData.fill}"` : ""}${shapeData.stroke ? ` stroke="${shapeData.stroke}"` : ""}${shapeData.strokeWidth ? ` stroke-width="${shapeData.strokeWidth}"` : ""} />
+                <ellipse cx="${(shapeData.width / 2) + (shapeData.strokeWidth ? shapeData.strokeWidth / 2 : 0)}" cy="${(shapeData.height / 2) + (shapeData.strokeWidth ? shapeData.strokeWidth / 2 : 0)}" rx="${shapeData.width / 2}" ry="${shapeData.height / 2}"${shapeData.fill ? ` fill="${parseColor(shapeData.fill)}"` : ""}${shapeData.stroke ? ` stroke="${parseColor(shapeData.stroke)}"` : ""}${shapeData.strokeWidth ? ` stroke-width="${shapeData.strokeWidth}"` : ""} />
             </svg>
         `;
     }
