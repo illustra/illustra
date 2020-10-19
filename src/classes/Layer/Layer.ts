@@ -5,6 +5,7 @@ import blur from "./blur";
 import deleteLayer from "./delete";
 import duplicate from "./duplicate";
 import exportTo, { ExportTypes, Format, Output, PathOrWithMetadataOptions } from "./exportTo";
+import invert from "./invert";
 import reflect from "./reflect";
 import resize from "./resize";
 import resizeBy from "./resizeBy";
@@ -33,7 +34,11 @@ interface Blur {
     sigma: number;
 }
 
-type Edit = Rotate | Resize | Reflect | Blur;
+interface Invert {
+    type: "invert";
+}
+
+type Edit = Rotate | Resize | Reflect | Blur | Invert;
 
 export interface LayerData {
     name: string;
@@ -295,6 +300,15 @@ export default class Layer {
      * @returns {Layer} This layer
      */
     blur = (sigma: number): Layer => blur(this, sigma);
+
+    /**
+     * Invert
+     *
+     * Invert the colors of this layer
+     *
+     * @returns {Layer} This layer
+     */
+    invert = (): Layer => invert(this);
 
     /**
      * Duplicate

@@ -78,6 +78,9 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
         // Blur
         else if (edit.type === "blur") canvas.blur(edit.sigma);
 
+        // Invert
+        else if (edit.type === "invert") canvas.negate();
+
         // Export and import
         const exported: Buffer = await canvas.toFormat("png").toBuffer();
         canvas = sharp(exported);
