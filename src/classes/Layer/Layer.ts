@@ -1,6 +1,7 @@
 import sharp from "sharp";
 import Document from "../Document/Document";
 import align, { AlignOptions } from "./align";
+import blur from "./blur";
 import deleteLayer from "./delete";
 import duplicate from "./duplicate";
 import exportTo, { ExportTypes, Format, Output, PathOrWithMetadataOptions } from "./exportTo";
@@ -27,7 +28,12 @@ interface Reflect {
     direction: "vertical" | "horizontal";
 }
 
-type Edit = Rotate | Resize | Reflect;
+interface Blur {
+    type: "blur";
+    sigma: number;
+}
+
+type Edit = Rotate | Resize | Reflect | Blur;
 
 export interface LayerData {
     name: string;
@@ -278,6 +284,17 @@ export default class Layer {
      * @returns {Layer} This layer
      */
     reflect = (direction: "vertical" | "horizontal"): Layer => reflect(this, direction);
+
+    /**
+     * Blur
+     *
+     * Apply a Gaussian blur to this layer
+     *
+     * @param sigma The sigma used to blur this layer
+     *
+     * @returns {Layer} This layer
+     */
+    blur = (sigma: number): Layer => blur(this, sigma);
 
     /**
      * Duplicate
