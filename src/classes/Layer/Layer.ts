@@ -11,13 +11,23 @@ import rotate from "./rotate";
 import translate from "./translate";
 import translateBy from "./translateBy";
 
-interface Transformation {
-    type: "rotation" | "resize" | "reflection";
-    degrees?: number;
+interface Rotate {
+    type: "rotate";
+    degrees: number;
+}
+
+interface Resize {
+    type: "resize";
     width?: number;
     height?: number;
-    direction?: "vertical" | "horizontal";
 }
+
+interface Reflect {
+    type: "reflect";
+    direction: "vertical" | "horizontal";
+}
+
+type Edit = Rotate | Resize | Reflect;
 
 export interface LayerData {
     name: string;
@@ -98,11 +108,11 @@ export default class Layer {
     }
 
     /**
-     * Transformations
+     * Edits
      *
-     * The transformations for this layer
+     * The edits for this layer
      */
-    _transformations: Transformation[];
+    _edits: Edit[];
 
     /**
      * Debug Mode
@@ -143,7 +153,7 @@ export default class Layer {
         this.name = layerData.name;
         this.top = layerData.top || 0;
         this.left = layerData.left || 0;
-        this._transformations = [];
+        this._edits = [];
 
         // Set debug mode
         this.setDebugMode(layerData.debugMode || false);
