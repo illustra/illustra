@@ -19,6 +19,7 @@ export default async function duplicate(layer: Layer, name?: string, position?: 
     duplicatedLayer._transformations = [...layer._transformations];
 
     // Set data
+    duplicatedLayer.opacity = layer.opacity;
     duplicatedLayer._invert = layer._invert;
     duplicatedLayer._blurSigma = layer._blurSigma;
 

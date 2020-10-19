@@ -10,6 +10,7 @@ import reflect from "./reflect";
 import resize from "./resize";
 import resizeBy from "./resizeBy";
 import rotate from "./rotate";
+import setOpacity from "./setOpacity";
 import translate from "./translate";
 import translateBy from "./translateBy";
 
@@ -117,6 +118,13 @@ export default class Layer {
     _transformations: Transformation[];
 
     /**
+     * Opacity
+     *
+     * The opacity of this layer
+     */
+    opacity: number;
+
+    /**
      * Invert
      *
      * Whether or not to invert this layer
@@ -170,6 +178,7 @@ export default class Layer {
         this.top = layerData.top || 0;
         this.left = layerData.left || 0;
         this._transformations = [];
+        this.opacity = 100;
 
         // Set debug mode
         this.setDebugMode(layerData.debugMode || false);
@@ -294,6 +303,17 @@ export default class Layer {
      * @returns {Layer} This layer
      */
     reflect = (direction: "vertical" | "horizontal"): Layer => reflect(this, direction);
+
+    /**
+     * Set Opacity
+     *
+     * Set the opacity this layer
+     *
+     * @param opacity The opacity to set this layer to
+     *
+     * @returns {Layer} This layer
+     */
+    setOpacity = (opacity: number): Layer => setOpacity(this, opacity);
 
     /**
      * Invert

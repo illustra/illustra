@@ -86,6 +86,15 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
     // Blur
     if (layer._blurSigma) canvas.blur(layer._blurSigma);
 
+    // Opacity
+    if (layer.opacity !== 100) canvas.joinChannel(Buffer.alloc(layer.width * layer.height, 255 * (layer.opacity / 100)), {
+        raw: {
+            width: layer.width,
+            height: layer.height,
+            channels: 1
+        }
+    });
+
     // Convert to format
     // https://sharp.pixelplumbing.com/api-output#toformat
     canvas.toFormat(format);
