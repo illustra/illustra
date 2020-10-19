@@ -1,5 +1,5 @@
 import sharp from "sharp";
-import { ShapeLayer } from "../../";
+import { ShapeLayer, TextLayer } from "../../";
 import Layer from "./Layer";
 
 export interface ExportMetadata {
@@ -52,6 +52,9 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
 
     // Create image buffer from shape layer
     if (layer instanceof ShapeLayer) inputData = layer.toBuffer();
+
+    // Create image buffer from text layer
+    if (layer instanceof TextLayer) inputData = await layer.toBuffer();
 
     // Create canvas
     let canvas: sharp.Sharp = sharp(inputData);

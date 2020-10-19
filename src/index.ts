@@ -7,3 +7,6 @@ export { ExportMetadata } from "./classes/Layer/exportTo";
 
 // Shape Layer
 export { default as ShapeLayer } from "./classes/ShapeLayer/ShapeLayer";
+
+// Text Layer
+export { default as TextLayer } from "./classes/TextLayer/TextLayer";
