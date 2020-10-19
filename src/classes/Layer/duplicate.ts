@@ -15,8 +15,12 @@ export default async function duplicate(layer: Layer, name?: string, position?: 
     }, layer._inputData);
     await duplicatedLayer._initialize;
 
-    // Set edits
-    duplicatedLayer._edits = [...layer._edits];
+    // Set transformations
+    duplicatedLayer._transformations = [...layer._transformations];
+
+    // Set data
+    duplicatedLayer._invert = layer._invert;
+    duplicatedLayer._blurSigma = layer._blurSigma;
 
     // Return
     return duplicatedLayer;

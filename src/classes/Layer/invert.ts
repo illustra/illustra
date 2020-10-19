@@ -5,10 +5,8 @@ export default function invert(layer: Layer): Layer {
     // Debug
     layer._debug("Inverting");
 
-    // Add to edits
-    layer._edits.push({
-        type: "invert"
-    });
+    // Set invert
+    layer._invert = true;
 
     // Return
     return layer;

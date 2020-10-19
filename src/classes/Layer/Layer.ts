@@ -29,16 +29,7 @@ interface Reflect {
     direction: "vertical" | "horizontal";
 }
 
-interface Blur {
-    type: "blur";
-    sigma: number;
-}
-
-interface Invert {
-    type: "invert";
-}
-
-type Edit = Rotate | Resize | Reflect | Blur | Invert;
+type Transformation = Rotate | Resize | Reflect;
 
 export interface LayerData {
     name: string;
@@ -119,11 +110,25 @@ export default class Layer {
     }
 
     /**
-     * Edits
+     * Transformations
      *
-     * The edits for this layer
+     * The transformations for this layer
      */
-    _edits: Edit[];
+    _transformations: Transformation[];
+
+    /**
+     * Invert
+     *
+     * Whether or not to invert this layer
+     */
+    _invert?: boolean;
+
+    /**
+     * Blur Sigma
+     *
+     * The sigma used to blur this layer
+     */
+    _blurSigma?: number;
 
     /**
      * Debug Mode
@@ -164,7 +169,7 @@ export default class Layer {
         this.name = layerData.name;
         this.top = layerData.top || 0;
         this.left = layerData.left || 0;
-        this._edits = [];
+        this._transformations = [];
 
         // Set debug mode
         this.setDebugMode(layerData.debugMode || false);
@@ -291,6 +296,15 @@ export default class Layer {
     reflect = (direction: "vertical" | "horizontal"): Layer => reflect(this, direction);
 
     /**
+     * Invert
+     *
+     * Invert the colors of this layer
+     *
+     * @returns {Layer} This layer
+     */
+    invert = (): Layer => invert(this);
+
+    /**
      * Blur
      *
      * Apply a Gaussian blur to this layer
@@ -300,15 +314,6 @@ export default class Layer {
      * @returns {Layer} This layer
      */
     blur = (sigma: number): Layer => blur(this, sigma);
-
-    /**
-     * Invert
-     *
-     * Invert the colors of this layer
-     *
-     * @returns {Layer} This layer
-     */
-    invert = (): Layer => invert(this);
 
     /**
      * Duplicate

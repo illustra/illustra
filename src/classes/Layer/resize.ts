@@ -40,8 +40,8 @@ export default function resize(layer: Layer, width?: number | null, height?: num
         }
     }
 
-    // Add to edits
-    layer._edits.push({
+    // Add to transformations
+    layer._transformations.push({
         type: "resize",
         width: layer.width,
         height: layer.height

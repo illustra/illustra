@@ -5,8 +5,8 @@ export default function rotate(layer: Layer, direction: "vertical" | "horizontal
     // Debug
     layer._debug(`Reflecting ${direction === "vertical" ? "vertically" : "horizontally"}`);
 
-    // Add to edits
-    layer._edits.push({
+    // Add to transformations
+    layer._transformations.push({
         type: "reflect",
         direction
     });

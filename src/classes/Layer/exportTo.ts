@@ -60,31 +60,31 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
     let canvas: sharp.Sharp = sharp(inputData);
 
     // Edits
-    for (let edit of layer._edits) {
+    for (let transformation of layer._transformations) {
 
         // Rotate
-        if (edit.type === "rotate") canvas.rotate(edit.degrees, {
+        if (transformation.type === "rotate") canvas.rotate(transformation.degrees, {
             background: { r: 0, g: 0, b: 0, alpha: 0 }
         });
 
         // Resize
-        else if (edit.type === "resize") canvas.resize(edit.width, edit.height, {
+        else if (transformation.type === "resize") canvas.resize(transformation.width, transformation.height, {
             fit: "fill"
         });
 
         // Reflect
-        else if (edit.type === "reflect") edit.direction === "vertical" ? canvas.flip() : canvas.flop();
-
-        // Blur
-        else if (edit.type === "blur") canvas.blur(edit.sigma);
-
-        // Invert
-        else if (edit.type === "invert") canvas.negate();
+        else if (transformation.type === "reflect") transformation.direction === "vertical" ? canvas.flip() : canvas.flop();
 
         // Export and import
         const exported: Buffer = await canvas.toFormat("png").toBuffer();
         canvas = sharp(exported);
     }
+
+    // Invert
+    if (layer._invert) canvas.negate();
+
+    // Blur
+    if (layer._blurSigma) canvas.blur(layer._blurSigma);
 
     // Convert to format
     // https://sharp.pixelplumbing.com/api-output#toformat
