@@ -10,6 +10,7 @@ import reflect from "./reflect";
 import resize from "./resize";
 import resizeBy from "./resizeBy";
 import rotate from "./rotate";
+import setBlendMode from "./setBlendMode";
 import setOpacity from "./setOpacity";
 import translate from "./translate";
 import translateBy from "./translateBy";
@@ -31,6 +32,8 @@ interface Reflect {
 }
 
 type Transformation = Rotate | Resize | Reflect;
+
+export type BlendMode = "normal" | "darken" | "multiply" | "colorBurn" | "lighten" | "screen" | "colorDodge" | "linearDodge" | "overlay" | "softLight" | "hardLight" | "difference" | "exclusion";
 
 export interface LayerData {
     name: string;
@@ -125,6 +128,13 @@ export default class Layer {
     opacity: number;
 
     /**
+     * Blend Mode
+     *
+     * The blend mode of this layer
+     */
+    blendMode: BlendMode;
+
+    /**
      * Invert
      *
      * Whether or not to invert this layer
@@ -179,6 +189,7 @@ export default class Layer {
         this.left = layerData.left || 0;
         this._transformations = [];
         this.opacity = 100;
+        this.blendMode = "normal";
 
         // Set debug mode
         this.setDebugMode(layerData.debugMode || false);
@@ -307,13 +318,24 @@ export default class Layer {
     /**
      * Set Opacity
      *
-     * Set the opacity this layer
+     * Set the opacity of this layer
      *
      * @param opacity The opacity to set this layer to
      *
      * @returns {Layer} This layer
      */
     setOpacity = (opacity: number): Layer => setOpacity(this, opacity);
+
+    /**
+     * Set Blend Mode
+     *
+     * Set the blend mode of this layer
+     *
+     * @param blendMode The blend mode to set this layer to
+     *
+     * @returns {Layer} This layer
+     */
+    setBlendMode = (blendMode?: BlendMode | null): Layer => setBlendMode(this, blendMode);
 
     /**
      * Invert

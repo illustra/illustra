@@ -1,5 +1,5 @@
 import sharp from "sharp";
-import Layer from "../Layer/Layer";
+import Layer, { BlendMode } from "../Layer/Layer";
 import Document from "./Document";
 
 export default async function mergeLayers(document: Document, name: string, inputLayers?: Array<Layer | string | number>, copy?: boolean): Promise<Layer> {
@@ -54,11 +54,33 @@ export default async function mergeLayers(document: Document, name: string, inpu
     });
 
     // Composite
-    canvas.composite(exportedLayers.map((l: Buffer, index: number) => ({
-        input: l,
-        top: layers[index].top,
-        left: layers[index].left
-    })));
+    canvas.composite(exportedLayers.map((l: Buffer, index: number) => {
+
+        // Get blend mode
+        const blendMode: BlendMode = layers[index].blendMode;
+        let thisBlendMode: string = "";
+        if (blendMode === "normal") thisBlendMode = "over";
+        else if (blendMode === "darken") thisBlendMode = "darken";
+        else if (blendMode === "multiply") thisBlendMode = "multiply";
+        else if (blendMode === "colorBurn") thisBlendMode = "color-burn";
+        else if (blendMode === "lighten") thisBlendMode = "lighten";
+        else if (blendMode === "screen") thisBlendMode = "screen";
+        else if (blendMode === "colorDodge") thisBlendMode = "color-dodge";
+        else if (blendMode === "linearDodge") thisBlendMode = "add";
+        else if (blendMode === "overlay") thisBlendMode = "overlay";
+        else if (blendMode === "softLight") thisBlendMode = "soft-light";
+        else if (blendMode === "hardLight") thisBlendMode = "hard-light";
+        else if (blendMode === "difference") thisBlendMode = "difference";
+        else if (blendMode === "exclusion") thisBlendMode = "exclusion";
+
+        // Return
+        return {
+            input: l,
+            top: layers[index].top,
+            left: layers[index].left,
+            blend: thisBlendMode as any
+        };
+    }));
 
     // Export canvas
     const mergedLayer: Buffer = await canvas.toFormat("png").toBuffer();
