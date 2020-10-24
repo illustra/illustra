@@ -76,6 +76,15 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
         // Reflect
         else if (edit.type === "reflect") edit.direction === "vertical" ? canvas.flip() : canvas.flop();
 
+        // Hue
+        else if (edit.type === "hue") canvas.modulate({ hue: edit.degrees });
+
+        // Saturation
+        else if (edit.type === "saturation") canvas.modulate({ saturation: edit.amount / 100 });
+
+        // Brightness
+        else if (edit.type === "brightness") canvas.modulate({ brightness: edit.amount / 100 });
+
         // Invert
         else if (edit.type === "invert") canvas.negate();
 

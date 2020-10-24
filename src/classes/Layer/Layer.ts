@@ -3,14 +3,17 @@ import debug from "../../debug";
 import Document from "../Document/Document";
 import align, { AlignOptions } from "./align";
 import blur from "./blur";
+import brightness from "./brightness";
 import duplicate from "./duplicate";
 import exportTo, { ExportTypes, Format, Output, PathOrWithMetadataOptions } from "./exportTo";
+import hue from "./hue";
 import invert from "./invert";
 import reflect from "./reflect";
 import remove from "./remove";
 import resize from "./resize";
 import resizeBy from "./resizeBy";
 import rotate from "./rotate";
+import saturation from "./saturation";
 import setBlendMode from "./setBlendMode";
 import setOpacity from "./setOpacity";
 import translate from "./translate";
@@ -32,6 +35,26 @@ interface Reflect {
     direction: "vertical" | "horizontal";
 }
 
+interface Hue {
+    type: "hue";
+    degrees: number;
+}
+
+interface Saturation {
+    type: "saturation";
+    amount: number;
+}
+
+interface Brightness {
+    type: "brightness";
+    amount: number;
+}
+
+interface Hue {
+    type: "hue";
+    degrees: number;
+}
+
 interface Invert {
     type: "invert";
 }
@@ -41,7 +64,7 @@ interface Blur {
     sigma: number;
 }
 
-type Edit = Rotate | Resize | Reflect | Invert | Blur;
+type Edit = Rotate | Resize | Reflect | Hue | Saturation | Brightness | Invert | Blur;
 
 export type BlendMode = "normal" | "darken" | "multiply" | "colorBurn" | "lighten" | "screen" | "colorDodge" | "linearDodge" | "overlay" | "softLight" | "hardLight" | "difference" | "exclusion";
 
@@ -332,6 +355,45 @@ export default class Layer {
      * @returns {Layer} This layer
      */
     setBlendMode = (blendMode?: BlendMode | null): Layer => setBlendMode(this, blendMode);
+
+    /**
+     * Hue
+     *
+     * Rotate the hue of this layer
+     *
+     * @param degrees The degrees to rotate this layer's hue by
+     *
+     * @returns {Layer} This layer
+     */
+    hue = (degrees: number): Layer => hue(this, degrees);
+
+    /**
+     * Saturation
+     *
+     * Adjust the saturation of this layer
+     *
+     * @param amount The amount to adjust this layer's saturation by
+     * 0 grayscales the layer
+     * 100 causes no change
+     * 200 doubles the saturation
+     *
+     * @returns {Layer} This layer
+     */
+    saturation = (amount: number): Layer => saturation(this, amount);
+
+    /**
+     * Brightness
+     *
+     * Adjust the brightness of this layer
+     *
+     * @param amount The amount to adjust this layer's brightness by
+     * 0 darkens the layer by a factor of 2
+     * 100 causes no change
+     * 200 doubles the brightness
+     *
+     * @returns {Layer} This layer
+     */
+    brightness = (amount: number): Layer => brightness(this, amount);
 
     /**
      * Invert
