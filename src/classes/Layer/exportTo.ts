@@ -57,6 +57,7 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
     if (layer instanceof TextLayer) inputData = await layer.toBuffer();
 
     // Create sharp canvas
+    // Careful, it's sharp
     let canvas: sharp.Sharp = sharp(inputData);
 
     // Edits
