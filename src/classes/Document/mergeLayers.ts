@@ -37,7 +37,7 @@ export default async function mergeLayers(document: Document, name: string, inpu
     const position: number = Math.max(...layers.map((l: Layer) => l.position)) + 1;
 
     // Debug
-    document._debug(`Merging ${layers.length} layers (${layers.map((l: Layer) => l.name).join(", ")})${copy ? " via copy" : ""} into '${name}' at position ${position}`, undefined, true);
+    document._debug(`Merging ${layers.length} layers (${layers.map((l: Layer) => l.name).join(", ")})${copy ? " via copy" : ""} into '${name}' at position ${position}`);
 
     // Export layers
     const exportedLayersPromises: Array<Promise<Buffer>> = layers.map((l: Layer) => l.exportTo("png", "buffer"));
@@ -86,18 +86,15 @@ export default async function mergeLayers(document: Document, name: string, inpu
     const mergedLayer: Buffer = await canvas.toFormat("png").toBuffer();
 
     // Create layer
-    const newLayer: Layer = new Layer(document, {
+    const newLayer: Layer = new Layer({
         name,
         buffer: mergedLayer,
         position
-    });
+    }, document);
     await newLayer._initialize;
 
-    // Delete layers
-    if (!copy) layers.forEach((l: Layer) => l.delete());
-
-    // End Debug Group
-    document._endDebugGroup();
+    // Remove layers
+    if (!copy) layers.forEach((l: Layer) => l.remove());
 
     // Return
     return newLayer;

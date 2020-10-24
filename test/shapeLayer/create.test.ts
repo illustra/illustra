@@ -1,5 +1,5 @@
 import fs from "fs";
-import { Document } from "../../";
+import { createShapeLayer, Document, ShapeLayer } from "../../";
 
 let document: Document;
 
@@ -122,4 +122,22 @@ test("creates an ellipse shape layer with a stroke", async () => {
 
     // Expect
     expect(exportedImage).toBe(expectedImage);
+});
+
+test("creates a shape layer without a document", async () => {
+
+    // Create shape
+    const shape: ShapeLayer = await createShapeLayer({
+        name: "shape",
+        shape: {
+            type: "polygon",
+            width: 300,
+            height: 500,
+            sides: 5,
+            fill: "#ffffff"
+        }
+    });
+
+    // Expect
+    expect(shape).toBeDefined();
 });

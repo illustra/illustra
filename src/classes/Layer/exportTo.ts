@@ -56,7 +56,7 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
     // Create image buffer from text layer
     if (layer instanceof TextLayer) inputData = await layer.toBuffer();
 
-    // Create canvas
+    // Create sharp canvas
     let canvas: sharp.Sharp = sharp(inputData);
 
     // Edits

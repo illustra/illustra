@@ -1,12 +1,13 @@
 import sharp from "sharp";
+import debug from "../../debug";
 import Document from "../Document/Document";
 import align, { AlignOptions } from "./align";
 import blur from "./blur";
-import deleteLayer from "./delete";
 import duplicate from "./duplicate";
 import exportTo, { ExportTypes, Format, Output, PathOrWithMetadataOptions } from "./exportTo";
 import invert from "./invert";
 import reflect from "./reflect";
+import remove from "./remove";
 import resize from "./resize";
 import resizeBy from "./resizeBy";
 import rotate from "./rotate";
@@ -49,13 +50,6 @@ export interface LayerData {
 export default class Layer {
 
     /**
-     * Document
-     *
-     * The document this layer is a part of
-     */
-    document: Document;
-
-    /**
      * Initialize
      *
      * A promise for when this layer will be initialized
@@ -68,6 +62,13 @@ export default class Layer {
      * This layer's input data
      */
     _inputData?: string | Buffer;
+
+    /**
+     * Document
+     *
+     * The document this layer is a part of
+     */
+    document?: Document;
 
     /**
      * Name
@@ -110,7 +111,7 @@ export default class Layer {
      * This layer's position
      */
     get position(): number {
-        return this.document.layers.findIndex((l: Layer) => l === this);
+        return this.document ? this.document.layers.findIndex((l: Layer) => l === this) : 0;
     }
 
     /**
@@ -172,7 +173,7 @@ export default class Layer {
      * @param layerData.debugMode Set to `true` to log debug info to the console
      * @param inputData Internal: Image data to use for this layer
      */
-    constructor(document: Document, layerData: LayerData, inputData?: string | Buffer) {
+    constructor(layerData: LayerData, document?: Document, inputData?: string | Buffer) {
 
         // Set document
         this.document = document;
@@ -215,7 +216,7 @@ export default class Layer {
         });
 
         // Add to document
-        document.layers.splice(layerData.position || document.layers.length, 0, this);
+        if (document) document.addLayer(this, layerData.position);
     }
 
     /**
@@ -373,11 +374,11 @@ export default class Layer {
     duplicate = (name?: string, position?: number, debugMode?: boolean): Promise<Layer> => duplicate(this, name, position, debugMode);
 
     /**
-     * Delete
+     * Remove
      *
-     * Delete this layer
+     * Remove this layer from its document
      */
-    delete = () => deleteLayer(this);
+    remove = () => remove(this);
 
     /**
      * Export To
@@ -407,14 +408,6 @@ export default class Layer {
      * Log debug info
      *
      * @param info Debug info to log
-     * @param startGroup Whether or not to start a group of logs
      */
-    _debug = (info: string, startGroup?: boolean) => this.document._debug(info, this, startGroup);
-
-    /**
-     * End Debug Group
-     *
-     * End a debug group
-     */
-    _endDebugGroup = () => this.document._endDebugGroup();
+    _debug = (info: string) => debug(info, this);
 }

@@ -1,6 +1,6 @@
-import { Document, Layer } from "../../";
+import { createLayer, Document, Layer } from "../../";
 
-test("deletes a layer", async () => {
+test("checks a layer's position", async () => {
 
     // Create document
     const document: Document = new Document({
@@ -20,10 +20,13 @@ test("deletes a layer", async () => {
         file: "test/assets/apixel.png"
     });
 
-    // Delete layer
-    logo.delete();
+    // Create other background
+    const otherBackground: Layer = await createLayer({
+        name: "otherBackground",
+        file: "test/assets/black.png"
+    });
 
-    // Expect layer order
-    let layers: string[] = document.layers.map((l: Layer) => l.name);
-    expect(layers).toStrictEqual(["background"]);
+    // Expect
+    expect(logo.position).toBe(1);
+    expect(otherBackground.position).toBe(0);
 });

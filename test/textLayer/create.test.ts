@@ -1,5 +1,5 @@
 import fs from "fs";
-import { Document } from "../../";
+import { createTextLayer, Document, TextLayer } from "../../";
 
 let document: Document;
 
@@ -153,4 +153,18 @@ test("creates a text layer with a custom line height", async () => {
 
     // Expect
     expect(exportedImage).toBe(expectedImage);
+});
+
+test("creates a text layer without a document", async () => {
+
+    // Create text
+    const text: TextLayer = await createTextLayer({
+        name: "text",
+        text: {
+            text: "example"
+        }
+    });
+
+    // Expect
+    expect(text).toBeDefined();
 });

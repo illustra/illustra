@@ -1,11 +1,12 @@
+import debug from "../../debug";
 import Layer, { LayerData } from "../Layer/Layer";
 import { ExportTypes, Format, Output, PathOrWithMetadataOptions } from "../Layer/exportTo";
 import ShapeLayer, { ShapeLayerData } from "../ShapeLayer/ShapeLayer";
 import TextLayer, { TextLayerData } from "../TextLayer/TextLayer";
+import addLayer from "./addLayer";
 import createLayer from "./createLayer";
 import createShapeLayer from "./createShapeLayer";
 import createTextLayer from "./createTextLayer";
-import debug from "./debug";
 import exportTo from "./exportTo";
 import mergeLayers from "./mergeLayers";
 
@@ -55,13 +56,6 @@ export default class Document {
     debugMode: boolean;
 
     /**
-     * Debug Group Depth
-     *
-     * The depth of the debug groups
-     */
-    _debugGroupDepth: number;
-
-    /**
      * Document
      *
      * @param documentData Options to initialize this document with
@@ -82,7 +76,6 @@ export default class Document {
 
         // Set debug mode
         this.setDebugMode(documentData.debugMode || false);
-        this._debugGroupDepth = 0;
     }
 
     /**
@@ -162,6 +155,13 @@ export default class Document {
     createTextLayer = (textLayerData: TextLayerData): TextLayer => createTextLayer(this, textLayerData);
 
     /**
+     * Add Layer
+     *
+     * Add a layer to this document
+     */
+    addLayer = (layer: Layer, position?: number) => addLayer(this, layer, position);
+
+    /**
      * Get Layer
      *
      * Get a layer by name or index
@@ -222,18 +222,6 @@ export default class Document {
      * Log debug info
      *
      * @param info Debug info to log
-     * @param layer The layer that was modified
-     * @param startGroup Whether or not to start a group of logs
      */
-    _debug = (info: string, layer?: Layer, startGroup?: boolean) => debug(this, info, layer, startGroup);
-
-    /**
-     * End Debug Group
-     *
-     * End a debug group
-     */
-    _endDebugGroup = () => {
-        this._debugGroupDepth--;
-        if (this._debugGroupDepth < 0) this._debugGroupDepth = 0;
-    }
+    _debug = (info: string) => debug(info, this);
 }

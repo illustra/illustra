@@ -4,7 +4,7 @@ export default function resizeBy(layer: Layer, width?: number | null, height?: n
 
     // Debug
     const units: string = scale ? "%" : "px";
-    layer._debug(`Resizing by ${width}${units} (width) by ${height}${units} (height)`, true);
+    layer._debug(`Resizing by ${width}${units} (width) by ${height}${units} (height)`);
 
     // Resize
     layer.resize(
@@ -15,9 +15,6 @@ export default function resizeBy(layer: Layer, width?: number | null, height?: n
             layer.height * (height / 100) :
             layer.height + height)
     );
-
-    // End Debug Group
-    layer._endDebugGroup();
 
     // Return
     return layer;

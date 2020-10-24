@@ -105,10 +105,10 @@ export default class TextLayer extends Layer {
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
      * @param textLayerData.debugMode Set to `true` to log debug info to the console
      */
-    constructor(document: Document, textLayerData: TextLayerData) {
+    constructor(textLayerData: TextLayerData, document?: Document) {
 
         // Super
-        super(document, textLayerData);
+        super(textLayerData, document);
 
         // Set data
         this.text = textLayerData.text.text;
@@ -118,7 +118,7 @@ export default class TextLayer extends Layer {
         this.textAlign = textLayerData.text.textAlign;
         if (textLayerData.text.color) this.color = parseColor(textLayerData.text.color);
         this.lineHeight = textLayerData.text.lineHeight;
-        this.maxWidth = textLayerData.text.maxWidth || document.width;
+        this.maxWidth = textLayerData.text.maxWidth || document?.width || 400;
     }
 
     /**

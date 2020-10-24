@@ -1,6 +1,6 @@
-import { Document, Layer } from "../../";
+import { createLayer, Document, Layer } from "../../";
 
-test("creates a layer", async () => {
+test("creates a layer with a document", async () => {
 
     // Create document
     const document: Document = new Document({
@@ -10,6 +10,19 @@ test("creates a layer", async () => {
 
     // Create background
     const background: Layer = await document.createLayer({
+        name: "background",
+        file: "test/assets/black.png"
+    });
+
+    // Expect
+    expect(background).toBeDefined();
+    expect(background._initialize).resolves.toBeUndefined();
+});
+
+test("creates a layer without a document", async () => {
+
+    // Create background
+    const background: Layer = await createLayer({
         name: "background",
         file: "test/assets/black.png"
     });

@@ -7,7 +7,7 @@ export default function createShapeLayer(document: Document, shapeLayerData: Sha
     document._debug(`Creating shape layer '${shapeLayerData.name}' at position ${shapeLayerData.position || document.layers.length}`);
 
     // Create layer
-    const layer: ShapeLayer = new ShapeLayer(document, shapeLayerData);
+    const layer: ShapeLayer = new ShapeLayer(shapeLayerData, document);
 
     // Return created layer
     return layer;

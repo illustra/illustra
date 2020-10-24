@@ -7,8 +7,7 @@ test("merges layers", async () => {
     const document: Document = new Document({
         name: "Merge Layers",
         width: 1920,
-        height: 1080,
-        debugMode: true
+        height: 1080
     });
 
     // Create background

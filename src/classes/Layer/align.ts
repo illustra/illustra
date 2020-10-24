@@ -15,6 +15,9 @@ export interface AlignOptions {
 
 export default function align(layer: Layer, alignOptions: AlignOptions = {}): Layer {
 
+    // No document
+    if (!layer.document) throw new Error("This layer isn't a part of a document");
+
     // Get alignment top
     let top: number;
     if (alignOptions.top === "start") top = 0;
@@ -44,13 +47,10 @@ export default function align(layer: Layer, alignOptions: AlignOptions = {}): La
     if (alignOptions.leftOffset) left = left + leftOffset;
 
     // Debug
-    layer._debug(`Aligning to ${alignOptions.top || "center"} (top) and ${alignOptions.left || "center"} (left) with an offset of ${topOffset}px (top) and ${leftOffset}px (left)`, true);
+    layer._debug(`Aligning to ${alignOptions.top || "center"} (top) and ${alignOptions.left || "center"} (left) with an offset of ${topOffset}px (top) and ${leftOffset}px (left)`);
 
     // Translate
     layer.translate(top, left);
-
-    // End Debug Group
-    layer._endDebugGroup();
 
     // Return
     return layer;

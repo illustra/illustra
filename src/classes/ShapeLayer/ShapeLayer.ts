@@ -102,10 +102,10 @@ export default class ShapeLayer extends Layer {
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
      * @param shapeLayerData.debugMode Set to `true` to log debug info to the console
      */
-    constructor(document: Document, shapeLayerData: ShapeLayerData) {
+    constructor(shapeLayerData: ShapeLayerData, document?: Document) {
 
         // Super
-        super(document, shapeLayerData);
+        super(shapeLayerData, document);
 
         // Set data
         this.type = shapeLayerData.shape.type;

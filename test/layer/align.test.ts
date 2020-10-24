@@ -1,5 +1,5 @@
 import fs from "fs";
-import { Document, Layer } from "../../";
+import { createLayer, Document, Layer } from "../../";
 
 let document: Document;
 let logo: Layer;
@@ -29,11 +29,18 @@ beforeEach(async () => {
 
 test("checks for align errors", async () => {
 
+    // Create background
+    const background: Layer = await createLayer({
+        name: "background",
+        file: "test/assets/black.png"
+    });
+
     // Align layer
+    expect(() => background.align()).toThrow("This layer isn't a part of a document");
     // @ts-ignore
-    expect(async () => logo.align({ top: "invalid" })).rejects.toThrow("Invalid top align type");
+    expect(() => logo.align({ top: "invalid" })).toThrow("Invalid top align type");
     // @ts-ignore
-    expect(async () => logo.align({ left: "invalid" })).rejects.toThrow("Invalid left align type");
+    expect(() => logo.align({ left: "invalid" })).toThrow("Invalid left align type");
 });
 
 test("aligns a layer to the top left of the document", async () => {
