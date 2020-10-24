@@ -6,6 +6,7 @@ import blur from "./blur";
 import brightness from "./brightness";
 import duplicate from "./duplicate";
 import exportTo, { ExportTypes, Format, Output, PathOrWithMetadataOptions } from "./exportTo";
+import grayscale from "./grayscale";
 import hue from "./hue";
 import invert from "./invert";
 import reflect from "./reflect";
@@ -394,6 +395,15 @@ export default class Layer {
      * @returns {Layer} This layer
      */
     brightness = (amount: number): Layer => brightness(this, amount);
+
+    /**
+     * Grayscale
+     *
+     * Grayscale this layer
+     *
+     * @returns {Layer} This layer
+     */
+    grayscale = (): Layer => grayscale(this);
 
     /**
      * Invert
