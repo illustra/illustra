@@ -32,7 +32,16 @@ interface Reflect {
     direction: "vertical" | "horizontal";
 }
 
-type Transformation = Rotate | Resize | Reflect;
+interface Invert {
+    type: "invert";
+}
+
+interface Blur {
+    type: "blur";
+    sigma: number;
+}
+
+type Edit = Rotate | Resize | Reflect | Invert | Blur;
 
 export type BlendMode = "normal" | "darken" | "multiply" | "colorBurn" | "lighten" | "screen" | "colorDodge" | "linearDodge" | "overlay" | "softLight" | "hardLight" | "difference" | "exclusion";
 
@@ -115,11 +124,11 @@ export default class Layer {
     }
 
     /**
-     * Transformations
+     * Edits
      *
-     * The transformations for this layer
+     * The edits for this layer
      */
-    _transformations: Transformation[];
+    _edits: Edit[];
 
     /**
      * Opacity
@@ -134,20 +143,6 @@ export default class Layer {
      * The blend mode of this layer
      */
     blendMode: BlendMode;
-
-    /**
-     * Invert
-     *
-     * Whether or not to invert this layer
-     */
-    _invert?: boolean;
-
-    /**
-     * Blur Sigma
-     *
-     * The sigma used to blur this layer
-     */
-    _blurSigma?: number;
 
     /**
      * Debug Mode
@@ -188,7 +183,7 @@ export default class Layer {
         this.name = layerData.name;
         this.top = layerData.top || 0;
         this.left = layerData.left || 0;
-        this._transformations = [];
+        this._edits = [];
         this.opacity = 100;
         this.blendMode = "normal";
 

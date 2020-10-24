@@ -5,8 +5,8 @@ export default function rotate(layer: Layer, degrees: number): Layer {
     // Debug
     layer._debug(`Rotating by ${degrees} degrees`);
 
-    // Add to transformations
-    layer._transformations.push({
+    // Add to edits
+    layer._edits.push({
         type: "rotate",
         degrees
     });
