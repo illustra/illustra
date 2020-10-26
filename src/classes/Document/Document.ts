@@ -1,9 +1,12 @@
 import debug from "../../debug";
+import ClippingMask from "../ClippingMask/ClippingMask";
 import Layer, { LayerData } from "../Layer/Layer";
 import { ExportTypes, Format, Output, PathOrWithMetadataOptions } from "../Layer/exportTo";
+import { MaskData } from "../Mask/Mask";
 import ShapeLayer, { ShapeLayerData } from "../ShapeLayer/ShapeLayer";
 import TextLayer, { TextLayerData } from "../TextLayer/TextLayer";
 import addLayer from "./addLayer";
+import createClippingMask from "./createClippingMask";
 import createLayer from "./createLayer";
 import createShapeLayer from "./createShapeLayer";
 import createTextLayer from "./createTextLayer";
@@ -153,6 +156,24 @@ export default class Document {
      * @returns {TextLayer} The created text layer
      */
     createTextLayer = (textLayerData: TextLayerData): TextLayer => createTextLayer(this, textLayerData);
+
+    /**
+     * Create Clipping Mask
+     *
+     * Create a new clipping mask
+     *
+     * @param maskData Data for the layer
+     * @param maskData.name The name of the layer
+     * @param maskData.mask The layer that the source will clip to
+     * @param maskData.source The layer that will get clipped to the mask
+     * @param maskData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
+     * Omit to add the layer to the top of the stack (highest index).
+     * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
+     * @param maskData.debugMode Set to `true` to log debug info to the console
+     *
+     * @returns {ClippingMask} The created text layer
+     */
+    createClippingMask = (maskData: MaskData): ClippingMask => createClippingMask(this, maskData);
 
     /**
      * Add Layer

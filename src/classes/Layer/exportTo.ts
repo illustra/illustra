@@ -1,5 +1,5 @@
 import sharp from "sharp";
-import { ShapeLayer, TextLayer } from "../../";
+import { ClippingMask, ShapeLayer, TextLayer } from "../../";
 import Layer from "./Layer";
 
 export interface ExportMetadata {
@@ -55,6 +55,9 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
 
     // Create image buffer from text layer
     if (layer instanceof TextLayer) inputData = await layer.toBuffer();
+
+    // Create image buffer from clipping mask
+    if (layer instanceof ClippingMask) inputData = await layer.toBuffer();
 
     // Create sharp canvas
     // Careful, it's sharp
