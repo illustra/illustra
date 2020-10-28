@@ -1,14 +1,13 @@
-import ClippingMask from "../ClippingMask/ClippingMask";
-import { MaskData } from "../Mask/Mask";
+import ClippingMask, { ClippingMaskData } from "../ClippingMask/ClippingMask";
 import Document from "./Document";
 
-export default function createClippingMask(document: Document, maskData: MaskData): ClippingMask {
+export default function createClippingMask(document: Document, clippingMaskData: ClippingMaskData): ClippingMask {
 
     // Debug
-    document._debug(`Creating clipping mask '${maskData.name}' at position ${maskData.position || document.layers.length}`);
+    document._debug(`Creating clipping mask '${clippingMaskData.name}' at position ${clippingMaskData.position || document.layers.length}`);
 
     // Create clipping mask
-    const clippingMask: ClippingMask = new ClippingMask(maskData, document);
+    const clippingMask: ClippingMask = new ClippingMask(clippingMaskData, document);
 
     // Return created clipping mask
     return clippingMask;
