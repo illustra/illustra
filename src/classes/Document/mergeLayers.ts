@@ -1,5 +1,6 @@
 import sharp from "sharp";
 import Layer, { BlendMode } from "../Layer/Layer";
+import { ExportMetadata } from "../Layer/exportTo";
 import Document from "./Document";
 
 export default async function mergeLayers(document: Document, name: string, inputLayers?: Array<Layer | string | number>, copy?: boolean): Promise<Layer> {
@@ -40,8 +41,8 @@ export default async function mergeLayers(document: Document, name: string, inpu
     document._debug(`Merging ${layers.length} layers (${layers.map((l: Layer) => l.name).join(", ")})${copy ? " via copy" : ""} into '${name}' at position ${position}`);
 
     // Export layers
-    const exportedLayersPromises: Array<Promise<Buffer>> = layers.map((l: Layer) => l.exportTo("png", "buffer"));
-    const exportedLayers: Buffer[] = await Promise.all(exportedLayersPromises);
+    const exportedLayersPromises: Array<Promise<ExportMetadata>> = layers.map((l: Layer) => l.exportTo("png", "buffer", true));
+    let exportedLayers: ExportMetadata[] = await Promise.all(exportedLayersPromises);
 
     // Create sharp canvas
     const canvas: sharp.Sharp = sharp({
@@ -53,8 +54,57 @@ export default async function mergeLayers(document: Document, name: string, inpu
         }
     });
 
+    /**
+     * Crop
+     *
+     * If the image is larger than the canvas, sharp will error
+     * Crop the images to fit on the canvas
+     */
+    const croppedLayersPromises: Array<Buffer | Promise<Buffer> | undefined> = exportedLayers.map((l: ExportMetadata, index: number) => {
+
+        // Crop not needed
+        if (
+
+            // The top/left is positive (not off the canvas to the top left)
+            layers[index].left >= 0 &&
+            layers[index].top >= 0 &&
+
+            // And the layer dimensions plus offset is less than the document's dimensions
+            layers[index].left + l.width <= document.width &&
+            layers[index].top + l.height <= document.height
+        ) return l.data;
+
+        // Get crop left and top
+        const cropLeft: number = layers[index].left < 0 ? (layers[index].left / -1) : 0;
+        const cropTop: number = layers[index].top < 0 ? (layers[index].top / -1) : 0;
+
+        // Get crop width and height
+        const cropWidth: number = document.width - layers[index].left;
+        const cropHeight: number = document.height - layers[index].top;
+
+        // Layer will be off the canvas
+        if (((cropWidth < l.width ? cropWidth : l.width) - cropLeft <= 0) || ((cropHeight < l.height ? cropHeight : l.height) - cropTop <= 0)) return;
+
+        // Crop
+        return sharp(l.data)
+            .extract({
+
+                // If the top/left is negative (off the canvas to the top left), crop by that amount / -1
+                left: cropLeft,
+                top: cropTop,
+
+                // The width/height is the dimensions of the document minus the top/left offset of the layer
+                width: (cropWidth < l.width ? cropWidth : l.width) - cropLeft,
+                height: (cropHeight < l.height ? cropHeight : l.height) - cropTop
+            })
+            .toFormat("png")
+            .toBuffer();
+    });
+    const croppedLayersPromisesFiltered: Array<Buffer | Promise<Buffer>> = croppedLayersPromises.filter((l: Buffer | Promise<Buffer> | undefined) => l) as Array<Buffer | Promise<Buffer>>;
+    const croppedLayers: Buffer[] = await Promise.all(croppedLayersPromisesFiltered);
+
     // Composite
-    canvas.composite(exportedLayers.map((l: Buffer, index: number) => {
+    canvas.composite(croppedLayers.map((l: Buffer, index: number) => {
 
         // Get blend mode
         const blendMode: BlendMode = layers[index].blendMode;
@@ -76,8 +126,8 @@ export default async function mergeLayers(document: Document, name: string, inpu
         // Return
         return {
             input: l,
-            top: layers[index].top,
-            left: layers[index].left,
+            top: layers[index].top < 0 ? 0 : layers[index].top,
+            left: layers[index].left < 0 ? 0 : layers[index].left,
             blend: thisBlendMode as any
         };
     }));

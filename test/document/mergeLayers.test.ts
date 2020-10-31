@@ -1,11 +1,12 @@
 import fs from "fs";
 import { Document, Layer } from "../../";
 
-test("merges layers", async () => {
+let document: Document;
+
+beforeEach(async () => {
 
     // Create document
-    const document: Document = new Document({
-        name: "Merge Layers",
+    document = new Document({
         width: 1920,
         height: 1080
     });
@@ -15,6 +16,29 @@ test("merges layers", async () => {
         name: "background",
         file: "test/assets/black.png"
     });
+});
+
+test("checks for errors merging layers", async () => {
+
+    // Create other document
+    const otherDocument: Document = new Document({
+        width: 1920,
+        height: 1080
+    });
+
+    // Create other layer
+    const otherLayer: Layer = await otherDocument.createLayer({
+        name: "layer",
+        file: "test/assets/apixel.png"
+    });
+
+    // Merge errors
+    expect(async () => await document.mergeLayers("merged", ["invalid"])).rejects.toThrow("Unknown layer with name 'invalid'");
+    expect(async () => await document.mergeLayers("merged", [1])).rejects.toThrow("Unknown layer with index 1");
+    expect(async () => await document.mergeLayers("merged", [otherLayer])).rejects.toThrow("Layer at index 0 isn't part of this document");
+});
+
+test("merges layers", async () => {
 
     // Add apixel logo
     const apixelLogo: Layer = await document.createLayer({
@@ -34,26 +58,6 @@ test("merges layers", async () => {
         file: "test/assets/javascript.png"
     });
 
-    // Create other document
-    const otherDocument: Document = new Document({
-        width: 1920,
-        height: 1080
-    });
-
-    // Create other layer
-    const otherLayer: Layer = await otherDocument.createLayer({
-        name: "layer",
-        file: "test/assets/apixel.png"
-    });
-
-    // Merge errors
-    // @ts-ignore
-    expect(async () => await document.mergeLayers("merged", ["invalid"])).rejects.toThrow("Unknown layer with name 'invalid'");
-    // @ts-ignore
-    expect(async () => await document.mergeLayers("merged", [4])).rejects.toThrow("Unknown layer with index 4");
-    // @ts-ignore
-    expect(async () => await document.mergeLayers("merged", [otherLayer])).rejects.toThrow("Layer at index 0 isn't part of this document");
-
     // Merge layers as a copy
     await document.mergeLayers("mergedCopy", [apixelLogo, typescriptLogo], true);
 
@@ -72,7 +76,87 @@ test("merges layers", async () => {
     const exportedImage: string = (await mergedLayer.exportTo("png", "buffer")).toString("base64");
 
     // Get expected image
-    const expectedImage: string = fs.readFileSync("test/document/exports/mergeLayers.png").toString("base64");
+    const expectedImage: string = fs.readFileSync("test/document/exports/mergeLayers/mergeLayers.png").toString("base64");
+
+    // Expect
+    expect(exportedImage).toBe(expectedImage);
+});
+
+test("merges layers that start going off the screen (bottom right)", async () => {
+
+    // Add logo
+    await document.createLayer({
+        name: "logo",
+        file: "test/assets/apixel.png",
+        top: 700,
+        left: 1700
+    });
+
+    // Export document
+    const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+
+    // Get expected image
+    const expectedImage: string = fs.readFileSync("test/document/exports/mergeLayers/cropBottomRight.png").toString("base64");
+
+    // Expect
+    expect(exportedImage).toBe(expectedImage);
+});
+
+test("merges layers that start going off the screen (top left)", async () => {
+
+    // Add logo
+    await document.createLayer({
+        name: "logo",
+        file: "test/assets/apixel.png",
+        top: -300,
+        left: -200
+    });
+
+    // Export document
+    const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+
+    // Get expected image
+    const expectedImage: string = fs.readFileSync("test/document/exports/mergeLayers/cropTopLeft.png").toString("base64");
+
+    // Expect
+    expect(exportedImage).toBe(expectedImage);
+});
+
+test("merges layers that go off the screen (bottom right)", async () => {
+
+    // Add logo
+    await document.createLayer({
+        name: "logo",
+        file: "test/assets/apixel.png",
+        top: 1100,
+        left: 2000
+    });
+
+    // Export document
+    const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+
+    // Get expected image
+    const expectedImage: string = fs.readFileSync("test/document/exports/mergeLayers/removeBottomRight.png").toString("base64");
+
+    // Expect
+    expect(exportedImage).toBe(expectedImage);
+});
+
+test("merges layers that go off the screen (top left)", async () => {
+
+    // Add logo
+    await document.createLayer({
+        name: "logo",
+        file: "test/assets/apixel.png",
+        top: -800,
+        left: -800
+    });
+
+    // Export document
+    const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+
+    // Get expected image
+    const expectedImage: string = fs.readFileSync("test/document/exports/mergeLayers/removeTopLeft.png").toString("base64");
 
     // Expect
     expect(exportedImage).toBe(expectedImage);
