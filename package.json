@@ -8,7 +8,8 @@
     "scripts": {
         "dev": "echo \"Building...\"; tsc; echo \"Running...\"; node out/testing/index.js",
         "build": "echo \"Building...\" && tsc",
-        "test": "jest"
+        "test": "jest",
+        "docs": "typedoc"
     },
     "dependencies": {
         "@types/color": "^3.0.1",
@@ -26,6 +27,7 @@
         "@types/jest": "^26.0.14",
         "jest": "^26.4.2",
         "ts-jest": "^26.4.1",
+        "typedoc": "^0.19.2",
         "typescript": "^4.0.3"
     }
 }
