@@ -1,5 +1,5 @@
 import sharp from "sharp";
-import { ClippingMask, ShapeLayer, TextLayer } from "../../";
+import { ClippingMask, ShapeLayer, TextLayer } from "../../internal";
 import Layer from "./Layer";
 
 export interface ExportMetadata {

@@ -1,15 +1,16 @@
 {
     "name": "illustra",
-    "version": "1.0.0",
-    "description": "Illustra is an object-oriented, high level image processing library for Node.js",
-    "main": "src/index.ts",
+    "version": "0.1.0",
+    "description": "Illustra is an object-oriented, document based, Node.js image processing toolkit",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "repository": "https://github.com/APixelVisuals/illustra",
     "author": "APixel Visuals",
     "scripts": {
-        "dev": "echo \"Building...\"; tsc; echo \"Running...\"; node out/testing/index.js",
-        "build": "echo \"Building...\" && tsc",
+        "build": "tsc",
         "test": "jest",
-        "docs": "typedoc"
+        "docs": "typedoc",
+        "prepublish": "yarn build"
     },
     "dependencies": {
         "@types/color": "^3.0.1",

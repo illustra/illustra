@@ -1,19 +1,21 @@
+// Import
+import * as illustra from "./internal";
+
 // Document
-export { default as Document, DocumentData } from "./classes/Document/Document";
+export { Document, DocumentData } from "./internal";
 
 // Layer
-export { default as Layer, BlendMode } from "./classes/Layer/Layer";
-export { default as createLayer } from "./createLayer";
-export { ExportMetadata } from "./classes/Layer/exportTo";
+export type Layer = InstanceType<typeof illustra.Layer>;
+export { BlendMode, createLayer, ExportMetadata } from "./internal";
 
 // Shape Layer
-export { default as ShapeLayer } from "./classes/ShapeLayer/ShapeLayer";
-export { default as createShapeLayer } from "./createShapeLayer";
+export type ShapeLayer = InstanceType<typeof illustra.ShapeLayer>;
+export { createShapeLayer } from "./internal";
 
 // Text Layer
-export { default as TextLayer } from "./classes/TextLayer/TextLayer";
-export { default as createTextLayer } from "./createTextLayer";
+export type TextLayer = InstanceType<typeof illustra.TextLayer>;
+export { createTextLayer } from "./internal";
 
 // Clipping Mask
-export { default as ClippingMask } from "./classes/ClippingMask/ClippingMask";
-export { default as createClippingMask } from "./createClippingMask";
+export type ClippingMask = InstanceType<typeof illustra.ClippingMask>;
+export { createClippingMask } from "./internal";
