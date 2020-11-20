@@ -1,4 +1,4 @@
-import { Document } from "../../";
+import { Document } from "../../src/internal";
 
 test("creates a document", async () => {
 

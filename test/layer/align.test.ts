@@ -1,5 +1,5 @@
 import fs from "fs";
-import { createLayer, Document, Layer } from "../../";
+import { createLayer, Document, Layer } from "../../src/internal";
 
 let document: Document;
 let logo: Layer;

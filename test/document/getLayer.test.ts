@@ -1,4 +1,4 @@
-import { Document, Layer } from "../../";
+import { Document, Layer } from "../../src/internal";
 
 let document: Document;
 

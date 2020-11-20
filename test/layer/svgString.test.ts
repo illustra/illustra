@@ -1,5 +1,5 @@
 import fs from "fs";
-import { Document } from "../../";
+import { Document } from "../../src/internal";
 
 test("creates a layer", async () => {
 

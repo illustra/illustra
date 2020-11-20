@@ -1,4 +1,4 @@
-import { createLayer, Document, Layer } from "../../";
+import { createLayer, Document, Layer } from "../../src/internal";
 
 test("removes a layer", async () => {
 

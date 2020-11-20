@@ -1,5 +1,5 @@
 import fs from "fs";
-import { Document, Layer } from "../../";
+import { Document, Layer } from "../../src/internal";
 
 test("sets the opacity of a layer", async () => {
 

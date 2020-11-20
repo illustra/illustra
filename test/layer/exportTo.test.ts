@@ -1,5 +1,5 @@
 import fs from "fs";
-import { Document, ExportMetadata, Layer } from "../../";
+import { Document, ExportMetadata, Layer } from "../../src/internal";
 
 let document: Document;
 let background: Layer;

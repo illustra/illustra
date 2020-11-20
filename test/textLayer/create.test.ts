@@ -1,5 +1,5 @@
 import fs from "fs";
-import { createTextLayer, Document, TextLayer } from "../../";
+import { createTextLayer, Document, TextLayer } from "../../src/internal";
 
 let document: Document;
 

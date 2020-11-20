@@ -1,5 +1,5 @@
 import fs from "fs";
-import { BlendMode, Document, Layer } from "../../";
+import { BlendMode, Document, Layer } from "../../src/internal";
 
 let document: Document;
 let logo: Layer;

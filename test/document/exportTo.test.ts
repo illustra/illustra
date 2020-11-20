@@ -1,5 +1,5 @@
 import fs from "fs";
-import { Document, ExportMetadata } from "../../";
+import { Document, ExportMetadata } from "../../src/internal";
 
 let document: Document;
 let expectedImage: string;

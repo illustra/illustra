@@ -1,4 +1,4 @@
-import { createLayer, Document, Layer } from "../../";
+import { createLayer, Document, Layer } from "../../src/internal";
 
 test("creates a layer with a document", async () => {
 

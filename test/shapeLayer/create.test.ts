@@ -1,5 +1,5 @@
 import fs from "fs";
-import { createShapeLayer, Document, ShapeLayer } from "../../";
+import { createShapeLayer, Document, ShapeLayer } from "../../src/internal";
 
 let document: Document;
 

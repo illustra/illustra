@@ -1,5 +1,5 @@
 import fs from "fs";
-import { ClippingMask, createClippingMask, createLayer, createShapeLayer, createTextLayer, Document, Layer, ShapeLayer, TextLayer } from "../../";
+import { createClippingMask, createLayer, createShapeLayer, ClippingMask, Document, Layer, ShapeLayer } from "../../src/internal";
 
 let document: Document;
 let logo: Layer;

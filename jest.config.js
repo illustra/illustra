@@ -6,8 +6,9 @@ module.exports = {
         "**/src/**/*.{ts,tsx}"
     ],
     coveragePathIgnorePatterns: [
-        "/node_modules/",
-        "/src/testing/"
+        "node_modules/",
+        "src/index.ts",
+        "src/(.*).d.ts"
     ],
     testEnvironment: "node"
 };
