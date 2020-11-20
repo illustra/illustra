@@ -1,6 +1,6 @@
 import color from "color";
 
-interface RGBA {
+export interface RGBA {
     r: number;
     g: number;
     b: number;

@@ -3,7 +3,7 @@ import Document from "../Document/Document";
 import Layer from "../Layer/Layer";
 import textBuffer from "./textBuffer";
 
-type TextAlign = "left" | "center" | "right" | "justify";
+export type TextAlign = "left" | "center" | "right" | "justify";
 
 export interface TextData {
     text: string;

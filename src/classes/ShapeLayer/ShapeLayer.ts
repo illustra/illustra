@@ -4,9 +4,9 @@ import Layer from "../Layer/Layer";
 import shapeSVG from "./shapeSVG";
 import toShapeData from "./toShapeData";
 
-type Shape = "polygon" | "ellipse";
+export type Shape = "polygon" | "ellipse";
 
-interface CommonShapeData {
+export interface CommonShapeData {
     width: number;
     height: number;
     fill?: Color;
@@ -14,13 +14,13 @@ interface CommonShapeData {
     strokeWidth?: number;
 }
 
-interface PolygonData extends CommonShapeData {
+export interface PolygonData extends CommonShapeData {
     type: "polygon";
     sides: number;
     cornerRadius?: number;
 }
 
-interface EllipseData extends CommonShapeData {
+export interface EllipseData extends CommonShapeData {
     type: "ellipse";
 }
 

@@ -1,8 +1,8 @@
 import Layer from "./Layer";
 
-type AlignType = "start" | "center" | "end";
+export type AlignType = "start" | "center" | "end";
 
-type Units = "pixels" | "percent";
+export type Units = "pixels" | "percent";
 
 export interface AlignOptions {
     top?: AlignType;
