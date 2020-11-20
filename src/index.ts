@@ -1,6 +1,9 @@
 // Import
 import * as illustra from "./internal";
 
+// All
+export default illustra;
+
 // Document
 export {
     Document,
