@@ -67,7 +67,7 @@ Now let's add some text:
 
 ```js
 // Add title
-await banner.createTextLayer({
+banner.createTextLayer({
     name: "title",
     text: {
         text: "Illustra",
