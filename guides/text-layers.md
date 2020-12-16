@@ -1,5 +1,3 @@
-Text Layers (https://illustra.apixel.me/assets/guides/text.svg)
-
 # Text Layers
 
 A [`TextLayer`](https://illustra.apixel.me/docs/classes/TextLayer) allows you to add text to your document. Illustra lets you customize the font, font size, font weight, text alignment, color, and more. Let's go over creating a text layer:

@@ -1,5 +1,3 @@
-Shape Layers (https://illustra.apixel.me/assets/guides/circle.svg)
-
 # Shape Layers
 
 A [`ShapeLayer`](https://illustra.apixel.me/docs/classes/ShapeLayer) allows you to add shapes to your document. A shape layer's fill color, stroke color, and stroke width can be customized. There are two types of shapes that Illustra supports: polygons and ellipses. Let's go over creating a polygon:

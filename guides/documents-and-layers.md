@@ -1,5 +1,3 @@
-Documents and Layers (https://illustra.apixel.me/assets/guides/file.svg)
-
 # Documents vs Layers
 
 [Documentshttps://illustra.apixel.me/docs/classes/Document can be thought of as canvases, they holds all the parts of the image together and let you organize everything. These documents are made up of [Layers](https://illustra.apixel.me/docs/classes/Layer), which hold the data to create the image. There are different kinds of layers, such as regular [Layers](https://illustra.apixel.me/docs/classes/Layer), [TextLayers](https://illustra.apixel.me/docs/classes/TextLayer), [ShapeLayers](https://illustra.apixel.me/docs/classes/ShapeLayer), and even [ClippingMasks](https://illustra.apixel.me/docs/classes/ClippingMask).

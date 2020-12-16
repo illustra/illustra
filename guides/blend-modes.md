@@ -1,5 +1,3 @@
-Blend Modes (https://illustra.apixel.me/assets/guides/blend.svg)
-
 # Blend Modes
 
 Blend modes allow you to mix the colors of layers together to create unique looks. Illustra supports plenty of blend modes, and since Illustra is modeled after Photoshop, all of our blend mode names match theirs. Here is a list of [`BlendMode`s](https://illustra.apixel.me/docs/typeAliases/BlendMode) that Illustra supports:

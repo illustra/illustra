@@ -1,5 +1,3 @@
-Transformations (https://illustra.apixel.me/assets/guides/transform-arrows.svg)
-
 # Transformations
 
 Transformations are a way to move layers around a document. Transformations include translating, rotating, resizing, reflecting, and aligning. This guide will cover all the transformations you can use with Illustra.

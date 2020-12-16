@@ -1,5 +1,3 @@
-Getting Started (https://illustra.apixel.me/assets/guides/star.svg)
-
 # Installation
 
 Illustra is distributed via [NPM](https://npm.org/package/illustra). You can install it with the NPM CLI tool or with Yarn. Illustra has TypeScript support built in.

@@ -1,5 +1,3 @@
-Clipping Masks (https://illustra.apixel.me/assets/guides/scissors.svg)
-
 # Clipping Masks
 
 Illustra's [`ClippingMask`s](https://illustra.apixel.me/docs/classes/ClippingMask) are a way to map the brightness of one layer to the transparency of another layer. A clipping mask layer is composed of two other layers: the mask and the source layer. The mask layer should contain the data for the brightnesses to be used, and the source layer is the layer that will have its transparency changed.
