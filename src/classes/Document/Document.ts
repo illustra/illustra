@@ -48,7 +48,7 @@ export default class Document {
      * This document's layers
      * The lower the layer's index, the lower the layer is in the stack
      */
-    layers: Array<Layer | ShapeLayer>;
+    layers: Array<Layer | TextLayer | ShapeLayer | ClippingMask>;
 
     /**
      * Debug Mode
@@ -186,12 +186,12 @@ export default class Document {
      *
      * Get a layer by name or index
      *
-     * @returns {Layer | ShapeLayer | undefined} The layer if found or `undefined`
+     * @returns {Layer | TextLayer | ShapeLayer | ClippingMask | undefined} The layer if found or `undefined`
      */
-    getLayer = (nameOrIndex: string | number): Layer | ShapeLayer | undefined => {
+    getLayer = (nameOrIndex: string | number): Layer | TextLayer | ShapeLayer | ClippingMask | undefined => {
 
         // Get by index
-        if (typeof nameOrIndex === "string") return this.layers.find((l: Layer | ShapeLayer) => l.name === nameOrIndex);
+        if (typeof nameOrIndex === "string") return this.layers.find((l: Layer | TextLayer | ShapeLayer | ClippingMask) => l.name === nameOrIndex);
 
         // Get by index
         else if (typeof nameOrIndex === "number") return this.layers[nameOrIndex];

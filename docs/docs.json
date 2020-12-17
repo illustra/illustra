@@ -2839,8 +2839,18 @@
 											},
 											{
 												"type": "reference",
+												"id": 216,
+												"name": "TextLayer"
+											},
+											{
+												"type": "reference",
 												"id": 84,
 												"name": "ShapeLayer"
+											},
+											{
+												"type": "reference",
+												"id": 677,
+												"name": "ClippingMask"
 											}
 										]
 									}
@@ -3514,8 +3524,18 @@
 											},
 											{
 												"type": "reference",
+												"id": 216,
+												"name": "TextLayer"
+											},
+											{
+												"type": "reference",
 												"id": 84,
 												"name": "ShapeLayer"
+											},
+											{
+												"type": "reference",
+												"id": 677,
+												"name": "ClippingMask"
 											},
 											{
 												"type": "intrinsic",
