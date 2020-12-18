@@ -129,7 +129,12 @@ export default class TextLayer extends Layer {
      * @param textData The data for the text
      * @param textData.text The text
      * @param textData.font The font to use
+     * @param textData.fontSize The font size to use
+     * @param textData.fontWeight The font weight to use
+     * @param textData.textAlign How the text should be aligned
      * @param textData.color The color of the text
+     * @param textData.lineHeight The line height to use
+     * @param textData.maxWidth The max width of the text
      *
      * @returns {Buffer} The image buffer
      */
