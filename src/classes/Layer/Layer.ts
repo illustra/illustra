@@ -9,6 +9,7 @@ import exportTo, { ExportTypes, Format, Output, PathOrWithMetadataOptions } from
 import grayscale from "./grayscale";
 import hue from "./hue";
 import invert from "./invert";
+import move from "./move";
 import reflect from "./reflect";
 import remove from "./remove";
 import resize from "./resize";
@@ -237,6 +238,19 @@ export default class Layer {
         // Add to document
         if (document) document.addLayer(this, layerData.position);
     }
+
+    /**
+     * Move
+     *
+     * Moves this layer to a specified position
+     *
+     * @param position The position index of the layer. The lower the index, the lower the layer is in the stack.
+     * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
+     * @param relative Whether or not the `position` is relative to the layer's current position
+     *
+     * @returns {number} The layer's new position
+     */
+    move = (position: number, relative?: boolean): number => move(this, position, relative);
 
     /**
      * Translate
