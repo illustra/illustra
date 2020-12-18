@@ -10,4 +10,5 @@ export default function remove(layer: Layer) {
 
     // Remove layer
     layer.document.layers.splice(layer.position, 1);
+    delete layer.document;
 }

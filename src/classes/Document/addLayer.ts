@@ -8,4 +8,5 @@ export default function addLayer(document: Document, layer: Layer, position?: nu
 
     // Add layer
     document.layers.splice(position || document.layers.length, 0, layer);
+    layer.document = document;
 }
