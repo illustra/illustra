@@ -3058,7 +3058,7 @@
 							"sources": [
 								{
 									"fileName": "classes/Document/Document.ts",
-									"line": 246,
+									"line": 253,
 									"character": 10
 								}
 							]
@@ -3097,6 +3097,9 @@
 											"flags": {
 												"isExported": true
 											},
+											"comment": {
+												"shortText": "The layer that should be added to this document"
+											},
 											"type": {
 												"type": "reference",
 												"id": 491,
@@ -3111,6 +3114,9 @@
 											"flags": {
 												"isExported": true,
 												"isOptional": true
+											},
+											"comment": {
+												"shortText": "The position index of the layer. The lower the index, the lower the layer is in the stack.\nOmit to add the layer to the top of the stack (highest index).\nPass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top\n"
 											},
 											"type": {
 												"type": "union",
@@ -3136,7 +3142,7 @@
 							"sources": [
 								{
 									"fileName": "classes/Document/Document.ts",
-									"line": 182,
+									"line": 187,
 									"character": 12
 								}
 							]
@@ -3558,7 +3564,7 @@
 							"sources": [
 								{
 									"fileName": "classes/Document/Document.ts",
-									"line": 230,
+									"line": 237,
 									"character": 12
 								}
 							]
@@ -3598,6 +3604,9 @@
 											"kindString": "Parameter",
 											"flags": {
 												"isExported": true
+											},
+											"comment": {
+												"shortText": "The name or index of the layer you'd like to get\n"
 											},
 											"type": {
 												"type": "union",
@@ -3648,7 +3657,7 @@
 							"sources": [
 								{
 									"fileName": "classes/Document/Document.ts",
-									"line": 191,
+									"line": 198,
 									"character": 12
 								}
 							]
@@ -3781,7 +3790,7 @@
 							"sources": [
 								{
 									"fileName": "classes/Document/Document.ts",
-									"line": 215,
+									"line": 222,
 									"character": 15
 								}
 							]
@@ -3836,7 +3845,7 @@
 							"sources": [
 								{
 									"fileName": "classes/Document/Document.ts",
-									"line": 237,
+									"line": 244,
 									"character": 16
 								}
 							]

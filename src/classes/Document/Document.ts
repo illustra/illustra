@@ -178,6 +178,11 @@ export default class Document {
      * Add Layer
      *
      * Add a layer to this document
+     *
+     * @param layer The layer that should be added to this document
+     * @param position The position index of the layer. The lower the index, the lower the layer is in the stack.
+     * Omit to add the layer to the top of the stack (highest index).
+     * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
      */
     addLayer = (layer: Layer, position?: number) => addLayer(this, layer, position);
 
@@ -185,6 +190,8 @@ export default class Document {
      * Get Layer
      *
      * Get a layer by name or index
+     *
+     * @param nameOrIndex The name or index of the layer you'd like to get
      *
      * @returns {Layer | TextLayer | ShapeLayer | ClippingMask | undefined} The layer if found or `undefined`
      */
