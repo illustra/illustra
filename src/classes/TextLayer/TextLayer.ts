@@ -1,7 +1,17 @@
 import { parseColor, Color } from "../../color";
 import Document from "../Document/Document";
 import Layer from "../Layer/Layer";
+import setColor from "./setColor";
+import setFont from "./setFont";
+import setFontSize from "./setFontSize";
+import setFontWeight from "./setFontWeight";
+import setLineHeight from "./setLineHeight";
+import setMaxWidth from "./setMaxWidth";
+import setText from "./setText";
+import setTextAlign from "./setTextAlign";
 import textBuffer from "./textBuffer";
+
+export const DEFAULT_FONT_SIZE = 24;
 
 export type TextAlign = "left" | "center" | "right" | "justify";
 
@@ -60,14 +70,14 @@ export default class TextLayer extends Layer {
      *
      * How the text should be aligned
      */
-    textAlign?: TextAlign;
+    textAlign: TextAlign;
 
     /**
      * Color
      *
      * The color of the text
      */
-    color?: string;
+    color: string;
 
     /**
      * Line Height
@@ -113,13 +123,101 @@ export default class TextLayer extends Layer {
         // Set data
         this.text = textLayerData.text.text;
         this.font = textLayerData.text.font;
-        this.fontSize = textLayerData.text.fontSize || 24;
+        this.fontSize = textLayerData.text.fontSize || DEFAULT_FONT_SIZE;
         this.fontWeight = textLayerData.text.fontWeight;
-        this.textAlign = textLayerData.text.textAlign;
-        if (textLayerData.text.color) this.color = parseColor(textLayerData.text.color);
+        this.textAlign = textLayerData.text.textAlign || "left";
+        this.color = parseColor(textLayerData.text.color || "#000000");
         this.lineHeight = textLayerData.text.lineHeight;
         this.maxWidth = textLayerData.text.maxWidth || document?.width || 400;
     }
+
+    /**
+     * Set Text
+     *
+     * Set the text of this text layer
+     *
+     * @param text The text
+     *
+     * @returns {TextLayer} This text layer
+     */
+    setText = (text: string): TextLayer => setText(this, text);
+
+    /**
+     * Set Font
+     *
+     * Set the font of this text layer
+     *
+     * @param font The font to use
+     *
+     * @returns {TextLayer} This text layer
+     */
+    setFont = (font?: string): TextLayer => setFont(this, font);
+
+    /**
+     * Set Font Size
+     *
+     * Set the font size of this text layer
+     *
+     * @param fontSize The font size to use
+     *
+     * @returns {TextLayer} This text layer
+     */
+    setFontSize = (fontSize?: number): TextLayer => setFontSize(this, fontSize);
+
+    /**
+     * Set Font Weight
+     *
+     * Set the font weight of this text layer
+     *
+     * @param fontWeight The font weight to use
+     *
+     * @returns {TextLayer} This text layer
+     */
+    setFontWeight = (fontWeight?: string): TextLayer => setFontWeight(this, fontWeight);
+
+    /**
+     * Set Text Align
+     *
+     * Set the text align of this text layer
+     *
+     * @param textAlign How the text should be aligned
+     *
+     * @returns {TextLayer} This text layer
+     */
+    setTextAlign = (textAlign?: TextAlign): TextLayer => setTextAlign(this, textAlign);
+
+    /**
+     * Set Color
+     *
+     * Set the color of this text layer
+     *
+     * @param color The color of the text
+     *
+     * @returns {TextLayer} This text layer
+     */
+    setColor = (color?: Color): TextLayer => setColor(this, color);
+
+    /**
+     * Set Line Height
+     *
+     * Set the line height of this text layer
+     *
+     * @param lineHeight The line height to use
+     *
+     * @returns {TextLayer} This text layer
+     */
+    setLineHeight = (lineHeight?: number): TextLayer => setLineHeight(this, lineHeight);
+
+    /**
+     * Set Max Width
+     *
+     * Set the max width of this text layer
+     *
+     * @param maxWidth The max width of the text
+     *
+     * @returns {TextLayer} This text layer
+     */
+    setMaxWidth = (maxWidth?: number): TextLayer => setMaxWidth(this, maxWidth);
 
     /**
      * Text Buffer

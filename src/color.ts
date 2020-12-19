@@ -12,5 +12,5 @@ export type Color = string | number | RGBA;
 export function parseColor(input: Color): string {
 
     // Return
-    return color(input).hex();
+    return color(input).hex().toLowerCase();
 }

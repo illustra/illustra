@@ -2,12 +2,12 @@ import canvas from "canvas";
 import sharp from "sharp";
 import textToImage, { GenerateOptions } from "text-to-image";
 import { parseColor } from "../../color";
-import { TextData } from "./TextLayer";
+import { DEFAULT_FONT_SIZE, TextData } from "./TextLayer";
 
 export default async function textBuffer(textData: TextData): Promise<Buffer> {
 
     // Default font size
-    if (!textData.fontSize) textData.fontSize = 24;
+    if (!textData.fontSize) textData.fontSize = DEFAULT_FONT_SIZE;
 
     // Register font
     let fontName: string | undefined = textData.font;
@@ -25,8 +25,8 @@ export default async function textBuffer(textData: TextData): Promise<Buffer> {
     if (fontName) options.fontFamily = `"${fontName}"`;
     options.fontSize = textData.fontSize;
     if (textData.fontWeight) options.fontWeight = textData.fontWeight;
-    if (textData.textAlign) options.textAlign = textData.textAlign;
-    if (textData.color) options.textColor = parseColor(textData.color);
+    options.textAlign = textData.textAlign || "left";
+    options.textColor = parseColor(textData.color || "#000000");
     options.lineHeight = textData.lineHeight || (textData.fontSize * 1.5);
     if (textData.maxWidth) options.maxWidth = textData.maxWidth;
 

@@ -8,7 +8,7 @@
     "author": "APixel Visuals",
     "scripts": {
         "build": "tsc",
-        "test": "jest",
+        "test": "jest --runInBand",
         "docs": "typedoc",
         "prepublish": "yarn build"
     },
