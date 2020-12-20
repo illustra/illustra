@@ -1,6 +1,13 @@
 import { parseColor, Color } from "../../color";
 import Document from "../Document/Document";
 import Layer from "../Layer/Layer";
+import setCornerRadius from "./setCornerRadius";
+import setFill from "./setFill";
+import setHeight from "./setHeight";
+import setSides from "./setSides";
+import setStroke from "./setStroke";
+import setStrokeWidth from "./setStrokeWidth";
+import setWidth from "./setWidth";
 import shapeSVG from "./shapeSVG";
 import toShapeData from "./toShapeData";
 
@@ -117,6 +124,83 @@ export default class ShapeLayer extends Layer {
         if (shapeLayerData.shape.stroke) this.stroke = parseColor(shapeLayerData.shape.stroke);
         this.strokeWidth = shapeLayerData.shape.strokeWidth;
     }
+
+    /**
+     * Set Width
+     *
+     * Set the width of this shape layer
+     *
+     * @param width The width of this shape
+     *
+     * @returns {ShapeLayer} This shape layer
+     */
+    setWidth = (width: number): ShapeLayer => setWidth(this, width);
+
+    /**
+     * Set Height
+     *
+     * Set the height of this shape layer
+     *
+     * @param height The height of this shape
+     *
+     * @returns {ShapeLayer} This shape layer
+     */
+    setHeight = (height: number): ShapeLayer => setHeight(this, height);
+
+    /**
+     * Set Sides
+     *
+     * Set the sides of this shape layer
+     *
+     * @param sides The number of sides this shape has if it's a polygon
+     *
+     * @returns {ShapeLayer} This shape layer
+     */
+    setSides = (sides?: number): ShapeLayer => setSides(this, sides);
+
+    /**
+     * Set Corner Radius
+     *
+     * Set the corner radius of this shape layer
+     *
+     * @param cornerRadius The radius of this shape's corners if it's a polygon
+     *
+     * @returns {ShapeLayer} This shape layer
+     */
+    setCornerRadius = (cornerRadius?: number): ShapeLayer => setCornerRadius(this, cornerRadius);
+
+    /**
+     * Set Fill
+     *
+     * Set the fill of this shape layer
+     *
+     * @param fill The color of this shape's fill
+     *
+     * @returns {ShapeLayer} This shape layer
+     */
+    setFill = (fill?: Color): ShapeLayer => setFill(this, fill);
+
+    /**
+     * Set Stroke
+     *
+     * Set the stroke of this shape layer
+     *
+     * @param stroke The color of this shape's stroke
+     *
+     * @returns {ShapeLayer} This shape layer
+     */
+    setStroke = (stroke?: Color): ShapeLayer => setStroke(this, stroke);
+
+    /**
+     * Set Stroke Width
+     *
+     * Set the stroke width of this shape layer
+     *
+     * @param strokeWidth The width of this shape's stroke in pixels
+     *
+     * @returns {ShapeLayer} This shape layer
+     */
+    setStrokeWidth = (strokeWidth?: number): ShapeLayer => setStrokeWidth(this, strokeWidth);
 
     /**
      * To Shape Data
