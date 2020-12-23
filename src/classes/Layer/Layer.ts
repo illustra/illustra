@@ -27,50 +27,7 @@ export default class Layer extends BaseLayer {
     constructor(layerData: BaseLayerData, document?: Document, inputData?: string | Buffer) {
 
         // Super
-        super(layerData, document);
-
-        // Set document
-        this.document = document;
-
-        // Parse input data
-        if (layerData.file) inputData = layerData.file;
-        else if (layerData.buffer) inputData = layerData.buffer;
-        else if (layerData.svg?.trim().startsWith("<svg")) inputData = Buffer.from(layerData.svg);
-
-        // Set data
-        this._inputData = inputData;
-        this.name = layerData.name;
-        this.top = layerData.top || 0;
-        this.left = layerData.left || 0;
-        this._edits = [];
-        this.opacity = 100;
-        this.blendMode = "normal";
-
-        // Set debug mode
-        this.setDebugMode(layerData.debugMode || false);
-
-        // Initialize
-        this._initialize = new Promise(async (resolve) => {
-
-            // No input data ie. for shape layers
-            if (!this._inputData) return resolve();
-
-            // Create sharp canvas
-            const canvas: sharp.Sharp = sharp(inputData);
-
-            // Get metadata
-            const metadata: sharp.Metadata = await canvas.metadata();
-
-            // Set data
-            this.width = metadata.width || 0;
-            this.height = metadata.height || 0;
-
-            // Resolve
-            resolve();
-        });
-
-        // Add to document
-        if (document) document.addLayer(this, layerData.position);
+        super(layerData, document, inputData);
     }
 
     /**
