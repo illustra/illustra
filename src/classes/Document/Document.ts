@@ -1,13 +1,16 @@
 import debug from "../../debug";
 import ClippingMask, { ClippingMaskData } from "../ClippingMask/ClippingMask";
+import Ellipse, { EllipseData } from "../Ellipse/Ellipse";
 import Layer, { LayerData } from "../Layer/Layer";
 import { ExportTypes, Format, Output, PathOrWithMetadataOptions } from "../Layer/exportTo";
-import ShapeLayer, { ShapeLayerData } from "../ShapeLayer/ShapeLayer";
+import Polygon, { PolygonData } from "../Polygon/Polygon";
+import ShapeLayer from "../ShapeLayer/ShapeLayer";
 import TextLayer, { TextLayerData } from "../TextLayer/TextLayer";
 import addLayer from "./addLayer";
 import createClippingMask from "./createClippingMask";
+import createEllipse from "./createEllipse";
 import createLayer from "./createLayer";
-import createShapeLayer from "./createShapeLayer";
+import createPolygon from "./createPolygon";
 import createTextLayer from "./createTextLayer";
 import exportTo from "./exportTo";
 import mergeLayers from "./mergeLayers";
@@ -102,32 +105,53 @@ export default class Document {
     createLayer = (layerData: LayerData): Promise<Layer> => createLayer(this, layerData);
 
     /**
-     * Create Shape Layer
+     * Create Polygon
      *
-     * Create a new shape layer
+     * Create a new polygon
      *
-     * @param shapeLayerData Data for the layer
-     * @param shapeLayerData.name The name of the layer
-     * @param shapeLayerData.shape The data for the shape
-     * @param shapeLayerData.shape.type The type of shape
-     * Either 'polygon' or 'ellipse'
-     * @param shapeLayerData.shape.width The width of this shape
-     * @param shapeLayerData.shape.height The height of this shape
-     * @param shapeLayerData.shape.sides The number of sides this shape has if it's a polygon
-     * @param shapeLayerData.shape.cornerRadius The radius of this shape's corners if it's a polygon
-     * @param shapeLayerData.shape.fill The color of this shape's fill
-     * @param shapeLayerData.shape.stroke The color of this shape's stroke
-     * @param shapeLayerData.shape.strokeWidth The width of this shape's stroke in pixels
-     * @param shapeLayerData.top The vertical offset from the top to place this layer
-     * @param shapeLayerData.left The horizontal offset from the left to place this layer
-     * @param shapeLayerData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
+     * @param polygonData Data for the layer
+     * @param polygonData.name The name of the layer
+     * @param polygonData.shape The data for the shape
+     * @param polygonData.shape.width The width of this shape
+     * @param polygonData.shape.height The height of this shape
+     * @param polygonData.shape.sides The number of sides this polygon has
+     * @param polygonData.shape.fill The color of this shape's fill
+     * @param polygonData.shape.stroke The color of this shape's stroke
+     * @param polygonData.shape.strokeWidth The width of this shape's stroke in pixels
+     * @param polygonData.top The vertical offset from the top to place this layer
+     * @param polygonData.left The horizontal offset from the left to place this layer
+     * @param polygonData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
-     * @param shapeLayerData.debugMode Set to `true` to log debug info to the console
+     * @param polygonData.debugMode Set to `true` to log debug info to the console
      *
-     * @returns {ShapeLayer} The created shape layer
+     * @returns {Polygon} The created polygon
      */
-    createShapeLayer = (shapeLayerData: ShapeLayerData): ShapeLayer => createShapeLayer(this, shapeLayerData);
+    createPolygon = (polygonData: PolygonData): Polygon => createPolygon(this, polygonData);
+
+    /**
+     * Create Ellipse
+     *
+     * Create a new ellipse
+     *
+     * @param ellipseData Data for the layer
+     * @param ellipseData.name The name of the layer
+     * @param ellipseData.shape The data for the shape
+     * @param ellipseData.shape.width The width of this shape
+     * @param ellipseData.shape.height The height of this shape
+     * @param ellipseData.shape.fill The color of this shape's fill
+     * @param ellipseData.shape.stroke The color of this shape's stroke
+     * @param ellipseData.shape.strokeWidth The width of this shape's stroke in pixels
+     * @param ellipseData.top The vertical offset from the top to place this layer
+     * @param ellipseData.left The horizontal offset from the left to place this layer
+     * @param ellipseData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
+     * Omit to add the layer to the top of the stack (highest index).
+     * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
+     * @param ellipseData.debugMode Set to `true` to log debug info to the console
+     *
+     * @returns {Ellipse} The created ellipse
+     */
+    createEllipse = (ellipseData: EllipseData): Ellipse => createEllipse(this, ellipseData);
 
     /**
      * Create Text Layer

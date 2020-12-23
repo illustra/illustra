@@ -1,9 +1,9 @@
 import fs from "fs";
-import { createClippingMask, createLayer, createShapeLayer, ClippingMask, Document, Layer, ShapeLayer } from "../../src/internal";
+import { createClippingMask, createEllipse, createLayer, ClippingMask, Document, Ellipse, Layer } from "../../src/internal";
 
 let document: Document;
 let logo: Layer;
-let mask: ShapeLayer;
+let mask: Ellipse;
 
 beforeEach(async () => {
 
@@ -29,10 +29,9 @@ beforeEach(async () => {
     logo.resize(500);
 
     // Create mask
-    mask = createShapeLayer({
+    mask = createEllipse({
         name: "mask",
         shape: {
-            type: "ellipse",
             width: 500,
             height: 500,
             fill: "#ffffff"

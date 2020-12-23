@@ -1,19 +1,15 @@
 import { parseColor, Color } from "../../color";
 import Document from "../Document/Document";
+import { EllipseData } from "../Ellipse/Ellipse";
 import Layer from "../Layer/Layer";
-import setCornerRadius from "./setCornerRadius";
+import { PolygonData } from "../Polygon/Polygon";
 import setFill from "./setFill";
 import setHeight from "./setHeight";
-import setSides from "./setSides";
 import setStroke from "./setStroke";
 import setStrokeWidth from "./setStrokeWidth";
 import setWidth from "./setWidth";
-import shapeSVG from "./shapeSVG";
-import toShapeData from "./toShapeData";
 
-export type Shape = "polygon" | "ellipse";
-
-export interface CommonShapeData {
+export interface ShapeData {
     width: number;
     height: number;
     fill?: Color;
@@ -21,21 +17,8 @@ export interface CommonShapeData {
     strokeWidth?: number;
 }
 
-export interface PolygonData extends CommonShapeData {
-    type: "polygon";
-    sides: number;
-    cornerRadius?: number;
-}
-
-export interface EllipseData extends CommonShapeData {
-    type: "ellipse";
-}
-
-export type ShapeData = PolygonData | EllipseData;
-
 export interface ShapeLayerData {
     name: string;
-    shape: ShapeData;
     top?: number;
     left?: number;
     position?: number;
@@ -43,27 +26,6 @@ export interface ShapeLayerData {
 }
 
 export default class ShapeLayer extends Layer {
-
-    /**
-     * Type
-     *
-     * The type of shape
-     */
-    type: Shape;
-
-    /**
-     * Sides
-     *
-     * The number of sides this shape has if it's a polygon
-     */
-    sides?: number;
-
-    /**
-     * Corner Radius
-     *
-     * The radius of this shape's corners if it's a polygon
-     */
-    cornerRadius?: number;
 
     /**
      * Fill
@@ -93,12 +55,8 @@ export default class ShapeLayer extends Layer {
      * @param shapeLayerData Data for the layer
      * @param shapeLayerData.name The name of the layer
      * @param shapeLayerData.shape The data for the shape
-     * @param shapeLayerData.shape.type The type of shape
-     * Either 'polygon' or 'ellipse'
      * @param shapeLayerData.shape.width The width of this shape
      * @param shapeLayerData.shape.height The height of this shape
-     * @param shapeLayerData.shape.sides The number of sides this shape has if it's a polygon
-     * @param shapeLayerData.shape.cornerRadius The radius of this shape's corners if it's a polygon
      * @param shapeLayerData.shape.fill The color of this shape's fill
      * @param shapeLayerData.shape.stroke The color of this shape's stroke
      * @param shapeLayerData.shape.strokeWidth The width of this shape's stroke in pixels
@@ -109,17 +67,14 @@ export default class ShapeLayer extends Layer {
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
      * @param shapeLayerData.debugMode Set to `true` to log debug info to the console
      */
-    constructor(shapeLayerData: ShapeLayerData, document?: Document) {
+    constructor(shapeLayerData: PolygonData | EllipseData, document?: Document) {
 
         // Super
         super(shapeLayerData, document);
 
         // Set data
-        this.type = shapeLayerData.shape.type;
         this.width = shapeLayerData.shape.width;
         this.height = shapeLayerData.shape.height;
-        if (shapeLayerData.shape.type === "polygon") this.sides = shapeLayerData.shape.sides;
-        if (shapeLayerData.shape.type === "polygon") this.cornerRadius = shapeLayerData.shape.cornerRadius;
         if (shapeLayerData.shape.fill) this.fill = parseColor(shapeLayerData.shape.fill);
         if (shapeLayerData.shape.stroke) this.stroke = parseColor(shapeLayerData.shape.stroke);
         this.strokeWidth = shapeLayerData.shape.strokeWidth;
@@ -146,28 +101,6 @@ export default class ShapeLayer extends Layer {
      * @returns {ShapeLayer} This shape layer
      */
     setHeight = (height: number): ShapeLayer => setHeight(this, height);
-
-    /**
-     * Set Sides
-     *
-     * Set the sides of this shape layer
-     *
-     * @param sides The number of sides this shape has if it's a polygon
-     *
-     * @returns {ShapeLayer} This shape layer
-     */
-    setSides = (sides?: number): ShapeLayer => setSides(this, sides);
-
-    /**
-     * Set Corner Radius
-     *
-     * Set the corner radius of this shape layer
-     *
-     * @param cornerRadius The radius of this shape's corners if it's a polygon
-     *
-     * @returns {ShapeLayer} This shape layer
-     */
-    setCornerRadius = (cornerRadius?: number): ShapeLayer => setCornerRadius(this, cornerRadius);
 
     /**
      * Set Fill
@@ -201,78 +134,4 @@ export default class ShapeLayer extends Layer {
      * @returns {ShapeLayer} This shape layer
      */
     setStrokeWidth = (strokeWidth?: number): ShapeLayer => setStrokeWidth(this, strokeWidth);
-
-    /**
-     * To Shape Data
-     *
-     * Creates a `ShapeData` object from this shape layer
-     *
-     * @returns {ShapeData} The `ShapeData` object
-     */
-    _toShapeData = (): ShapeData => toShapeData(this);
-
-    /**
-     * Shape SVG
-     *
-     * Creates an SVG string from `ShapeData`
-     *
-     * @param shapeData Data for the shape
-     * @param shapeData.type The type of shape
-     * Either 'polygon' or 'ellipse'
-     * @param shapeData.width The width of this shape
-     * @param shapeData.height The height of this shape
-     * @param shapeData.sides The number of sides this shape has if it's a polygon
-     * @param shapeData.cornerRadius The radius of this shape's corners if it's a polygon
-     * @param shapeData.fill The color of this shape's fill
-     * @param shapeData.stroke The color of this shape's stroke
-     * @param shapeData.strokeWidth The width of this shape's stroke in pixels
-     *
-     * @returns {string} The SVG string
-     */
-    static shapeSVG = (shapeData: ShapeData): string => shapeSVG(shapeData);
-
-    /**
-     * To SVG
-     *
-     * Creates an SVG string from this shape layer
-     *
-     * @returns {string} The SVG string
-     */
-    toSVG = (): string => ShapeLayer.shapeSVG(this._toShapeData());
-
-    /**
-     * Shape Buffer
-     *
-     * Creates an image buffer from `ShapeData`
-     *
-     * @param shapeData Data for the shape
-     * @param shapeData.type The type of shape
-     * Either 'polygon' or 'ellipse'
-     * @param shapeData.width The width of this shape
-     * @param shapeData.height The height of this shape
-     * @param shapeData.sides The number of sides this shape has if it's a polygon
-     * @param shapeData.cornerRadius The radius of this shape's corners if it's a polygon
-     * @param shapeData.fill The color of this shape's fill
-     * @param shapeData.stroke The color of this shape's stroke
-     * @param shapeData.strokeWidth The width of this shape's stroke in pixels
-     *
-     * @returns {Buffer} The image buffer
-     */
-    static shapeBuffer = (shapeData: ShapeData): Buffer => {
-
-        // Get svg code
-        const svgCode: string = ShapeLayer.shapeSVG(shapeData);
-
-        // Return buffer
-        return Buffer.from(svgCode);
-    }
-
-    /**
-     * To Buffer
-     *
-     * Creates an image buffer from this shape layer
-     *
-     * @returns {Buffer} The image buffer
-     */
-    toBuffer = (): Buffer => ShapeLayer.shapeBuffer(this._toShapeData());
 }

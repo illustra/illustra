@@ -1,6 +1,6 @@
 # Documents vs Layers
 
-[Documentshttps://illustra.apixel.me/docs/classes/Document can be thought of as canvases, they holds all the parts of the image together and let you organize everything. These documents are made up of [Layers](https://illustra.apixel.me/docs/classes/Layer), which hold the data to create the image. There are different kinds of layers, such as regular [Layers](https://illustra.apixel.me/docs/classes/Layer), [TextLayers](https://illustra.apixel.me/docs/classes/TextLayer), [ShapeLayers](https://illustra.apixel.me/docs/classes/ShapeLayer), and even [ClippingMasks](https://illustra.apixel.me/docs/classes/ClippingMask).
+[Documentshttps://illustra.apixel.me/docs/classes/Document can be thought of as canvases, they holds all the parts of the image together and let you organize everything. These documents are made up of [`Layer`s](https://illustra.apixel.me/docs/classes/Layer), which hold the data to create the image. There are different kinds of layers, such as regular [`Layer`s](https://illustra.apixel.me/docs/classes/Layer), [`TextLayer`s](https://illustra.apixel.me/docs/classes/TextLayer), [`Polygon`s](https://illustra.apixel.me/docs/classes/Polygon), [`Ellipse`s](https://illustra.apixel.me/docs/classes/Ellipse), and even [`ClippingMask`s](https://illustra.apixel.me/docs/classes/ClippingMask).
 
 ---
 
@@ -17,13 +17,13 @@ const document = new Document({
 });
 ```
 
-With a `Document`, you can use the [`createLayer`](https://illustra.apixel.me/docs/classes/Document#createLayer), [`createTextLayer`](https://illustra.apixel.me/docs/classes/Document#createTextLayer), [`createShapeLayer`](https://illustra.apixel.me/docs/classes/Document#createShapeLayer), and [`createClippingMask`](https://illustra.apixel.me/docs/classes/Document#createClippingMask) methods to create different types of layers.
+With a `Document`, you can use the [`createLayer`](https://illustra.apixel.me/docs/classes/Document#createLayer), [`createTextLayer`](https://illustra.apixel.me/docs/classes/Document#createTextLayer), [`createPolygon`](https://illustra.apixel.me/docs/classes/Document#createPolygon), [`createEllipse`](https://illustra.apixel.me/docs/classes/Document#createEllipse), and [`createClippingMask`](https://illustra.apixel.me/docs/classes/Document#createClippingMask) methods to create different types of layers.
 
 ---
 
 # Layers
 
-There are four types of layers: regular [Layers](https://illustra.apixel.me/docs/classes/Layer), [TextLayers](https://illustra.apixel.me/docs/classes/TextLayer), [ShapeLayers](https://illustra.apixel.me/docs/classes/ShapeLayer), and [ClippingMasks](https://illustra.apixel.me/docs/classes/ClippingMask). There are two ways to create each type of layer. You can either create it directly into a document, or on its own. Let's cover creating a layer into a document first:
+There are five types of layers: regular [`Layer`s](https://illustra.apixel.me/docs/classes/Layer), [`TextLayer`s](https://illustra.apixel.me/docs/classes/TextLayer), [`Polygon`s](https://illustra.apixel.me/docs/classes/Polygon), [`Ellipse`s](https://illustra.apixel.me/docs/classes/Ellipse), and [`ClippingMask`s](https://illustra.apixel.me/docs/classes/ClippingMask). There are two ways to create each type of layer. You can either create it directly into a document, or on its own. Let's cover creating a layer into a document first:
 
 ```js
 // Create layer

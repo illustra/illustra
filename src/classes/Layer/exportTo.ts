@@ -1,5 +1,5 @@
 import sharp from "sharp";
-import { ClippingMask, ShapeLayer, TextLayer } from "../../internal";
+import { ClippingMask, Ellipse, Polygon, TextLayer } from "../../internal";
 import Layer from "./Layer";
 
 export interface ExportMetadata {
@@ -50,8 +50,8 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
     // Define input data
     let inputData: string | Buffer | undefined = layer._inputData;
 
-    // Create image buffer from shape layer
-    if (layer instanceof ShapeLayer) inputData = layer.toBuffer();
+    // Create image buffer from polygons and ellipses
+    if ((layer instanceof Polygon) || (layer instanceof Ellipse)) inputData = layer.toBuffer();
 
     // Create image buffer from text layer
     if (layer instanceof TextLayer) inputData = await layer.toBuffer();

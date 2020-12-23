@@ -25,16 +25,20 @@ export {
     Units
 } from "./internal";
 
-// Shape Layer
-export type ShapeLayer = InstanceType<typeof illustra.ShapeLayer>;
+// Polygon
+export type Polygon = InstanceType<typeof illustra.Polygon>;
 export {
-    CommonShapeData,
-    createShapeLayer,
-    EllipseData,
-    PolygonData,
-    Shape,
-    ShapeData,
-    ShapeLayerData
+    createPolygon,
+    PolygonShapeData,
+    PolygonData
+} from "./internal";
+
+// Ellipse
+export type Ellipse = InstanceType<typeof illustra.Ellipse>;
+export {
+    createEllipse,
+    EllipseShapeData,
+    EllipseData
 } from "./internal";
 
 // Text Layer

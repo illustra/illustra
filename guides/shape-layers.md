@@ -1,16 +1,15 @@
-# Shape Layers
+# Polygons
 
-A [`ShapeLayer`](https://illustra.apixel.me/docs/classes/ShapeLayer) allows you to add shapes to your document. A shape layer's fill color, stroke color, and stroke width can be customized. There are two types of shapes that Illustra supports: polygons and ellipses. Let's go over creating a polygon:
+A [`Polygon`](https://illustra.apixel.me/docs/classes/Polygon) allows you to add polygons to your document. A polygon's fill color, stroke color, and stroke width can be customized. Let's go over creating a polygon:
 
 ```js
-// Create a polygon shape layer
-document.createShapeLayer({
+// Create a polygon
+document.createPolygon({
     name: "layerName",
     shape: {
-        type: "polygon",
-        sides: 5,
         width: 200,
         height: 200,
+        sides: 5,
         fill: "#574ae2",
         stroke: "#f63e70",
         strokeWidth: 5
@@ -18,14 +17,17 @@ document.createShapeLayer({
 });
 ```
 
-We can also create an ellipse:
+---
+
+# Ellipses
+
+Illustra also supports creating ellipses:
 
 ```js
-// Create an ellipse shape layer
-document.createShapeLayer({
+// Create an ellipse
+document.createEllipse({
     name: "layerName",
     shape: {
-        type: "ellipse",
         width: 200,
         height: 200,
         fill: "#574ae2",

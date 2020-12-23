@@ -21,10 +21,9 @@ beforeEach(async () => {
 test("creates a text layer", async () => {
 
     // Create shape so text is visible
-    document.createShapeLayer({
+    document.createEllipse({
         name: "shape",
         shape: {
-            type: "ellipse",
             width: 200,
             height: 50,
             fill: "#ffffff"

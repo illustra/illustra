@@ -7,9 +7,13 @@ export { default as createLayer } from "./createLayer";
 export { AlignOptions, AlignType, Units } from "./classes/Layer/align";
 export { ExportMetadata, ExportTypes, Format, PathOrWithMetadataOptions } from "./classes/Layer/exportTo";
 
-// Shape Layer
-export { default as ShapeLayer, CommonShapeData, EllipseData, PolygonData, Shape, ShapeData, ShapeLayerData } from "./classes/ShapeLayer/ShapeLayer";
-export { default as createShapeLayer } from "./createShapeLayer";
+// Polygon
+export { default as Polygon, PolygonShapeData, PolygonData } from "./classes/Polygon/Polygon";
+export { default as createPolygon } from "./createPolygon";
+
+// Ellipse
+export { default as Ellipse, EllipseShapeData, EllipseData } from "./classes/Ellipse/Ellipse";
+export { default as createEllipse } from "./createEllipse";
 
 // Text Layer
 export { default as TextLayer, TextAlign, TextData, TextLayerData } from "./classes/TextLayer/TextLayer";
