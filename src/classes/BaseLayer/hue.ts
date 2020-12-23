@@ -1,6 +1,6 @@
-import Layer from "./Layer";
+import { AnyLayer } from "./BaseLayer";
 
-export default function hue(layer: Layer, degrees: number): Layer {
+export default function hue<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, degrees: number): AnyLayerInput {
 
     // Debug
     layer._debug(`Rotating hue by ${degrees} degrees`);

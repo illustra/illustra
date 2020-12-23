@@ -1,6 +1,6 @@
-import Layer from "./Layer";
+import { AnyLayer } from "./BaseLayer";
 
-export default function resize(layer: Layer, width?: number | null, height?: number | null): Layer {
+export default function resize<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, width?: number | null, height?: number | null): AnyLayerInput {
 
     // Get original width and height
     const originalWidth: number = layer.width;

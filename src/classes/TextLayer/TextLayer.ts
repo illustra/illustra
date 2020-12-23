@@ -1,6 +1,6 @@
 import { parseColor, Color } from "../../color";
+import BaseLayer from "../BaseLayer/BaseLayer";
 import Document from "../Document/Document";
-import Layer from "../Layer/Layer";
 import setColor from "./setColor";
 import setFont from "./setFont";
 import setFontSize from "./setFontSize";
@@ -35,7 +35,7 @@ export interface TextLayerData {
     debugMode?: boolean;
 }
 
-export default class TextLayer extends Layer {
+export default class TextLayer extends BaseLayer {
 
     /**
      * Text

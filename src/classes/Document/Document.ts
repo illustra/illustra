@@ -1,10 +1,10 @@
 import debug from "../../debug";
+import { AnyLayer } from "../BaseLayer/BaseLayer";
+import { ExportTypes, Format, Output, PathOrWithMetadataOptions } from "../BaseLayer/exportTo";
 import ClippingMask, { ClippingMaskData } from "../ClippingMask/ClippingMask";
 import Ellipse, { EllipseData } from "../Ellipse/Ellipse";
 import Layer, { LayerData } from "../Layer/Layer";
-import { ExportTypes, Format, Output, PathOrWithMetadataOptions } from "../Layer/exportTo";
 import Polygon, { PolygonData } from "../Polygon/Polygon";
-import ShapeLayer from "../ShapeLayer/ShapeLayer";
 import TextLayer, { TextLayerData } from "../TextLayer/TextLayer";
 import addLayer from "./addLayer";
 import createClippingMask from "./createClippingMask";
@@ -51,7 +51,7 @@ export default class Document {
      * This document's layers
      * The lower the layer's index, the lower the layer is in the stack
      */
-    layers: Array<Layer | TextLayer | ShapeLayer | ClippingMask>;
+    layers: AnyLayer[];
 
     /**
      * Debug Mode
@@ -208,7 +208,7 @@ export default class Document {
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
      */
-    addLayer = (layer: Layer, position?: number) => addLayer(this, layer, position);
+    addLayer = <AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, position?: number) => addLayer(this, layer, position);
 
     /**
      * Get Layer
@@ -217,12 +217,12 @@ export default class Document {
      *
      * @param nameOrIndex The name or index of the layer you'd like to get
      *
-     * @returns {Layer | TextLayer | ShapeLayer | ClippingMask | undefined} The layer if found or `undefined`
+     * @returns {AnyLayer | undefined} The layer if found or `undefined`
      */
-    getLayer = (nameOrIndex: string | number): Layer | TextLayer | ShapeLayer | ClippingMask | undefined => {
+    getLayer = (nameOrIndex: string | number): AnyLayer | undefined => {
 
         // Get by index
-        if (typeof nameOrIndex === "string") return this.layers.find((l: Layer | TextLayer | ShapeLayer | ClippingMask) => l.name === nameOrIndex);
+        if (typeof nameOrIndex === "string") return this.layers.find((l: AnyLayer) => l.name === nameOrIndex);
 
         // Get by index
         else if (typeof nameOrIndex === "number") return this.layers[nameOrIndex];
@@ -243,7 +243,7 @@ export default class Document {
      *
      * @returns {Layer} The new layer
      */
-    mergeLayers = (name: string, layers?: Array<Layer | string | number>, copy?: boolean): Promise<Layer> => mergeLayers(this, name, layers, copy);
+    mergeLayers = (name: string, layers?: Array<AnyLayer | string | number>, copy?: boolean): Promise<Layer> => mergeLayers(this, name, layers, copy);
 
     /**
      * Export To

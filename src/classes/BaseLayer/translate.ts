@@ -1,6 +1,6 @@
-import Layer from "./Layer";
+import { AnyLayer } from "./BaseLayer";
 
-export default function translate(layer: Layer, top: number = 0, left: number = 0): Layer {
+export default function translate<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, top: number = 0, left: number = 0): AnyLayerInput {
 
     // Debug
     layer._debug(`Translating to ${top}px (top) and ${left}px (left)`);

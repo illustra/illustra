@@ -1,6 +1,6 @@
-import Layer from "./Layer";
+import { AnyLayer } from "./BaseLayer";
 
-export default function blur(layer: Layer, sigma: number): Layer {
+export default function blur<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, sigma: number): AnyLayerInput {
 
     // Debug
     layer._debug(`Blurring with a sigma of ${sigma}`);

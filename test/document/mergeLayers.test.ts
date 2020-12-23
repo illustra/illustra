@@ -1,5 +1,5 @@
 import fs from "fs";
-import { Document, Layer } from "../../src/internal";
+import { AnyLayer, Document, Layer } from "../../src/internal";
 
 let document: Document;
 
@@ -62,14 +62,14 @@ test("merges layers", async () => {
     await document.mergeLayers("mergedCopy", [apixelLogo, typescriptLogo], true);
 
     // Expect layer order
-    let layers: string[] = document.layers.map((l: Layer) => l.name);
+    let layers: string[] = document.layers.map((l: AnyLayer) => l.name);
     expect(layers).toStrictEqual(["background", "apixelLogo", "typescriptLogo", "mergedCopy", "javascriptLogo"]);
 
     // Merge layers
     const mergedLayer: Layer = await document.mergeLayers("merged", [apixelLogo, typescriptLogo]);
 
     // Expect layer order
-    layers = document.layers.map((l: Layer) => l.name);
+    layers = document.layers.map((l: AnyLayer) => l.name);
     expect(layers).toStrictEqual(["background", "merged", "mergedCopy", "javascriptLogo"]);
 
     // Export layer

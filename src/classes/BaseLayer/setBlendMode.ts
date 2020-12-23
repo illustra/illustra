@@ -1,6 +1,6 @@
-import Layer, { BlendMode } from "./Layer";
+import { AnyLayer, BlendMode } from "./BaseLayer";
 
-export default function setBlendMode(layer: Layer, blendMode?: BlendMode | null): Layer {
+export default function setBlendMode<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, blendMode?: BlendMode | null): AnyLayerInput {
 
     // Default blend mode
     if (!blendMode) blendMode = "normal";

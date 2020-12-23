@@ -1,5 +1,5 @@
+import { ExportTypes, Format, Output, PathOrWithMetadataOptions } from "../BaseLayer/exportTo";
 import Layer from "../Layer/Layer";
-import { ExportTypes, Format, Output, PathOrWithMetadataOptions } from "../Layer/exportTo";
 import Document from "./Document";
 
 export default async function exportTo<ExportType extends ExportTypes, PathOrWithMetadata extends PathOrWithMetadataOptions = false>(document: Document, format: Format, exportType: ExportType, pathOrWithMetadata?: PathOrWithMetadata): Promise<Output<ExportType, PathOrWithMetadata>> {

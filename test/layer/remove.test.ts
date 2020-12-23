@@ -1,4 +1,4 @@
-import { createLayer, Document, Layer } from "../../src/internal";
+import { createLayer, AnyLayer, Document, Layer } from "../../src/internal";
 
 test("removes a layer", async () => {
 
@@ -33,6 +33,6 @@ test("removes a layer", async () => {
     logo.remove();
 
     // Expect layer order
-    let layers: string[] = document.layers.map((l: Layer) => l.name);
+    let layers: string[] = document.layers.map((l: AnyLayer) => l.name);
     expect(layers).toStrictEqual(["background"]);
 });

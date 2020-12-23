@@ -1,6 +1,6 @@
-import Layer from "./Layer";
+import { AnyLayer } from "./BaseLayer";
 
-export default function brightness(layer: Layer, amount: number): Layer {
+export default function brightness<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, amount: number): AnyLayerInput {
 
     // Debug
     layer._debug(`Brightening image by ${amount}`);

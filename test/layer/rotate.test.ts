@@ -1,7 +1,7 @@
 import fs from "fs";
 import { Document, Layer } from "../../src/internal";
 
-test("resizes a layer while preserving aspect ratio", async () => {
+test("rotates a layer", async () => {
 
     // Create document
     const document: Document = new Document({

@@ -1,6 +1,6 @@
-import Layer from "./Layer";
+import { AnyLayer } from "./BaseLayer";
 
-export default function setOpacity(layer: Layer, opacity: number): Layer {
+export default function setOpacity<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, opacity: number): AnyLayerInput {
 
     // Debug
     layer._debug(`Setting opacity to ${opacity}%`);

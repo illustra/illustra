@@ -1,6 +1,6 @@
-import Layer from "./Layer";
+import { AnyLayer } from "./BaseLayer";
 
-export default function saturation(layer: Layer, amount: number): Layer {
+export default function saturation<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, amount: number): AnyLayerInput {
 
     // Debug
     layer._debug(`Saturating image by ${amount}`);

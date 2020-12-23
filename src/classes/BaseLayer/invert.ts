@@ -1,6 +1,6 @@
-import Layer from "./Layer";
+import { AnyLayer } from "./BaseLayer";
 
-export default function invert(layer: Layer): Layer {
+export default function invert<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput): AnyLayerInput {
 
     // Debug
     layer._debug("Inverting");

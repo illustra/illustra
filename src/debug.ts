@@ -1,11 +1,11 @@
 import { terminal } from "terminal-kit";
+import BaseLayer from "./classes/BaseLayer/BaseLayer";
 import Document from "./classes/Document/Document";
-import Layer from "./classes/Layer/Layer";
 
-export default function debug(info: string, documentOrLayer: Document | Layer) {
+export default function debug(info: string, documentOrBaseLayer: Document | BaseLayer) {
 
     // Debug mode not enabled
-    if ((!documentOrLayer.debugMode) && ((!(documentOrLayer instanceof Layer)) || (!documentOrLayer.document?.debugMode))) return;
+    if ((!documentOrBaseLayer.debugMode) && ((!(documentOrBaseLayer instanceof BaseLayer)) || (!documentOrBaseLayer.document?.debugMode))) return;
 
     // Illustra name and spacing
     terminal.bold.brightYellow("[Illustra] ").magenta("[Debug] ");
@@ -17,9 +17,9 @@ export default function debug(info: string, documentOrLayer: Document | Layer) {
      * If it's a layer that's part of a document, log both names
      * If it's a layer that isn't part of a document, log the layer's name
      */
-    if (documentOrLayer instanceof Document) terminal.cyan(`${documentOrLayer.name}: `);
-    else if (documentOrLayer.document) terminal.cyan(`${documentOrLayer.document.name} (${documentOrLayer.name}): `);
-    else terminal.cyan(`${documentOrLayer.name} (Layer): `);
+    if (documentOrBaseLayer instanceof Document) terminal.cyan(`${documentOrBaseLayer.name}: `);
+    else if (documentOrBaseLayer.document) terminal.cyan(`${documentOrBaseLayer.document.name} (${documentOrBaseLayer.name}): `);
+    else terminal.cyan(`${documentOrBaseLayer.name} (Layer): `);
 
     // Log
     terminal(info, "\n");

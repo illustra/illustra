@@ -1,6 +1,6 @@
 import sharp from "sharp";
 import { ClippingMask, Ellipse, Polygon, TextLayer } from "../../internal";
-import Layer from "./Layer";
+import BaseLayer from "./BaseLayer";
 
 export interface ExportMetadata {
     data: Buffer;
@@ -36,7 +36,7 @@ export type PathOrWithMetadataOptions = string | boolean;
  */
 export type Output<ExportType, PathOrWithMetadata> = ExportType extends "file" ? undefined : (PathOrWithMetadata extends true ? ExportMetadata : Buffer);
 
-export default async function exportTo<ExportType extends ExportTypes, PathOrWithMetadata extends PathOrWithMetadataOptions = false>(layer: Layer, format: Format, exportType: ExportType, pathOrWithMetadata?: PathOrWithMetadata): Promise<Output<ExportType, PathOrWithMetadata>> {
+export default async function exportTo<ExportType extends ExportTypes, PathOrWithMetadata extends PathOrWithMetadataOptions = false>(baseLayer: BaseLayer, format: Format, exportType: ExportType, pathOrWithMetadata?: PathOrWithMetadata): Promise<Output<ExportType, PathOrWithMetadata>> {
 
     // Invalid format
     if (!["png", "jpeg", "webp", "gif", "tiff", "heif", "raw", "tile"].includes(format)) throw new Error("Invalid format");
@@ -45,26 +45,26 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
     if (!["file", "buffer"].includes(exportType)) throw new Error("Invalid export type");
 
     // Debug
-    layer._debug(`Exporting as ${exportType}${exportType === "file" ? ` to ${pathOrWithMetadata}` : ""}`);
+    baseLayer._debug(`Exporting as ${exportType}${exportType === "file" ? ` to ${pathOrWithMetadata}` : ""}`);
 
     // Define input data
-    let inputData: string | Buffer | undefined = layer._inputData;
+    let inputData: string | Buffer | undefined = baseLayer._inputData;
 
     // Create image buffer from polygons and ellipses
-    if ((layer instanceof Polygon) || (layer instanceof Ellipse)) inputData = layer.toBuffer();
+    if ((baseLayer instanceof Polygon) || (baseLayer instanceof Ellipse)) inputData = baseLayer.toBuffer();
 
     // Create image buffer from text layer
-    if (layer instanceof TextLayer) inputData = await layer.toBuffer();
+    if (baseLayer instanceof TextLayer) inputData = await baseLayer.toBuffer();
 
     // Create image buffer from clipping mask
-    if (layer instanceof ClippingMask) inputData = await layer.toBuffer();
+    if (baseLayer instanceof ClippingMask) inputData = await baseLayer.toBuffer();
 
     // Create sharp canvas
     // Careful, it's sharp
     let canvas: sharp.Sharp = sharp(inputData);
 
     // Edits
-    for (let edit of layer._edits) {
+    for (let edit of baseLayer._edits) {
 
         // Rotate
         if (edit.type === "rotate") canvas.rotate(edit.degrees, {
@@ -100,10 +100,10 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
     }
 
     // Opacity
-    if (layer.opacity !== 100) canvas.joinChannel(Buffer.alloc(layer.width * layer.height, 255 * (layer.opacity / 100)), {
+    if (baseLayer.opacity !== 100) canvas.joinChannel(Buffer.alloc(baseLayer.width * baseLayer.height, 255 * (baseLayer.opacity / 100)), {
         raw: {
-            width: layer.width,
-            height: layer.height,
+            width: baseLayer.width,
+            height: baseLayer.height,
             channels: 1
         }
     });

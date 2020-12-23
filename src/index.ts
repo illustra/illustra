@@ -10,19 +10,25 @@ export {
     DocumentData
 } from "./internal";
 
-// Layer
-export type Layer = InstanceType<typeof illustra.Layer>;
+// Base Layer
+export type BaseLayer = InstanceType<typeof illustra.BaseLayer>;
 export {
     AlignOptions,
     AlignType,
+    AnyLayer,
     BlendMode,
-    createLayer,
     ExportMetadata,
     ExportTypes,
     Format,
-    LayerData,
     PathOrWithMetadataOptions,
     Units
+} from "./internal";
+
+// Layer
+export type Layer = InstanceType<typeof illustra.Layer>;
+export {
+    createLayer,
+    LayerData
 } from "./internal";
 
 // Polygon

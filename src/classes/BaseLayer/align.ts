@@ -1,4 +1,4 @@
-import Layer from "./Layer";
+import { AnyLayer } from "./BaseLayer";
 
 export type AlignType = "start" | "center" | "end";
 
@@ -13,7 +13,7 @@ export interface AlignOptions {
     leftOffsetUnits?: Units;
 }
 
-export default function align(layer: Layer, alignOptions: AlignOptions = {}): Layer {
+export default function align<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, alignOptions: AlignOptions = {}): AnyLayerInput {
 
     // No document
     if (!layer.document) throw new Error("This layer isn't a part of a document");

@@ -1,4 +1,4 @@
-import { createLayer, Document, Layer } from "../../src/internal";
+import { createLayer, AnyLayer, Document, Layer } from "../../src/internal";
 
 let document: Document;
 let logo: Layer;
@@ -39,7 +39,7 @@ test("moves a layer", async () => {
     logo.move(0);
 
     // Expect layer order
-    let layers: string[] = document.layers.map((l: Layer) => l.name);
+    let layers: string[] = document.layers.map((l: AnyLayer) => l.name);
     expect(layers).toStrictEqual(["logo", "background"]);
 });
 
@@ -49,6 +49,6 @@ test("moves a layer relatively", async () => {
     logo.move(-1, true);
 
     // Expect layer order
-    let layers: string[] = document.layers.map((l: Layer) => l.name);
+    let layers: string[] = document.layers.map((l: AnyLayer) => l.name);
     expect(layers).toStrictEqual(["logo", "background"]);
 });

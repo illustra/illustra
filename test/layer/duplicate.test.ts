@@ -1,4 +1,4 @@
-import { Document, Layer } from "../../src/internal";
+import { AnyLayer, Document, Layer } from "../../src/internal";
 
 test("duplicates a layer", async () => {
 
@@ -27,6 +27,6 @@ test("duplicates a layer", async () => {
     await logo.duplicate();
 
     // Expect layer order
-    let layers: string[] = document.layers.map((l: Layer) => l.name);
+    let layers: string[] = document.layers.map((l: AnyLayer) => l.name);
     expect(layers).toStrictEqual(["background", "logo", "logo", "duplicate"]);
 });

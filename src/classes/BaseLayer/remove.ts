@@ -1,6 +1,6 @@
-import Layer from "./Layer";
+import { AnyLayer } from "./BaseLayer";
 
-export default function remove(layer: Layer) {
+export default function remove<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput) {
 
     // Debug
     layer._debug("Removing");

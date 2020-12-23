@@ -1,7 +1,7 @@
 import { parseColor, Color } from "../../color";
+import BaseLayer from "../BaseLayer/BaseLayer";
 import Document from "../Document/Document";
 import { EllipseData } from "../Ellipse/Ellipse";
-import Layer from "../Layer/Layer";
 import { PolygonData } from "../Polygon/Polygon";
 import setFill from "./setFill";
 import setHeight from "./setHeight";
@@ -25,7 +25,7 @@ export interface ShapeLayerData {
     debugMode?: boolean;
 }
 
-export default class ShapeLayer extends Layer {
+export default class ShapeLayer extends BaseLayer {
 
     /**
      * Fill

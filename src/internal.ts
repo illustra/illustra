@@ -1,11 +1,14 @@
 // Document
 export { default as Document, DocumentData } from "./classes/Document/Document";
 
+// Base Layer
+export { default as BaseLayer, AnyLayer, BlendMode, BaseLayerData } from "./classes/BaseLayer/BaseLayer";
+export { AlignOptions, AlignType, Units } from "./classes/BaseLayer/align";
+export { ExportMetadata, ExportTypes, Format, PathOrWithMetadataOptions } from "./classes/BaseLayer/exportTo";
+
 // Layer
-export { default as Layer, BlendMode, LayerData } from "./classes/Layer/Layer";
+export { default as Layer, LayerData } from "./classes/Layer/Layer";
 export { default as createLayer } from "./createLayer";
-export { AlignOptions, AlignType, Units } from "./classes/Layer/align";
-export { ExportMetadata, ExportTypes, Format, PathOrWithMetadataOptions } from "./classes/Layer/exportTo";
 
 // Polygon
 export { default as Polygon, PolygonShapeData, PolygonData } from "./classes/Polygon/Polygon";

@@ -1,30 +1,30 @@
+import BaseLayer, { AnyLayer } from "../BaseLayer/BaseLayer";
 import Document from "../Document/Document";
-import Layer from "../Layer/Layer";
 import toBuffer from "./toBuffer";
 
 export interface ClippingMaskData {
     name: string;
-    mask: Layer;
-    source: Layer;
+    mask: AnyLayer;
+    source: AnyLayer;
     position?: number;
     debugMode?: boolean;
 }
 
-export default class ClippingMask extends Layer {
+export default class ClippingMask extends BaseLayer {
 
     /**
      * Mask
      *
      * The layer that the source will clip to
      */
-    mask: Layer;
+    mask: AnyLayer;
 
     /**
      * Source
      *
      * The layer that will get clipped to the mask
      */
-    source: Layer;
+    source: AnyLayer;
 
     /**
      * Mask

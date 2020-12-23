@@ -1,6 +1,6 @@
-import Layer from "./Layer";
+import { AnyLayer } from "./BaseLayer";
 
-export default function resizeBy(layer: Layer, width?: number | null, height?: number | null, scale?: boolean): Layer {
+export default function resizeBy<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, width?: number | null, height?: number | null, scale?: boolean): AnyLayerInput {
 
     // Debug
     const units: string = scale ? "%" : "px";
