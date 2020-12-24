@@ -1,4 +1,4 @@
-import ClippingMask, { ClippingMaskData } from "./classes/ClippingMask/ClippingMask";
+import { ClippingMask, ClippingMaskData } from "./internal";
 
 export default function createClippingMask(clippingMaskData: ClippingMaskData): ClippingMask {
 

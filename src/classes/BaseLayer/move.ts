@@ -1,6 +1,6 @@
 import { AnyLayer } from "./BaseLayer";
 
-export default function move<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, position: number, relative?: boolean): number {
+export default function move(layer: AnyLayer, position: number, relative?: boolean): number {
 
     // Get position
     if (relative) position = layer.position + position;

@@ -1,6 +1,6 @@
 import sharp from "sharp";
 import debug from "../../debug";
-import ClippingMask from "../ClippingMask/ClippingMask";
+import { ClippingMask } from "../../internal";
 import Document from "../Document/Document";
 import Ellipse from "../Ellipse/Ellipse";
 import Layer from "../Layer/Layer";
@@ -9,6 +9,7 @@ import TextLayer from "../TextLayer/TextLayer";
 import align, { AlignOptions } from "./align";
 import blur from "./blur";
 import brightness from "./brightness";
+import circularMask from "./circularMask";
 import exportTo, { ExportTypes, Format, Output, PathOrWithMetadataOptions } from "./exportTo";
 import grayscale from "./grayscale";
 import hue from "./hue";
@@ -444,6 +445,19 @@ export default class BaseLayer {
      * @returns {this} This layer
      */
     blur = (sigma: number): this => blur(this, sigma);
+
+    /**
+     * Circular Mask
+     *
+     * Add a circular mask to this layer
+     *
+     * @param name The name of the clipping mask
+     * @param keepSource Pass `true` to keep this layer in addition to the `ClippingMask`
+     * Omit or pass `false` to remove this layer from its document
+     *
+     * @returns {ClippingMask} The clipping mask
+     */
+    circularMask = (name: string, keepSource?: boolean): ClippingMask => circularMask(this, name, keepSource);
 
     /**
      * Remove

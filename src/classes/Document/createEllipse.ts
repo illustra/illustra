@@ -1,4 +1,4 @@
-import Ellipse, { EllipseData } from "../Ellipse/Ellipse";
+import { Ellipse, EllipseData } from "../../internal";
 import Document from "./Document";
 
 export default function createEllipse(document: Document, ellipseData: EllipseData): Ellipse {

@@ -208,7 +208,7 @@ export default class Document {
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
      */
-    addLayer = <AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, position?: number) => addLayer(this, layer, position);
+    addLayer = (layer: AnyLayer, position?: number) => addLayer(this, layer, position);
 
     /**
      * Get Layer

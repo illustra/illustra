@@ -1,7 +1,7 @@
 import { AnyLayer } from "../BaseLayer/BaseLayer";
 import Document from "./Document";
 
-export default function addLayer<AnyLayerInput extends AnyLayer>(document: Document, layer: AnyLayerInput, position?: number) {
+export default function addLayer(document: Document, layer: AnyLayer, position?: number) {
 
     // Debug
     layer._debug(`Adding layer to '${document.name}' at position ${position || document.layers.length}`);

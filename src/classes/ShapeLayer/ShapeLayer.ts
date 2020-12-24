@@ -1,5 +1,5 @@
 import { parseColor, Color } from "../../color";
-import BaseLayer from "../BaseLayer/BaseLayer";
+import { BaseLayer } from "../../internal";
 import Document from "../Document/Document";
 import { EllipseData } from "../Ellipse/Ellipse";
 import { PolygonData } from "../Polygon/Polygon";

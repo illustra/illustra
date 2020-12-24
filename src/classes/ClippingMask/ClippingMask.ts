@@ -1,4 +1,4 @@
-import BaseLayer, { AnyLayer } from "../BaseLayer/BaseLayer";
+import { AnyLayer, BaseLayer } from "../../internal";
 import Document from "../Document/Document";
 import toBuffer from "./toBuffer";
 

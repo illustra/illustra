@@ -10,6 +10,9 @@ export { ExportMetadata, ExportTypes, Format, PathOrWithMetadataOptions } from "
 export { default as Layer, LayerData } from "./classes/Layer/Layer";
 export { default as createLayer } from "./createLayer";
 
+// Shape Layer
+export { default as ShapeLayer, ShapeData, ShapeLayerData } from "./classes/ShapeLayer/ShapeLayer";
+
 // Polygon
 export { default as Polygon, PolygonShapeData, PolygonData } from "./classes/Polygon/Polygon";
 export { default as createPolygon } from "./createPolygon";

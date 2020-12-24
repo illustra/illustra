@@ -20,7 +20,7 @@ beforeAll(async () => {
 test("gets a layer by name", () => {
 
     // Get layer
-    const layer: Layer | undefined = document.getLayer("background");
+    const layer: Layer | undefined = document.getLayer("background") as Layer | undefined;
 
     // Expect
     expect(layer).toBeDefined();
@@ -29,7 +29,7 @@ test("gets a layer by name", () => {
 test("gets a layer by index", () => {
 
     // Get layer
-    const layer: Layer | undefined = document.getLayer(0);
+    const layer: Layer | undefined = document.getLayer(0) as Layer | undefined;
 
     // Expect
     expect(layer).toBeDefined();
