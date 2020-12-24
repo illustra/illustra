@@ -1,6 +1,6 @@
 import sharp from "sharp";
+import { ClippingMask } from "../../internal";
 import { ExportMetadata } from "../BaseLayer/exportTo";
-import ClippingMask from "./ClippingMask";
 
 export default async function toBuffer(clippingMask: ClippingMask): Promise<Buffer> {
 

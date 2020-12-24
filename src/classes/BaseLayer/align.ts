@@ -1,4 +1,4 @@
-import { AnyLayer } from "./BaseLayer";
+import { AnyLayer } from "../../internal";
 
 export type AlignType = "start" | "center" | "end";
 

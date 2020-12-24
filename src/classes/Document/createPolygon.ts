@@ -1,5 +1,4 @@
-import { Polygon, PolygonData } from "../../internal";
-import Document from "./Document";
+import { Document, Polygon, PolygonData } from "../../internal";
 
 export default function createPolygon(document: Document, polygonData: PolygonData): Polygon {
 

@@ -1,6 +1,4 @@
-import createClippingMask from "../../createClippingMask";
-import createEllipse from "../../createEllipse";
-import { AnyLayer, ClippingMask } from "../../internal";
+import { createClippingMask, createEllipse, AnyLayer, ClippingMask } from "../../internal";
 
 export default function circularMask(layer: AnyLayer, name: string, keepSource?: boolean): ClippingMask {
 

@@ -1,4 +1,4 @@
-import Layer from "./Layer";
+import { Layer } from "../../internal";
 
 export default async function duplicate(layer: Layer, name?: string, position?: number, debugMode?: boolean): Promise<Layer> {
 

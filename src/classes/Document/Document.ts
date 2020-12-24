@@ -1,11 +1,6 @@
 import debug from "../../debug";
-import { AnyLayer } from "../BaseLayer/BaseLayer";
+import { AnyLayer, ClippingMask, ClippingMaskData, Ellipse, EllipseData, Layer, LayerData, Polygon, PolygonData, TextLayer, TextLayerData } from "../../internal";
 import { ExportTypes, Format, Output, PathOrWithMetadataOptions } from "../BaseLayer/exportTo";
-import ClippingMask, { ClippingMaskData } from "../ClippingMask/ClippingMask";
-import Ellipse, { EllipseData } from "../Ellipse/Ellipse";
-import Layer, { LayerData } from "../Layer/Layer";
-import Polygon, { PolygonData } from "../Polygon/Polygon";
-import TextLayer, { TextLayerData } from "../TextLayer/TextLayer";
 import addLayer from "./addLayer";
 import createClippingMask from "./createClippingMask";
 import createEllipse from "./createEllipse";

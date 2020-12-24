@@ -1,4 +1,5 @@
-import TextLayer, { TextAlign } from "./TextLayer";
+
+import { TextAlign, TextLayer } from "../../internal";
 
 export default function setTextAlign(textLayer: TextLayer, textAlign: TextAlign = "left"): TextLayer {
 

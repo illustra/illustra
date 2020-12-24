@@ -1,4 +1,4 @@
-import { AnyLayer } from "./BaseLayer";
+import { AnyLayer } from "../../internal";
 
 export default function resize<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, width?: number | null, height?: number | null): AnyLayerInput {
 

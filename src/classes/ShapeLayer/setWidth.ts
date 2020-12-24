@@ -1,4 +1,5 @@
-import ShapeLayer from "./ShapeLayer";
+
+import { ShapeLayer } from "../../internal";
 
 export default function setWidth(shapeLayer: ShapeLayer, width: number): ShapeLayer {
 

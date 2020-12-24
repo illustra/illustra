@@ -1,4 +1,4 @@
-import { AnyLayer } from "./BaseLayer";
+import { AnyLayer } from "../../internal";
 
 export default function blur<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, sigma: number): AnyLayerInput {
 

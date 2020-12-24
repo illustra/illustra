@@ -1,6 +1,5 @@
 import { parseColor, Color } from "../../color";
-import BaseLayer from "../BaseLayer/BaseLayer";
-import Document from "../Document/Document";
+import { BaseLayer, Document } from "../../internal";
 import setColor from "./setColor";
 import setFont from "./setFont";
 import setFontSize from "./setFontSize";

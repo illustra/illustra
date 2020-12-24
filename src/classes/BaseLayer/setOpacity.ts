@@ -1,4 +1,4 @@
-import { AnyLayer } from "./BaseLayer";
+import { AnyLayer } from "../../internal";
 
 export default function setOpacity<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, opacity: number): AnyLayerInput {
 

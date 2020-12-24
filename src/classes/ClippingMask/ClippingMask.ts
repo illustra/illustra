@@ -1,5 +1,4 @@
-import { AnyLayer, BaseLayer } from "../../internal";
-import Document from "../Document/Document";
+import { AnyLayer, BaseLayer, Document } from "../../internal";
 import toBuffer from "./toBuffer";
 
 export interface ClippingMaskData {

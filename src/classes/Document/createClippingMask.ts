@@ -1,5 +1,4 @@
-import { ClippingMask, ClippingMaskData } from "../../internal";
-import Document from "./Document";
+import { ClippingMask, ClippingMaskData, Document } from "../../internal";
 
 export default function createClippingMask(document: Document, clippingMaskData: ClippingMaskData): ClippingMask {
 

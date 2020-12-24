@@ -1,6 +1,5 @@
 import { terminal } from "terminal-kit";
-import BaseLayer from "./classes/BaseLayer/BaseLayer";
-import Document from "./classes/Document/Document";
+import { BaseLayer, Document } from "./internal";
 
 export default function debug(info: string, documentOrBaseLayer: Document | BaseLayer) {
 

@@ -1,4 +1,4 @@
-import { AnyLayer } from "./BaseLayer";
+import { AnyLayer } from "../../internal";
 
 export default function translate<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, top: number = 0, left: number = 0): AnyLayerInput {
 

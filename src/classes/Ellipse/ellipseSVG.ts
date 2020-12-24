@@ -1,5 +1,5 @@
 import { parseColor } from "../../color";
-import { EllipseShapeData } from "./Ellipse";
+import { EllipseShapeData } from "../../internal";
 
 export default function ellipseSVG(ellipseShapeData: EllipseShapeData): string {
 

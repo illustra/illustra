@@ -1,8 +1,5 @@
 import { parseColor, Color } from "../../color";
-import { BaseLayer } from "../../internal";
-import Document from "../Document/Document";
-import { EllipseData } from "../Ellipse/Ellipse";
-import { PolygonData } from "../Polygon/Polygon";
+import { BaseLayer, Document, EllipseData, PolygonData } from "../../internal";
 import setFill from "./setFill";
 import setHeight from "./setHeight";
 import setStroke from "./setStroke";

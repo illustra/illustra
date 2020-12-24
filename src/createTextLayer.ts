@@ -1,4 +1,4 @@
-import TextLayer, { TextLayerData } from "./classes/TextLayer/TextLayer";
+import { TextLayer, TextLayerData } from "./internal";
 
 export default function createTextLayer(textLayerData: TextLayerData): TextLayer {
 

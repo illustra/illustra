@@ -1,5 +1,5 @@
 import { parseColor, Color } from "../../color";
-import TextLayer from "./TextLayer";
+import { TextLayer } from "../../internal";
 
 export default function setColor(textLayer: TextLayer, color: Color = "#000000"): TextLayer {
 

@@ -1,4 +1,4 @@
-import { AnyLayer } from "./BaseLayer";
+import { AnyLayer } from "../../internal";
 
 export default function move(layer: AnyLayer, position: number, relative?: boolean): number {
 

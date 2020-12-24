@@ -22,7 +22,7 @@ export { default as Ellipse, EllipseShapeData, EllipseData } from "./classes/Ell
 export { default as createEllipse } from "./createEllipse";
 
 // Text Layer
-export { default as TextLayer, TextAlign, TextData, TextLayerData } from "./classes/TextLayer/TextLayer";
+export { default as TextLayer, DEFAULT_FONT_SIZE, TextAlign, TextData, TextLayerData } from "./classes/TextLayer/TextLayer";
 export { default as createTextLayer } from "./createTextLayer";
 
 // Clipping Mask

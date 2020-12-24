@@ -1,5 +1,5 @@
 import { parseColor, Color } from "../../color";
-import ShapeLayer from "./ShapeLayer";
+import { ShapeLayer } from "../../internal";
 
 export default function setStroke(shapeLayer: ShapeLayer, stroke?: Color): ShapeLayer {
 

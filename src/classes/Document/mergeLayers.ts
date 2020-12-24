@@ -1,8 +1,6 @@
 import sharp from "sharp";
-import { AnyLayer, BlendMode } from "../BaseLayer/BaseLayer";
+import { AnyLayer, BlendMode, Document, Layer } from "../../internal";
 import { ExportMetadata } from "../BaseLayer/exportTo";
-import Layer from "../Layer/Layer";
-import Document from "./Document";
 
 export default async function mergeLayers(document: Document, name: string, inputLayers?: Array<AnyLayer | string | number>, copy?: boolean): Promise<Layer> {
 

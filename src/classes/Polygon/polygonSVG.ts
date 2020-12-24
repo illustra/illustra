@@ -1,6 +1,6 @@
 import Path from "paths-js/path";
 import { parseColor } from "../../color";
-import { PolygonShapeData } from "./Polygon";
+import { PolygonShapeData } from "../../internal";
 
 export default function polygonSVG(polygonShapeData: PolygonShapeData): string {
 

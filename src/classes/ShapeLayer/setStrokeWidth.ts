@@ -1,4 +1,5 @@
-import ShapeLayer from "./ShapeLayer";
+
+import { ShapeLayer } from "../../internal";
 
 export default function setStrokeWidth(shapeLayer: ShapeLayer, strokeWidth?: number): ShapeLayer {
 

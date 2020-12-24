@@ -1,5 +1,4 @@
-import { ShapeData, ShapeLayer, ShapeLayerData } from "../../internal";
-import Document from "../Document/Document";
+import { Document, ShapeData, ShapeLayer, ShapeLayerData } from "../../internal";
 import ellipseSVG from "./ellipseSVG";
 
 export type EllipseShapeData = ShapeData;

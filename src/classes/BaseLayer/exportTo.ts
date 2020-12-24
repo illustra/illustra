@@ -1,6 +1,5 @@
 import sharp from "sharp";
-import { ClippingMask, Ellipse, Polygon, TextLayer } from "../../internal";
-import BaseLayer from "./BaseLayer";
+import { BaseLayer, ClippingMask, Ellipse, Polygon, TextLayer } from "../../internal";
 
 export interface ExportMetadata {
     data: Buffer;

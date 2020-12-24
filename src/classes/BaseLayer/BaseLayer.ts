@@ -1,11 +1,6 @@
 import sharp from "sharp";
 import debug from "../../debug";
-import { ClippingMask } from "../../internal";
-import Document from "../Document/Document";
-import Ellipse from "../Ellipse/Ellipse";
-import Layer from "../Layer/Layer";
-import Polygon from "../Polygon/Polygon";
-import TextLayer from "../TextLayer/TextLayer";
+import { ClippingMask, Document, Ellipse, Layer, Polygon, TextLayer } from "../../internal";
 import align, { AlignOptions } from "./align";
 import blur from "./blur";
 import brightness from "./brightness";

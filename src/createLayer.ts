@@ -1,4 +1,4 @@
-import Layer, { LayerData } from "./classes/Layer/Layer";
+import { Layer, LayerData } from "./internal";
 
 export default async function createLayer(layerData: LayerData): Promise<Layer> {
 

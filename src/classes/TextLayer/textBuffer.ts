@@ -2,7 +2,7 @@ import canvas from "canvas";
 import sharp from "sharp";
 import textToImage, { GenerateOptions } from "text-to-image";
 import { parseColor } from "../../color";
-import { DEFAULT_FONT_SIZE, TextData } from "./TextLayer";
+import { DEFAULT_FONT_SIZE, TextData } from "../../internal";
 
 export default async function textBuffer(textData: TextData): Promise<Buffer> {
 

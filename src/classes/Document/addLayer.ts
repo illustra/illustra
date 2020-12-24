@@ -1,5 +1,4 @@
-import { AnyLayer } from "../BaseLayer/BaseLayer";
-import Document from "./Document";
+import { AnyLayer, Document } from "../../internal";
 
 export default function addLayer(document: Document, layer: AnyLayer, position?: number) {
 

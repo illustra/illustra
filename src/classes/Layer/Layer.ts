@@ -1,6 +1,4 @@
-import sharp from "sharp";
-import BaseLayer, { BaseLayerData } from "../BaseLayer/BaseLayer";
-import Document from "../Document/Document";
+import { BaseLayer, BaseLayerData, Document } from "../../internal";
 import duplicate from "./duplicate";
 
 export type LayerData = BaseLayerData;

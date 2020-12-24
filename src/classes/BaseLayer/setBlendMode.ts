@@ -1,4 +1,4 @@
-import { AnyLayer, BlendMode } from "./BaseLayer";
+import { AnyLayer, BlendMode } from "../../internal";
 
 export default function setBlendMode<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, blendMode?: BlendMode | null): AnyLayerInput {
 
