@@ -1,5 +1,4 @@
 import { BaseLayer, BaseLayerData, Document } from "../../internal";
-import duplicate from "./duplicate";
 
 export type LayerData = BaseLayerData;
 
@@ -27,19 +26,4 @@ export default class Layer extends BaseLayer {
         // Super
         super(layerData, document, inputData);
     }
-
-    /**
-     * Duplicate
-     *
-     * Duplicate this layer
-     *
-     * @param name The name of the new layer. Omit to copy the name of the layer being duplicated
-     * @param position The position index of the layer. The lower the index, the lower the layer is in the stack.
-     * Omit to add the layer above the layer being duplicated.
-     * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
-     * @param debugMode Set to `true` to log debug info to the console
-     *
-     * @returns {Layer} The new layer
-     */
-    duplicate = (name?: string, position?: number, debugMode?: boolean): Promise<Layer> => duplicate(this, name, position, debugMode);
 }

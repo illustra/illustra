@@ -5,6 +5,7 @@ import align, { AlignOptions } from "./align";
 import blur from "./blur";
 import brightness from "./brightness";
 import circularMask from "./circularMask";
+import duplicate from "./duplicate";
 import exportTo, { ExportTypes, Format, Output, PathOrWithMetadataOptions } from "./exportTo";
 import grayscale from "./grayscale";
 import hue from "./hue";
@@ -240,6 +241,21 @@ export default class BaseLayer {
         // Add to document
         if (document) document.addLayer(this, baseLayerData.position);
     }
+
+    /**
+     * Duplicate
+     *
+     * Duplicate this layer
+     *
+     * @param name The name of the new layer. Omit to copy the name of the layer being duplicated
+     * @param position The position index of the layer. The lower the index, the lower the layer is in the stack.
+     * Omit to add the layer above the layer being duplicated.
+     * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
+     * @param debugMode Set to `true` to log debug info to the console
+     *
+     * @returns {this} The new layer
+     */
+    duplicate = (name?: string, position?: number, debugMode?: boolean): Promise<this> => duplicate(this, name, position, debugMode);
 
     /**
      * Move
