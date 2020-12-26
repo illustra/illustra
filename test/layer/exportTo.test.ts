@@ -1,72 +1,75 @@
 import fs from "fs";
 import { Document, ExportMetadata, Layer } from "../../src/internal";
 
-let document: Document;
-let background: Layer;
-let expectedImage: string;
+describe("exporting layers", () => {
 
-beforeAll(async () => {
+    let document: Document;
+    let background: Layer;
+    let expectedImage: string;
 
-    // Create document
-    document = new Document({
-        width: 1920,
-        height: 1080
+    beforeAll(async () => {
+
+        // Create document
+        document = new Document({
+            width: 1920,
+            height: 1080
+        });
+
+        // Create background
+        background = await document.createLayer({
+            name: "background",
+            file: "test/assets/black.png"
+        });
+
+        // Get expected image
+        expectedImage = fs.readFileSync("test/layer/exports/exportTo.png").toString("base64");
     });
 
-    // Create background
-    background = await document.createLayer({
-        name: "background",
-        file: "test/assets/black.png"
+    afterAll(() => {
+
+        // Delete exported image
+        try {
+            fs.unlinkSync("test/layer/exports/exportTo.out.png");
+        } catch (error) { }
     });
 
-    // Get expected image
-    expectedImage = fs.readFileSync("test/layer/exports/exportTo.png").toString("base64");
-});
+    it("exports as a file", async () => {
 
-afterAll(() => {
+        // Export errors
+        // @ts-ignore
+        expect(async () => await background.exportTo("invalid")).rejects.toThrow("Invalid format");
+        // @ts-ignore
+        expect(async () => await background.exportTo("png", "invalid")).rejects.toThrow("Invalid export type");
+        // @ts-ignore
+        expect(async () => await background.exportTo("png", "file")).rejects.toThrow("Path must be specified if exportType is 'file'");
 
-    // Delete exported image
-    try {
-        fs.unlinkSync("test/layer/exports/exportTo.out.png");
-    } catch (error) { }
-});
+        // Export layer
+        await background.exportTo("png", "file", "test/layer/exports/exportTo.out.png");
 
-test("exports a layer as a file", async () => {
+        // Get exported image
+        const exportedImage: string = fs.readFileSync("test/layer/exports/exportTo.out.png").toString("base64");
 
-    // Export errors
-    // @ts-ignore
-    expect(async () => await background.exportTo("invalid")).rejects.toThrow("Invalid format");
-    // @ts-ignore
-    expect(async () => await background.exportTo("png", "invalid")).rejects.toThrow("Invalid export type");
-    // @ts-ignore
-    expect(async () => await background.exportTo("png", "file")).rejects.toThrow("Path must be specified if exportType is 'file'");
+        // Expect
+        expect(exportedImage).toBe(expectedImage);
+    });
 
-    // Export layer
-    await background.exportTo("png", "file", "test/layer/exports/exportTo.out.png");
+    it("exports as a buffer", async () => {
 
-    // Get exported image
-    const exportedImage: string = fs.readFileSync("test/layer/exports/exportTo.out.png").toString("base64");
+        // Export layer
+        const exportedImage: string = (await background.exportTo("png", "buffer")).toString("base64");
 
-    // Expect
-    expect(exportedImage).toBe(expectedImage);
-});
+        // Expect
+        expect(exportedImage).toBe(expectedImage);
+    });
 
-test("exports a layer as a buffer", async () => {
+    it("exports as a buffer with metadata", async () => {
 
-    // Export layer
-    const exportedImage: string = (await background.exportTo("png", "buffer")).toString("base64");
+        // Export layer
+        const exportedImage: ExportMetadata = await background.exportTo("png", "buffer", true);
 
-    // Expect
-    expect(exportedImage).toBe(expectedImage);
-});
-
-test("exports a layer as a buffer with metadata", async () => {
-
-    // Export layer
-    const exportedImage: ExportMetadata = await background.exportTo("png", "buffer", true);
-
-    // Expect
-    expect(exportedImage.data.toString("base64")).toBe(expectedImage);
-    expect(exportedImage.width).toBe(1920);
-    expect(exportedImage.height).toBe(1080);
+        // Expect
+        expect(exportedImage.data.toString("base64")).toBe(expectedImage);
+        expect(exportedImage.width).toBe(1920);
+        expect(exportedImage.height).toBe(1080);
+    });
 });

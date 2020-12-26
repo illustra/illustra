@@ -1,169 +1,172 @@
 import fs from "fs";
 import { createTextLayer, Document, TextLayer } from "../../src/internal";
 
-let document: Document;
+describe("creating a text layer", () => {
 
-beforeEach(async () => {
+    let document: Document;
 
-    // Create document
-    document = new Document({
-        width: 1920,
-        height: 1080
+    beforeEach(async () => {
+
+        // Create document
+        document = new Document({
+            width: 1920,
+            height: 1080
+        });
+
+        // Create background
+        await document.createLayer({
+            name: "background",
+            file: "test/assets/black.png"
+        });
     });
 
-    // Create background
-    await document.createLayer({
-        name: "background",
-        file: "test/assets/black.png"
-    });
-});
+    it("creates a text layer", async () => {
 
-test("creates a text layer", async () => {
+        // Create shape so text is visible
+        document.createEllipse({
+            name: "shape",
+            shape: {
+                width: 200,
+                height: 50,
+                fill: "#ffffff"
+            },
+            top: 190,
+            left: 200
+        });
 
-    // Create shape so text is visible
-    document.createEllipse({
-        name: "shape",
-        shape: {
-            width: 200,
-            height: 50,
-            fill: "#ffffff"
-        },
-        top: 190,
-        left: 200
-    });
+        // Create text
+        document.createTextLayer({
+            name: "text",
+            text: {
+                text: "example"
+            },
+            top: 200,
+            left: 250
+        });
 
-    // Create text
-    document.createTextLayer({
-        name: "text",
-        text: {
-            text: "example"
-        },
-        top: 200,
-        left: 250
-    });
+        // Export document
+        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
-    // Export document
-    const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+        // Get expected image
+        const expectedImage: string = fs.readFileSync("test/textLayer/exports/create/text.png").toString("base64");
 
-    // Get expected image
-    const expectedImage: string = fs.readFileSync("test/textLayer/exports/create/text.png").toString("base64");
-
-    // Expect
-    expect(exportedImage).toBe(expectedImage);
-});
-
-test("creates a text layer with a custom font", async () => {
-
-    // Create text
-    document.createTextLayer({
-        name: "text",
-        text: {
-            text: "example",
-            font: "test/assets/roboto.ttf",
-            fontSize: 65,
-            color: "#ffffff"
-        },
-        top: 200,
-        left: 250
+        // Expect
+        expect(exportedImage).toBe(expectedImage);
     });
 
-    // Export document
-    const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+    it("creates a text layer with a custom font", async () => {
 
-    // Get expected image
-    const expectedImage: string = fs.readFileSync("test/textLayer/exports/create/font.png").toString("base64");
+        // Create text
+        document.createTextLayer({
+            name: "text",
+            text: {
+                text: "example",
+                font: "test/assets/roboto.ttf",
+                fontSize: 65,
+                color: "#ffffff"
+            },
+            top: 200,
+            left: 250
+        });
 
-    // Expect
-    expect(exportedImage).toBe(expectedImage);
-});
+        // Export document
+        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
-test("creates a text layer with a custom font weight", async () => {
+        // Get expected image
+        const expectedImage: string = fs.readFileSync("test/textLayer/exports/create/font.png").toString("base64");
 
-    // Create text
-    document.createTextLayer({
-        name: "text",
-        text: {
-            text: "example",
-            fontSize: 65,
-            fontWeight: "bold",
-            color: "#ffffff"
-        },
-        top: 200,
-        left: 250
+        // Expect
+        expect(exportedImage).toBe(expectedImage);
     });
 
-    // Export document
-    const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+    it("creates a text layer with a custom font weight", async () => {
 
-    // Get expected image
-    const expectedImage: string = fs.readFileSync("test/textLayer/exports/create/fontWeight.png").toString("base64");
+        // Create text
+        document.createTextLayer({
+            name: "text",
+            text: {
+                text: "example",
+                fontSize: 65,
+                fontWeight: "bold",
+                color: "#ffffff"
+            },
+            top: 200,
+            left: 250
+        });
 
-    // Expect
-    expect(exportedImage).toBe(expectedImage);
-});
+        // Export document
+        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
-test("creates a text layer with word wrapping and custom text alignment", async () => {
+        // Get expected image
+        const expectedImage: string = fs.readFileSync("test/textLayer/exports/create/fontWeight.png").toString("base64");
 
-    // Create text
-    document.createTextLayer({
-        name: "text",
-        text: {
-            text: "example text with word wrapping and centering",
-            fontSize: 65,
-            textAlign: "center",
-            color: "#ffffff",
-            maxWidth: 400
-        },
-        top: 200,
-        left: 250
+        // Expect
+        expect(exportedImage).toBe(expectedImage);
     });
 
-    // Export document
-    const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+    it("creates a text layer with word wrapping and custom text alignment", async () => {
 
-    // Get expected image
-    const expectedImage: string = fs.readFileSync("test/textLayer/exports/create/textAlign.png").toString("base64");
+        // Create text
+        document.createTextLayer({
+            name: "text",
+            text: {
+                text: "example text with word wrapping and centering",
+                fontSize: 65,
+                textAlign: "center",
+                color: "#ffffff",
+                maxWidth: 400
+            },
+            top: 200,
+            left: 250
+        });
 
-    // Expect
-    expect(exportedImage).toBe(expectedImage);
-});
+        // Export document
+        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
-test("creates a text layer with a custom line height", async () => {
+        // Get expected image
+        const expectedImage: string = fs.readFileSync("test/textLayer/exports/create/textAlign.png").toString("base64");
 
-    // Create text
-    document.createTextLayer({
-        name: "text",
-        text: {
-            text: "example text with word wrapping and line height",
-            fontSize: 65,
-            color: "#ffffff",
-            lineHeight: 150,
-            maxWidth: 400
-        },
-        top: 200,
-        left: 250
+        // Expect
+        expect(exportedImage).toBe(expectedImage);
     });
 
-    // Export document
-    const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+    it("creates a text layer with a custom line height", async () => {
 
-    // Get expected image
-    const expectedImage: string = fs.readFileSync("test/textLayer/exports/create/lineHeight.png").toString("base64");
+        // Create text
+        document.createTextLayer({
+            name: "text",
+            text: {
+                text: "example text with word wrapping and line height",
+                fontSize: 65,
+                color: "#ffffff",
+                lineHeight: 150,
+                maxWidth: 400
+            },
+            top: 200,
+            left: 250
+        });
 
-    // Expect
-    expect(exportedImage).toBe(expectedImage);
-});
+        // Export document
+        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
-test("creates a text layer without a document", async () => {
+        // Get expected image
+        const expectedImage: string = fs.readFileSync("test/textLayer/exports/create/lineHeight.png").toString("base64");
 
-    // Create text
-    const text: TextLayer = await createTextLayer({
-        name: "text",
-        text: {
-            text: "example"
-        }
+        // Expect
+        expect(exportedImage).toBe(expectedImage);
     });
 
-    // Expect
-    expect(text).toBeDefined();
+    it("creates a text layer without a document", async () => {
+
+        // Create text
+        const text: TextLayer = await createTextLayer({
+            name: "text",
+            text: {
+                text: "example"
+            }
+        });
+
+        // Expect
+        expect(text).toBeDefined();
+    });
 });

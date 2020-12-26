@@ -1,74 +1,77 @@
 import fs from "fs";
 import { Document, Layer } from "../../src/internal";
 
-let document: Document;
-let logo: Layer;
+describe("translating a layer", () => {
 
-beforeEach(async () => {
+    let document: Document;
+    let logo: Layer;
 
-    // Create document
-    document = new Document({
-        width: 1920,
-        height: 1080
+    beforeEach(async () => {
+
+        // Create document
+        document = new Document({
+            width: 1920,
+            height: 1080
+        });
+
+        // Create background
+        await document.createLayer({
+            name: "background",
+            file: "test/assets/black.png"
+        });
+
+        // Add logo
+        logo = await document.createLayer({
+            name: "logo",
+            file: "test/assets/apixel.png",
+            top: 100,
+            left: 100
+        });
     });
 
-    // Create background
-    await document.createLayer({
-        name: "background",
-        file: "test/assets/black.png"
+    it("translates", async () => {
+
+        // Translate layer
+        logo.translate(300, 300);
+
+        // Export document
+        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+
+        // Get expected image
+        const expectedImage: string = fs.readFileSync("test/layer/exports/translate/translate.png").toString("base64");
+
+        // Expect
+        expect(exportedImage).toBe(expectedImage);
     });
 
-    // Add logo
-    logo = await document.createLayer({
-        name: "logo",
-        file: "test/assets/apixel.png",
-        top: 100,
-        left: 100
+    it("translates relative to current position", async () => {
+
+        // Translate layer
+        logo.translateBy(100, 100);
+
+        // Export document
+        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+
+        // Get expected image
+        const expectedImage: string = fs.readFileSync("test/layer/exports/translate/translateBy.png").toString("base64");
+
+        // Expect
+        expect(exportedImage).toBe(expectedImage);
     });
-});
 
-test("translates a layer", async () => {
+    it("translates using default parameters", async () => {
 
-    // Translate layer
-    logo.translate(300, 300);
+        // Translate layer
+        logo.translate();
+        logo.translateBy();
 
-    // Export document
-    const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+        // Export document
+        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
-    // Get expected image
-    const expectedImage: string = fs.readFileSync("test/layer/exports/translate/translate.png").toString("base64");
+        // Get expected image
+        const expectedImage: string = fs.readFileSync("test/layer/exports/translate/defaultParams.png").toString("base64");
 
-    // Expect
-    expect(exportedImage).toBe(expectedImage);
-});
-
-test("translates a layer relative to its current position", async () => {
-
-    // Translate layer
-    logo.translateBy(100, 100);
-
-    // Export document
-    const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
-
-    // Get expected image
-    const expectedImage: string = fs.readFileSync("test/layer/exports/translate/translateBy.png").toString("base64");
-
-    // Expect
-    expect(exportedImage).toBe(expectedImage);
-});
-
-test("translates a layer using default params", async () => {
-
-    // Translate layer
-    logo.translate();
-    logo.translateBy();
-
-    // Export document
-    const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
-
-    // Get expected image
-    const expectedImage: string = fs.readFileSync("test/layer/exports/translate/defaultParams.png").toString("base64");
-
-    // Expect
-    expect(exportedImage).toBe(expectedImage);
+        // Expect
+        expect(exportedImage).toBe(expectedImage);
+    });
 });
