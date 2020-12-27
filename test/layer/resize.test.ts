@@ -103,4 +103,22 @@ describe("resizing a layer", () => {
         // Expect
         expect(exportedImage).toBe(expectedImage);
     });
+
+    it("ensures that aligning works after resizing", async () => {
+
+        // Resize
+        logo.resize(200);
+
+        // Align layer
+        logo.align();
+
+        // Export document
+        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+
+        // Get expected image
+        const expectedImage: string = fs.readFileSync("test/layer/exports/resize/alignCheck.png").toString("base64");
+
+        // Expect
+        expect(exportedImage).toBe(expectedImage);
+    });
 });

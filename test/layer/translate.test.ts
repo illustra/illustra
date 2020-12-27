@@ -74,4 +74,22 @@ describe("translating a layer", () => {
         // Expect
         expect(exportedImage).toBe(expectedImage);
     });
+
+    it("ensures that translating off the screen works after rotating a layer", async () => {
+
+        // Rotate
+        logo.rotate(30);
+
+        // Translate
+        logo.translate(700, 1500);
+
+        // Export document
+        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+
+        // Get expected image
+        const expectedImage: string = fs.readFileSync("test/layer/exports/translate/afterRotating.png").toString("base64");
+
+        // Expect
+        expect(exportedImage).toBe(expectedImage);
+    });
 });
