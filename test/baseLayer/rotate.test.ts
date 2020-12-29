@@ -1,7 +1,7 @@
 import fs from "fs";
 import { Document, Layer } from "../../src/internal";
 
-describe("changing the brightness of a layer", () => {
+describe("rotating a layer", () => {
 
     let document: Document;
     let logo: Layer;
@@ -23,52 +23,58 @@ describe("changing the brightness of a layer", () => {
         // Add logo
         logo = await document.createLayer({
             name: "logo",
-            file: "test/assets/javascript.png",
+            file: "test/assets/apixel.png",
             top: 300,
             left: 300
         });
     });
 
-    it("increases the brightness", async () => {
+    it("rotates a layer", async () => {
 
-        // Adjust layer brightness
-        logo.brightness(150);
+        // Rotate layer
+        logo.rotate(30);
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/brightness/increase.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/rotate/rotate.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
     });
 
-    it("decreases the brightness", async () => {
+    it("ensures that aligning works after rotating", async () => {
 
-        // Adjust layer brightness
-        logo.brightness(50);
+        // Rotate
+        logo.rotate(30);
+
+        // Align layer
+        logo.align();
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/brightness/decrease.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/rotate/alignCheck.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
     });
 
-    it("adjusts the brightness without causing any changes", async () => {
+    it("ensures that reflecting works after rotating", async () => {
 
-        // Adjust layer brightness
-        logo.brightness(100);
+        // Rotate
+        logo.rotate(30);
+
+        // Reflect layer
+        logo.reflect("horizontal");
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/brightness/noChange.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/rotate/reflectCheck.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);

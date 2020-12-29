@@ -38,7 +38,7 @@ describe("translating a layer", () => {
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/translate/translate.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/translate/translate.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
@@ -53,7 +53,7 @@ describe("translating a layer", () => {
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/translate/translateBy.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/translate/translateBy.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
@@ -69,7 +69,7 @@ describe("translating a layer", () => {
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/translate/defaultParams.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/translate/defaultParams.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
@@ -87,7 +87,7 @@ describe("translating a layer", () => {
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/translate/afterRotating.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/translate/afterRotating.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);

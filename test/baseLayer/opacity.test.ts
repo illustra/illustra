@@ -1,9 +1,9 @@
 import fs from "fs";
 import { Document, Layer } from "../../src/internal";
 
-describe("inverting a layer's colors", () => {
+describe("changing the opacity of a layer", () => {
 
-    it("inverts colors", async () => {
+    it("sets the opacity", async () => {
 
         // Create document
         const document: Document = new Document({
@@ -25,14 +25,18 @@ describe("inverting a layer's colors", () => {
             left: 300
         });
 
-        // Invert layer
-        logo.invert();
+        // Set opacity errors
+        expect(() => logo.setOpacity(-10)).toThrow("Opacity must be between 0 and 100");
+        expect(() => logo.setOpacity(110)).toThrow("Opacity must be between 0 and 100");
+
+        // Set layer's opacity
+        logo.setOpacity(50);
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/invert.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/opacity.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);

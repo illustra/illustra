@@ -22,14 +22,14 @@ describe("exporting layers", () => {
         });
 
         // Get expected image
-        expectedImage = fs.readFileSync("test/layer/exports/exportTo.png").toString("base64");
+        expectedImage = fs.readFileSync("test/baseLayer/exports/exportTo.png").toString("base64");
     });
 
     afterAll(() => {
 
         // Delete exported image
         try {
-            fs.unlinkSync("test/layer/exports/exportTo.out.png");
+            fs.unlinkSync("test/baseLayer/exports/exportTo.out.png");
         } catch (error) { }
     });
 
@@ -44,10 +44,10 @@ describe("exporting layers", () => {
         expect(async () => await background.exportTo("png", "file")).rejects.toThrow("Path must be specified if exportType is 'file'");
 
         // Export layer
-        await background.exportTo("png", "file", "test/layer/exports/exportTo.out.png");
+        await background.exportTo("png", "file", "test/baseLayer/exports/exportTo.out.png");
 
         // Get exported image
-        const exportedImage: string = fs.readFileSync("test/layer/exports/exportTo.out.png").toString("base64");
+        const exportedImage: string = fs.readFileSync("test/baseLayer/exports/exportTo.out.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);

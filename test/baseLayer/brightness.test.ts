@@ -1,7 +1,7 @@
 import fs from "fs";
 import { Document, Layer } from "../../src/internal";
 
-describe("changing the hue of a layer", () => {
+describe("changing the brightness of a layer", () => {
 
     let document: Document;
     let logo: Layer;
@@ -29,31 +29,46 @@ describe("changing the hue of a layer", () => {
         });
     });
 
-    it("rotates the hue", async () => {
+    it("increases the brightness", async () => {
 
-        // Rotate layer hue
-        logo.hue(150);
+        // Adjust layer brightness
+        logo.brightness(150);
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/hue/hue.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/brightness/increase.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
     });
 
-    it("rotates the hue without causing any changes", async () => {
+    it("decreases the brightness", async () => {
 
-        // Rotate layer hue
-        logo.hue(360);
+        // Adjust layer brightness
+        logo.brightness(50);
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/hue/noChange.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/brightness/decrease.png").toString("base64");
+
+        // Expect
+        expect(exportedImage).toBe(expectedImage);
+    });
+
+    it("adjusts the brightness without causing any changes", async () => {
+
+        // Adjust layer brightness
+        logo.brightness(100);
+
+        // Export document
+        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+
+        // Get expected image
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/brightness/noChange.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);

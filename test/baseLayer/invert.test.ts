@@ -1,9 +1,9 @@
 import fs from "fs";
 import { Document, Layer } from "../../src/internal";
 
-describe("blurring a layer", () => {
+describe("inverting a layer's colors", () => {
 
-    it("blurs", async () => {
+    it("inverts colors", async () => {
 
         // Create document
         const document: Document = new Document({
@@ -25,14 +25,14 @@ describe("blurring a layer", () => {
             left: 300
         });
 
-        // Blur layer
-        logo.blur(10);
+        // Invert layer
+        logo.invert();
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/blur.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/invert.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);

@@ -38,7 +38,7 @@ describe("adding a circular mask to layers", () => {
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/circularMask.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/circularMask.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);

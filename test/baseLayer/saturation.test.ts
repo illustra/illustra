@@ -1,7 +1,7 @@
 import fs from "fs";
 import { Document, Layer } from "../../src/internal";
 
-describe("rotating a layer", () => {
+describe("changing the saturation of a layer", () => {
 
     let document: Document;
     let logo: Layer;
@@ -23,58 +23,52 @@ describe("rotating a layer", () => {
         // Add logo
         logo = await document.createLayer({
             name: "logo",
-            file: "test/assets/apixel.png",
+            file: "test/assets/javascript.png",
             top: 300,
             left: 300
         });
     });
 
-    it("rotates a layer", async () => {
+    it("increases the saturation", async () => {
 
-        // Rotate layer
-        logo.rotate(30);
+        // Adjust layer saturation
+        logo.saturation(150);
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/rotate/rotate.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/saturation/increase.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
     });
 
-    it("ensures that aligning works after rotating", async () => {
+    it("decreases the saturation", async () => {
 
-        // Rotate
-        logo.rotate(30);
-
-        // Align layer
-        logo.align();
+        // Adjust layer saturation
+        logo.saturation(50);
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/rotate/alignCheck.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/saturation/decrease.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
     });
 
-    it("ensures that reflecting works after rotating", async () => {
+    it("adjusts the saturation without causing any changes", async () => {
 
-        // Rotate
-        logo.rotate(30);
-
-        // Reflect layer
-        logo.reflect("horizontal");
+        // Adjust layer saturation
+        logo.saturation(100);
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/rotate/reflectCheck.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/saturation/noChange.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);

@@ -1,9 +1,9 @@
 import fs from "fs";
 import { Document, Layer } from "../../src/internal";
 
-describe("grayscaling a layer", () => {
+describe("blurring a layer", () => {
 
-    it("grayscales", async () => {
+    it("blurs", async () => {
 
         // Create document
         const document: Document = new Document({
@@ -20,19 +20,19 @@ describe("grayscaling a layer", () => {
         // Add logo
         const logo: Layer = await document.createLayer({
             name: "logo",
-            file: "test/assets/javascript.png",
+            file: "test/assets/apixel.png",
             top: 300,
             left: 300
         });
 
-        // Grayscale layer
-        logo.grayscale();
+        // Blur layer
+        logo.blur(10);
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/grayscale.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/blur.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);

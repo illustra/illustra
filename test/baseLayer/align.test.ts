@@ -57,7 +57,7 @@ describe("aligning layers", () => {
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/align/topLeft.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/align/topLeft.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
@@ -75,7 +75,7 @@ describe("aligning layers", () => {
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/align/center.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/align/center.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
@@ -93,7 +93,7 @@ describe("aligning layers", () => {
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/align/bottomRight.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/align/bottomRight.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
@@ -113,7 +113,7 @@ describe("aligning layers", () => {
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/align/offset.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/align/offset.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
@@ -135,7 +135,7 @@ describe("aligning layers", () => {
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/align/percentOffset.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/align/percentOffset.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
@@ -150,7 +150,7 @@ describe("aligning layers", () => {
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/layer/exports/align/center.png").toString("base64");
+        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/align/center.png").toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
