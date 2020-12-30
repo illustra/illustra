@@ -1,6 +1,7 @@
-import { createLayer, Document, Layer } from "../../src/internal";
+import { createLayer, BaseLayer, Document, Layer } from "../../src/internal";
+import addLayer from "./addLayer";
 
-describe("checking a layer's position", () => {
+describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("checking a %s's position", (layerType: string) => {
 
     it("checks a layer's position", async () => {
 
@@ -16,11 +17,8 @@ describe("checking a layer's position", () => {
             file: "test/assets/black.png"
         });
 
-        // Add logo
-        const logo: Layer = await document.createLayer({
-            name: "logo",
-            file: "test/assets/apixel.png"
-        });
+        // Add layer
+        const layer: BaseLayer = await addLayer(document, layerType);
 
         // Create other background
         const otherBackground: Layer = await createLayer({
@@ -29,7 +27,7 @@ describe("checking a layer's position", () => {
         });
 
         // Expect
-        expect(logo.position).toBe(1);
+        expect(layer.position).toBe(1);
         expect(otherBackground.position).toBe(0);
     });
 });

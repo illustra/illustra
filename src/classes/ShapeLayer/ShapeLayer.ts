@@ -25,6 +25,20 @@ export interface ShapeLayerData {
 export default class ShapeLayer extends BaseLayer {
 
     /**
+     * Width
+     *
+     * The width of this shape layer
+     */
+    width: number;
+
+    /**
+     * Height
+     *
+     * The height of this shape layer
+     */
+    height: number;
+
+    /**
      * Fill
      *
      * The color of this shape's fill

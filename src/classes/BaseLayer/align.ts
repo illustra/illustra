@@ -1,4 +1,4 @@
-import { AnyLayer } from "../../internal";
+import { AnyLayer, Layer, ShapeLayer } from "../../internal";
 
 export type AlignType = "start" | "center" | "end";
 
@@ -14,6 +14,9 @@ export interface AlignOptions {
 }
 
 export default function align<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, alignOptions: AlignOptions = {}): AnyLayerInput {
+
+    // Invalid layer type
+    if ((!(layer instanceof Layer)) && (!(layer instanceof ShapeLayer))) throw new Error("This layer can't be aligned");
 
     // No document
     if (!layer.document) throw new Error("This layer isn't a part of a document");

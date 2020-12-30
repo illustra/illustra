@@ -1,10 +1,11 @@
 import fs from "fs";
-import { Document, Layer } from "../../src/internal";
+import { BaseLayer, Document } from "../../src/internal";
+import addLayer from "./addLayer";
 
-describe("rotating a layer", () => {
+describe.each(["layer", "polygon", "ellipse"])("rotating a %s", (layerType: string) => {
 
     let document: Document;
-    let logo: Layer;
+    let layer: BaseLayer;
 
     beforeEach(async () => {
 
@@ -20,25 +21,20 @@ describe("rotating a layer", () => {
             file: "test/assets/black.png"
         });
 
-        // Add logo
-        logo = await document.createLayer({
-            name: "logo",
-            file: "test/assets/apixel.png",
-            top: 300,
-            left: 300
-        });
+        // Add layer
+        layer = await addLayer(document, layerType);
     });
 
     it("rotates a layer", async () => {
 
         // Rotate layer
-        logo.rotate(30);
+        layer.rotate(30);
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/rotate/rotate.png").toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/rotate/${layerType}/rotate.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
@@ -47,16 +43,16 @@ describe("rotating a layer", () => {
     it("ensures that aligning works after rotating", async () => {
 
         // Rotate
-        logo.rotate(30);
+        layer.rotate(30);
 
         // Align layer
-        logo.align();
+        layer.align();
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/rotate/alignCheck.png").toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/rotate/${layerType}/alignCheck.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
@@ -65,16 +61,16 @@ describe("rotating a layer", () => {
     it("ensures that reflecting works after rotating", async () => {
 
         // Rotate
-        logo.rotate(30);
+        layer.rotate(30);
 
         // Reflect layer
-        logo.reflect("horizontal");
+        layer.reflect("horizontal");
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/rotate/reflectCheck.png").toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/rotate/${layerType}/reflectCheck.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);

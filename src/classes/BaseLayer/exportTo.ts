@@ -1,5 +1,5 @@
 import sharp from "sharp";
-import { BaseLayer, ClippingMask, Ellipse, Polygon, TextLayer } from "../../internal";
+import { BaseLayer, ClippingMask, Ellipse, Layer, Polygon, TextLayer } from "../../internal";
 
 export interface ExportMetadata {
     data: Buffer;
@@ -47,7 +47,10 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
     baseLayer._debug(`Exporting as ${exportType}${exportType === "file" ? ` to ${pathOrWithMetadata}` : ""}`);
 
     // Define input data
-    let inputData: string | Buffer | undefined = baseLayer._inputData;
+    let inputData: string | Buffer | undefined;
+
+    // Get input data
+    if (baseLayer instanceof Layer) inputData = baseLayer._inputData;
 
     // Create image buffer from polygons and ellipses
     if ((baseLayer instanceof Polygon) || (baseLayer instanceof Ellipse)) inputData = baseLayer.toBuffer();
@@ -99,13 +102,20 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
     }
 
     // Opacity
-    if (baseLayer.opacity !== 100) canvas.joinChannel(Buffer.alloc(baseLayer.width * baseLayer.height, 255 * (baseLayer.opacity / 100)), {
-        raw: {
-            width: baseLayer.width,
-            height: baseLayer.height,
-            channels: 1
-        }
-    });
+    if (baseLayer.opacity !== 100) {
+
+        // Get metadata
+        const metadata: sharp.Metadata = await canvas.metadata();
+
+        // Join channel
+        canvas.joinChannel(Buffer.alloc((metadata.width || 0) * (metadata.height || 0), 255 * (baseLayer.opacity / 100)), {
+            raw: {
+                width: metadata.width || 0,
+                height: metadata.height || 0,
+                channels: 1
+            }
+        });
+    }
 
     // Convert to format
     // https://sharp.pixelplumbing.com/api-output#toformat

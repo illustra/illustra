@@ -1,7 +1,8 @@
 import fs from "fs";
-import { Document, Layer } from "../../src/internal";
+import { BaseLayer, Document } from "../../src/internal";
+import addLayer from "./addLayer";
 
-describe("changing the opacity of a layer", () => {
+describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("changing the opacity of a %s", (layerType: string) => {
 
     it("sets the opacity", async () => {
 
@@ -17,26 +18,21 @@ describe("changing the opacity of a layer", () => {
             file: "test/assets/black.png"
         });
 
-        // Add logo
-        const logo: Layer = await document.createLayer({
-            name: "logo",
-            file: "test/assets/apixel.png",
-            top: 300,
-            left: 300
-        });
+        // Add layer
+        const layer: BaseLayer = await addLayer(document, layerType);
 
         // Set opacity errors
-        expect(() => logo.setOpacity(-10)).toThrow("Opacity must be between 0 and 100");
-        expect(() => logo.setOpacity(110)).toThrow("Opacity must be between 0 and 100");
+        expect(() => layer.setOpacity(-10)).toThrow("Opacity must be between 0 and 100");
+        expect(() => layer.setOpacity(110)).toThrow("Opacity must be between 0 and 100");
 
         // Set layer's opacity
-        logo.setOpacity(50);
+        layer.setOpacity(50);
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/opacity.png").toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/opacity/${layerType}/opacity.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);

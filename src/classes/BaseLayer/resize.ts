@@ -1,6 +1,9 @@
-import { AnyLayer } from "../../internal";
+import { AnyLayer, Layer, ShapeLayer } from "../../internal";
 
 export default function resize<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, width?: number | null, height?: number | null): AnyLayerInput {
+
+    // Invalid layer type
+    if ((!(layer instanceof Layer)) && (!(layer instanceof ShapeLayer))) throw new Error("This layer can't be resized");
 
     // Get original width and height
     const originalWidth: number = layer.width;

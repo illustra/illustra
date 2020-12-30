@@ -1,10 +1,11 @@
 import fs from "fs";
-import { Document, Layer } from "../../src/internal";
+import { BaseLayer, Document } from "../../src/internal";
+import addLayer from "./addLayer";
 
-describe("reflecting a layer", () => {
+describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("reflecting a %s", (layerType: string) => {
 
     let document: Document;
-    let logo: Layer;
+    let layer: BaseLayer;
 
     beforeEach(async () => {
 
@@ -20,23 +21,20 @@ describe("reflecting a layer", () => {
             file: "test/assets/black.png"
         });
 
-        // Add logo
-        logo = await document.createLayer({
-            name: "logo",
-            file: "test/assets/apixel.png"
-        });
+        // Add layer
+        layer = await addLayer(document, layerType);
     });
 
     it("reflects vertically", async () => {
 
         // Reflect layer
-        logo.reflect("vertical");
+        layer.reflect("vertical");
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/reflect/vertical.png").toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/reflect/${layerType}/vertical.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
@@ -45,13 +43,13 @@ describe("reflecting a layer", () => {
     it("reflects horizontally", async () => {
 
         // Reflect layer
-        logo.reflect("horizontal");
+        layer.reflect("horizontal");
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/reflect/horizontal.png").toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/reflect/${layerType}/horizontal.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);

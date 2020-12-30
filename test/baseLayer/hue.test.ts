@@ -1,10 +1,11 @@
 import fs from "fs";
-import { Document, Layer } from "../../src/internal";
+import { BaseLayer, Document } from "../../src/internal";
+import addLayer from "./addLayer";
 
-describe("changing the hue of a layer", () => {
+describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("changing the hue of a %s", (layerType: string) => {
 
     let document: Document;
-    let logo: Layer;
+    let layer: BaseLayer;
 
     beforeEach(async () => {
 
@@ -20,25 +21,20 @@ describe("changing the hue of a layer", () => {
             file: "test/assets/black.png"
         });
 
-        // Add logo
-        logo = await document.createLayer({
-            name: "logo",
-            file: "test/assets/javascript.png",
-            top: 300,
-            left: 300
-        });
+        // Add layer
+        layer = await addLayer(document, layerType);
     });
 
     it("rotates the hue", async () => {
 
         // Rotate layer hue
-        logo.hue(150);
+        layer.hue(150);
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/hue/hue.png").toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/hue/${layerType}/hue.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
@@ -47,13 +43,13 @@ describe("changing the hue of a layer", () => {
     it("rotates the hue without causing any changes", async () => {
 
         // Rotate layer hue
-        logo.hue(360);
+        layer.hue(360);
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/hue/noChange.png").toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/hue/${layerType}/noChange.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);

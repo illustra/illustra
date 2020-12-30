@@ -1,6 +1,9 @@
-import { createClippingMask, createEllipse, AnyLayer, ClippingMask } from "../../internal";
+import { createClippingMask, createEllipse, AnyLayer, ClippingMask, Layer, ShapeLayer } from "../../internal";
 
 export default function circularMask(layer: AnyLayer, name: string, keepSource?: boolean): ClippingMask {
+
+    // Invalid layer type
+    if ((!(layer instanceof Layer)) && (!(layer instanceof ShapeLayer))) throw new Error("A circular mask can't be created with this layer");
 
     // Debug
     layer._debug("Adding circular mask");

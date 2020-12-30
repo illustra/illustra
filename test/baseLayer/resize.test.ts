@@ -1,10 +1,11 @@
 import fs from "fs";
-import { Document, Layer } from "../../src/internal";
+import { BaseLayer, Document } from "../../src/internal";
+import addLayer from "./addLayer";
 
-describe("resizing a layer", () => {
+describe.each(["layer", "polygon", "ellipse"])("resizing a %s", (layerType: string) => {
 
     let document: Document;
-    let logo: Layer;
+    let layer: BaseLayer;
 
     beforeEach(async () => {
 
@@ -20,25 +21,20 @@ describe("resizing a layer", () => {
             file: "test/assets/black.png"
         });
 
-        // Add logo
-        logo = await document.createLayer({
-            name: "logo",
-            file: "test/assets/apixel.png",
-            top: 100,
-            left: 100
-        });
+        // Add layer
+        layer = await addLayer(document, layerType);
     });
 
     it("resizes width while preserving aspect ratio", async () => {
 
         // Resize layer
-        logo.resize(300);
+        layer.resize(300);
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/resize/resize.png").toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/resize/${layerType}/resize.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
@@ -47,13 +43,13 @@ describe("resizing a layer", () => {
     it("resizes height while preserving aspect ratio", async () => {
 
         // Resize layer
-        logo.resize(undefined, 300);
+        layer.resize(undefined, 300);
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/resize/resize.png").toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/resize/${layerType}/resize.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
@@ -62,13 +58,13 @@ describe("resizing a layer", () => {
     it("resizes and stretches", async () => {
 
         // Resize layer
-        logo.resize(500, 300);
+        layer.resize(500, 300);
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/resize/stretch.png").toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/resize/${layerType}/stretch.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
@@ -77,13 +73,13 @@ describe("resizing a layer", () => {
     it("resizes relative to current dimensions", async () => {
 
         // Resize layer
-        logo.resizeBy(100);
+        layer.resizeBy(100);
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/resize/resizeBy.png").toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/resize/${layerType}/resizeBy.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
@@ -92,13 +88,13 @@ describe("resizing a layer", () => {
     it("resizes by scaling relative to current dimensions", async () => {
 
         // Resize layer
-        logo.resizeBy(50, 25, true);
+        layer.resizeBy(50, 25, true);
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/resize/resizeScale.png").toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/resize/${layerType}/resizeScale.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
@@ -107,16 +103,16 @@ describe("resizing a layer", () => {
     it("ensures that aligning works after resizing", async () => {
 
         // Resize
-        logo.resize(200);
+        layer.resize(200);
 
         // Align layer
-        logo.align();
+        layer.align();
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/resize/alignCheck.png").toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/resize/${layerType}/alignCheck.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);

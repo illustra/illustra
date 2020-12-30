@@ -1,6 +1,9 @@
-import { AnyLayer } from "../../internal";
+import { AnyLayer, Layer, ShapeLayer } from "../../internal";
 
 export default function rotate<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, degrees: number): AnyLayerInput {
+
+    // Invalid layer type
+    if ((!(layer instanceof Layer)) && (!(layer instanceof ShapeLayer))) throw new Error("This layer can't be rotated");
 
     // Debug
     layer._debug(`Rotating by ${degrees} degrees`);

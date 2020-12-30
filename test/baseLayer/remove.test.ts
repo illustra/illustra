@@ -1,6 +1,7 @@
-import { createLayer, AnyLayer, Document, Layer } from "../../src/internal";
+import { createLayer, AnyLayer, BaseLayer, Document, Layer } from "../../src/internal";
+import addLayer from "./addLayer";
 
-describe("removing a layer", () => {
+describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("removing a %s", (layerType: string) => {
 
     it("removes a layer", async () => {
 
@@ -16,11 +17,8 @@ describe("removing a layer", () => {
             file: "test/assets/black.png"
         });
 
-        // Add logo
-        const logo: Layer = await document.createLayer({
-            name: "logo",
-            file: "test/assets/apixel.png"
-        });
+        // Add layer
+        const layer: BaseLayer = await addLayer(document, layerType);
 
         // Create other background
         const otherBackground: Layer = await createLayer({
@@ -32,7 +30,7 @@ describe("removing a layer", () => {
         expect(() => otherBackground.remove()).toThrow("This layer isn't a part of a document");
 
         // Remove layer
-        logo.remove();
+        layer.remove();
 
         // Expect layer order
         let layers: string[] = document.layers.map((l: AnyLayer) => l.name);

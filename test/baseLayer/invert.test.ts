@@ -1,7 +1,8 @@
 import fs from "fs";
-import { Document, Layer } from "../../src/internal";
+import { BaseLayer, Document } from "../../src/internal";
+import addLayer from "./addLayer";
 
-describe("inverting a layer's colors", () => {
+describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("inverting a %s's colors", (layerType: string) => {
 
     it("inverts colors", async () => {
 
@@ -17,22 +18,17 @@ describe("inverting a layer's colors", () => {
             file: "test/assets/black.png"
         });
 
-        // Add logo
-        const logo: Layer = await document.createLayer({
-            name: "logo",
-            file: "test/assets/apixel.png",
-            top: 300,
-            left: 300
-        });
+        // Add layer
+        const layer: BaseLayer = await addLayer(document, layerType);
 
         // Invert layer
-        logo.invert();
+        layer.invert();
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/invert.png").toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/invert/${layerType}/invert.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);

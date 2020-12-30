@@ -1,10 +1,11 @@
 import fs from "fs";
-import { Document, Layer } from "../../src/internal";
+import { BaseLayer, Document } from "../../src/internal";
+import addLayer from "./addLayer";
 
-describe("changing the saturation of a layer", () => {
+describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("changing the saturation of a %s", (layerType: string) => {
 
     let document: Document;
-    let logo: Layer;
+    let layer: BaseLayer;
 
     beforeEach(async () => {
 
@@ -20,25 +21,20 @@ describe("changing the saturation of a layer", () => {
             file: "test/assets/black.png"
         });
 
-        // Add logo
-        logo = await document.createLayer({
-            name: "logo",
-            file: "test/assets/javascript.png",
-            top: 300,
-            left: 300
-        });
+        // Add layer
+        layer = await addLayer(document, layerType);
     });
 
     it("increases the saturation", async () => {
 
         // Adjust layer saturation
-        logo.saturation(150);
+        layer.saturation(150);
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/saturation/increase.png").toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/saturation/${layerType}/increase.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
@@ -47,13 +43,13 @@ describe("changing the saturation of a layer", () => {
     it("decreases the saturation", async () => {
 
         // Adjust layer saturation
-        logo.saturation(50);
+        layer.saturation(50);
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/saturation/decrease.png").toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/saturation/${layerType}/decrease.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
@@ -62,13 +58,13 @@ describe("changing the saturation of a layer", () => {
     it("adjusts the saturation without causing any changes", async () => {
 
         // Adjust layer saturation
-        logo.saturation(100);
+        layer.saturation(100);
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/saturation/noChange.png").toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/saturation/${layerType}/noChange.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);

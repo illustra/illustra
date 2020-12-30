@@ -1,9 +1,10 @@
-import { createLayer, AnyLayer, Document, Layer } from "../../src/internal";
+import { createLayer, AnyLayer, BaseLayer, Document, Layer } from "../../src/internal";
+import addLayer from "./addLayer";
 
-describe("moving a layer", () => {
+describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("moving a %s", (layerType: string) => {
 
     let document: Document;
-    let logo: Layer;
+    let layer: BaseLayer;
 
     beforeEach(async () => {
 
@@ -19,11 +20,8 @@ describe("moving a layer", () => {
             file: "test/assets/black.png"
         });
 
-        // Add logo
-        logo = await document.createLayer({
-            name: "logo",
-            file: "test/assets/apixel.png"
-        });
+        // Add layer
+        layer = await addLayer(document, layerType);
     });
 
     it("moves", async () => {
@@ -38,20 +36,20 @@ describe("moving a layer", () => {
         expect(() => otherBackground.move(2)).toThrow("This layer isn't a part of a document");
 
         // Move layer
-        logo.move(0);
+        layer.move(0);
 
         // Expect layer order
         let layers: string[] = document.layers.map((l: AnyLayer) => l.name);
-        expect(layers).toStrictEqual(["logo", "background"]);
+        expect(layers).toStrictEqual([layerType, "background"]);
     });
 
     it("moves relatively", async () => {
 
         // Move layer
-        logo.move(-1, true);
+        layer.move(-1, true);
 
         // Expect layer order
         let layers: string[] = document.layers.map((l: AnyLayer) => l.name);
-        expect(layers).toStrictEqual(["logo", "background"]);
+        expect(layers).toStrictEqual([layerType, "background"]);
     });
 });

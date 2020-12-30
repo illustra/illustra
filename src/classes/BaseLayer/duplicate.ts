@@ -77,8 +77,8 @@ export default async function duplicate<AnyLayerInput extends AnyLayer>(layer: A
             left: layer.left,
             position: position || layer.position + 1,
             debugMode
-        }, layer.document, layer._inputData) as AnyLayerInput;
-        await duplicatedLayer._initialize;
+        }, layer.document, (layer as Layer)._inputData) as AnyLayerInput;
+        await (duplicatedLayer as Layer)._initialize;
     }
 
     // Set edits

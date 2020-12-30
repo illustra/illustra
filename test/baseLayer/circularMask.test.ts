@@ -1,10 +1,11 @@
 import fs from "fs";
-import { createLayer, AnyLayer, ClippingMask, Document, Layer } from "../../src/internal";
+import { createLayer, AnyLayer, BaseLayer, ClippingMask, Document, Layer } from "../../src/internal";
+import addLayer from "./addLayer";
 
-describe("adding a circular mask to layers", () => {
+describe.each(["layer", "polygon", "ellipse"])("adding a circular mask to %s", (layerType: string) => {
 
     let document: Document;
-    let logo: Layer;
+    let layer: BaseLayer;
 
     beforeEach(async () => {
 
@@ -20,25 +21,20 @@ describe("adding a circular mask to layers", () => {
             file: "test/assets/black.png"
         });
 
-        // Add logo
-        logo = await document.createLayer({
-            name: "logo",
-            file: "test/assets/apixel.png",
-            top: 300,
-            left: 300
-        });
+        // Add layer
+        layer = await addLayer(document, layerType);
     });
 
     it("adds a circular mask", async () => {
 
         // Add circular mask
-        logo.circularMask("mask");
+        layer.circularMask("mask");
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/circularMask.png").toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/circularMask/${layerType}/circularMask.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
@@ -47,11 +43,11 @@ describe("adding a circular mask to layers", () => {
     it("adds a circular mask while keeping the source layer", async () => {
 
         // Add circular mask
-        logo.circularMask("mask", true);
+        layer.circularMask("mask", true);
 
         // Expect layer order
         let layers: string[] = document.layers.map((l: AnyLayer) => l.name);
-        expect(layers).toStrictEqual(["background", "logo", "mask"]);
+        expect(layers).toStrictEqual(["background", layerType, "mask"]);
     });
 
     it("adds a circular mask to a layer without a document", async () => {

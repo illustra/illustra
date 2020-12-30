@@ -1,8 +1,37 @@
+import sharp from "sharp";
 import { BaseLayer, BaseLayerData, Document } from "../../internal";
 
 export type LayerData = BaseLayerData;
 
 export default class Layer extends BaseLayer {
+
+    /**
+     * Initialize
+     *
+     * A promise for when this layer will be initialized
+     */
+    _initialize: Promise<void>;
+
+    /**
+     * Input Data
+     *
+     * This layer's input data
+     */
+    _inputData?: string | Buffer;
+
+    /**
+     * Width
+     *
+     * The width of this layer
+     */
+    width: number;
+
+    /**
+     * Height
+     *
+     * The height of this layer
+     */
+    height: number;
 
     /**
      * Layer
@@ -24,6 +53,34 @@ export default class Layer extends BaseLayer {
     constructor(layerData: BaseLayerData, document?: Document, inputData?: string | Buffer) {
 
         // Super
-        super(layerData, document, inputData);
+        super(layerData, document);
+
+        // Parse input data
+        if (layerData.file) inputData = layerData.file;
+        else if (layerData.buffer) inputData = layerData.buffer;
+        else if (layerData.svg?.trim().startsWith("<svg")) inputData = Buffer.from(layerData.svg);
+
+        // Set data
+        this._inputData = inputData;
+
+        // Initialize
+        this._initialize = new Promise(async (resolve) => {
+
+            // No input data ie. for text layers
+            if (!this._inputData) return resolve();
+
+            // Create sharp canvas
+            const canvas: sharp.Sharp = sharp(inputData);
+
+            // Get metadata
+            const metadata: sharp.Metadata = await canvas.metadata();
+
+            // Set data
+            this.width = metadata.width || 0;
+            this.height = metadata.height || 0;
+
+            // Resolve
+            resolve();
+        });
     }
 }

@@ -1,4 +1,3 @@
-import sharp from "sharp";
 import debug from "../../debug";
 import { ClippingMask, Document, Ellipse, Layer, Polygon, TextLayer } from "../../internal";
 import align, { AlignOptions } from "./align";
@@ -87,20 +86,6 @@ export interface BaseLayerData {
 export default class BaseLayer {
 
     /**
-     * Initialize
-     *
-     * A promise for when this layer will be initialized
-     */
-    _initialize: Promise<void>;
-
-    /**
-     * Input Data
-     *
-     * This layer's input data
-     */
-    _inputData?: string | Buffer;
-
-    /**
      * Document
      *
      * The document this layer is a part of
@@ -113,20 +98,6 @@ export default class BaseLayer {
      * This layer's name
      */
     name: string;
-
-    /**
-     * Width
-     *
-     * The width of this layer
-     */
-    width: number;
-
-    /**
-     * Height
-     *
-     * The height of this layer
-     */
-    height: number;
 
     /**
      * Top
@@ -194,20 +165,13 @@ export default class BaseLayer {
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
      * @param baseLayerData.debugMode Set to `true` to log debug info to the console
-     * @param inputData Internal: Image data to use for this layer
      */
-    constructor(baseLayerData: BaseLayerData, document?: Document, inputData?: string | Buffer) {
+    constructor(baseLayerData: BaseLayerData, document?: Document) {
 
         // Set document
         this.document = document;
 
-        // Parse input data
-        if (baseLayerData.file) inputData = baseLayerData.file;
-        else if (baseLayerData.buffer) inputData = baseLayerData.buffer;
-        else if (baseLayerData.svg?.trim().startsWith("<svg")) inputData = Buffer.from(baseLayerData.svg);
-
         // Set data
-        this._inputData = inputData;
         this.name = baseLayerData.name;
         this.top = baseLayerData.top || 0;
         this.left = baseLayerData.left || 0;
@@ -217,26 +181,6 @@ export default class BaseLayer {
 
         // Set debug mode
         this.setDebugMode(baseLayerData.debugMode || false);
-
-        // Initialize
-        this._initialize = new Promise(async (resolve) => {
-
-            // No input data ie. for shape layers
-            if (!this._inputData) return resolve();
-
-            // Create sharp canvas
-            const canvas: sharp.Sharp = sharp(inputData);
-
-            // Get metadata
-            const metadata: sharp.Metadata = await canvas.metadata();
-
-            // Set data
-            this.width = metadata.width || 0;
-            this.height = metadata.height || 0;
-
-            // Resolve
-            resolve();
-        });
 
         // Add to document
         if (document) document.addLayer(this, baseLayerData.position);

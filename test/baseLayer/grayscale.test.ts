@@ -1,7 +1,8 @@
 import fs from "fs";
-import { Document, Layer } from "../../src/internal";
+import { BaseLayer, Document } from "../../src/internal";
+import addLayer from "./addLayer";
 
-describe("grayscaling a layer", () => {
+describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("grayscaling a %s", (layerType: string) => {
 
     it("grayscales", async () => {
 
@@ -17,22 +18,17 @@ describe("grayscaling a layer", () => {
             file: "test/assets/black.png"
         });
 
-        // Add logo
-        const logo: Layer = await document.createLayer({
-            name: "logo",
-            file: "test/assets/javascript.png",
-            top: 300,
-            left: 300
-        });
+        // Add layer
+        const layer: BaseLayer = await addLayer(document, layerType);
 
         // Grayscale layer
-        logo.grayscale();
+        layer.grayscale();
 
         // Export document
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/baseLayer/exports/grayscale.png").toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/grayscale/${layerType}/grayscale.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
