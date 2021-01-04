@@ -36,15 +36,45 @@ export default function polygonSVG(polygonShapeData: PolygonShapeData): string {
     // Rotate 90 degrees counterclockwise
     path = path.rotate(-90, radius, radius);
 
-    // Scale
-    path = path.scale(
-        polygonShapeData.width > polygonShapeData.height ?
-            polygonShapeData.width / polygonShapeData.height :
-            1,
-        polygonShapeData.height > polygonShapeData.width ?
-            polygonShapeData.height / polygonShapeData.width :
-            1
-    );
+    /**
+     * Align to width and height
+     *
+     * Since polygons are drawn around a circle,
+     * the width and height might not be correct.
+     *
+     * For example, a 400 pixel by 400 pixel pentagon might look like this: https://i.imgur.com/rYeKifI.png
+     * Notice how it doesn't take up the entire document
+     *
+     * Another issue would be if the width and height don't match
+     * For example, a 400 pixel by 800 pixel polygon would end up being 400 pixel by 400 pixel
+     *
+     * To fix this, we need to scale the svg
+     *
+     * First, we need to make sure the polygon is aligned to the top left edges
+     *
+     * We can do this by mapping the path's points (ie. `[[0, 0], [100, 100], [0, 100]]`) to their X or Y coordinates (ie. `[0, 100, 0]` for the X and `[0, 100, 100]` for the Y)
+     * Then we find the smallest value
+     */
+    const generatedLeft: number = Math.min(...path.points().map((p: number[]) => p[0]));
+    const generatedTop: number = Math.min(...path.points().map((p: number[]) => p[1]));
+
+    // Now we can translate the svg
+    path = path.translate(-generatedLeft, -generatedTop);
+
+    /**
+     * Then, we need to find the X coordinate of the point that is farthest right
+     * This will allow us to determine the width of the *generated* shape as opposed to the width of the final shape (`polygonShapeData.width`)
+     *
+     * We also need to do the same for the height, with the Y coordinate of the point that is farthest down
+     *
+     * We can do this by mapping the path's points just like last time
+     * Then we find the largest value
+     */
+    const generatedWidth: number = Math.max(...path.points().map((p: number[]) => p[0]));
+    const generatedHeight: number = Math.max(...path.points().map((p: number[]) => p[1]));
+
+    // Now we can scale the svg
+    path = path.scale(polygonShapeData.width / generatedWidth, polygonShapeData.height / generatedHeight);
 
     // Translate
     // If there's a stroke, translate the shape by half the stroke width

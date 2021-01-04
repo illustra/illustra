@@ -34,7 +34,7 @@ describe.each(["layer", "polygon", "ellipse"])("resizing a %s", (layerType: stri
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/resize/${layerType}/resize.png`).toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/resize/${layerType}/resizeWidth.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
@@ -49,7 +49,7 @@ describe.each(["layer", "polygon", "ellipse"])("resizing a %s", (layerType: stri
         const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/resize/${layerType}/resize.png`).toString("base64");
+        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/resize/${layerType}/resizeHeight.png`).toString("base64");
 
         // Expect
         expect(exportedImage).toBe(expectedImage);
