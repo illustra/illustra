@@ -28,8 +28,8 @@ export interface TextData {
 export interface TextLayerData {
     name: string;
     text: TextData;
-    top?: number;
     left?: number;
+    top?: number;
     position?: number;
     debugMode?: boolean;
 }
@@ -107,8 +107,8 @@ export default class TextLayer extends BaseLayer {
      * @param textLayerData.text.color The color of the text
      * @param textLayerData.text.lineHeight The line height to use
      * @param textLayerData.text.maxWidth The max width of the text
-     * @param textLayerData.top The vertical offset from the top to place this layer
      * @param textLayerData.left The horizontal offset from the left to place this layer
+     * @param textLayerData.top The vertical offset from the top to place this layer
      * @param textLayerData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top

@@ -15,12 +15,12 @@ describe("creating a layer from an svg string", () => {
         await document.createLayer({
             name: "background",
             svg: `
-            <svg>
-                <circle cx="200" cy="200" r="200" fill="#ffffff" />
-            </svg>
-        `,
-            top: 100,
-            left: 100
+                <svg>
+                    <circle cx="200" cy="200" r="200" fill="#ffffff" />
+                </svg>
+            `,
+            left: 100,
+            top: 100
         });
 
         // Export document

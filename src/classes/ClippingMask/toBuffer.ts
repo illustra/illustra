@@ -22,13 +22,13 @@ export default async function toBuffer(clippingMask: ClippingMask): Promise<Buff
         .composite([
             {
                 input: mask.data,
-                top: clippingMask.mask.top,
-                left: clippingMask.mask.left
+                left: clippingMask.mask.left,
+                top: clippingMask.mask.top
             },
             {
                 input: source.data,
-                top: clippingMask.source.top,
                 left: clippingMask.source.left,
+                top: clippingMask.source.top,
                 blend: "in"
             }
         ])

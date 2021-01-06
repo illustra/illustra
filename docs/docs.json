@@ -203,7 +203,7 @@
 							}
 						},
 						{
-							"id": 1187,
+							"id": 1186,
 							"name": "left",
 							"kind": 1024,
 							"kindString": "Property",
@@ -217,7 +217,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 114,
+									"line": 107,
 									"character": 8
 								}
 							],
@@ -275,7 +275,7 @@
 							}
 						},
 						{
-							"id": 1186,
+							"id": 1187,
 							"name": "top",
 							"kind": 1024,
 							"kindString": "Property",
@@ -289,7 +289,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 107,
+									"line": 114,
 									"character": 7
 								}
 							],
@@ -1855,7 +1855,7 @@
 									"parameters": [
 										{
 											"id": 1209,
-											"name": "top",
+											"name": "left",
 											"kind": 32768,
 											"kindString": "Parameter",
 											"flags": {
@@ -1863,7 +1863,7 @@
 												"isOptional": true
 											},
 											"comment": {
-												"shortText": "The vertical offset from the top to place this layer"
+												"shortText": "The horizontal offset from the left to place this layer"
 											},
 											"type": {
 												"type": "union",
@@ -1881,7 +1881,7 @@
 										},
 										{
 											"id": 1210,
-											"name": "left",
+											"name": "top",
 											"kind": 32768,
 											"kindString": "Parameter",
 											"flags": {
@@ -1889,7 +1889,7 @@
 												"isOptional": true
 											},
 											"comment": {
-												"shortText": "The horizontal offset from the left to place this layer\n"
+												"shortText": "The vertical offset from the top to place this layer\n"
 											},
 											"type": {
 												"type": "union",
@@ -2032,10 +2032,10 @@
 								1192,
 								1193,
 								1184,
-								1187,
+								1186,
 								1185,
 								1191,
-								1186
+								1187
 							]
 						},
 						{
@@ -2199,7 +2199,7 @@
 							}
 						},
 						{
-							"id": 1180,
+							"id": 1179,
 							"name": "left",
 							"kind": 1024,
 							"kindString": "Property",
@@ -2210,7 +2210,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 81,
+									"line": 80,
 									"character": 8
 								}
 							],
@@ -2309,7 +2309,7 @@
 							}
 						},
 						{
-							"id": 1179,
+							"id": 1180,
 							"name": "top",
 							"kind": 1024,
 							"kindString": "Property",
@@ -2320,7 +2320,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 80,
+									"line": 81,
 									"character": 7
 								}
 							],
@@ -2347,11 +2347,11 @@
 								1177,
 								1182,
 								1176,
-								1180,
+								1179,
 								1175,
 								1181,
 								1178,
-								1179
+								1180
 							]
 						}
 					],
@@ -3150,7 +3150,7 @@
 					},
 					"children": [
 						{
-							"id": 125,
+							"id": 124,
 							"name": "left",
 							"kind": 1024,
 							"kindString": "Property",
@@ -3161,7 +3161,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/align.ts",
-									"line": 9,
+									"line": 8,
 									"character": 8
 								}
 							],
@@ -3172,7 +3172,7 @@
 							}
 						},
 						{
-							"id": 127,
+							"id": 126,
 							"name": "leftOffset",
 							"kind": 1024,
 							"kindString": "Property",
@@ -3183,7 +3183,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/align.ts",
-									"line": 11,
+									"line": 10,
 									"character": 14
 								}
 							],
@@ -3202,7 +3202,7 @@
 							}
 						},
 						{
-							"id": 129,
+							"id": 128,
 							"name": "leftOffsetUnits",
 							"kind": 1024,
 							"kindString": "Property",
@@ -3213,7 +3213,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/align.ts",
-									"line": 13,
+									"line": 12,
 									"character": 19
 								}
 							],
@@ -3224,7 +3224,7 @@
 							}
 						},
 						{
-							"id": 124,
+							"id": 125,
 							"name": "top",
 							"kind": 1024,
 							"kindString": "Property",
@@ -3235,7 +3235,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/align.ts",
-									"line": 8,
+									"line": 9,
 									"character": 7
 								}
 							],
@@ -3246,7 +3246,7 @@
 							}
 						},
 						{
-							"id": 126,
+							"id": 127,
 							"name": "topOffset",
 							"kind": 1024,
 							"kindString": "Property",
@@ -3257,7 +3257,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/align.ts",
-									"line": 10,
+									"line": 11,
 									"character": 13
 								}
 							],
@@ -3276,7 +3276,7 @@
 							}
 						},
 						{
-							"id": 128,
+							"id": 129,
 							"name": "topOffsetUnits",
 							"kind": 1024,
 							"kindString": "Property",
@@ -3287,7 +3287,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/align.ts",
-									"line": 12,
+									"line": 13,
 									"character": 18
 								}
 							],
@@ -3303,12 +3303,12 @@
 							"title": "Properties",
 							"kind": 1024,
 							"children": [
-								125,
-								127,
-								129,
 								124,
 								126,
-								128
+								128,
+								125,
+								127,
+								129
 							]
 						}
 					],
@@ -5980,7 +5980,7 @@
 								},
 								{
 									"id": 1140,
-									"name": "top",
+									"name": "left",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {
@@ -5994,7 +5994,7 @@
 								},
 								{
 									"id": 1141,
-									"name": "left",
+									"name": "top",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {
@@ -6400,7 +6400,7 @@
 							}
 						},
 						{
-							"id": 907,
+							"id": 906,
 							"name": "left",
 							"kind": 1024,
 							"kindString": "Property",
@@ -6414,7 +6414,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 114,
+									"line": 107,
 									"character": 8
 								}
 							],
@@ -6424,7 +6424,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 151,
+								"id": 150,
 								"name": "BaseLayer.left"
 							}
 						},
@@ -6537,7 +6537,7 @@
 							}
 						},
 						{
-							"id": 906,
+							"id": 907,
 							"name": "top",
 							"kind": 1024,
 							"kindString": "Property",
@@ -6551,7 +6551,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 107,
+									"line": 114,
 									"character": 7
 								}
 							],
@@ -6561,7 +6561,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 150,
+								"id": 151,
 								"name": "BaseLayer.top"
 							}
 						},
@@ -8379,7 +8379,7 @@
 									"parameters": [
 										{
 											"id": 925,
-											"name": "top",
+											"name": "left",
 											"kind": 32768,
 											"kindString": "Parameter",
 											"flags": {
@@ -8387,7 +8387,7 @@
 												"isOptional": true
 											},
 											"comment": {
-												"shortText": "The vertical offset from the top to place this layer"
+												"shortText": "The horizontal offset from the left to place this layer"
 											},
 											"type": {
 												"type": "union",
@@ -8405,7 +8405,7 @@
 										},
 										{
 											"id": 926,
-											"name": "left",
+											"name": "top",
 											"kind": 32768,
 											"kindString": "Parameter",
 											"flags": {
@@ -8413,7 +8413,7 @@
 												"isOptional": true
 											},
 											"comment": {
-												"shortText": "The horizontal offset from the left to place this layer\n"
+												"shortText": "The vertical offset from the top to place this layer\n"
 											},
 											"type": {
 												"type": "union",
@@ -8576,12 +8576,12 @@
 								912,
 								913,
 								904,
-								907,
+								906,
 								896,
 								905,
 								911,
 								897,
-								906
+								907
 							]
 						},
 						{
@@ -11397,7 +11397,7 @@
 							}
 						},
 						{
-							"id": 601,
+							"id": 600,
 							"name": "left",
 							"kind": 1024,
 							"kindString": "Property",
@@ -11411,7 +11411,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 114,
+									"line": 107,
 									"character": 8
 								}
 							],
@@ -11421,7 +11421,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 151,
+								"id": 150,
 								"name": "BaseLayer.left"
 							}
 						},
@@ -11562,7 +11562,7 @@
 							}
 						},
 						{
-							"id": 600,
+							"id": 601,
 							"name": "top",
 							"kind": 1024,
 							"kindString": "Property",
@@ -11576,7 +11576,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 107,
+									"line": 114,
 									"character": 7
 								}
 							],
@@ -11586,7 +11586,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 150,
+								"id": 151,
 								"name": "BaseLayer.top"
 							}
 						},
@@ -13832,7 +13832,7 @@
 									"parameters": [
 										{
 											"id": 619,
-											"name": "top",
+											"name": "left",
 											"kind": 32768,
 											"kindString": "Parameter",
 											"flags": {
@@ -13840,7 +13840,7 @@
 												"isOptional": true
 											},
 											"comment": {
-												"shortText": "The vertical offset from the top to place this layer"
+												"shortText": "The horizontal offset from the left to place this layer"
 											},
 											"type": {
 												"type": "union",
@@ -13858,7 +13858,7 @@
 										},
 										{
 											"id": 620,
-											"name": "left",
+											"name": "top",
 											"kind": 32768,
 											"kindString": "Parameter",
 											"flags": {
@@ -13866,7 +13866,7 @@
 												"isOptional": true
 											},
 											"comment": {
-												"shortText": "The horizontal offset from the left to place this layer\n"
+												"shortText": "The vertical offset from the top to place this layer\n"
 											},
 											"type": {
 												"type": "union",
@@ -14153,12 +14153,12 @@
 								598,
 								580,
 								579,
-								601,
+								600,
 								599,
 								605,
 								581,
 								582,
-								600,
+								601,
 								578
 							]
 						},
@@ -14271,7 +14271,7 @@
 							}
 						},
 						{
-							"id": 560,
+							"id": 559,
 							"name": "left",
 							"kind": 1024,
 							"kindString": "Property",
@@ -14282,7 +14282,7 @@
 							"sources": [
 								{
 									"fileName": "classes/ShapeLayer/ShapeLayer.ts",
-									"line": 20,
+									"line": 19,
 									"character": 8
 								}
 							],
@@ -14301,7 +14301,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 284,
+								"id": 283,
 								"name": "ShapeLayerData.left"
 							}
 						},
@@ -14387,7 +14387,7 @@
 							}
 						},
 						{
-							"id": 559,
+							"id": 560,
 							"name": "top",
 							"kind": 1024,
 							"kindString": "Property",
@@ -14398,7 +14398,7 @@
 							"sources": [
 								{
 									"fileName": "classes/ShapeLayer/ShapeLayer.ts",
-									"line": 19,
+									"line": 20,
 									"character": 7
 								}
 							],
@@ -14417,7 +14417,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 283,
+								"id": 284,
 								"name": "ShapeLayerData.top"
 							}
 						}
@@ -14428,11 +14428,11 @@
 							"kind": 1024,
 							"children": [
 								562,
-								560,
+								559,
 								558,
 								561,
 								557,
-								559
+								560
 							]
 						}
 					],
@@ -14921,7 +14921,7 @@
 							}
 						},
 						{
-							"id": 151,
+							"id": 150,
 							"name": "left",
 							"kind": 1024,
 							"kindString": "Property",
@@ -14935,7 +14935,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 114,
+									"line": 107,
 									"character": 8
 								}
 							],
@@ -14945,7 +14945,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 151,
+								"id": 150,
 								"name": "BaseLayer.left"
 							}
 						},
@@ -15008,7 +15008,7 @@
 							}
 						},
 						{
-							"id": 150,
+							"id": 151,
 							"name": "top",
 							"kind": 1024,
 							"kindString": "Property",
@@ -15022,7 +15022,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 107,
+									"line": 114,
 									"character": 7
 								}
 							],
@@ -15032,7 +15032,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 150,
+								"id": 151,
 								"name": "BaseLayer.top"
 							}
 						},
@@ -16827,7 +16827,7 @@
 									"parameters": [
 										{
 											"id": 169,
-											"name": "top",
+											"name": "left",
 											"kind": 32768,
 											"kindString": "Parameter",
 											"flags": {
@@ -16835,7 +16835,7 @@
 												"isOptional": true
 											},
 											"comment": {
-												"shortText": "The vertical offset from the top to place this layer"
+												"shortText": "The horizontal offset from the left to place this layer"
 											},
 											"type": {
 												"type": "union",
@@ -16853,7 +16853,7 @@
 										},
 										{
 											"id": 170,
-											"name": "left",
+											"name": "top",
 											"kind": 32768,
 											"kindString": "Parameter",
 											"flags": {
@@ -16861,7 +16861,7 @@
 												"isOptional": true
 											},
 											"comment": {
-												"shortText": "The horizontal offset from the left to place this layer\n"
+												"shortText": "The vertical offset from the top to place this layer\n"
 											},
 											"type": {
 												"type": "union",
@@ -17027,10 +17027,10 @@
 								157,
 								148,
 								142,
-								151,
+								150,
 								149,
 								155,
-								150,
+								151,
 								141
 							]
 						},
@@ -17427,7 +17427,7 @@
 							}
 						},
 						{
-							"id": 464,
+							"id": 463,
 							"name": "left",
 							"kind": 1024,
 							"kindString": "Property",
@@ -17441,7 +17441,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 114,
+									"line": 107,
 									"character": 8
 								}
 							],
@@ -17451,7 +17451,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 151,
+								"id": 150,
 								"name": "BaseLayer.left"
 							}
 						},
@@ -17616,7 +17616,7 @@
 							}
 						},
 						{
-							"id": 463,
+							"id": 464,
 							"name": "top",
 							"kind": 1024,
 							"kindString": "Property",
@@ -17630,7 +17630,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 107,
+									"line": 114,
 									"character": 7
 								}
 							],
@@ -17640,7 +17640,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 150,
+								"id": 151,
 								"name": "BaseLayer.top"
 							}
 						},
@@ -19946,7 +19946,7 @@
 									"parameters": [
 										{
 											"id": 482,
-											"name": "top",
+											"name": "left",
 											"kind": 32768,
 											"kindString": "Parameter",
 											"flags": {
@@ -19954,7 +19954,7 @@
 												"isOptional": true
 											},
 											"comment": {
-												"shortText": "The vertical offset from the top to place this layer"
+												"shortText": "The horizontal offset from the left to place this layer"
 											},
 											"type": {
 												"type": "union",
@@ -19972,7 +19972,7 @@
 										},
 										{
 											"id": 483,
-											"name": "left",
+											"name": "top",
 											"kind": 32768,
 											"kindString": "Parameter",
 											"flags": {
@@ -19980,7 +19980,7 @@
 												"isOptional": true
 											},
 											"comment": {
-												"shortText": "The horizontal offset from the left to place this layer\n"
+												"shortText": "The vertical offset from the top to place this layer\n"
 											},
 											"type": {
 												"type": "union",
@@ -20267,13 +20267,13 @@
 								461,
 								443,
 								442,
-								464,
+								463,
 								462,
 								468,
 								423,
 								444,
 								445,
-								463,
+								464,
 								441
 							]
 						},
@@ -20387,7 +20387,7 @@
 							}
 						},
 						{
-							"id": 419,
+							"id": 418,
 							"name": "left",
 							"kind": 1024,
 							"kindString": "Property",
@@ -20398,7 +20398,7 @@
 							"sources": [
 								{
 									"fileName": "classes/ShapeLayer/ShapeLayer.ts",
-									"line": 20,
+									"line": 19,
 									"character": 8
 								}
 							],
@@ -20417,7 +20417,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 284,
+								"id": 283,
 								"name": "ShapeLayerData.left"
 							}
 						},
@@ -20503,7 +20503,7 @@
 							}
 						},
 						{
-							"id": 418,
+							"id": 419,
 							"name": "top",
 							"kind": 1024,
 							"kindString": "Property",
@@ -20514,7 +20514,7 @@
 							"sources": [
 								{
 									"fileName": "classes/ShapeLayer/ShapeLayer.ts",
-									"line": 19,
+									"line": 20,
 									"character": 7
 								}
 							],
@@ -20533,7 +20533,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 283,
+								"id": 284,
 								"name": "ShapeLayerData.top"
 							}
 						}
@@ -20544,11 +20544,11 @@
 							"kind": 1024,
 							"children": [
 								421,
-								419,
+								418,
 								417,
 								420,
 								416,
-								418
+								419
 							]
 						}
 					],
@@ -21251,7 +21251,7 @@
 							}
 						},
 						{
-							"id": 315,
+							"id": 314,
 							"name": "left",
 							"kind": 1024,
 							"kindString": "Property",
@@ -21265,7 +21265,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 114,
+									"line": 107,
 									"character": 8
 								}
 							],
@@ -21275,7 +21275,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 151,
+								"id": 150,
 								"name": "BaseLayer.left"
 							}
 						},
@@ -21406,7 +21406,7 @@
 							}
 						},
 						{
-							"id": 314,
+							"id": 315,
 							"name": "top",
 							"kind": 1024,
 							"kindString": "Property",
@@ -21420,7 +21420,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 107,
+									"line": 114,
 									"character": 7
 								}
 							],
@@ -21430,7 +21430,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 150,
+								"id": 151,
 								"name": "BaseLayer.top"
 							}
 						},
@@ -23539,7 +23539,7 @@
 									"parameters": [
 										{
 											"id": 333,
-											"name": "top",
+											"name": "left",
 											"kind": 32768,
 											"kindString": "Parameter",
 											"flags": {
@@ -23547,7 +23547,7 @@
 												"isOptional": true
 											},
 											"comment": {
-												"shortText": "The vertical offset from the top to place this layer"
+												"shortText": "The horizontal offset from the left to place this layer"
 											},
 											"type": {
 												"type": "union",
@@ -23565,7 +23565,7 @@
 										},
 										{
 											"id": 334,
-											"name": "left",
+											"name": "top",
 											"kind": 32768,
 											"kindString": "Parameter",
 											"flags": {
@@ -23573,7 +23573,7 @@
 												"isOptional": true
 											},
 											"comment": {
-												"shortText": "The horizontal offset from the left to place this layer\n"
+												"shortText": "The vertical offset from the top to place this layer\n"
 											},
 											"type": {
 												"type": "union",
@@ -23738,12 +23738,12 @@
 								312,
 								290,
 								289,
-								315,
+								314,
 								313,
 								319,
 								291,
 								292,
-								314,
+								315,
 								288
 							]
 						},
@@ -24011,7 +24011,7 @@
 							}
 						},
 						{
-							"id": 284,
+							"id": 283,
 							"name": "left",
 							"kind": 1024,
 							"kindString": "Property",
@@ -24022,7 +24022,7 @@
 							"sources": [
 								{
 									"fileName": "classes/ShapeLayer/ShapeLayer.ts",
-									"line": 20,
+									"line": 19,
 									"character": 8
 								}
 							],
@@ -24091,7 +24091,7 @@
 							}
 						},
 						{
-							"id": 283,
+							"id": 284,
 							"name": "top",
 							"kind": 1024,
 							"kindString": "Property",
@@ -24102,7 +24102,7 @@
 							"sources": [
 								{
 									"fileName": "classes/ShapeLayer/ShapeLayer.ts",
-									"line": 19,
+									"line": 20,
 									"character": 7
 								}
 							],
@@ -24127,10 +24127,10 @@
 							"kind": 1024,
 							"children": [
 								286,
-								284,
+								283,
 								282,
 								285,
-								283
+								284
 							]
 						}
 					],
@@ -24983,7 +24983,7 @@
 							}
 						},
 						{
-							"id": 795,
+							"id": 794,
 							"name": "left",
 							"kind": 1024,
 							"kindString": "Property",
@@ -24997,7 +24997,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 114,
+									"line": 107,
 									"character": 8
 								}
 							],
@@ -25007,7 +25007,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 151,
+								"id": 150,
 								"name": "BaseLayer.left"
 							}
 						},
@@ -25177,7 +25177,7 @@
 							}
 						},
 						{
-							"id": 794,
+							"id": 795,
 							"name": "top",
 							"kind": 1024,
 							"kindString": "Property",
@@ -25191,7 +25191,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 107,
+									"line": 114,
 									"character": 7
 								}
 							],
@@ -25201,7 +25201,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 150,
+								"id": 151,
 								"name": "BaseLayer.top"
 							}
 						},
@@ -27553,7 +27553,7 @@
 									"parameters": [
 										{
 											"id": 813,
-											"name": "top",
+											"name": "left",
 											"kind": 32768,
 											"kindString": "Parameter",
 											"flags": {
@@ -27561,7 +27561,7 @@
 												"isOptional": true
 											},
 											"comment": {
-												"shortText": "The vertical offset from the top to place this layer"
+												"shortText": "The horizontal offset from the left to place this layer"
 											},
 											"type": {
 												"type": "union",
@@ -27579,7 +27579,7 @@
 										},
 										{
 											"id": 814,
-											"name": "left",
+											"name": "top",
 											"kind": 32768,
 											"kindString": "Parameter",
 											"flags": {
@@ -27587,7 +27587,7 @@
 												"isOptional": true
 											},
 											"comment": {
-												"shortText": "The horizontal offset from the left to place this layer\n"
+												"shortText": "The vertical offset from the top to place this layer\n"
 											},
 											"type": {
 												"type": "union",
@@ -27821,14 +27821,14 @@
 								752,
 								753,
 								754,
-								795,
+								794,
 								757,
 								758,
 								793,
 								799,
 								751,
 								755,
-								794
+								795
 							]
 						},
 						{
@@ -28184,7 +28184,7 @@
 							}
 						},
 						{
-							"id": 747,
+							"id": 746,
 							"name": "left",
 							"kind": 1024,
 							"kindString": "Property",
@@ -28195,7 +28195,7 @@
 							"sources": [
 								{
 									"fileName": "classes/TextLayer/TextLayer.ts",
-									"line": 32,
+									"line": 31,
 									"character": 8
 								}
 							],
@@ -28285,7 +28285,7 @@
 							}
 						},
 						{
-							"id": 746,
+							"id": 747,
 							"name": "top",
 							"kind": 1024,
 							"kindString": "Property",
@@ -28296,7 +28296,7 @@
 							"sources": [
 								{
 									"fileName": "classes/TextLayer/TextLayer.ts",
-									"line": 31,
+									"line": 32,
 									"character": 7
 								}
 							],
@@ -28321,11 +28321,11 @@
 							"kind": 1024,
 							"children": [
 								749,
-								747,
+								746,
 								744,
 								748,
 								745,
-								746
+								747
 							]
 						}
 					],

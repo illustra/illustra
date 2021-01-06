@@ -30,8 +30,8 @@ describe("creating a text layer", () => {
                 height: 50,
                 fill: "#ffffff"
             },
-            top: 190,
-            left: 200
+            left: 200,
+            top: 190
         });
 
         // Create text
@@ -40,8 +40,8 @@ describe("creating a text layer", () => {
             text: {
                 text: "example"
             },
-            top: 200,
-            left: 250
+            left: 250,
+            top: 200
         });
 
         // Export document
@@ -65,8 +65,8 @@ describe("creating a text layer", () => {
                 fontSize: 65,
                 color: "#ffffff"
             },
-            top: 200,
-            left: 250
+            left: 250,
+            top: 200
         });
 
         // Export document
@@ -90,8 +90,8 @@ describe("creating a text layer", () => {
                 fontWeight: "bold",
                 color: "#ffffff"
             },
-            top: 200,
-            left: 250
+            left: 250,
+            top: 200
         });
 
         // Export document
@@ -116,8 +116,8 @@ describe("creating a text layer", () => {
                 color: "#ffffff",
                 maxWidth: 400
             },
-            top: 200,
-            left: 250
+            left: 250,
+            top: 200
         });
 
         // Export document
@@ -142,8 +142,8 @@ describe("creating a text layer", () => {
                 lineHeight: 150,
                 maxWidth: 400
             },
-            top: 200,
-            left: 250
+            left: 250,
+            top: 200
         });
 
         // Export document

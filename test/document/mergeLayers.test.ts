@@ -90,8 +90,8 @@ describe("merging layers in a document", () => {
         await document.createLayer({
             name: "logo",
             file: "test/assets/apixel.png",
-            top: 700,
-            left: 1700
+            left: 1700,
+            top: 700
         });
 
         // Export document
@@ -110,8 +110,8 @@ describe("merging layers in a document", () => {
         await document.createLayer({
             name: "logo",
             file: "test/assets/apixel.png",
-            top: -300,
-            left: -200
+            left: -200,
+            top: -300
         });
 
         // Export document
@@ -130,8 +130,8 @@ describe("merging layers in a document", () => {
         await document.createLayer({
             name: "logo",
             file: "test/assets/apixel.png",
-            top: 1100,
-            left: 2000
+            left: 2000,
+            top: 1100
         });
 
         // Export document
@@ -150,8 +150,8 @@ describe("merging layers in a document", () => {
         await document.createLayer({
             name: "logo",
             file: "test/assets/apixel.png",
-            top: -800,
-            left: -800
+            left: -800,
+            top: -800
         });
 
         // Export document

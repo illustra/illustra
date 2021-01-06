@@ -31,8 +31,8 @@ describe("creating a polygon", () => {
                 sides: 5,
                 fill: "#ffffff"
             },
-            top: 200,
-            left: 250
+            left: 250,
+            top: 200
         });
 
         // Export document
@@ -58,8 +58,8 @@ describe("creating a polygon", () => {
                 stroke: "#ff0000",
                 strokeWidth: 15
             },
-            top: 200,
-            left: 250
+            left: 250,
+            top: 200
         });
 
         // Export document

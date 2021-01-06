@@ -88,8 +88,8 @@ export default class Document {
      * @param layerData.file An image file to use for this layer
      * @param layerData.buffer An image buffer to use for this layer
      * @param layerData.svg An SVG string to use for this layer
-     * @param layerData.top The vertical offset from the top to place this layer
      * @param layerData.left The horizontal offset from the left to place this layer
+     * @param layerData.top The vertical offset from the top to place this layer
      * @param layerData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
@@ -113,8 +113,8 @@ export default class Document {
      * @param polygonData.shape.fill The color of this shape's fill
      * @param polygonData.shape.stroke The color of this shape's stroke
      * @param polygonData.shape.strokeWidth The width of this shape's stroke in pixels
-     * @param polygonData.top The vertical offset from the top to place this layer
      * @param polygonData.left The horizontal offset from the left to place this layer
+     * @param polygonData.top The vertical offset from the top to place this layer
      * @param polygonData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
@@ -137,8 +137,8 @@ export default class Document {
      * @param ellipseData.shape.fill The color of this shape's fill
      * @param ellipseData.shape.stroke The color of this shape's stroke
      * @param ellipseData.shape.strokeWidth The width of this shape's stroke in pixels
-     * @param ellipseData.top The vertical offset from the top to place this layer
      * @param ellipseData.left The horizontal offset from the left to place this layer
+     * @param ellipseData.top The vertical offset from the top to place this layer
      * @param ellipseData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
@@ -164,8 +164,8 @@ export default class Document {
      * @param textLayerData.text.color The color of the text
      * @param textLayerData.text.lineHeight The line height to use
      * @param textLayerData.text.maxWidth The max width of the text
-     * @param textLayerData.top The vertical offset from the top to place this layer
      * @param textLayerData.left The horizontal offset from the left to place this layer
+     * @param textLayerData.top The vertical offset from the top to place this layer
      * @param textLayerData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top

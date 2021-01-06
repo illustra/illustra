@@ -125,8 +125,8 @@ export default async function mergeLayers(document: Document, name: string, inpu
         // Return
         return {
             input: l,
-            top: layers[index].top < 0 ? 0 : layers[index].top,
             left: layers[index].left < 0 ? 0 : layers[index].left,
+            top: layers[index].top < 0 ? 0 : layers[index].top,
             blend: thisBlendMode as any
         };
     }));

@@ -25,8 +25,8 @@ describe("creating clipping masks", () => {
         logo = await createLayer({
             name: "logo",
             file: "test/assets/apixel.png",
-            top: 300,
-            left: 300
+            left: 300,
+            top: 300
         });
         logo.resize(500);
 
@@ -38,8 +38,8 @@ describe("creating clipping masks", () => {
                 height: 500,
                 fill: "#ffffff"
             },
-            top: 300,
-            left: 300
+            left: 300,
+            top: 300
         });
     });
 

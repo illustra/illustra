@@ -30,8 +30,8 @@ describe("creating ellipses", () => {
                 height: 500,
                 fill: "#ffffff"
             },
-            top: 200,
-            left: 250
+            left: 250,
+            top: 200
         });
 
         // Export document
@@ -56,8 +56,8 @@ describe("creating ellipses", () => {
                 stroke: "#ff0000",
                 strokeWidth: 15
             },
-            top: 200,
-            left: 250
+            left: 250,
+            top: 200
         });
 
         // Export document

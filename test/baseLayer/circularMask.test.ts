@@ -56,8 +56,8 @@ describe.each(["layer", "polygon", "ellipse"])("adding a circular mask to %s", (
         const otherLogo: Layer = await createLayer({
             name: "logo",
             file: "test/assets/apixel.png",
-            top: 300,
-            left: 300
+            left: 300,
+            top: 300
         });
 
         // Add circular mask

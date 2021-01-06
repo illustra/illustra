@@ -4,7 +4,7 @@ Transformations are a way to move layers around a document. Transformations incl
 
 # Translating
 
-A translation is a basic movement of a layer. For example, we can translate a layer to be 100 pixels from the top and 200 pixels from the left of the document with the [`Layer.translate()`](https://illustra.apixel.me/docs/classes/Layer#translate) method:
+A translation is a basic movement of a layer. For example, we can translate a layer to be 100 pixels from the left and 200 pixels from the top of the document with the [`Layer.translate()`](https://illustra.apixel.me/docs/classes/Layer#translate) method:
 
 ```js
 // Translate layer
@@ -75,10 +75,10 @@ The [`Layer.align()`](https://illustra.apixel.me/docs/classes/Layer#align) metho
 ```js
 // Align layer
 layer.align({
-    top: "center",
     left: "end",
-    topOffset: 50,
-    leftOffset: 50
+    top: "center",
+    leftOffset: 50,
+    topOffset: 50
 });
 ```
 
@@ -87,11 +87,11 @@ You can also enter the offset as a percent of the document's size with the `topO
 ```js
 // Align layer
 layer.align({
-    top: "center",
     left: "end",
-    topOffset: 50,
+    top: "center",
     leftOffset: 50,
-    topOffsetUnits: "percent",
-    leftOffsetUnits: "percent"
+    topOffset: 50,
+    leftOffsetUnits: "percent",
+    topOffsetUnits: "percent"
 });
 ```

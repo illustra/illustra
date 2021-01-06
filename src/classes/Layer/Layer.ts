@@ -42,8 +42,8 @@ export default class Layer extends BaseLayer {
      * @param layerData.file An image file to use for this layer
      * @param layerData.buffer An image buffer to use for this layer
      * @param layerData.svg An SVG string to use for this layer
-     * @param layerData.top The vertical offset from the top to place this layer
      * @param layerData.left The horizontal offset from the left to place this layer
+     * @param layerData.top The vertical offset from the top to place this layer
      * @param layerData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top

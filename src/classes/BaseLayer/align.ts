@@ -5,12 +5,12 @@ export type AlignType = "start" | "center" | "end";
 export type Units = "pixels" | "percent";
 
 export interface AlignOptions {
-    top?: AlignType;
     left?: AlignType;
-    topOffset?: number;
+    top?: AlignType;
     leftOffset?: number;
-    topOffsetUnits?: Units;
+    topOffset?: number;
     leftOffsetUnits?: Units;
+    topOffsetUnits?: Units;
 }
 
 export default function align<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, alignOptions: AlignOptions = {}): AnyLayerInput {
@@ -21,13 +21,6 @@ export default function align<AnyLayerInput extends AnyLayer>(layer: AnyLayerInp
     // No document
     if (!layer.document) throw new Error("This layer isn't a part of a document");
 
-    // Get alignment top
-    let top: number;
-    if (alignOptions.top === "start") top = 0;
-    else if ((alignOptions.top === "center") || (!alignOptions.top)) top = Math.round((layer.document.height / 2) - (layer.height / 2));
-    else if (alignOptions.top === "end") top = layer.document.height - layer.height;
-    else throw new Error("Invalid top align type");
-
     // Get alignment left
     let left: number;
     if (alignOptions.left === "start") left = 0;
@@ -35,25 +28,32 @@ export default function align<AnyLayerInput extends AnyLayer>(layer: AnyLayerInp
     else if (alignOptions.left === "end") left = layer.document.width - layer.width;
     else throw new Error("Invalid left align type");
 
-    // Parse alignment top offset
-    let topOffset: number = alignOptions.topOffset || 0;
-    if (alignOptions.topOffsetUnits === "percent") topOffset = layer.document.height * (topOffset / 100);
+    // Get alignment top
+    let top: number;
+    if (alignOptions.top === "start") top = 0;
+    else if ((alignOptions.top === "center") || (!alignOptions.top)) top = Math.round((layer.document.height / 2) - (layer.height / 2));
+    else if (alignOptions.top === "end") top = layer.document.height - layer.height;
+    else throw new Error("Invalid top align type");
 
     // Parse alignment left offset
     let leftOffset: number = alignOptions.leftOffset || 0;
     if (alignOptions.leftOffsetUnits === "percent") leftOffset = layer.document.width * (leftOffset / 100);
 
-    // Set alignment top offset
-    if (alignOptions.topOffset) top = top + topOffset;
+    // Parse alignment top offset
+    let topOffset: number = alignOptions.topOffset || 0;
+    if (alignOptions.topOffsetUnits === "percent") topOffset = layer.document.height * (topOffset / 100);
 
     // Set alignment left offset
     if (alignOptions.leftOffset) left = left + leftOffset;
 
+    // Set alignment top offset
+    if (alignOptions.topOffset) top = top + topOffset;
+
     // Debug
-    layer._debug(`Aligning to ${alignOptions.top || "center"} (top) and ${alignOptions.left || "center"} (left) with an offset of ${topOffset}px (top) and ${leftOffset}px (left)`);
+    layer._debug(`Aligning to ${alignOptions.left || "center"} (left) and ${alignOptions.top || "center"} (top) with an offset of ${leftOffset}px (left) and ${topOffset}px (top)`);
 
     // Translate
-    layer.translate(top, left);
+    layer.translate(left, top);
 
     // Return
     return layer;

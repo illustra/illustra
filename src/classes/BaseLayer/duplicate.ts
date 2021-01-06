@@ -21,8 +21,8 @@ export default async function duplicate<AnyLayerInput extends AnyLayer>(layer: A
             lineHeight: layer.lineHeight,
             maxWidth: layer.maxWidth
         },
-        top: layer.top,
         left: layer.left,
+        top: layer.top,
         position: position || layer.position + 1,
         debugMode
     }, layer.document) as AnyLayerInput;
@@ -38,8 +38,8 @@ export default async function duplicate<AnyLayerInput extends AnyLayer>(layer: A
             stroke: layer.stroke,
             strokeWidth: layer.strokeWidth
         },
-        top: layer.top,
         left: layer.left,
+        top: layer.top,
         position: position || layer.position + 1,
         debugMode
     }, layer.document) as AnyLayerInput;
@@ -54,8 +54,8 @@ export default async function duplicate<AnyLayerInput extends AnyLayer>(layer: A
             stroke: layer.stroke,
             strokeWidth: layer.strokeWidth
         },
-        top: layer.top,
         left: layer.left,
+        top: layer.top,
         position: position || layer.position + 1,
         debugMode
     }, layer.document) as AnyLayerInput;
@@ -73,8 +73,8 @@ export default async function duplicate<AnyLayerInput extends AnyLayer>(layer: A
     else {
         duplicatedLayer = new Layer({
             name: name || layer.name,
-            top: layer.top,
             left: layer.left,
+            top: layer.top,
             position: position || layer.position + 1,
             debugMode
         }, layer.document, (layer as Layer)._inputData) as AnyLayerInput;

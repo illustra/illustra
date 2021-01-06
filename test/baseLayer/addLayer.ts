@@ -6,8 +6,8 @@ export default async function addLayer(document: Document, layerType: string): P
     const layerData: BaseLayerData = {
         name: layerType,
         file: "test/assets/apixel.png",
-        top: 200,
-        left: 250
+        left: 250,
+        top: 200
     };
 
     // Text layer
@@ -17,8 +17,8 @@ export default async function addLayer(document: Document, layerType: string): P
             text: "example",
             color: "#ff0000"
         },
-        top: 200,
-        left: 250
+        left: 250,
+        top: 200
     });
 
     // Polygon
@@ -30,8 +30,8 @@ export default async function addLayer(document: Document, layerType: string): P
             sides: 5,
             fill: "#ff0000"
         },
-        top: 200,
-        left: 250
+        left: 250,
+        top: 200
     });
 
     // Ellipse
@@ -42,8 +42,8 @@ export default async function addLayer(document: Document, layerType: string): P
             height: 500,
             fill: "#ff0000"
         },
-        top: 200,
-        left: 250
+        left: 250,
+        top: 200
     });
 
     // Clipping mask
@@ -56,8 +56,8 @@ export default async function addLayer(document: Document, layerType: string): P
                 height: 500,
                 fill: "#ffffff"
             },
-            top: 200,
-            left: 250
+            left: 250,
+            top: 200
         }),
         source: await createLayer(layerData)
     });

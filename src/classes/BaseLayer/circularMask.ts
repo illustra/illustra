@@ -18,8 +18,8 @@ export default function circularMask(layer: AnyLayer, name: string, keepSource?:
                 height: layer.height,
                 fill: "#ffffff"
             },
-            top: layer.top,
-            left: layer.left
+            left: layer.left,
+            top: layer.top
         }),
         source: layer
     });

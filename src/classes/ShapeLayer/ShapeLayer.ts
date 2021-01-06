@@ -16,8 +16,8 @@ export interface ShapeData {
 
 export interface ShapeLayerData {
     name: string;
-    top?: number;
     left?: number;
+    top?: number;
     position?: number;
     debugMode?: boolean;
 }
@@ -71,8 +71,8 @@ export default class ShapeLayer extends BaseLayer {
      * @param shapeLayerData.shape.fill The color of this shape's fill
      * @param shapeLayerData.shape.stroke The color of this shape's stroke
      * @param shapeLayerData.shape.strokeWidth The width of this shape's stroke in pixels
-     * @param shapeLayerData.top The vertical offset from the top to place this layer
      * @param shapeLayerData.left The horizontal offset from the left to place this layer
+     * @param shapeLayerData.top The vertical offset from the top to place this layer
      * @param shapeLayerData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top

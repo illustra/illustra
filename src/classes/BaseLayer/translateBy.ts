@@ -6,7 +6,7 @@ export default function translateBy<AnyLayerInput extends AnyLayer>(layer: AnyLa
     layer._debug(`Translating by ${x}px (x) and ${y}px (y)`);
 
     // Translate
-    layer.translate(layer.top + y, layer.left + x);
+    layer.translate(layer.left + x, layer.top + y);
 
     // Return
     return layer;

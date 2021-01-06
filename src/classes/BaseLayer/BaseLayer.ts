@@ -77,8 +77,8 @@ export interface BaseLayerData {
     file?: string;
     buffer?: Buffer;
     svg?: string;
-    top?: number;
     left?: number;
+    top?: number;
     position?: number;
     debugMode?: boolean;
 }
@@ -100,18 +100,18 @@ export default class BaseLayer {
     name: string;
 
     /**
-     * Top
-     *
-     * The vertical offset from the top to place this layer
-     */
-    top: number;
-
-    /**
      * Left
      *
      * The horizontal offset from the left to place this layer
      */
     left: number;
+
+    /**
+     * Top
+     *
+     * The vertical offset from the top to place this layer
+     */
+    top: number;
 
     /**
      * Position
@@ -159,8 +159,8 @@ export default class BaseLayer {
      * @param baseLayerData.file An image file to use for this layer
      * @param baseLayerData.buffer An image buffer to use for this layer
      * @param baseLayerData.svg An SVG string to use for this layer
-     * @param baseLayerData.top The vertical offset from the top to place this layer
      * @param baseLayerData.left The horizontal offset from the left to place this layer
+     * @param baseLayerData.top The vertical offset from the top to place this layer
      * @param baseLayerData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
@@ -173,8 +173,8 @@ export default class BaseLayer {
 
         // Set data
         this.name = baseLayerData.name;
-        this.top = baseLayerData.top || 0;
         this.left = baseLayerData.left || 0;
+        this.top = baseLayerData.top || 0;
         this._edits = [];
         this.opacity = 100;
         this.blendMode = "normal";
@@ -219,12 +219,12 @@ export default class BaseLayer {
      *
      * Translate this layer to a specified position
      *
-     * @param top The vertical offset from the top to place this layer
      * @param left The horizontal offset from the left to place this layer
+     * @param top The vertical offset from the top to place this layer
      *
      * @returns {this} This layer
      */
-    translate = (top?: number, left?: number): this => translate(this, top, left);
+    translate = (left?: number, top?: number): this => translate(this, left, top);
 
     /**
      * Translate By
@@ -244,15 +244,15 @@ export default class BaseLayer {
      * Align this layer to the document
      *
      * @param alignOptions Options for aligning this layer
-     * @param alignOptions.top How this layer should be aligned vertically
-     * Either 'start', 'center' (default), or 'end'
      * @param alignOptions.left How this layer should be aligned horizontally
      * Either 'start', 'center' (default), or 'end'
-     * @param alignOptions.topOffset The offset for aligning this layer vertically
+     * @param alignOptions.top How this layer should be aligned vertically
+     * Either 'start', 'center' (default), or 'end'
      * @param alignOptions.leftOffset The offset for aligning this layer horizontally
-     * @param alignOptions.topOffsetUnits The units for offsetting this layer vertically
-     * Either 'pixels' (default) or 'percent'
+     * @param alignOptions.topOffset The offset for aligning this layer vertically
      * @param alignOptions.leftOffsetUnits The units for offsetting this layer horizontally
+     * Either 'pixels' (default) or 'percent'
+     * @param alignOptions.topOffsetUnits The units for offsetting this layer vertically
      * Either 'pixels' (default) or 'percent'
      *
      * @returns {this} This layer

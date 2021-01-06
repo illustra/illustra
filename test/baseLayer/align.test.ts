@@ -28,9 +28,9 @@ describe("checking for aligning errors", () => {
         expect(() => background.align()).toThrow("This layer isn't a part of a document");
         expect(() => textLayer.align()).toThrow("This layer can't be aligned");
         // @ts-ignore
-        expect(() => layer.align({ top: "invalid" })).toThrow("Invalid top align type");
-        // @ts-ignore
         expect(() => layer.align({ left: "invalid" })).toThrow("Invalid left align type");
+        // @ts-ignore
+        expect(() => layer.align({ top: "invalid" })).toThrow("Invalid top align type");
     });
 });
 
@@ -61,8 +61,8 @@ describe.each(["layer", "polygon", "ellipse"])("aligning a %s", (layerType: stri
 
         // Align layer
         layer.align({
-            top: "start",
-            left: "start"
+            left: "start",
+            top: "start"
         });
 
         // Export document
@@ -79,8 +79,8 @@ describe.each(["layer", "polygon", "ellipse"])("aligning a %s", (layerType: stri
 
         // Align layer
         layer.align({
-            top: "center",
-            left: "center"
+            left: "center",
+            top: "center"
         });
 
         // Export document
@@ -97,8 +97,8 @@ describe.each(["layer", "polygon", "ellipse"])("aligning a %s", (layerType: stri
 
         // Align layer
         layer.align({
-            top: "end",
-            left: "end"
+            left: "end",
+            top: "end"
         });
 
         // Export document
@@ -115,10 +115,10 @@ describe.each(["layer", "polygon", "ellipse"])("aligning a %s", (layerType: stri
 
         // Align layer
         layer.align({
-            top: "start",
             left: "start",
-            topOffset: 200,
-            leftOffset: 150
+            top: "start",
+            leftOffset: 150,
+            topOffset: 200
         });
 
         // Export document
@@ -135,12 +135,12 @@ describe.each(["layer", "polygon", "ellipse"])("aligning a %s", (layerType: stri
 
         // Align layer
         layer.align({
-            top: "start",
             left: "start",
-            topOffset: 10,
+            top: "start",
             leftOffset: 15,
-            topOffsetUnits: "percent",
-            leftOffsetUnits: "percent"
+            topOffset: 10,
+            leftOffsetUnits: "percent",
+            topOffsetUnits: "percent"
         });
 
         // Export document
