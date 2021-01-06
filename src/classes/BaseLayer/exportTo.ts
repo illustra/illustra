@@ -102,20 +102,16 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
     }
 
     // Opacity
-    if (baseLayer.opacity !== 100) {
-
-        // Get metadata
-        const metadata: sharp.Metadata = await canvas.metadata();
-
-        // Join channel
-        canvas.joinChannel(Buffer.alloc((metadata.width || 0) * (metadata.height || 0), 255 * (baseLayer.opacity / 100)), {
-            raw: {
-                width: metadata.width || 0,
-                height: metadata.height || 0,
-                channels: 1
-            }
-        });
-    }
+    if (baseLayer.opacity !== 100) canvas.composite([{
+        input: Buffer.from([255, 255, 255, 255 * (baseLayer.opacity / 100)]),
+        raw: {
+            width: 1,
+            height: 1,
+            channels: 4
+        },
+        tile: true,
+        blend: "dest-in"
+    }]);
 
     // Convert to format
     // https://sharp.pixelplumbing.com/api-output#toformat
