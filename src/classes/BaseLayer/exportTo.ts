@@ -46,26 +46,26 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
     // Debug
     baseLayer._debug(`Exporting as ${exportType}${exportType === "file" ? ` to ${pathOrWithMetadata}` : ""}`);
 
-    // Define input data
+    // Define a variable for the input file or buffer
     let inputData: string | Buffer | undefined;
 
-    // Get input data
+    // Get input data from a regular layer
     if (baseLayer instanceof Layer) inputData = baseLayer._inputData;
 
-    // Create image buffer from polygons and ellipses
+    // Create an image buffer from polygons and ellipses
     if ((baseLayer instanceof Polygon) || (baseLayer instanceof Ellipse)) inputData = baseLayer.toBuffer();
 
-    // Create image buffer from text layer
+    // Create an image buffer from text layers
     if (baseLayer instanceof TextLayer) inputData = await baseLayer.toBuffer();
 
-    // Create image buffer from clipping mask
+    // Create an image buffer from clipping masks
     if (baseLayer instanceof ClippingMask) inputData = await baseLayer.toBuffer();
 
-    // Create sharp canvas
+    // Create a sharp canvas with the input data
     // Careful, it's sharp
     let canvas: sharp.Sharp = sharp(inputData);
 
-    // Edits
+    // Loop through the edits for the layer
     for (let edit of baseLayer._edits) {
 
         // Rotate
@@ -96,12 +96,13 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
         // Blur
         else if (edit.type === "blur") canvas.blur(edit.sigma);
 
-        // Export and import
+        // Export and reimport because sharp seems to screw up the order of the edits sometimes
         const exported: Buffer = await canvas.toFormat("png").toBuffer();
         canvas = sharp(exported);
     }
 
     // Opacity
+    // https://github.com/lovell/sharp/issues/618#issuecomment-532293211
     if (baseLayer.opacity !== 100) canvas.composite([{
         input: Buffer.from([255, 255, 255, 255 * (baseLayer.opacity / 100)]),
         raw: {
@@ -114,11 +115,9 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
     }]);
 
     // Convert to format
-    // https://sharp.pixelplumbing.com/api-output#toformat
     canvas.toFormat(format);
 
     // Export to file
-    // https://sharp.pixelplumbing.com/api-output#tofile
     if (exportType === "file") {
 
         // No path
@@ -132,7 +131,6 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
     }
 
     // Export as buffer
-    // https://sharp.pixelplumbing.com/api-output#tobuffer
     const exported = await canvas.toBuffer({ resolveWithObject: true });
 
     // Return export metadata

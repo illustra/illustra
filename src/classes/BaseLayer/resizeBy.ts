@@ -2,7 +2,7 @@ import { AnyLayer, Layer, ShapeLayer } from "../../internal";
 
 export default function resizeBy<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, width?: number | null, height?: number | null, scale?: boolean): AnyLayerInput {
 
-    // Invalid layer type
+    // Throw an error if the layer type doesn't keep track of the width and height
     if ((!(layer instanceof Layer)) && (!(layer instanceof ShapeLayer))) throw new Error("This layer can't be resized");
 
     // Debug

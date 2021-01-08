@@ -11,6 +11,8 @@ export default function circularMask(layer: AnyLayer, name: string, keepSource?:
     // Create clipping mask
     const clippingMask = createClippingMask({
         name,
+
+        // The mask is an ellipse with the same dimensions as the layer
         mask: createEllipse({
             name: "circleMask",
             shape: {
@@ -24,10 +26,10 @@ export default function circularMask(layer: AnyLayer, name: string, keepSource?:
         source: layer
     });
 
-    // Add layer
+    // Add the layer to the document
     if (layer.document) layer.document.addLayer(clippingMask, layer.position + 1);
 
-    // Remove layer
+    // Remove the original layer from the document unless we need to keep the source
     if ((!keepSource) && (layer.document)) layer.remove();
 
     // Return

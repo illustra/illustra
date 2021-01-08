@@ -18,7 +18,7 @@ export default async function rasterize(layer: AnyLayer): Promise<Layer> {
     }, layer.document, layerData);
     await newLayer._initialize;
 
-    // Remove layer
+    // Remove the layer from the document
     if (layer.document) layer.remove();
 
     // Return
