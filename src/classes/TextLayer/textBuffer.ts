@@ -6,10 +6,10 @@ import { DEFAULT_FONT_SIZE, TextData } from "../../internal";
 
 export default async function textBuffer(textData: TextData): Promise<Buffer> {
 
-    // Default font size
+    // Set default font size
     if (!textData.fontSize) textData.fontSize = DEFAULT_FONT_SIZE;
 
-    // Register font
+    // Register the font with the `canvas` module
     let fontName: string | undefined = textData.font;
     if ((textData.font) && (textData.font.includes("."))) {
 
