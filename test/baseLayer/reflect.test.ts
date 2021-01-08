@@ -22,7 +22,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("ref
         });
 
         // Add layer
-        layer = await addLayer(document, layerType);
+        layer = await addLayer(layerType, document);
     });
 
     it("reflects vertically", async () => {

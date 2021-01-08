@@ -19,7 +19,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("blu
         });
 
         // Add layer
-        const layer: BaseLayer = await addLayer(document, layerType);
+        const layer: BaseLayer = await addLayer(layerType, document);
 
         // Blur layer
         layer.blur(10);

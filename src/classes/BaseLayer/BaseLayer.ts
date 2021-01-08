@@ -10,6 +10,7 @@ import grayscale from "./grayscale";
 import hue from "./hue";
 import invert from "./invert";
 import move from "./move";
+import rasterize from "./rasterize";
 import reflect from "./reflect";
 import remove from "./remove";
 import resize from "./resize";
@@ -420,6 +421,15 @@ export default class BaseLayer {
      * Remove this layer from its document
      */
     remove = () => remove(this);
+
+    /**
+     * Rasterize
+     *
+     * Rasterize this layer
+     *
+     * @returns {Layer} The clipping mask
+     */
+    rasterize = (): Promise<Layer> => rasterize(this);
 
     /**
      * Export To

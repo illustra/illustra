@@ -22,7 +22,7 @@ describe.each(["layer", "polygon", "ellipse"])("rotating a %s", (layerType: stri
         });
 
         // Add layer
-        layer = await addLayer(document, layerType);
+        layer = await addLayer(layerType, document);
     });
 
     it("rotates a layer", async () => {

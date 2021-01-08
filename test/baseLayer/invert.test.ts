@@ -19,7 +19,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("inv
         });
 
         // Add layer
-        const layer: BaseLayer = await addLayer(document, layerType);
+        const layer: BaseLayer = await addLayer(layerType, document);
 
         // Invert layer
         layer.invert();

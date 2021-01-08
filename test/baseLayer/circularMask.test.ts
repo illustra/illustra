@@ -22,7 +22,7 @@ describe.each(["layer", "polygon", "ellipse"])("adding a circular mask to %s", (
         });
 
         // Add layer
-        layer = await addLayer(document, layerType);
+        layer = await addLayer(layerType, document);
     });
 
     it("adds a circular mask", async () => {

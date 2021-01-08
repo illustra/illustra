@@ -22,7 +22,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("tra
         });
 
         // Add layer
-        layer = await addLayer(document, layerType);
+        layer = await addLayer(layerType, document);
     });
 
     it("translates", async () => {

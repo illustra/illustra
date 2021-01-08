@@ -19,7 +19,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("gra
         });
 
         // Add layer
-        const layer: BaseLayer = await addLayer(document, layerType);
+        const layer: BaseLayer = await addLayer(layerType, document);
 
         // Grayscale layer
         layer.grayscale();

@@ -35,7 +35,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("dup
         });
 
         // Add layer
-        const layer: BaseLayer = await addLayer(document, layerType);
+        const layer: BaseLayer = await addLayer(layerType, document);
 
         // Duplicate layer
         await layer.duplicate("duplicate");

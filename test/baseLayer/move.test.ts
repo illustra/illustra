@@ -21,7 +21,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("mov
         });
 
         // Add layer
-        layer = await addLayer(document, layerType);
+        layer = await addLayer(layerType, document);
     });
 
     it("moves", async () => {

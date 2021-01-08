@@ -19,7 +19,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("cha
         });
 
         // Add layer
-        const layer: BaseLayer = await addLayer(document, layerType);
+        const layer: BaseLayer = await addLayer(layerType, document);
 
         // Set opacity errors
         expect(() => layer.setOpacity(-10)).toThrow("Opacity must be between 0 and 100");

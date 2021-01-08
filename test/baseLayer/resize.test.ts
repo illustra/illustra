@@ -22,7 +22,7 @@ describe.each(["layer", "polygon", "ellipse"])("resizing a %s", (layerType: stri
         });
 
         // Add layer
-        layer = await addLayer(document, layerType);
+        layer = await addLayer(layerType, document);
     });
 
     it("resizes width while preserving aspect ratio", async () => {

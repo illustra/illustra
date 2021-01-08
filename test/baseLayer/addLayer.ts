@@ -1,6 +1,9 @@
-import { createEllipse, createLayer, BaseLayer, BaseLayerData, Document } from "../../src/internal";
+import { createClippingMask, createEllipse, createLayer, createPolygon, createTextLayer, BaseLayer, BaseLayerData, Document } from "../../src/internal";
 
-export default async function addLayer(document: Document, layerType: string): Promise<BaseLayer> {
+export default async function addLayer(layerType: string, document?: Document): Promise<BaseLayer> {
+
+    // Define layer
+    let layer: BaseLayer;
 
     // Define layer data
     const layerData: BaseLayerData = {
@@ -11,7 +14,7 @@ export default async function addLayer(document: Document, layerType: string): P
     };
 
     // Text layer
-    if (layerType === "textLayer") return document.createTextLayer({
+    if (layerType === "textLayer") layer = createTextLayer({
         name: layerType,
         text: {
             text: "example",
@@ -22,7 +25,7 @@ export default async function addLayer(document: Document, layerType: string): P
     });
 
     // Polygon
-    else if (layerType === "polygon") return document.createPolygon({
+    else if (layerType === "polygon") layer = createPolygon({
         name: layerType,
         shape: {
             width: 300,
@@ -35,7 +38,7 @@ export default async function addLayer(document: Document, layerType: string): P
     });
 
     // Ellipse
-    else if (layerType === "ellipse") return document.createEllipse({
+    else if (layerType === "ellipse") layer = createEllipse({
         name: layerType,
         shape: {
             width: 300,
@@ -47,7 +50,7 @@ export default async function addLayer(document: Document, layerType: string): P
     });
 
     // Clipping mask
-    else if (layerType === "clippingMask") return document.createClippingMask({
+    else if (layerType === "clippingMask") layer = createClippingMask({
         name: layerType,
         mask: createEllipse({
             name: "ellipse",
@@ -63,5 +66,11 @@ export default async function addLayer(document: Document, layerType: string): P
     });
 
     // Layer
-    else return await document.createLayer(layerData);
+    else layer = await createLayer(layerData);
+
+    // Add layer to document
+    if (document) document.addLayer(layer);
+
+    // Return
+    return layer;
 }

@@ -19,10 +19,10 @@ describe("checking for aligning errors", () => {
         });
 
         // Add layer
-        const layer: BaseLayer = await addLayer(document, "layer");
+        const layer: BaseLayer = await addLayer("layer", document);
 
         // Add text layer
-        const textLayer: BaseLayer = await addLayer(document, "textLayer");
+        const textLayer: BaseLayer = await addLayer("textLayer", document);
 
         // Align layer
         expect(() => background.align()).toThrow("This layer isn't a part of a document");
@@ -54,7 +54,7 @@ describe.each(["layer", "polygon", "ellipse"])("aligning a %s", (layerType: stri
         });
 
         // Add layer
-        layer = await addLayer(document, layerType);
+        layer = await addLayer(layerType, document);
     });
 
     it("aligns to the top left of the document", async () => {

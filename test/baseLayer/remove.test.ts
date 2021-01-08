@@ -18,7 +18,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("rem
         });
 
         // Add layer
-        const layer: BaseLayer = await addLayer(document, layerType);
+        const layer: BaseLayer = await addLayer(layerType, document);
 
         // Create other background
         const otherBackground: Layer = await createLayer({
