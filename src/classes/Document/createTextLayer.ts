@@ -8,6 +8,6 @@ export default function createTextLayer(document: Document, textLayerData: TextL
     // Create layer
     const layer: TextLayer = new TextLayer(textLayerData, document);
 
-    // Return created layer
+    // Return created text layer
     return layer;
 }

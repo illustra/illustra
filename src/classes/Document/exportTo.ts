@@ -12,13 +12,18 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
     // Debug
     document._debug(`Exporting as ${exportType}${exportType === "file" ? ` to ${pathOrWithMetadata}` : ""}`);
 
-    // Merge layers
+    /**
+     * Merge layers
+     *
+     * Merge all the layers in the document
+     * That way we can export the merged layer
+     */
     const mergedLayer: Layer = await document.mergeLayers("merged", undefined, true);
 
     // Export merged layer
     const exported: Output<ExportType, PathOrWithMetadata> = await mergedLayer.exportTo(format, exportType, pathOrWithMetadata);
 
-    // Remove merged layer
+    // Remove the merged layer that was created from the document
     mergedLayer.remove();
 
     // Return

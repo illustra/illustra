@@ -71,7 +71,7 @@ export default class Document {
         this.width = documentData.width;
         this.height = documentData.height;
 
-        // Set layers
+        // Create empty array of layers
         this.layers = [];
 
         // Set debug mode

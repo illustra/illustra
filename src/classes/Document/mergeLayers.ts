@@ -4,20 +4,32 @@ import { ExportMetadata } from "../BaseLayer/exportTo";
 
 export default async function mergeLayers(document: Document, name: string, inputLayers?: Array<AnyLayer | string | number>, copy?: boolean): Promise<Layer> {
 
-    // Define layers
+    // Define an empty array for the layers that need to be merged
     let layers: AnyLayer[];
 
     // Get layers
     if (inputLayers) {
 
-        // Get layer objects from names and indexes
+        // If there are input layers, we already have a list of layers that need to be merged
+
+        /**
+         * Since `inputLayers` can be either a layer, string, or number, we need to get the layer objects from the names and indexes
+         * If the input layer is a string or number, get the layer object from the document
+         * Otherwise, keep the layer object
+         */
         const layerObjects: Array<AnyLayer | undefined> = inputLayers.map((l: AnyLayer | string | number): AnyLayer | undefined => ((typeof l === "string") || (typeof l === "number")) ? document.getLayer(l) : l);
 
-        // Layer isn't part of this document
+        /**
+         * Find any layers that aren't a part of this document
+         * If any are found, throw an error
+         */
         const invalidLayerIndex: number = layerObjects.findIndex((l: AnyLayer | undefined) => l && l.document !== document);
         if (invalidLayerIndex !== -1) throw new Error(`Layer at index ${invalidLayerIndex} isn't part of this document`);
 
-        // Unknown layer
+        /**
+         * Find any layers that couldn't be found by name or index
+         * If any are found, throw an error
+         */
         const unknownLayerIndex: number = layerObjects.findIndex((l: AnyLayer | undefined) => !l);
         if (unknownLayerIndex !== -1) {
 
@@ -31,19 +43,27 @@ export default async function mergeLayers(document: Document, name: string, inpu
         // Set layers
         layers = layerObjects as AnyLayer[];
     }
-    else layers = [...document.layers];
+    else {
 
-    // Get position
+        // Otherwise, we need to merge all the layers in the document
+        layers = [...document.layers];
+    }
+
+    /**
+     * We need to get the position of the highest layer and then add one to it
+     * This will be used to add the merged layer to the document
+     * We add one since we want the merged layer above the highest layer
+     */
     const position: number = Math.max(...layers.map((l: AnyLayer) => l.position)) + 1;
 
     // Debug
     document._debug(`Merging ${layers.length} layers (${layers.map((l: AnyLayer) => l.name).join(", ")})${copy ? " via copy" : ""} into '${name}' at position ${position}`);
 
-    // Export layers
+    // Export all the layers
     const exportedLayersPromises: Array<Promise<ExportMetadata>> = layers.map((l: AnyLayer) => l.exportTo("png", "buffer", true));
     let exportedLayers: ExportMetadata[] = await Promise.all(exportedLayersPromises);
 
-    // Create sharp canvas
+    // Create a sharp canvas with the document's dimensions
     const canvas: sharp.Sharp = sharp({
         create: {
             width: document.width,
@@ -68,31 +88,27 @@ export default async function mergeLayers(document: Document, name: string, inpu
             layers[index].left >= 0 &&
             layers[index].top >= 0 &&
 
-            // And the layer dimensions plus offset is less than the document's dimensions
+            // And the layer dimensions plus offset is less than the document's dimensions (not off the canvas to the bottom right)
             layers[index].left + l.width <= document.width &&
             layers[index].top + l.height <= document.height
         ) return l.data;
 
-        // Get crop left and top
+        // Get crop the amount of pixels we need to crop for the top left
         const cropLeft: number = layers[index].left < 0 ? (layers[index].left / -1) : 0;
         const cropTop: number = layers[index].top < 0 ? (layers[index].top / -1) : 0;
 
-        // Get crop width and height
+        // Get crop the amount of pixels we need to keep to crop the bottom right
         const cropWidth: number = document.width - layers[index].left;
         const cropHeight: number = document.height - layers[index].top;
 
-        // Layer will be off the canvas
+        // If the layer is off completely the canvas, we don't need to render it
         if (((cropWidth < l.width ? cropWidth : l.width) - cropLeft <= 0) || ((cropHeight < l.height ? cropHeight : l.height) - cropTop <= 0)) return;
 
         // Crop
         return sharp(l.data)
             .extract({
-
-                // If the top/left is negative (off the canvas to the top left), crop by that amount / -1
                 left: cropLeft,
                 top: cropTop,
-
-                // The width/height is the dimensions of the document minus the top/left offset of the layer
                 width: (cropWidth < l.width ? cropWidth : l.width) - cropLeft,
                 height: (cropHeight < l.height ? cropHeight : l.height) - cropTop
             })
@@ -134,7 +150,7 @@ export default async function mergeLayers(document: Document, name: string, inpu
     // Export canvas
     const mergedLayer: Buffer = await canvas.toFormat("png").toBuffer();
 
-    // Create layer
+    // Create new layer
     const newLayer: Layer = new Layer({
         name,
         buffer: mergedLayer,
@@ -142,7 +158,7 @@ export default async function mergeLayers(document: Document, name: string, inpu
     }, document);
     await newLayer._initialize;
 
-    // Remove layers
+    // Remove the merged layers unless we need to copy when merging
     if (!copy) layers.forEach((l: AnyLayer) => l.remove());
 
     // Return
