@@ -4,7 +4,10 @@
     "description": "Illustra is an object-oriented, document based, Node.js image processing toolkit",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
-    "repository": "https://github.com/APixelVisuals/illustra",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/APixelVisuals/illustra.git"
+    },
     "homepage": "https://illustra.apixel.me",
     "author": "APixel Visuals <apixelvisualsofficial@gmail.com> (https://apixel.me)",
     "keywords": [
