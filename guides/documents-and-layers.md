@@ -49,7 +49,9 @@ await createLayer({
 
 Or, if you've imported Illustra without destructing properties, ie. `import illustra from "illustra"`, you can use `illustra.createLayer(...)`.
 
-## Getting Layers
+---
+
+# Getting Layers
 
 Getting layers from documents is simple. Just use the [`Document.getLayer()`](https://illustra.apixel.me/docs/classes/Document#getLayer) method and pass a layer name or index as a parameter:
 
