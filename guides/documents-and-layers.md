@@ -1,6 +1,6 @@
 # Documents vs Layers
 
-[Documentshttps://illustra.apixel.me/docs/classes/Document can be thought of as canvases, they holds all the parts of the image together and let you organize everything. These documents are made up of [`Layer`s](https://illustra.apixel.me/docs/classes/Layer), which hold the data to create the image. There are different kinds of layers, such as regular [`Layer`s](https://illustra.apixel.me/docs/classes/Layer), [`TextLayer`s](https://illustra.apixel.me/docs/classes/TextLayer), [`Polygon`s](https://illustra.apixel.me/docs/classes/Polygon), [`Ellipse`s](https://illustra.apixel.me/docs/classes/Ellipse), and even [`ClippingMask`s](https://illustra.apixel.me/docs/classes/ClippingMask).
+[Documentshttps://illustra.apixel.me/docs/classes/Document can be thought of as canvases, they holds all the parts of the image together and let you organize everything. These documents are made up of [`Layer`s](https://illustra.apixel.me/docs/classes/BaseLayer), which hold the data to create the image. There are different kinds of layers, such as regular [`Layer`s](https://illustra.apixel.me/docs/classes/Layer), [`TextLayer`s](https://illustra.apixel.me/docs/classes/TextLayer), [`Polygon`s](https://illustra.apixel.me/docs/classes/Polygon), [`Ellipse`s](https://illustra.apixel.me/docs/classes/Ellipse), and even [`ClippingMask`s](https://illustra.apixel.me/docs/classes/ClippingMask).
 
 ---
 
@@ -35,7 +35,7 @@ await document.createLayer({
 
 This uses the [`Document.createLayer`](https://illustra.apixel.me/docs/classes/Document#createLayer) method to create a layer and add it to the document. Although this is the most common way to create a layer, it isn't the only way.
 
-Layers don't *have* to be part of a document. If you're making a simple change, like [grayscaling](https://illustra.apixel.me/docs/classes/Layer#grayscale) a layer, you might not need multiple layers. If you don't need multiple layers, there's a good chance you also don't need a document. That's why Illustra allows you to create a standalone layer:
+Layers don't *have* to be part of a document. If you're making a simple change, like [grayscaling](https://illustra.apixel.me/docs/classes/BaseLayer#grayscale) a layer, you might not need multiple layers. If you don't need multiple layers, there's a good chance you also don't need a document. That's why Illustra allows you to create a standalone layer:
 
 ```js
 import { createLayer } from "illustra";
@@ -65,11 +65,11 @@ const layerFromIndex = document.getLayer(2);
 
 # Layer Operations
 
-There are plenty of ways to organize your documents. [Duplicating](https://illustra.apixel.me/docs/classes/Layer#duplicate) layers, [merging](https://illustra.apixel.me/docs/classes/Document#mergeLayers) them, [flattening](https://illustra.apixel.me/docs/classes/Document#mergeLayers) an entire document, and [removing or deleting](https://illustra.apixel.me/docs/classes/Layer#remove) layers from documents.
+There are plenty of ways to organize your documents. [Duplicating](https://illustra.apixel.me/docs/classes/BaseLayer#duplicate) layers, [merging](https://illustra.apixel.me/docs/classes/Document#mergeLayers) them, [flattening](https://illustra.apixel.me/docs/classes/Document#mergeLayers) an entire document, and [removing or deleting](https://illustra.apixel.me/docs/classes/BaseLayer#remove) layers from documents.
 
-Illustra also provides methods to [transform layers](https://illustra.apixel.me/guide/transformations), adjust the [hue](https://illustra.apixel.me/docs/classes/Layer#hue) and [saturation](https://illustra.apixel.me/docs/classes/Layer#saturation), as well as support for [blend modes](https://illustra.apixel.me/guide/blend-modes).
+Illustra also provides methods to [transform layers](https://illustra.apixel.me/guide/transformations), adjust the [hue](https://illustra.apixel.me/docs/classes/BaseLayer#hue) and [saturation](https://illustra.apixel.me/docs/classes/BaseLayer#saturation), as well as support for [blend modes](https://illustra.apixel.me/guide/blend-modes).
 
-You can check out the [`Layer` docs](https://illustra.apixel.me/docs/classes/Layer) to see everything you can do with layers.
+You can check out the [`BaseLayer` docs](https://illustra.apixel.me/docs/classes/BaseLayer) to see everything you can do with layers.
 
 ---
 
@@ -82,7 +82,7 @@ Illustra lets you export an entire document, or individual layers. There are two
 await document.exportTo("png", "file", `${__dirname}/images/image.png`);
 ```
 
-We're using the [`Document.exportTo`](https://illustra.apixel.me/docs/classes/Document#exportTo) method to export the document. You can also use [`Layer.exportTo`](https://illustra.apixel.me/docs/classes/Layer#exportTo) in the same way to export a single layer. The first parameter is the file format, which is PNG in this example. You can see the supported file format in the [docs](https://illustra.apixel.me/docs/classes/Document#exportTo). The next parameter is the type. This is either `"file"` or `"buffer"`. Since we're exporting as a file, we need to specify the path as the third parameter. Note how we're using an absolute path.
+We're using the [`Document.exportTo`](https://illustra.apixel.me/docs/classes/Document#exportTo) method to export the document. You can also use [`BaseLayer.exportTo`](https://illustra.apixel.me/docs/classes/BaseLayer#exportTo) in the same way to export a single layer. The first parameter is the file format, which is PNG in this example. You can see the supported file format in the [docs](https://illustra.apixel.me/docs/classes/Document#exportTo). The next parameter is the type. This is either `"file"` or `"buffer"`. Since we're exporting as a file, we need to specify the path as the third parameter. Note how we're using an absolute path.
 
 Now let's look at exporting as a buffer:
 

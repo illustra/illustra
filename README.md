@@ -44,7 +44,7 @@ import { Document, createLayer, createTextLayer, ... } from "illustra";
 
 # Basic Usage
 
-Illustra uses the concept of [Documents](https://illustra.apixel.me/docs/classes/Document) for a canvas, and [Layers](https://illustra.apixel.me/docs/classes/Layer) for each element on the canvas:
+Illustra uses the concept of [Documents](https://illustra.apixel.me/docs/classes/Document) for a canvas, and [Layers](https://illustra.apixel.me/docs/classes/BaseLayer) for each element on the canvas:
 
 ```js
 // Create document

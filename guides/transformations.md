@@ -4,14 +4,14 @@ Transformations are a way to move layers around a document. Transformations incl
 
 # Translating
 
-A translation is a basic movement of a layer. For example, we can translate a layer to be 100 pixels from the left and 200 pixels from the top of the document with the [`Layer.translate()`](https://illustra.apixel.me/docs/classes/Layer#translate) method:
+A translation is a basic movement of a layer. For example, we can translate a layer to be 100 pixels from the left and 200 pixels from the top of the document with the [`BaseLayer.translate()`](https://illustra.apixel.me/docs/classes/BaseLayer#translate) method:
 
 ```js
 // Translate layer
 layer.translate(100, 200);
 ```
 
-We can also translate a layer relative to its current position with the [`Layer.translateBy()`](https://illustra.apixel.me/docs/classes/Layer#translateBy) method:
+We can also translate a layer relative to its current position with the [`BaseLayer.translateBy()`](https://illustra.apixel.me/docs/classes/BaseLayer#translateBy) method:
 
 ```js
 // Translate layer relatively
@@ -22,7 +22,7 @@ layer.translateBy(100, 200);
 
 # Rotating
 
-You can rotate a layer with the [`Layer.rotate()`](https://illustra.apixel.me/docs/classes/Layer#translate) method:
+You can rotate a layer with the [`BaseLayer.rotate()`](https://illustra.apixel.me/docs/classes/BaseLayer#translate) method:
 
 ```js
 // Rotate layer by 30 degrees
@@ -33,7 +33,7 @@ layer.rotate(30);
 
 # Resizing
 
-Resizing works in a similar way to translating with the [`Layer.resize()`](https://illustra.apixel.me/docs/classes/Layer#resize) and [`Layer.resizeBy()`](https://illustra.apixel.me/docs/classes/Layer#resizeBy) methods:
+Resizing works in a similar way to translating with the [`BaseLayer.resize()`](https://illustra.apixel.me/docs/classes/BaseLayer#resize) and [`BaseLayer.resizeBy()`](https://illustra.apixel.me/docs/classes/BaseLayer#resizeBy) methods:
 
 ```js
 // Resize layer to be 200 pixels by 200 pixels
@@ -56,7 +56,7 @@ layer.resizeBy(50, 50, true);
 
 # Reflecting
 
-You can reflect a layer with the [`Layer.reflect()`](https://illustra.apixel.me/docs/classes/Layer#reflect) method:
+You can reflect a layer with the [`BaseLayer.reflect()`](https://illustra.apixel.me/docs/classes/BaseLayer#reflect) method:
 
 ```js
 // Reflect layer vertically
@@ -70,7 +70,7 @@ layer.reflect("horizontal");
 
 # Aligning
 
-The [`Layer.align()`](https://illustra.apixel.me/docs/classes/Layer#align) method lets you align a layer to a document. For example, you can align a layer to the right center of the document with an offset of 50 pixels:
+The [`BaseLayer.align()`](https://illustra.apixel.me/docs/classes/BaseLayer#align) method lets you align a layer to a document. For example, you can align a layer to the right center of the document with an offset of 50 pixels:
 
 ```js
 // Align layer

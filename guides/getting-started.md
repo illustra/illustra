@@ -36,7 +36,7 @@ import { Document, createLayer, createTextLayer, ... } from "illustra";
 
 # Basic Usage
 
-Illustra is modeled the same way as Photoshop, so we use the concept of [Documents](https://illustra.apixel.me/docs/classes/Document) for a canvas, and [Layers](https://illustra.apixel.me/docs/classes/Layer) for each element on the canvas. In this example, we'll be creating a banner with some text and a logo. Start by creating a Document:
+Illustra is modeled the same way as Photoshop, so we use the concept of [Documents](https://illustra.apixel.me/docs/classes/Document) for a canvas, and [Layers](https://illustra.apixel.me/docs/classes/BaseLayer) for each element on the canvas. In this example, we'll be creating a banner with some text and a logo. Start by creating a Document:
 
 ```js
 // Create document
@@ -84,7 +84,7 @@ const logo = await banner.createLayer({
 });
 ```
 
-Let's also [align](https://illustra.apixel.me/docs/classes/Layer#align) the logo to the center of the document:
+Let's also [align](https://illustra.apixel.me/docs/classes/BaseLayer#align) the logo to the center of the document:
 
 ```js
 // Align logo

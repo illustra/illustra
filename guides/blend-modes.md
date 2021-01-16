@@ -18,7 +18,7 @@ Blend modes allow you to mix the colors of layers together to create unique look
 
 To learn how colors are blended together for each blend mode, we recommend checking out [Adobe's help article](https://helpx.adobe.com/photoshop/using/blending-modes.html).
 
-Setting the blend mode of a layer is done with the [`Layer.setBlendMode()`](https://illustra.apixel.me/docs/classes/Layer#setBlendMode) method:
+Setting the blend mode of a layer is done with the [`BaseLayer.setBlendMode()`](https://illustra.apixel.me/docs/classes/BaseLayer#setBlendMode) method:
 
 ```js
 // Set blend mode
