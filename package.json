@@ -5,7 +5,18 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "repository": "https://github.com/APixelVisuals/illustra",
-    "author": "APixel Visuals",
+    "homepage": "https://illustra.apixel.me",
+    "author": "APixel Visuals <apixelvisualsofficial@gmail.com> (https://apixel.me)",
+    "keywords": [
+        "illustra",
+        "image",
+        "processing",
+        "generator",
+        "png",
+        "jpg",
+        "jpeg"
+    ],
+    "license": "Apache-2.0",
     "scripts": {
         "build": "tsc",
         "test": "jest --runInBand",
