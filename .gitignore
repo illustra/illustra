@@ -4,9 +4,6 @@ dist/
 # Node modules
 node_modules/
 
-# Testing
-testing/
-
 # Coverage reports
 coverage/
 
