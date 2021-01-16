@@ -1,6 +1,6 @@
 # Documents vs Layers
 
-[Documentshttps://illustra.apixel.me/docs/classes/Document can be thought of as canvases, they holds all the parts of the image together and let you organize everything. These documents are made up of [`Layer`s](https://illustra.apixel.me/docs/classes/BaseLayer), which hold the data to create the image. There are different kinds of layers, such as regular [`Layer`s](https://illustra.apixel.me/docs/classes/Layer), [`TextLayer`s](https://illustra.apixel.me/docs/classes/TextLayer), [`Polygon`s](https://illustra.apixel.me/docs/classes/Polygon), [`Ellipse`s](https://illustra.apixel.me/docs/classes/Ellipse), and even [`ClippingMask`s](https://illustra.apixel.me/docs/classes/ClippingMask).
+[Documents](https://illustra.apixel.me/docs/classes/Document) can be thought of as canvases, they holds all the parts of the image together and let you organize everything. These documents are made up of [`Layer`s](https://illustra.apixel.me/docs/classes/BaseLayer), which hold the data to create the image. There are different kinds of layers, such as regular [`Layer`s](https://illustra.apixel.me/docs/classes/Layer), [`TextLayer`s](https://illustra.apixel.me/docs/classes/TextLayer), [`Polygon`s](https://illustra.apixel.me/docs/classes/Polygon), [`Ellipse`s](https://illustra.apixel.me/docs/classes/Ellipse), and even [`ClippingMask`s](https://illustra.apixel.me/docs/classes/ClippingMask).
 
 ---
 
