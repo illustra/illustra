@@ -30528,6 +30528,16 @@
 				},
 				{
 					"id": 1302,
+					"name": "BaseLayerData",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {
+						"isExported": true
+					},
+					"target": 1190
+				},
+				{
+					"id": 1303,
 					"name": "BlendMode",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30537,7 +30547,7 @@
 					"target": 1294
 				},
 				{
-					"id": 1325,
+					"id": 1326,
 					"name": "ClippingMaskData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30547,7 +30557,7 @@
 					"target": 899
 				},
 				{
-					"id": 1327,
+					"id": 1328,
 					"name": "Color",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30577,7 +30587,7 @@
 					"target": 68
 				},
 				{
-					"id": 1318,
+					"id": 1319,
 					"name": "EllipseData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30587,7 +30597,7 @@
 					"target": 562
 				},
 				{
-					"id": 1317,
+					"id": 1318,
 					"name": "EllipseShapeData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30597,7 +30607,7 @@
 					"target": 692
 				},
 				{
-					"id": 1303,
+					"id": 1304,
 					"name": "ExportMetadata",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30607,7 +30617,7 @@
 					"target": 2
 				},
 				{
-					"id": 1304,
+					"id": 1305,
 					"name": "ExportTypes",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30617,7 +30627,7 @@
 					"target": 7
 				},
 				{
-					"id": 1305,
+					"id": 1306,
 					"name": "Format",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30627,7 +30637,7 @@
 					"target": 6
 				},
 				{
-					"id": 1310,
+					"id": 1311,
 					"name": "LayerData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30637,7 +30647,7 @@
 					"target": 236
 				},
 				{
-					"id": 1306,
+					"id": 1307,
 					"name": "PathOrWithMetadataOptions",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30647,7 +30657,7 @@
 					"target": 8
 				},
 				{
-					"id": 1314,
+					"id": 1315,
 					"name": "PolygonData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30657,7 +30667,7 @@
 					"target": 419
 				},
 				{
-					"id": 1313,
+					"id": 1314,
 					"name": "PolygonShapeData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30667,7 +30677,7 @@
 					"target": 412
 				},
 				{
-					"id": 1328,
+					"id": 1329,
 					"name": "RGBA",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30677,7 +30687,7 @@
 					"target": 242
 				},
 				{
-					"id": 1321,
+					"id": 1322,
 					"name": "TextAlign",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30687,7 +30697,7 @@
 					"target": 889
 				},
 				{
-					"id": 1322,
+					"id": 1323,
 					"name": "TextData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30697,7 +30707,7 @@
 					"target": 742
 				},
 				{
-					"id": 1323,
+					"id": 1324,
 					"name": "TextLayerData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30707,7 +30717,7 @@
 					"target": 751
 				},
 				{
-					"id": 1307,
+					"id": 1308,
 					"name": "Units",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30717,7 +30727,7 @@
 					"target": 131
 				},
 				{
-					"id": 1326,
+					"id": 1327,
 					"name": "createClippingMask",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30727,7 +30737,7 @@
 					"target": 1003
 				},
 				{
-					"id": 1316,
+					"id": 1317,
 					"name": "createEllipse",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30737,7 +30747,7 @@
 					"target": 694
 				},
 				{
-					"id": 1309,
+					"id": 1310,
 					"name": "createLayer",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30747,7 +30757,7 @@
 					"target": 238
 				},
 				{
-					"id": 1312,
+					"id": 1313,
 					"name": "createPolygon",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30757,7 +30767,7 @@
 					"target": 554
 				},
 				{
-					"id": 1320,
+					"id": 1321,
 					"name": "createTextLayer",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30797,7 +30807,7 @@
 					}
 				},
 				{
-					"id": 1324,
+					"id": 1325,
 					"name": "ClippingMask",
 					"kind": 4194304,
 					"kindString": "Type alias",
@@ -30807,7 +30817,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 60,
+							"line": 61,
 							"character": 24
 						}
 					],
@@ -30827,7 +30837,7 @@
 					}
 				},
 				{
-					"id": 1315,
+					"id": 1316,
 					"name": "Ellipse",
 					"kind": 4194304,
 					"kindString": "Type alias",
@@ -30837,7 +30847,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 43,
+							"line": 44,
 							"character": 19
 						}
 					],
@@ -30857,7 +30867,7 @@
 					}
 				},
 				{
-					"id": 1308,
+					"id": 1309,
 					"name": "Layer",
 					"kind": 4194304,
 					"kindString": "Type alias",
@@ -30867,7 +30877,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 28,
+							"line": 29,
 							"character": 17
 						}
 					],
@@ -30887,7 +30897,7 @@
 					}
 				},
 				{
-					"id": 1311,
+					"id": 1312,
 					"name": "Polygon",
 					"kind": 4194304,
 					"kindString": "Type alias",
@@ -30897,7 +30907,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 35,
+							"line": 36,
 							"character": 19
 						}
 					],
@@ -30917,7 +30927,7 @@
 					}
 				},
 				{
-					"id": 1319,
+					"id": 1320,
 					"name": "TextLayer",
 					"kind": 4194304,
 					"kindString": "Type alias",
@@ -30927,7 +30937,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 51,
+							"line": 52,
 							"character": 21
 						}
 					],
@@ -30956,29 +30966,30 @@
 						1300,
 						1301,
 						1302,
-						1325,
-						1327,
+						1303,
+						1326,
+						1328,
 						1296,
 						1297,
+						1319,
 						1318,
-						1317,
-						1303,
 						1304,
 						1305,
-						1310,
 						1306,
+						1311,
+						1307,
+						1315,
 						1314,
-						1313,
-						1328,
-						1321,
+						1329,
 						1322,
 						1323,
-						1307,
-						1326,
-						1316,
-						1309,
-						1312,
-						1320
+						1324,
+						1308,
+						1327,
+						1317,
+						1310,
+						1313,
+						1321
 					]
 				},
 				{
@@ -30986,11 +30997,11 @@
 					"kind": 4194304,
 					"children": [
 						1298,
-						1324,
-						1315,
-						1308,
-						1311,
-						1319
+						1325,
+						1316,
+						1309,
+						1312,
+						1320
 					]
 				}
 			],

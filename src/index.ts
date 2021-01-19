@@ -16,6 +16,7 @@ export {
     AlignOptions,
     AlignType,
     AnyLayer,
+    BaseLayerData,
     BlendMode,
     ExportMetadata,
     ExportTypes,
