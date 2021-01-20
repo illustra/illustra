@@ -12,7 +12,7 @@ export interface ExportMetadata {
  *
  * The available formats for exporting
  */
-export type Format = "png" | "jpeg" | "webp" | "gif" | "tiff" | "heif" | "raw" | "tile";
+export type Format = "png" | "jpeg";
 
 /**
  * Export Types
@@ -38,7 +38,7 @@ export type Output<ExportType, PathOrWithMetadata> = ExportType extends "file" ?
 export default async function exportTo<ExportType extends ExportTypes, PathOrWithMetadata extends PathOrWithMetadataOptions = false>(baseLayer: BaseLayer, format: Format, exportType: ExportType, pathOrWithMetadata?: PathOrWithMetadata): Promise<Output<ExportType, PathOrWithMetadata>> {
 
     // Invalid format
-    if (!["png", "jpeg", "webp", "gif", "tiff", "heif", "raw", "tile"].includes(format)) throw new Error("Invalid format");
+    if (!["png", "jpeg"].includes(format)) throw new Error("Invalid format");
 
     // Invalid export type
     if (!["file", "buffer"].includes(exportType)) throw new Error("Invalid export type");

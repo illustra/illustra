@@ -873,7 +873,7 @@
 												"isExported": true
 											},
 											"comment": {
-												"shortText": "The format to export in - One of: 'png', 'jpeg', 'webp', 'gif', 'tiff', 'heif', 'raw', or 'tile'"
+												"shortText": "The format to export in - 'png' or 'jpeg'"
 											},
 											"type": {
 												"type": "reference",
@@ -4233,30 +4233,6 @@
 							{
 								"type": "stringLiteral",
 								"value": "jpeg"
-							},
-							{
-								"type": "stringLiteral",
-								"value": "webp"
-							},
-							{
-								"type": "stringLiteral",
-								"value": "gif"
-							},
-							{
-								"type": "stringLiteral",
-								"value": "tiff"
-							},
-							{
-								"type": "stringLiteral",
-								"value": "heif"
-							},
-							{
-								"type": "stringLiteral",
-								"value": "raw"
-							},
-							{
-								"type": "stringLiteral",
-								"value": "tile"
 							}
 						]
 					}
@@ -7341,7 +7317,7 @@
 												"isExported": true
 											},
 											"comment": {
-												"shortText": "The format to export in - One of: 'png', 'jpeg', 'webp', 'gif', 'tiff', 'heif', 'raw', or 'tile'"
+												"shortText": "The format to export in - 'png' or 'jpeg'"
 											},
 											"type": {
 												"type": "reference",
@@ -9820,7 +9796,7 @@
 												"isExported": true
 											},
 											"comment": {
-												"shortText": "The format to export in - One of: 'png', 'jpeg', 'webp', 'gif', 'tiff', 'heif', 'raw', or 'tile'"
+												"shortText": "The format to export in - 'png' or 'jpeg'"
 											},
 											"type": {
 												"type": "reference",
@@ -12454,7 +12430,7 @@
 												"isExported": true
 											},
 											"comment": {
-												"shortText": "The format to export in - One of: 'png', 'jpeg', 'webp', 'gif', 'tiff', 'heif', 'raw', or 'tile'"
+												"shortText": "The format to export in - 'png' or 'jpeg'"
 											},
 											"type": {
 												"type": "reference",
@@ -15954,7 +15930,7 @@
 												"isExported": true
 											},
 											"comment": {
-												"shortText": "The format to export in - One of: 'png', 'jpeg', 'webp', 'gif', 'tiff', 'heif', 'raw', or 'tile'"
+												"shortText": "The format to export in - 'png' or 'jpeg'"
 											},
 											"type": {
 												"type": "reference",
@@ -18626,7 +18602,7 @@
 												"isExported": true
 											},
 											"comment": {
-												"shortText": "The format to export in - One of: 'png', 'jpeg', 'webp', 'gif', 'tiff', 'heif', 'raw', or 'tile'"
+												"shortText": "The format to export in - 'png' or 'jpeg'"
 											},
 											"type": {
 												"type": "reference",
@@ -22470,7 +22446,7 @@
 												"isExported": true
 											},
 											"comment": {
-												"shortText": "The format to export in - One of: 'png', 'jpeg', 'webp', 'gif', 'tiff', 'heif', 'raw', or 'tile'"
+												"shortText": "The format to export in - 'png' or 'jpeg'"
 											},
 											"type": {
 												"type": "reference",
@@ -26276,7 +26252,7 @@
 												"isExported": true
 											},
 											"comment": {
-												"shortText": "The format to export in - One of: 'png', 'jpeg', 'webp', 'gif', 'tiff', 'heif', 'raw', or 'tile'"
+												"shortText": "The format to export in - 'png' or 'jpeg'"
 											},
 											"type": {
 												"type": "reference",

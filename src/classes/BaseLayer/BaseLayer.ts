@@ -436,7 +436,7 @@ export default class BaseLayer {
      *
      * Export this layer
      *
-     * @param format The format to export in - One of: 'png', 'jpeg', 'webp', 'gif', 'tiff', 'heif', 'raw', or 'tile'
+     * @param format The format to export in - 'png' or 'jpeg'
      * @param exportType How this document should be exported - Either 'file' or 'buffer'
      * @param pathOrWithMetadata The path to write the file to if the `exportType` is 'file' or whether or not to return metadata if the `exportType` is 'buffer'
      *
