@@ -32,6 +32,13 @@ export {
     LayerData
 } from "./internal";
 
+// Shape Layer
+export type ShapeLayer = InstanceType<typeof illustra.ShapeLayer>;
+export {
+    ShapeData,
+    ShapeLayerData
+} from "./internal";
+
 // Polygon
 export type Polygon = InstanceType<typeof illustra.Polygon>;
 export {

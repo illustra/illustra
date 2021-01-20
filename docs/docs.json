@@ -30547,7 +30547,7 @@
 					"target": 1294
 				},
 				{
-					"id": 1326,
+					"id": 1329,
 					"name": "ClippingMaskData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30557,7 +30557,7 @@
 					"target": 899
 				},
 				{
-					"id": 1328,
+					"id": 1331,
 					"name": "Color",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30587,7 +30587,7 @@
 					"target": 68
 				},
 				{
-					"id": 1319,
+					"id": 1322,
 					"name": "EllipseData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30597,7 +30597,7 @@
 					"target": 562
 				},
 				{
-					"id": 1318,
+					"id": 1321,
 					"name": "EllipseShapeData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30657,7 +30657,7 @@
 					"target": 8
 				},
 				{
-					"id": 1315,
+					"id": 1318,
 					"name": "PolygonData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30667,7 +30667,7 @@
 					"target": 419
 				},
 				{
-					"id": 1314,
+					"id": 1317,
 					"name": "PolygonShapeData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30677,7 +30677,7 @@
 					"target": 412
 				},
 				{
-					"id": 1329,
+					"id": 1332,
 					"name": "RGBA",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30687,7 +30687,27 @@
 					"target": 242
 				},
 				{
-					"id": 1322,
+					"id": 1313,
+					"name": "ShapeData",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {
+						"isExported": true
+					},
+					"target": 277
+				},
+				{
+					"id": 1314,
+					"name": "ShapeLayerData",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {
+						"isExported": true
+					},
+					"target": 283
+				},
+				{
+					"id": 1325,
 					"name": "TextAlign",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30697,7 +30717,7 @@
 					"target": 889
 				},
 				{
-					"id": 1323,
+					"id": 1326,
 					"name": "TextData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30707,7 +30727,7 @@
 					"target": 742
 				},
 				{
-					"id": 1324,
+					"id": 1327,
 					"name": "TextLayerData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30727,7 +30747,7 @@
 					"target": 131
 				},
 				{
-					"id": 1327,
+					"id": 1330,
 					"name": "createClippingMask",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30737,7 +30757,7 @@
 					"target": 1003
 				},
 				{
-					"id": 1317,
+					"id": 1320,
 					"name": "createEllipse",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30757,7 +30777,7 @@
 					"target": 238
 				},
 				{
-					"id": 1313,
+					"id": 1316,
 					"name": "createPolygon",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30767,7 +30787,7 @@
 					"target": 554
 				},
 				{
-					"id": 1321,
+					"id": 1324,
 					"name": "createTextLayer",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -30807,7 +30827,7 @@
 					}
 				},
 				{
-					"id": 1325,
+					"id": 1328,
 					"name": "ClippingMask",
 					"kind": 4194304,
 					"kindString": "Type alias",
@@ -30817,7 +30837,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 61,
+							"line": 68,
 							"character": 24
 						}
 					],
@@ -30837,7 +30857,7 @@
 					}
 				},
 				{
-					"id": 1316,
+					"id": 1319,
 					"name": "Ellipse",
 					"kind": 4194304,
 					"kindString": "Type alias",
@@ -30847,7 +30867,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 44,
+							"line": 51,
 							"character": 19
 						}
 					],
@@ -30897,7 +30917,7 @@
 					}
 				},
 				{
-					"id": 1312,
+					"id": 1315,
 					"name": "Polygon",
 					"kind": 4194304,
 					"kindString": "Type alias",
@@ -30907,7 +30927,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 36,
+							"line": 43,
 							"character": 19
 						}
 					],
@@ -30927,7 +30947,37 @@
 					}
 				},
 				{
-					"id": 1320,
+					"id": 1312,
+					"name": "ShapeLayer",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 36,
+							"character": 22
+						}
+					],
+					"type": {
+						"type": "reference",
+						"typeArguments": [
+							{
+								"type": "query",
+								"queryType": {
+									"type": "reference",
+									"id": 1023,
+									"name": "ShapeLayer"
+								}
+							}
+						],
+						"name": "InstanceType"
+					}
+				},
+				{
+					"id": 1323,
 					"name": "TextLayer",
 					"kind": 4194304,
 					"kindString": "Type alias",
@@ -30937,7 +30987,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 52,
+							"line": 59,
 							"character": 21
 						}
 					],
@@ -30967,29 +31017,31 @@
 						1301,
 						1302,
 						1303,
-						1326,
-						1328,
+						1329,
+						1331,
 						1296,
 						1297,
-						1319,
-						1318,
+						1322,
+						1321,
 						1304,
 						1305,
 						1306,
 						1311,
 						1307,
-						1315,
-						1314,
-						1329,
-						1322,
-						1323,
-						1324,
-						1308,
-						1327,
+						1318,
 						1317,
-						1310,
+						1332,
 						1313,
-						1321
+						1314,
+						1325,
+						1326,
+						1327,
+						1308,
+						1330,
+						1320,
+						1310,
+						1316,
+						1324
 					]
 				},
 				{
@@ -30997,11 +31049,12 @@
 					"kind": 4194304,
 					"children": [
 						1298,
-						1325,
-						1316,
+						1328,
+						1319,
 						1309,
+						1315,
 						1312,
-						1320
+						1323
 					]
 				}
 			],
