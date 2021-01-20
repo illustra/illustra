@@ -8,7 +8,7 @@
 
 # Installation
 
-Illustra is distributed via [NPM](https://npm.org/package/illustra). You can install it with the NPM CLI tool or with Yarn. Illustra has TypeScript support built in.
+Illustra is distributed via [NPM](https://npmjs.com/package/illustra). You can install it with the NPM CLI tool or with Yarn. Illustra has TypeScript support built in.
 
 NPM:
 ```
