@@ -1,0 +1,22 @@
+language: node_js
+
+node_js:
+  - 14
+
+script:
+  - yarn build
+  - yarn test
+
+after_success:
+  - bash .travis/docs.sh
+
+deploy:
+  provider: npm
+  email: apixelvisualsofficial@gmail.com
+  api_key:
+    secure: gKzLMkHB6Kum1zl5oDiNCz0ZgbyfEQRR8e0nnJqfyiRerhtFjfwzWQBslVIJp6+GhTcmZT2sxJlsiBwLQS+wyemJnAbXHM8LQF6a0O/zXvkVTKhCPVM07vOGmA1iNgDfafib6GqHlcLh1fQ0itb6RsGuq2xiMReFHEOLQJtpT0NVUgkrfiJKUpDZ0W938rYZzmRSF+D6o0iKtmugkOebwEu8wGPNa3NesQXwlm6oOhPDJUFHMHRUOaqBRYkfWHcFXkSBDWQll/plZokNTmRiGWPuvXBzKM3JGoZLqWGpW9OXUIpFegJVennyIrRIUTGwUeKlkaML0X+qVPnY9GEP9kNEijGY7FHkcpp89CuYjB4n6FaszcN/+jcgWfkILX638tFSR9SW2SkkMeyhQHomFu4KLEJCsFy/aFdqhfCCwnlW0+o66TE05XRFu5/Ad8cJnGavRSyEjKPQJbAPjpWd63ethhqwIVoW7IS15hZY49CL52jl91goggDhQtugbDX/uiZ90uCjBHG6/hOc4ldil4/LTD/M4B4EW37pYWD/z+C9uIwGHhr9hwJX+iM4Xae5TuP/hqjDzhZS1rA5X24K/wBiiVu9i0C9Hm3RLjEglPPTymMLFgwdP/jZLQle16cKeeJnlvH5l/8/Tc1OE1Qlq/LSmZ376WOAKbeRQtt3Ddg=
+  on:
+    repo: APixelVisuals/illustra
+    branch: master
+    tags: true
+  skip_cleanup: true
