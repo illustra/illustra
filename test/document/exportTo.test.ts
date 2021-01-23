@@ -1,10 +1,12 @@
 import fs from "fs";
+import pixelmatch from "pixelmatch";
+import { PNG as pngjs, PNGWithMetadata } from "pngjs";
 import { Document, ExportMetadata } from "../../src/internal";
 
 describe("exporting documents", () => {
 
     let document: Document;
-    let expectedImage: string;
+    let expectedImage: PNGWithMetadata;
 
     beforeAll(async () => {
 
@@ -27,7 +29,7 @@ describe("exporting documents", () => {
         });
 
         // Get expected image
-        expectedImage = fs.readFileSync("test/document/exports/exportTo.png").toString("base64");
+        expectedImage = pngjs.sync.read(fs.readFileSync("test/document/exports/exportTo.png"));
     });
 
     afterAll(() => {
@@ -50,28 +52,29 @@ describe("exporting documents", () => {
         await document.exportTo("png", "file", "test/document/exports/exportTo.out.png");
 
         // Get exported image
-        const exportedImage: string = fs.readFileSync("test/document/exports/exportTo.out.png").toString("base64");
+        const exportedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync("test/document/exports/exportTo.out.png"));
 
         // Expect
-        expect(exportedImage).toBe(expectedImage);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
     });
 
     it("exports as a buffer", async () => {
 
         // Export layer
-        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+        const exportedImage: PNGWithMetadata = pngjs.sync.read(await document.exportTo("png", "buffer"));
 
         // Expect
-        expect(exportedImage).toBe(expectedImage);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
     });
 
     it("exports as a buffer with metadata", async () => {
 
         // Export layer
         const exportedImage: ExportMetadata = await document.exportTo("png", "buffer", true);
+        const parsedExportedImage: PNGWithMetadata = pngjs.sync.read(exportedImage.data);
 
         // Expect
-        expect(exportedImage.data.toString("base64")).toBe(expectedImage);
+        expect(pixelmatch(parsedExportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
         expect(exportedImage.width).toBe(1920);
         expect(exportedImage.height).toBe(1080);
     });

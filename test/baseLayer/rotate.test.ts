@@ -1,4 +1,6 @@
 import fs from "fs";
+import pixelmatch from "pixelmatch";
+import { PNG as pngjs, PNGWithMetadata } from "pngjs";
 import { BaseLayer, Document } from "../../src/internal";
 import addLayer from "./addLayer";
 
@@ -31,13 +33,13 @@ describe.each(["layer", "polygon", "ellipse"])("rotating a %s", (layerType: stri
         layer.rotate(30);
 
         // Export document
-        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+        const exportedImage: PNGWithMetadata = pngjs.sync.read(await document.exportTo("png", "buffer"));
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/rotate/${layerType}/rotate.png`).toString("base64");
+        const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync(`test/baseLayer/exports/rotate/${layerType}/rotate.png`));
 
         // Expect
-        expect(exportedImage).toBe(expectedImage);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
     });
 
     it("ensures that aligning works after rotating", async () => {
@@ -49,13 +51,13 @@ describe.each(["layer", "polygon", "ellipse"])("rotating a %s", (layerType: stri
         layer.align();
 
         // Export document
-        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+        const exportedImage: PNGWithMetadata = pngjs.sync.read(await document.exportTo("png", "buffer"));
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/rotate/${layerType}/alignCheck.png`).toString("base64");
+        const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync(`test/baseLayer/exports/rotate/${layerType}/alignCheck.png`));
 
         // Expect
-        expect(exportedImage).toBe(expectedImage);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
     });
 
     it("ensures that reflecting works after rotating", async () => {
@@ -67,12 +69,12 @@ describe.each(["layer", "polygon", "ellipse"])("rotating a %s", (layerType: stri
         layer.reflect("horizontal");
 
         // Export document
-        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+        const exportedImage: PNGWithMetadata = pngjs.sync.read(await document.exportTo("png", "buffer"));
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/rotate/${layerType}/reflectCheck.png`).toString("base64");
+        const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync(`test/baseLayer/exports/rotate/${layerType}/reflectCheck.png`));
 
         // Expect
-        expect(exportedImage).toBe(expectedImage);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
     });
 });

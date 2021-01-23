@@ -1,4 +1,6 @@
 import fs from "fs";
+import pixelmatch from "pixelmatch";
+import { PNG as pngjs, PNGWithMetadata } from "pngjs";
 import { createClippingMask, createEllipse, createLayer, ClippingMask, Document, Ellipse, Layer } from "../../src/internal";
 
 describe("creating clipping masks", () => {
@@ -53,13 +55,13 @@ describe("creating clipping masks", () => {
         });
 
         // Export document
-        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+        const exportedImage: PNGWithMetadata = pngjs.sync.read(await document.exportTo("png", "buffer"));
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/clippingMask/exports/create.png").toString("base64");
+        const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync("test/clippingMask/exports/create.png"));
 
         // Expect
-        expect(exportedImage).toBe(expectedImage);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
     });
 
     it("creates a clipping mask without a document", () => {

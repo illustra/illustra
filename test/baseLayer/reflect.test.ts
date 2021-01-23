@@ -1,4 +1,6 @@
 import fs from "fs";
+import pixelmatch from "pixelmatch";
+import { PNG as pngjs, PNGWithMetadata } from "pngjs";
 import { BaseLayer, Document } from "../../src/internal";
 import addLayer from "./addLayer";
 
@@ -31,13 +33,13 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("ref
         layer.reflect("vertical");
 
         // Export document
-        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+        const exportedImage: PNGWithMetadata = pngjs.sync.read(await document.exportTo("png", "buffer"));
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/reflect/${layerType}/vertical.png`).toString("base64");
+        const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync(`test/baseLayer/exports/reflect/${layerType}/vertical.png`));
 
         // Expect
-        expect(exportedImage).toBe(expectedImage);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
     });
 
     it("reflects horizontally", async () => {
@@ -46,12 +48,12 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("ref
         layer.reflect("horizontal");
 
         // Export document
-        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+        const exportedImage: PNGWithMetadata = pngjs.sync.read(await document.exportTo("png", "buffer"));
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/reflect/${layerType}/horizontal.png`).toString("base64");
+        const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync(`test/baseLayer/exports/reflect/${layerType}/horizontal.png`));
 
         // Expect
-        expect(exportedImage).toBe(expectedImage);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
     });
 });

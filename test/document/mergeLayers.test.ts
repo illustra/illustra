@@ -1,4 +1,6 @@
 import fs from "fs";
+import pixelmatch from "pixelmatch";
+import { PNG as pngjs, PNGWithMetadata } from "pngjs";
 import { AnyLayer, Document, Layer } from "../../src/internal";
 
 describe("merging layers in a document", () => {
@@ -75,13 +77,13 @@ describe("merging layers in a document", () => {
         expect(layers).toStrictEqual(["background", "merged", "mergedCopy", "javascriptLogo"]);
 
         // Export layer
-        const exportedImage: string = (await mergedLayer.exportTo("png", "buffer")).toString("base64");
+        const exportedImage: PNGWithMetadata = pngjs.sync.read(await mergedLayer.exportTo("png", "buffer"));
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/document/exports/mergeLayers/mergeLayers.png").toString("base64");
+        const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync("test/document/exports/mergeLayers/mergeLayers.png"));
 
         // Expect
-        expect(exportedImage).toBe(expectedImage);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
     });
 
     it("merges layers that start going off the screen (bottom right)", async () => {
@@ -95,13 +97,13 @@ describe("merging layers in a document", () => {
         });
 
         // Export document
-        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+        const exportedImage: PNGWithMetadata = pngjs.sync.read(await document.exportTo("png", "buffer"));
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/document/exports/mergeLayers/cropBottomRight.png").toString("base64");
+        const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync("test/document/exports/mergeLayers/cropBottomRight.png"));
 
         // Expect
-        expect(exportedImage).toBe(expectedImage);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
     });
 
     it("merges layers that start going off the screen (top left)", async () => {
@@ -115,13 +117,13 @@ describe("merging layers in a document", () => {
         });
 
         // Export document
-        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+        const exportedImage: PNGWithMetadata = pngjs.sync.read(await document.exportTo("png", "buffer"));
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/document/exports/mergeLayers/cropTopLeft.png").toString("base64");
+        const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync("test/document/exports/mergeLayers/cropTopLeft.png"));
 
         // Expect
-        expect(exportedImage).toBe(expectedImage);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
     });
 
     it("merges layers that go off the screen (bottom right)", async () => {
@@ -135,13 +137,13 @@ describe("merging layers in a document", () => {
         });
 
         // Export document
-        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+        const exportedImage: PNGWithMetadata = pngjs.sync.read(await document.exportTo("png", "buffer"));
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/document/exports/mergeLayers/removeBottomRight.png").toString("base64");
+        const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync("test/document/exports/mergeLayers/removeBottomRight.png"));
 
         // Expect
-        expect(exportedImage).toBe(expectedImage);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
     });
 
     it("merges layers that go off the screen (top left)", async () => {
@@ -155,12 +157,12 @@ describe("merging layers in a document", () => {
         });
 
         // Export document
-        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+        const exportedImage: PNGWithMetadata = pngjs.sync.read(await document.exportTo("png", "buffer"));
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync("test/document/exports/mergeLayers/removeTopLeft.png").toString("base64");
+        const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync("test/document/exports/mergeLayers/removeTopLeft.png"));
 
         // Expect
-        expect(exportedImage).toBe(expectedImage);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
     });
 });

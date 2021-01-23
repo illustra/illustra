@@ -1,4 +1,6 @@
 import fs from "fs";
+import pixelmatch from "pixelmatch";
+import { PNG as pngjs, PNGWithMetadata } from "pngjs";
 import { createLayer, AnyLayer, BaseLayer, ClippingMask, Document, Layer } from "../../src/internal";
 import addLayer from "./addLayer";
 
@@ -31,13 +33,13 @@ describe.each(["layer", "polygon", "ellipse"])("adding a circular mask to %s", (
         layer.circularMask("mask");
 
         // Export document
-        const exportedImage: string = (await document.exportTo("png", "buffer")).toString("base64");
+        const exportedImage: PNGWithMetadata = pngjs.sync.read(await document.exportTo("png", "buffer"));
 
         // Get expected image
-        const expectedImage: string = fs.readFileSync(`test/baseLayer/exports/circularMask/${layerType}/circularMask.png`).toString("base64");
+        const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync(`test/baseLayer/exports/circularMask/${layerType}/circularMask.png`));
 
         // Expect
-        expect(exportedImage).toBe(expectedImage);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
     });
 
     it("adds a circular mask while keeping the source layer", async () => {
