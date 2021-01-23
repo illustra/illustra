@@ -37,6 +37,6 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("cha
         const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync(`test/baseLayer/exports/opacity/${layerType}/opacity.png`));
 
         // Expect
-        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(500);
     });
 });

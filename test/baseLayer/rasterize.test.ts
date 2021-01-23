@@ -38,7 +38,7 @@ describe.each([true, false])("rasterizing (with document: %s)", (withDocument: b
             const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync(`test/baseLayer/exports/rasterize/${layerType}/rasterize.png`));
 
             // Expect
-            expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
+            expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(500);
         });
     });
 });

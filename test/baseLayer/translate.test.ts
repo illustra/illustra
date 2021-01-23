@@ -39,7 +39,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("tra
         const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync(`test/baseLayer/exports/translate/${layerType}/translate.png`));
 
         // Expect
-        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(500);
     });
 
     it("translates relative to current position", async () => {
@@ -54,7 +54,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("tra
         const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync(`test/baseLayer/exports/translate/${layerType}/translateBy.png`));
 
         // Expect
-        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(500);
     });
 
     it("translates using default parameters", async () => {
@@ -70,6 +70,6 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("tra
         const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync(`test/baseLayer/exports/translate/${layerType}/defaultParams.png`));
 
         // Expect
-        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(500);
     });
 });

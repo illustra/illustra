@@ -39,7 +39,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("cha
         const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync(`test/baseLayer/exports/hue/${layerType}/hue.png`));
 
         // Expect
-        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(500);
     });
 
     it("rotates the hue without causing any changes", async () => {
@@ -54,6 +54,6 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("cha
         const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync(`test/baseLayer/exports/hue/${layerType}/noChange.png`));
 
         // Expect
-        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(500);
     });
 });

@@ -33,6 +33,6 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("gra
         const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync(`test/baseLayer/exports/grayscale/${layerType}/grayscale.png`));
 
         // Expect
-        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(500);
     });
 });

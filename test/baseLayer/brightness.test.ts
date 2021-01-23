@@ -39,7 +39,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("cha
         const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync(`test/baseLayer/exports/brightness/${layerType}/increase.png`));
 
         // Expect
-        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(500);
     });
 
     it("decreases the brightness", async () => {
@@ -54,7 +54,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("cha
         const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync(`test/baseLayer/exports/brightness/${layerType}/decrease.png`));
 
         // Expect
-        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(500);
     });
 
     it("adjusts the brightness without causing any changes", async () => {
@@ -69,6 +69,6 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("cha
         const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync(`test/baseLayer/exports/brightness/${layerType}/noChange.png`));
 
         // Expect
-        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(50);
+        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(500);
     });
 });
