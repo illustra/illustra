@@ -9,6 +9,8 @@ export default class Layer extends BaseLayer {
      * Initialize
      *
      * A promise for when this layer will be initialized
+     *
+     * @private
      */
     _initialize: Promise<void>;
 
@@ -16,6 +18,8 @@ export default class Layer extends BaseLayer {
      * Input Data
      *
      * This layer's input data
+     *
+     * @private
      */
     _inputData?: string | Buffer;
 

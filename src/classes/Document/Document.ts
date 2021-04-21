@@ -267,6 +267,7 @@ export default class Document {
      *
      * Log debug info
      *
+     * @private
      * @param info Debug info to log
      */
     _debug = (info: string) => debug(info, this);

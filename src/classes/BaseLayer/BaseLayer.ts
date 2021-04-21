@@ -127,6 +127,8 @@ export default class BaseLayer {
      * Edits
      *
      * The edits for this layer
+     *
+     * @private
      */
     _edits: Edit[];
 
@@ -458,6 +460,7 @@ export default class BaseLayer {
      *
      * Log debug info
      *
+     * @private
      * @param info Debug info to log
      */
     _debug = (info: string): void => debug(info, this);
