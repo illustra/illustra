@@ -94,7 +94,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 152,
+									"line": 154,
 									"character": 23
 								}
 							]
@@ -105,6 +105,7 @@
 							"kind": 1024,
 							"kindString": "Property",
 							"flags": {
+								"isPrivate": true,
 								"isExported": true
 							},
 							"comment": {
@@ -114,7 +115,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 131,
+									"line": 133,
 									"character": 10
 								}
 							],
@@ -142,7 +143,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 145,
+									"line": 147,
 									"character": 13
 								}
 							],
@@ -167,7 +168,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 152,
+									"line": 154,
 									"character": 13
 								}
 							],
@@ -265,7 +266,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 138,
+									"line": 140,
 									"character": 11
 								}
 							],
@@ -343,6 +344,7 @@
 							"kind": 2048,
 							"kindString": "Method",
 							"flags": {
+								"isPrivate": true,
 								"isExported": true
 							},
 							"comment": {
@@ -389,7 +391,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 463,
+									"line": 466,
 									"character": 10
 								}
 							]
@@ -450,7 +452,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 261,
+									"line": 263,
 									"character": 9
 								}
 							]
@@ -509,7 +511,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 403,
+									"line": 405,
 									"character": 8
 								}
 							]
@@ -568,7 +570,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 374,
+									"line": 376,
 									"character": 14
 								}
 							]
@@ -658,7 +660,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 416,
+									"line": 418,
 									"character": 16
 								}
 							]
@@ -789,7 +791,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 203,
+									"line": 205,
 									"character": 13
 								}
 							]
@@ -961,7 +963,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 447,
+									"line": 449,
 									"character": 12
 								}
 							]
@@ -1002,7 +1004,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 383,
+									"line": 385,
 									"character": 13
 								}
 							]
@@ -1061,7 +1063,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 346,
+									"line": 348,
 									"character": 7
 								}
 							]
@@ -1102,7 +1104,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 392,
+									"line": 394,
 									"character": 10
 								}
 							]
@@ -1191,7 +1193,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 216,
+									"line": 218,
 									"character": 8
 								}
 							]
@@ -1239,7 +1241,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 432,
+									"line": 434,
 									"character": 13
 								}
 							]
@@ -1307,7 +1309,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 313,
+									"line": 315,
 									"character": 11
 								}
 							]
@@ -1346,7 +1348,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 423,
+									"line": 425,
 									"character": 10
 								}
 							]
@@ -1441,7 +1443,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 286,
+									"line": 288,
 									"character": 10
 								}
 							]
@@ -1566,7 +1568,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 301,
+									"line": 303,
 									"character": 12
 								}
 							]
@@ -1625,7 +1627,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 272,
+									"line": 274,
 									"character": 10
 								}
 							]
@@ -1684,7 +1686,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 360,
+									"line": 362,
 									"character": 14
 								}
 							]
@@ -1754,7 +1756,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 335,
+									"line": 337,
 									"character": 16
 								}
 							]
@@ -1809,7 +1811,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 454,
+									"line": 456,
 									"character": 16
 								}
 							]
@@ -1868,7 +1870,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 324,
+									"line": 326,
 									"character": 14
 								}
 							]
@@ -1963,7 +1965,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 228,
+									"line": 230,
 									"character": 13
 								}
 							]
@@ -2058,7 +2060,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 240,
+									"line": 242,
 									"character": 15
 								}
 							]
@@ -6389,6 +6391,7 @@
 							"kind": 1024,
 							"kindString": "Property",
 							"flags": {
+								"isPrivate": true,
 								"isExported": true
 							},
 							"comment": {
@@ -6398,7 +6401,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 131,
+									"line": 133,
 									"character": 10
 								}
 							],
@@ -6431,7 +6434,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 145,
+									"line": 147,
 									"character": 13
 								}
 							],
@@ -6461,7 +6464,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 152,
+									"line": 154,
 									"character": 13
 								}
 							],
@@ -6604,7 +6607,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 138,
+									"line": 140,
 									"character": 11
 								}
 							],
@@ -6727,6 +6730,7 @@
 							"kind": 2048,
 							"kindString": "Method",
 							"flags": {
+								"isPrivate": true,
 								"isExported": true
 							},
 							"comment": {
@@ -6778,7 +6782,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 463,
+									"line": 466,
 									"character": 10
 								}
 							],
@@ -6849,7 +6853,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 261,
+									"line": 263,
 									"character": 9
 								}
 							],
@@ -6918,7 +6922,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 403,
+									"line": 405,
 									"character": 8
 								}
 							],
@@ -6987,7 +6991,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 374,
+									"line": 376,
 									"character": 14
 								}
 							],
@@ -7087,7 +7091,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 416,
+									"line": 418,
 									"character": 16
 								}
 							],
@@ -7228,7 +7232,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 203,
+									"line": 205,
 									"character": 13
 								}
 							],
@@ -7410,7 +7414,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 447,
+									"line": 449,
 									"character": 12
 								}
 							],
@@ -7461,7 +7465,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 383,
+									"line": 385,
 									"character": 13
 								}
 							],
@@ -7530,7 +7534,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 346,
+									"line": 348,
 									"character": 7
 								}
 							],
@@ -7581,7 +7585,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 392,
+									"line": 394,
 									"character": 10
 								}
 							],
@@ -7680,7 +7684,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 216,
+									"line": 218,
 									"character": 8
 								}
 							],
@@ -7738,7 +7742,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 432,
+									"line": 434,
 									"character": 13
 								}
 							],
@@ -7816,7 +7820,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 313,
+									"line": 315,
 									"character": 11
 								}
 							],
@@ -7865,7 +7869,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 423,
+									"line": 425,
 									"character": 10
 								}
 							],
@@ -7970,7 +7974,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 286,
+									"line": 288,
 									"character": 10
 								}
 							],
@@ -8105,7 +8109,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 301,
+									"line": 303,
 									"character": 12
 								}
 							],
@@ -8174,7 +8178,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 272,
+									"line": 274,
 									"character": 10
 								}
 							],
@@ -8243,7 +8247,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 360,
+									"line": 362,
 									"character": 14
 								}
 							],
@@ -8323,7 +8327,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 335,
+									"line": 337,
 									"character": 16
 								}
 							],
@@ -8388,7 +8392,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 454,
+									"line": 456,
 									"character": 16
 								}
 							],
@@ -8457,7 +8461,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 324,
+									"line": 326,
 									"character": 14
 								}
 							],
@@ -8609,7 +8613,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 228,
+									"line": 230,
 									"character": 13
 								}
 							],
@@ -8714,7 +8718,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 240,
+									"line": 242,
 									"character": 15
 								}
 							],
@@ -9271,6 +9275,7 @@
 							"kind": 2048,
 							"kindString": "Method",
 							"flags": {
+								"isPrivate": true,
 								"isExported": true
 							},
 							"comment": {
@@ -9317,7 +9322,7 @@
 							"sources": [
 								{
 									"fileName": "classes/Document/Document.ts",
-									"line": 272,
+									"line": 273,
 									"character": 10
 								}
 							]
@@ -11377,6 +11382,7 @@
 							"kind": 1024,
 							"kindString": "Property",
 							"flags": {
+								"isPrivate": true,
 								"isExported": true
 							},
 							"comment": {
@@ -11386,7 +11392,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 131,
+									"line": 133,
 									"character": 10
 								}
 							],
@@ -11419,7 +11425,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 145,
+									"line": 147,
 									"character": 13
 								}
 							],
@@ -11449,7 +11455,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 152,
+									"line": 154,
 									"character": 13
 								}
 							],
@@ -11635,7 +11641,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 138,
+									"line": 140,
 									"character": 11
 								}
 							],
@@ -11840,6 +11846,7 @@
 							"kind": 2048,
 							"kindString": "Method",
 							"flags": {
+								"isPrivate": true,
 								"isExported": true
 							},
 							"comment": {
@@ -11891,7 +11898,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 463,
+									"line": 466,
 									"character": 10
 								}
 							],
@@ -11962,7 +11969,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 261,
+									"line": 263,
 									"character": 9
 								}
 							],
@@ -12031,7 +12038,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 403,
+									"line": 405,
 									"character": 8
 								}
 							],
@@ -12100,7 +12107,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 374,
+									"line": 376,
 									"character": 14
 								}
 							],
@@ -12200,7 +12207,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 416,
+									"line": 418,
 									"character": 16
 								}
 							],
@@ -12341,7 +12348,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 203,
+									"line": 205,
 									"character": 13
 								}
 							],
@@ -12523,7 +12530,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 447,
+									"line": 449,
 									"character": 12
 								}
 							],
@@ -12574,7 +12581,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 383,
+									"line": 385,
 									"character": 13
 								}
 							],
@@ -12643,7 +12650,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 346,
+									"line": 348,
 									"character": 7
 								}
 							],
@@ -12694,7 +12701,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 392,
+									"line": 394,
 									"character": 10
 								}
 							],
@@ -12793,7 +12800,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 216,
+									"line": 218,
 									"character": 8
 								}
 							],
@@ -12851,7 +12858,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 432,
+									"line": 434,
 									"character": 13
 								}
 							],
@@ -12929,7 +12936,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 313,
+									"line": 315,
 									"character": 11
 								}
 							],
@@ -12978,7 +12985,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 423,
+									"line": 425,
 									"character": 10
 								}
 							],
@@ -13083,7 +13090,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 286,
+									"line": 288,
 									"character": 10
 								}
 							],
@@ -13218,7 +13225,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 301,
+									"line": 303,
 									"character": 12
 								}
 							],
@@ -13287,7 +13294,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 272,
+									"line": 274,
 									"character": 10
 								}
 							],
@@ -13356,7 +13363,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 360,
+									"line": 362,
 									"character": 14
 								}
 							],
@@ -13436,7 +13443,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 335,
+									"line": 337,
 									"character": 16
 								}
 							],
@@ -13501,7 +13508,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 454,
+									"line": 456,
 									"character": 16
 								}
 							],
@@ -13712,7 +13719,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 324,
+									"line": 326,
 									"character": 14
 								}
 							],
@@ -14121,7 +14128,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 228,
+									"line": 230,
 									"character": 13
 								}
 							],
@@ -14226,7 +14233,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 240,
+									"line": 242,
 									"character": 15
 								}
 							],
@@ -14924,7 +14931,7 @@
 							"sources": [
 								{
 									"fileName": "classes/Layer/Layer.ts",
-									"line": 34,
+									"line": 38,
 									"character": 19
 								}
 							],
@@ -14940,6 +14947,7 @@
 							"kind": 1024,
 							"kindString": "Property",
 							"flags": {
+								"isPrivate": true,
 								"isExported": true
 							},
 							"comment": {
@@ -14949,7 +14957,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 131,
+									"line": 133,
 									"character": 10
 								}
 							],
@@ -14973,6 +14981,7 @@
 							"kind": 1024,
 							"kindString": "Property",
 							"flags": {
+								"isPrivate": true,
 								"isExported": true
 							},
 							"comment": {
@@ -14982,7 +14991,7 @@
 							"sources": [
 								{
 									"fileName": "classes/Layer/Layer.ts",
-									"line": 13,
+									"line": 15,
 									"character": 15
 								}
 							],
@@ -15003,6 +15012,7 @@
 							"kind": 1024,
 							"kindString": "Property",
 							"flags": {
+								"isPrivate": true,
 								"isExported": true,
 								"isOptional": true
 							},
@@ -15013,7 +15023,7 @@
 							"sources": [
 								{
 									"fileName": "classes/Layer/Layer.ts",
-									"line": 20,
+									"line": 24,
 									"character": 14
 								}
 							],
@@ -15046,7 +15056,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 145,
+									"line": 147,
 									"character": 13
 								}
 							],
@@ -15076,7 +15086,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 152,
+									"line": 154,
 									"character": 13
 								}
 							],
@@ -15136,7 +15146,7 @@
 							"sources": [
 								{
 									"fileName": "classes/Layer/Layer.ts",
-									"line": 34,
+									"line": 38,
 									"character": 10
 								}
 							],
@@ -15218,7 +15228,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 138,
+									"line": 140,
 									"character": 11
 								}
 							],
@@ -15276,7 +15286,7 @@
 							"sources": [
 								{
 									"fileName": "classes/Layer/Layer.ts",
-									"line": 27,
+									"line": 31,
 									"character": 9
 								}
 							],
@@ -15340,6 +15350,7 @@
 							"kind": 2048,
 							"kindString": "Method",
 							"flags": {
+								"isPrivate": true,
 								"isExported": true
 							},
 							"comment": {
@@ -15391,7 +15402,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 463,
+									"line": 466,
 									"character": 10
 								}
 							],
@@ -15462,7 +15473,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 261,
+									"line": 263,
 									"character": 9
 								}
 							],
@@ -15531,7 +15542,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 403,
+									"line": 405,
 									"character": 8
 								}
 							],
@@ -15600,7 +15611,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 374,
+									"line": 376,
 									"character": 14
 								}
 							],
@@ -15700,7 +15711,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 416,
+									"line": 418,
 									"character": 16
 								}
 							],
@@ -15841,7 +15852,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 203,
+									"line": 205,
 									"character": 13
 								}
 							],
@@ -16023,7 +16034,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 447,
+									"line": 449,
 									"character": 12
 								}
 							],
@@ -16074,7 +16085,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 383,
+									"line": 385,
 									"character": 13
 								}
 							],
@@ -16143,7 +16154,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 346,
+									"line": 348,
 									"character": 7
 								}
 							],
@@ -16194,7 +16205,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 392,
+									"line": 394,
 									"character": 10
 								}
 							],
@@ -16293,7 +16304,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 216,
+									"line": 218,
 									"character": 8
 								}
 							],
@@ -16351,7 +16362,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 432,
+									"line": 434,
 									"character": 13
 								}
 							],
@@ -16429,7 +16440,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 313,
+									"line": 315,
 									"character": 11
 								}
 							],
@@ -16478,7 +16489,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 423,
+									"line": 425,
 									"character": 10
 								}
 							],
@@ -16583,7 +16594,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 286,
+									"line": 288,
 									"character": 10
 								}
 							],
@@ -16718,7 +16729,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 301,
+									"line": 303,
 									"character": 12
 								}
 							],
@@ -16787,7 +16798,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 272,
+									"line": 274,
 									"character": 10
 								}
 							],
@@ -16856,7 +16867,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 360,
+									"line": 362,
 									"character": 14
 								}
 							],
@@ -16936,7 +16947,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 335,
+									"line": 337,
 									"character": 16
 								}
 							],
@@ -17001,7 +17012,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 454,
+									"line": 456,
 									"character": 16
 								}
 							],
@@ -17070,7 +17081,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 324,
+									"line": 326,
 									"character": 14
 								}
 							],
@@ -17175,7 +17186,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 228,
+									"line": 230,
 									"character": 13
 								}
 							],
@@ -17280,7 +17291,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 240,
+									"line": 242,
 									"character": 15
 								}
 							],
@@ -17525,6 +17536,7 @@
 							"kind": 1024,
 							"kindString": "Property",
 							"flags": {
+								"isPrivate": true,
 								"isExported": true
 							},
 							"comment": {
@@ -17534,7 +17546,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 131,
+									"line": 133,
 									"character": 10
 								}
 							],
@@ -17567,7 +17579,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 145,
+									"line": 147,
 									"character": 13
 								}
 							],
@@ -17597,7 +17609,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 152,
+									"line": 154,
 									"character": 13
 								}
 							],
@@ -17783,7 +17795,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 138,
+									"line": 140,
 									"character": 11
 								}
 							],
@@ -18012,6 +18024,7 @@
 							"kind": 2048,
 							"kindString": "Method",
 							"flags": {
+								"isPrivate": true,
 								"isExported": true
 							},
 							"comment": {
@@ -18063,7 +18076,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 463,
+									"line": 466,
 									"character": 10
 								}
 							],
@@ -18134,7 +18147,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 261,
+									"line": 263,
 									"character": 9
 								}
 							],
@@ -18203,7 +18216,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 403,
+									"line": 405,
 									"character": 8
 								}
 							],
@@ -18272,7 +18285,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 374,
+									"line": 376,
 									"character": 14
 								}
 							],
@@ -18372,7 +18385,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 416,
+									"line": 418,
 									"character": 16
 								}
 							],
@@ -18513,7 +18526,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 203,
+									"line": 205,
 									"character": 13
 								}
 							],
@@ -18695,7 +18708,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 447,
+									"line": 449,
 									"character": 12
 								}
 							],
@@ -18746,7 +18759,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 383,
+									"line": 385,
 									"character": 13
 								}
 							],
@@ -18815,7 +18828,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 346,
+									"line": 348,
 									"character": 7
 								}
 							],
@@ -18866,7 +18879,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 392,
+									"line": 394,
 									"character": 10
 								}
 							],
@@ -18965,7 +18978,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 216,
+									"line": 218,
 									"character": 8
 								}
 							],
@@ -19023,7 +19036,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 432,
+									"line": 434,
 									"character": 13
 								}
 							],
@@ -19101,7 +19114,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 313,
+									"line": 315,
 									"character": 11
 								}
 							],
@@ -19150,7 +19163,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 423,
+									"line": 425,
 									"character": 10
 								}
 							],
@@ -19255,7 +19268,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 286,
+									"line": 288,
 									"character": 10
 								}
 							],
@@ -19390,7 +19403,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 301,
+									"line": 303,
 									"character": 12
 								}
 							],
@@ -19459,7 +19472,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 272,
+									"line": 274,
 									"character": 10
 								}
 							],
@@ -19528,7 +19541,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 360,
+									"line": 362,
 									"character": 14
 								}
 							],
@@ -19608,7 +19621,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 335,
+									"line": 337,
 									"character": 16
 								}
 							],
@@ -19673,7 +19686,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 454,
+									"line": 456,
 									"character": 16
 								}
 							],
@@ -19884,7 +19897,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 324,
+									"line": 326,
 									"character": 14
 								}
 							],
@@ -20353,7 +20366,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 228,
+									"line": 230,
 									"character": 13
 								}
 							],
@@ -20458,7 +20471,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 240,
+									"line": 242,
 									"character": 15
 								}
 							],
@@ -21418,6 +21431,7 @@
 							"kind": 1024,
 							"kindString": "Property",
 							"flags": {
+								"isPrivate": true,
 								"isExported": true
 							},
 							"comment": {
@@ -21427,7 +21441,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 131,
+									"line": 133,
 									"character": 10
 								}
 							],
@@ -21460,7 +21474,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 145,
+									"line": 147,
 									"character": 13
 								}
 							],
@@ -21490,7 +21504,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 152,
+									"line": 154,
 									"character": 13
 								}
 							],
@@ -21666,7 +21680,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 138,
+									"line": 140,
 									"character": 11
 								}
 							],
@@ -21856,6 +21870,7 @@
 							"kind": 2048,
 							"kindString": "Method",
 							"flags": {
+								"isPrivate": true,
 								"isExported": true
 							},
 							"comment": {
@@ -21907,7 +21922,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 463,
+									"line": 466,
 									"character": 10
 								}
 							],
@@ -21978,7 +21993,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 261,
+									"line": 263,
 									"character": 9
 								}
 							],
@@ -22047,7 +22062,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 403,
+									"line": 405,
 									"character": 8
 								}
 							],
@@ -22116,7 +22131,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 374,
+									"line": 376,
 									"character": 14
 								}
 							],
@@ -22216,7 +22231,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 416,
+									"line": 418,
 									"character": 16
 								}
 							],
@@ -22357,7 +22372,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 203,
+									"line": 205,
 									"character": 13
 								}
 							],
@@ -22539,7 +22554,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 447,
+									"line": 449,
 									"character": 12
 								}
 							],
@@ -22590,7 +22605,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 383,
+									"line": 385,
 									"character": 13
 								}
 							],
@@ -22659,7 +22674,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 346,
+									"line": 348,
 									"character": 7
 								}
 							],
@@ -22710,7 +22725,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 392,
+									"line": 394,
 									"character": 10
 								}
 							],
@@ -22809,7 +22824,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 216,
+									"line": 218,
 									"character": 8
 								}
 							],
@@ -22867,7 +22882,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 432,
+									"line": 434,
 									"character": 13
 								}
 							],
@@ -22945,7 +22960,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 313,
+									"line": 315,
 									"character": 11
 								}
 							],
@@ -22994,7 +23009,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 423,
+									"line": 425,
 									"character": 10
 								}
 							],
@@ -23099,7 +23114,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 286,
+									"line": 288,
 									"character": 10
 								}
 							],
@@ -23234,7 +23249,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 301,
+									"line": 303,
 									"character": 12
 								}
 							],
@@ -23303,7 +23318,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 272,
+									"line": 274,
 									"character": 10
 								}
 							],
@@ -23372,7 +23387,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 360,
+									"line": 362,
 									"character": 14
 								}
 							],
@@ -23452,7 +23467,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 335,
+									"line": 337,
 									"character": 16
 								}
 							],
@@ -23517,7 +23532,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 454,
+									"line": 456,
 									"character": 16
 								}
 							],
@@ -23708,7 +23723,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 324,
+									"line": 326,
 									"character": 14
 								}
 							],
@@ -24005,7 +24020,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 228,
+									"line": 230,
 									"character": 13
 								}
 							],
@@ -24110,7 +24125,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 240,
+									"line": 242,
 									"character": 15
 								}
 							],
@@ -25151,6 +25166,7 @@
 							"kind": 1024,
 							"kindString": "Property",
 							"flags": {
+								"isPrivate": true,
 								"isExported": true
 							},
 							"comment": {
@@ -25160,7 +25176,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 131,
+									"line": 133,
 									"character": 10
 								}
 							],
@@ -25193,7 +25209,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 145,
+									"line": 147,
 									"character": 13
 								}
 							],
@@ -25247,7 +25263,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 152,
+									"line": 154,
 									"character": 13
 								}
 							],
@@ -25515,7 +25531,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 138,
+									"line": 140,
 									"character": 11
 								}
 							],
@@ -25662,6 +25678,7 @@
 							"kind": 2048,
 							"kindString": "Method",
 							"flags": {
+								"isPrivate": true,
 								"isExported": true
 							},
 							"comment": {
@@ -25713,7 +25730,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 463,
+									"line": 466,
 									"character": 10
 								}
 							],
@@ -25784,7 +25801,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 261,
+									"line": 263,
 									"character": 9
 								}
 							],
@@ -25853,7 +25870,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 403,
+									"line": 405,
 									"character": 8
 								}
 							],
@@ -25922,7 +25939,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 374,
+									"line": 376,
 									"character": 14
 								}
 							],
@@ -26022,7 +26039,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 416,
+									"line": 418,
 									"character": 16
 								}
 							],
@@ -26163,7 +26180,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 203,
+									"line": 205,
 									"character": 13
 								}
 							],
@@ -26345,7 +26362,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 447,
+									"line": 449,
 									"character": 12
 								}
 							],
@@ -26396,7 +26413,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 383,
+									"line": 385,
 									"character": 13
 								}
 							],
@@ -26465,7 +26482,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 346,
+									"line": 348,
 									"character": 7
 								}
 							],
@@ -26516,7 +26533,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 392,
+									"line": 394,
 									"character": 10
 								}
 							],
@@ -26615,7 +26632,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 216,
+									"line": 218,
 									"character": 8
 								}
 							],
@@ -26673,7 +26690,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 432,
+									"line": 434,
 									"character": 13
 								}
 							],
@@ -26751,7 +26768,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 313,
+									"line": 315,
 									"character": 11
 								}
 							],
@@ -26800,7 +26817,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 423,
+									"line": 425,
 									"character": 10
 								}
 							],
@@ -26905,7 +26922,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 286,
+									"line": 288,
 									"character": 10
 								}
 							],
@@ -27040,7 +27057,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 301,
+									"line": 303,
 									"character": 12
 								}
 							],
@@ -27109,7 +27126,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 272,
+									"line": 274,
 									"character": 10
 								}
 							],
@@ -27178,7 +27195,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 360,
+									"line": 362,
 									"character": 14
 								}
 							],
@@ -27258,7 +27275,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 335,
+									"line": 337,
 									"character": 16
 								}
 							],
@@ -27385,7 +27402,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 454,
+									"line": 456,
 									"character": 16
 								}
 							],
@@ -27804,7 +27821,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 324,
+									"line": 326,
 									"character": 14
 								}
 							],
@@ -28078,7 +28095,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 228,
+									"line": 230,
 									"character": 13
 								}
 							],
@@ -28183,7 +28200,7 @@
 							"sources": [
 								{
 									"fileName": "classes/BaseLayer/BaseLayer.ts",
-									"line": 240,
+									"line": 242,
 									"character": 15
 								}
 							],
