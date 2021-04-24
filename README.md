@@ -79,7 +79,7 @@ We recommend reading the [Getting Started guide](https://illustra.apixel.me/guid
 
 # Issue Tracker
 
-You can report bugs and suggest features by [opening an issue](https://github.com/APixelVisuals/illustra/issues/new). Please check to make sure that an issue for the bug or feature you're reporting doesn't already exist.
+You can report bugs and suggest features by [opening an issue](https://github.com/illustra/illustra/issues/new). Please check to make sure that an issue for the bug or feature you're reporting doesn't already exist.
 
 ---
 
