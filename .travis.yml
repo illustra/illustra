@@ -16,7 +16,7 @@ deploy:
   api_key:
     secure: dCvFcxxGJhY9QgoJoEQoukDeBr8Tjri9B2kga5LinOH+Uy0F1RdfWWCEuRY0aQVbFeArUY5nkyOK9SI3xmmN1QS1MHH7APqiVbsgPWDfyN5l30MMTegEkMEwmTzaVgB3Z3XIvakTPmexRZNfAjHZlf03q+jUlTInu98lbdThrtqiaLOq15Wy9nwVkif9ZV4LXdyqsLqENA/ag59xS86t1eGNp1iq5cK2AM1V6qFZP3RS7ZwDpr4BSnMif+iKlEfCKSUwdIzla/4wuzboCw8AZMZjNlIM63nX7lrDpiE6F0ER0m64PxaroDswfUWlkBpv+p9l+xAfF2pMGKY1frgT3lsz4EDiJkeKatA3KRXS7pU+xFq2TSQDltNXB4MoT+QC06UIfN3j5k3Ldv5xFAMAYKQOcjeLMpqOGb+xLkih0vaJsc5C3ekw3zFmkIb0scBrnoHgSaiRzV+0/JOYuKi5YpRQzfwmY7boVP79Hc9/5/1wnKcPyi7lR2UIOd4rf6tWz6yrBphYNc4PqHOl40zdzIKL1b2o0gGnQ4d5pWARpR0E7cvfotLmzupXME3e3z/03EXsKa7U52UxwTXdTvq1TjMyq3QqwfQE9nOCihfQ8VP7pcXz42YaZm5Sc5MEts5tTgU+bGXSne5dlng+8K5hRZnsfYU7MOz+D9I+YFT7wZM=
   on:
-    repo: APixelVisuals/illustra
+    repo: illustra/illustra
     branch: master
     tags: true
   skip_cleanup: true
