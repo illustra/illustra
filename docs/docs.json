@@ -13,7 +13,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/BaseLayer.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/BaseLayer.ts",
 			"children": [
 				{
 					"id": 1199,
@@ -3189,7 +3189,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/align.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/align.ts",
 			"children": [
 				{
 					"id": 123,
@@ -3561,7 +3561,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/blur.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/blur.ts",
 			"children": [
 				{
 					"id": 1051,
@@ -3674,7 +3674,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/brightness.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/brightness.ts",
 			"children": [
 				{
 					"id": 1057,
@@ -3787,7 +3787,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/circularMask.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/circularMask.ts",
 			"children": [
 				{
 					"id": 1063,
@@ -3903,7 +3903,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/duplicate.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/duplicate.ts",
 			"children": [
 				{
 					"id": 1069,
@@ -4082,7 +4082,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/exportTo.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/exportTo.ts",
 			"children": [
 				{
 					"id": 2,
@@ -4544,7 +4544,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/grayscale.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/grayscale.ts",
 			"children": [
 				{
 					"id": 1077,
@@ -4644,7 +4644,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/hue.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/hue.ts",
 			"children": [
 				{
 					"id": 1082,
@@ -4757,7 +4757,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/invert.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/invert.ts",
 			"children": [
 				{
 					"id": 1088,
@@ -4857,7 +4857,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/move.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/move.ts",
 			"children": [
 				{
 					"id": 1093,
@@ -4972,7 +4972,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/rasterize.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/rasterize.ts",
 			"children": [
 				{
 					"id": 1099,
@@ -5054,7 +5054,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/reflect.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/reflect.ts",
 			"children": [
 				{
 					"id": 1103,
@@ -5176,7 +5176,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/remove.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/remove.ts",
 			"children": [
 				{
 					"id": 1109,
@@ -5251,7 +5251,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/resize.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/resize.ts",
 			"children": [
 				{
 					"id": 1113,
@@ -5397,7 +5397,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/resizeBy.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/resizeBy.ts",
 			"children": [
 				{
 					"id": 1120,
@@ -5570,7 +5570,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/rotate.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/rotate.ts",
 			"children": [
 				{
 					"id": 1128,
@@ -5683,7 +5683,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/saturation.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/saturation.ts",
 			"children": [
 				{
 					"id": 1134,
@@ -5796,7 +5796,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/setBlendMode.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/setBlendMode.ts",
 			"children": [
 				{
 					"id": 1140,
@@ -5920,7 +5920,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/setOpacity.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/setOpacity.ts",
 			"children": [
 				{
 					"id": 1146,
@@ -6033,7 +6033,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/translate.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/translate.ts",
 			"children": [
 				{
 					"id": 1152,
@@ -6161,7 +6161,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/BaseLayer/translateBy.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/BaseLayer/translateBy.ts",
 			"children": [
 				{
 					"id": 1159,
@@ -6289,7 +6289,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/ClippingMask/ClippingMask.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/ClippingMask/ClippingMask.ts",
 			"children": [
 				{
 					"id": 905,
@@ -8996,7 +8996,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/ClippingMask/toBuffer.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/ClippingMask/toBuffer.ts",
 			"children": [
 				{
 					"id": 895,
@@ -9077,7 +9077,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/Document/Document.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/Document/Document.ts",
 			"children": [
 				{
 					"id": 73,
@@ -10373,7 +10373,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/Document/addLayer.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/Document/addLayer.ts",
 			"children": [
 				{
 					"id": 21,
@@ -10485,7 +10485,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/Document/createClippingMask.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/Document/createClippingMask.ts",
 			"children": [
 				{
 					"id": 27,
@@ -10575,7 +10575,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/Document/createEllipse.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/Document/createEllipse.ts",
 			"children": [
 				{
 					"id": 32,
@@ -10665,7 +10665,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/Document/createLayer.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/Document/createLayer.ts",
 			"children": [
 				{
 					"id": 37,
@@ -10761,7 +10761,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/Document/createPolygon.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/Document/createPolygon.ts",
 			"children": [
 				{
 					"id": 42,
@@ -10851,7 +10851,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/Document/createTextLayer.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/Document/createTextLayer.ts",
 			"children": [
 				{
 					"id": 47,
@@ -10941,7 +10941,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/Document/exportTo.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/Document/exportTo.ts",
 			"children": [
 				{
 					"id": 52,
@@ -11124,7 +11124,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/Document/mergeLayers.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/Document/mergeLayers.ts",
 			"children": [
 				{
 					"id": 61,
@@ -11280,7 +11280,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/Ellipse/Ellipse.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/Ellipse/Ellipse.ts",
 			"children": [
 				{
 					"id": 569,
@@ -14744,7 +14744,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/Ellipse/ellipseSVG.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/Ellipse/ellipseSVG.ts",
 			"children": [
 				{
 					"id": 558,
@@ -14819,7 +14819,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/Layer/Layer.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/Layer/Layer.ts",
 			"children": [
 				{
 					"id": 138,
@@ -17434,7 +17434,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/Polygon/Polygon.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/Polygon/Polygon.ts",
 			"children": [
 				{
 					"id": 426,
@@ -21155,7 +21155,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/Polygon/polygonSVG.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/Polygon/polygonSVG.ts",
 			"children": [
 				{
 					"id": 403,
@@ -21230,7 +21230,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/Polygon/setSides.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/Polygon/setSides.ts",
 			"children": [
 				{
 					"id": 407,
@@ -21319,7 +21319,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/ShapeLayer/ShapeLayer.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/ShapeLayer/ShapeLayer.ts",
 			"children": [
 				{
 					"id": 289,
@@ -24605,7 +24605,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/ShapeLayer/setFill.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/ShapeLayer/setFill.ts",
 			"children": [
 				{
 					"id": 252,
@@ -24696,7 +24696,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/ShapeLayer/setHeight.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/ShapeLayer/setHeight.ts",
 			"children": [
 				{
 					"id": 257,
@@ -24785,7 +24785,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/ShapeLayer/setStroke.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/ShapeLayer/setStroke.ts",
 			"children": [
 				{
 					"id": 262,
@@ -24876,7 +24876,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/ShapeLayer/setStrokeWidth.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/ShapeLayer/setStrokeWidth.ts",
 			"children": [
 				{
 					"id": 267,
@@ -24975,7 +24975,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/ShapeLayer/setWidth.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/ShapeLayer/setWidth.ts",
 			"children": [
 				{
 					"id": 272,
@@ -25064,7 +25064,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/TextLayer/TextLayer.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/TextLayer/TextLayer.ts",
 			"children": [
 				{
 					"id": 758,
@@ -28922,7 +28922,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/TextLayer/setColor.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/TextLayer/setColor.ts",
 			"children": [
 				{
 					"id": 698,
@@ -29013,7 +29013,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/TextLayer/setFont.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/TextLayer/setFont.ts",
 			"children": [
 				{
 					"id": 703,
@@ -29112,7 +29112,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/TextLayer/setFontSize.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/TextLayer/setFontSize.ts",
 			"children": [
 				{
 					"id": 708,
@@ -29202,7 +29202,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/TextLayer/setFontWeight.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/TextLayer/setFontWeight.ts",
 			"children": [
 				{
 					"id": 713,
@@ -29301,7 +29301,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/TextLayer/setLineHeight.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/TextLayer/setLineHeight.ts",
 			"children": [
 				{
 					"id": 718,
@@ -29400,7 +29400,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/TextLayer/setMaxWidth.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/TextLayer/setMaxWidth.ts",
 			"children": [
 				{
 					"id": 723,
@@ -29499,7 +29499,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/TextLayer/setText.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/TextLayer/setText.ts",
 			"children": [
 				{
 					"id": 728,
@@ -29588,7 +29588,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/TextLayer/setTextAlign.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/TextLayer/setTextAlign.ts",
 			"children": [
 				{
 					"id": 733,
@@ -29679,7 +29679,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/classes/TextLayer/textBuffer.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/classes/TextLayer/textBuffer.ts",
 			"children": [
 				{
 					"id": 738,
@@ -29760,7 +29760,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/color.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/color.ts",
 			"children": [
 				{
 					"id": 242,
@@ -30003,7 +30003,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/createClippingMask.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/createClippingMask.ts",
 			"children": [
 				{
 					"id": 1003,
@@ -30079,7 +30079,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/createEllipse.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/createEllipse.ts",
 			"children": [
 				{
 					"id": 694,
@@ -30155,7 +30155,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/createLayer.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/createLayer.ts",
 			"children": [
 				{
 					"id": 238,
@@ -30237,7 +30237,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/createPolygon.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/createPolygon.ts",
 			"children": [
 				{
 					"id": 554,
@@ -30313,7 +30313,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/createTextLayer.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/createTextLayer.ts",
 			"children": [
 				{
 					"id": 891,
@@ -30389,7 +30389,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/debug.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/debug.ts",
 			"children": [
 				{
 					"id": 1046,
@@ -30487,7 +30487,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/index.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/index.ts",
 			"children": [
 				{
 					"id": 1299,
@@ -31067,7 +31067,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/home/travis/build/APixelVisuals/illustra/src/internal.ts",
+			"originalName": "/home/travis/build/illustra/illustra/src/internal.ts",
 			"children": [
 				{
 					"id": 1013,
