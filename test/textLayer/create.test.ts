@@ -40,7 +40,8 @@ describe("creating a text layer", () => {
         document.createTextLayer({
             name: "text",
             text: {
-                text: "example"
+                text: "example",
+                font: "Arial"
             },
             left: 250,
             top: 200
@@ -56,31 +57,6 @@ describe("creating a text layer", () => {
         expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(500);
     });
 
-    it("creates a text layer with a custom font", async () => {
-
-        // Create text
-        document.createTextLayer({
-            name: "text",
-            text: {
-                text: "example",
-                font: "test/assets/roboto.ttf",
-                fontSize: 65,
-                color: "#ffffff"
-            },
-            left: 250,
-            top: 200
-        });
-
-        // Export document
-        const exportedImage: PNGWithMetadata = pngjs.sync.read(await document.exportTo("png", "buffer"));
-
-        // Get expected image
-        const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync("test/textLayer/exports/create/font.png"));
-
-        // Expect
-        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(500);
-    });
-
     it("creates a text layer with a custom font weight", async () => {
 
         // Create text
@@ -88,6 +64,7 @@ describe("creating a text layer", () => {
             name: "text",
             text: {
                 text: "example",
+                font: "Arial",
                 fontSize: 65,
                 fontWeight: "bold",
                 color: "#ffffff"
@@ -104,58 +81,6 @@ describe("creating a text layer", () => {
 
         // Expect
         expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(500);
-    });
-
-    it("creates a text layer with word wrapping and custom text alignment", async () => {
-
-        // Create text
-        document.createTextLayer({
-            name: "text",
-            text: {
-                text: "example text with word wrapping and centering",
-                fontSize: 65,
-                textAlign: "center",
-                color: "#ffffff",
-                maxWidth: 400
-            },
-            left: 250,
-            top: 200
-        });
-
-        // Export document
-        const exportedImage: PNGWithMetadata = pngjs.sync.read(await document.exportTo("png", "buffer"));
-
-        // Get expected image
-        const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync("test/textLayer/exports/create/textAlign.png"));
-
-        // Expect
-        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(10000);
-    });
-
-    it("creates a text layer with a custom line height", async () => {
-
-        // Create text
-        document.createTextLayer({
-            name: "text",
-            text: {
-                text: "example text with word wrapping and line height",
-                fontSize: 65,
-                color: "#ffffff",
-                lineHeight: 150,
-                maxWidth: 400
-            },
-            left: 250,
-            top: 200
-        });
-
-        // Export document
-        const exportedImage: PNGWithMetadata = pngjs.sync.read(await document.exportTo("png", "buffer"));
-
-        // Get expected image
-        const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync("test/textLayer/exports/create/lineHeight.png"));
-
-        // Expect
-        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(3000);
     });
 
     it("creates a text layer without a document", async () => {

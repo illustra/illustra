@@ -16,9 +16,7 @@ export default async function duplicate<AnyLayerInput extends AnyLayer>(layer: A
             font: layer.font,
             fontSize: layer.fontSize,
             fontWeight: layer.fontWeight,
-            textAlign: layer.textAlign,
             color: layer.color,
-            lineHeight: layer.lineHeight,
             maxWidth: layer.maxWidth
         },
         left: layer.left,

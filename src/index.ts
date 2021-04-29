@@ -59,7 +59,6 @@ export {
 export type TextLayer = InstanceType<typeof illustra.TextLayer>;
 export {
     createTextLayer,
-    TextAlign,
     TextData,
     TextLayerData
 } from "./internal";

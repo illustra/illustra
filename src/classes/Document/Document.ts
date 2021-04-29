@@ -160,9 +160,7 @@ export default class Document {
      * @param textLayerData.text.font The font to use
      * @param textLayerData.text.fontSize The font size to use
      * @param textLayerData.text.fontWeight The font weight to use
-     * @param textLayerData.text.textAlign How the text should be aligned
      * @param textLayerData.text.color The color of the text
-     * @param textLayerData.text.lineHeight The line height to use
      * @param textLayerData.text.maxWidth The max width of the text
      * @param textLayerData.left The horizontal offset from the left to place this layer
      * @param textLayerData.top The vertical offset from the top to place this layer

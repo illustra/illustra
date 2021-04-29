@@ -79,25 +79,6 @@ describe("setting properties of a text layer", () => {
         expect(textLayer.fontWeight).toBe(undefined);
     });
 
-    it("sets the text align", () => {
-
-        // Set text align errors
-        // @ts-ignore
-        expect(() => textLayer.setTextAlign("invalid")).toThrow("Invalid text align");
-
-        // Set text align
-        textLayer.setTextAlign("center");
-
-        // Expect
-        expect(textLayer.textAlign).toBe("center");
-
-        // Reset text align
-        textLayer.setTextAlign();
-
-        // Expect
-        expect(textLayer.textAlign).toBe("left");
-    });
-
     it("sets the color", () => {
 
         // Set color
@@ -111,24 +92,6 @@ describe("setting properties of a text layer", () => {
 
         // Expect
         expect(textLayer.color).toBe("#000000");
-    });
-
-    it("sets the line height", () => {
-
-        // Set line height errors
-        expect(() => textLayer.setLineHeight(-5)).toThrow("Line height can't be less than 0");
-
-        // Set line height
-        textLayer.setLineHeight(50);
-
-        // Expect
-        expect(textLayer.lineHeight).toBe(50);
-
-        // Reset line height
-        textLayer.setLineHeight();
-
-        // Expect
-        expect(textLayer.lineHeight).toBe(undefined);
     });
 
     it("sets the max width", () => {

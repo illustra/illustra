@@ -1,4 +1,3 @@
-
 import { TextLayer } from "../../internal";
 
 export default function setMaxWidth(textLayer: TextLayer, maxWidth?: number): TextLayer {

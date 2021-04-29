@@ -1,4 +1,3 @@
-
 import { TextLayer } from "../../internal";
 
 export default function setText(textLayer: TextLayer, text: string): TextLayer {

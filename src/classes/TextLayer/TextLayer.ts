@@ -4,24 +4,18 @@ import setColor from "./setColor";
 import setFont from "./setFont";
 import setFontSize from "./setFontSize";
 import setFontWeight from "./setFontWeight";
-import setLineHeight from "./setLineHeight";
 import setMaxWidth from "./setMaxWidth";
 import setText from "./setText";
-import setTextAlign from "./setTextAlign";
 import textBuffer from "./textBuffer";
 
 export const DEFAULT_FONT_SIZE = 24;
-
-export type TextAlign = "left" | "center" | "right" | "justify";
 
 export interface TextData {
     text: string;
     font?: string;
     fontSize?: number;
     fontWeight?: string;
-    textAlign?: TextAlign;
     color?: Color;
-    lineHeight?: number;
     maxWidth?: number;
 }
 
@@ -65,25 +59,11 @@ export default class TextLayer extends BaseLayer {
     fontWeight?: string;
 
     /**
-     * Text Align
-     *
-     * How the text should be aligned
-     */
-    textAlign: TextAlign;
-
-    /**
      * Color
      *
      * The color of the text
      */
     color: string;
-
-    /**
-     * Line Height
-     *
-     * The line height to use
-     */
-    lineHeight?: number;
 
     /**
      * Max Width
@@ -103,9 +83,7 @@ export default class TextLayer extends BaseLayer {
      * @param textLayerData.text.font The font to use
      * @param textLayerData.text.fontSize The font size to use
      * @param textLayerData.text.fontWeight The font weight to use
-     * @param textLayerData.text.textAlign How the text should be aligned
      * @param textLayerData.text.color The color of the text
-     * @param textLayerData.text.lineHeight The line height to use
      * @param textLayerData.text.maxWidth The max width of the text
      * @param textLayerData.left The horizontal offset from the left to place this layer
      * @param textLayerData.top The vertical offset from the top to place this layer
@@ -124,9 +102,7 @@ export default class TextLayer extends BaseLayer {
         this.font = textLayerData.text.font;
         this.fontSize = textLayerData.text.fontSize || DEFAULT_FONT_SIZE;
         this.fontWeight = textLayerData.text.fontWeight;
-        this.textAlign = textLayerData.text.textAlign || "left";
         this.color = parseColor(textLayerData.text.color || "#000000");
-        this.lineHeight = textLayerData.text.lineHeight;
         this.maxWidth = textLayerData.text.maxWidth || document?.width || 400;
     }
 
@@ -175,17 +151,6 @@ export default class TextLayer extends BaseLayer {
     setFontWeight = (fontWeight?: string): TextLayer => setFontWeight(this, fontWeight);
 
     /**
-     * Set Text Align
-     *
-     * Set the text align of this text layer
-     *
-     * @param textAlign How the text should be aligned
-     *
-     * @returns {TextLayer} This text layer
-     */
-    setTextAlign = (textAlign?: TextAlign): TextLayer => setTextAlign(this, textAlign);
-
-    /**
      * Set Color
      *
      * Set the color of this text layer
@@ -195,17 +160,6 @@ export default class TextLayer extends BaseLayer {
      * @returns {TextLayer} This text layer
      */
     setColor = (color?: Color): TextLayer => setColor(this, color);
-
-    /**
-     * Set Line Height
-     *
-     * Set the line height of this text layer
-     *
-     * @param lineHeight The line height to use
-     *
-     * @returns {TextLayer} This text layer
-     */
-    setLineHeight = (lineHeight?: number): TextLayer => setLineHeight(this, lineHeight);
 
     /**
      * Set Max Width
@@ -228,9 +182,7 @@ export default class TextLayer extends BaseLayer {
      * @param textData.font The font to use
      * @param textData.fontSize The font size to use
      * @param textData.fontWeight The font weight to use
-     * @param textData.textAlign How the text should be aligned
      * @param textData.color The color of the text
-     * @param textData.lineHeight The line height to use
      * @param textData.maxWidth The max width of the text
      *
      * @returns {Buffer} The image buffer

@@ -1,4 +1,3 @@
-
 import { DEFAULT_FONT_SIZE, TextLayer } from "../../internal";
 
 export default function setFontSize(textLayer: TextLayer, fontSize: number = DEFAULT_FONT_SIZE): TextLayer {

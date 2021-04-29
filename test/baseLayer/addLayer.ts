@@ -18,6 +18,7 @@ export default async function addLayer(layerType: string, document?: Document): 
         name: layerType,
         text: {
             text: "example",
+            font: "Arial",
             color: "#ff0000"
         },
         left: 250,
