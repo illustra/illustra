@@ -77,6 +77,7 @@ export default async function duplicate<AnyLayerInput extends AnyLayer>(layer: A
             debugMode
         }, layer.document, (layer as Layer)._inputData) as AnyLayerInput;
         await (duplicatedLayer as Layer)._initialize;
+        (duplicatedLayer as Layer)._svg = (layer as Layer)._svg;
     }
 
     // Set edits

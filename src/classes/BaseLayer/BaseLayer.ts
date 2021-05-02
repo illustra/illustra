@@ -1,5 +1,5 @@
 import debug from "../../debug";
-import { ClippingMask, Document, Ellipse, Layer, Polygon, TextLayer } from "../../internal";
+import { ClippingMask, Document, Ellipse, ILAAsset, ILAData, Layer, Polygon, TextLayer } from "../../internal";
 import align, { AlignOptions } from "./align";
 import blur from "./blur";
 import brightness from "./brightness";
@@ -8,6 +8,9 @@ import duplicate from "./duplicate";
 import exportTo, { ExportTypes, Format, Output, PathOrWithMetadataOptions } from "./exportTo";
 import grayscale from "./grayscale";
 import hue from "./hue";
+import exportILA from "./ila/exportILA";
+import getILAData from "./ila/getILAData";
+import importILA from "./ila/importILA";
 import invert from "./invert";
 import move from "./move";
 import rasterize from "./rasterize";
@@ -24,54 +27,50 @@ import translateBy from "./translateBy";
 
 export type AnyLayer = BaseLayer | Layer | TextLayer | Polygon | Ellipse | ClippingMask;
 
-interface Rotate {
+export interface Rotate {
     type: "rotate";
     degrees: number;
 }
 
-interface Resize {
+export interface Resize {
     type: "resize";
     width?: number;
     height?: number;
 }
 
-interface Reflect {
+export interface Reflect {
     type: "reflect";
     direction: "vertical" | "horizontal";
 }
 
-interface Hue {
+export interface Hue {
     type: "hue";
     degrees: number;
 }
 
-interface Saturation {
+export interface Saturation {
     type: "saturation";
     amount: number;
 }
 
-interface Brightness {
+export interface Brightness {
     type: "brightness";
     amount: number;
 }
 
-interface Hue {
-    type: "hue";
-    degrees: number;
-}
-
-interface Invert {
+export interface Invert {
     type: "invert";
 }
 
-interface Blur {
+export interface Blur {
     type: "blur";
     sigma: number;
 }
 
-type Edit = Rotate | Resize | Reflect | Hue | Saturation | Brightness | Invert | Blur;
+export type Edit = Rotate | Resize | Reflect | Hue | Saturation | Brightness | Invert | Blur;
 
 export type BlendMode = "normal" | "darken" | "multiply" | "colorBurn" | "lighten" | "screen" | "colorDodge" | "linearDodge" | "overlay" | "softLight" | "hardLight" | "difference" | "exclusion";
+export const BLEND_MODES: BlendMode[] = ["normal", "darken", "multiply", "colorBurn", "lighten", "screen", "colorDodge", "linearDodge", "overlay", "softLight", "hardLight", "difference", "exclusion"];
 
 export interface BaseLayerData {
     name: string;
@@ -447,6 +446,45 @@ export default class BaseLayer {
      * @returns {undefined | Buffer | ExportMetadata} `undefined` if the `exportType` is 'file', `Buffer` if the `exportType` is 'buffer' and `pathOrWithMetadata` is false, or `ExportMetadata` if the `exportType` is 'buffer' and `pathOrWithMetadata` is true
      */
     exportTo = <ExportType extends ExportTypes, PathOrWithMetadata extends PathOrWithMetadataOptions = false>(format: Format, exportType: ExportType, pathOrWithMetadata?: PathOrWithMetadata): Promise<Output<ExportType, PathOrWithMetadata>> => exportTo(this, format, exportType, pathOrWithMetadata);
+
+    /**
+     * Export ILA
+     *
+     * Export this layer as an ILA (Illustra Layer) file
+     *
+     * @param exportType How this document should be exported - Either 'file' or 'buffer'
+     * @param path The path to write the file to if the `exportType` is 'file'
+     *
+     * @throws {Error} Path must be specified if exportType is 'file'
+     *
+     * @returns {undefined | Buffer} `undefined` if the `exportType` is 'file' or `Buffer` if the `exportType` is 'buffer'
+     */
+    exportILA = <ExportType extends ExportTypes, Path extends string>(exportType: ExportType, path?: Path): Promise<Output<ExportType, Path>> => exportILA(this, exportType, path);
+
+    /**
+     * Import ILA
+     *
+     * Import a layer from an ILA (Illustra Layer) file
+     *
+     * @param pathOrBuffer The path or buffer to read the file from
+     * @param assetsDirectory The path to a directory to store imported assets in
+     * Omit to store them as an image buffer in memory
+     *
+     * @returns {AnyLayer} The layer
+     */
+    static importILA = (pathOrBuffer: string | Buffer, assetsDirectory?: string): Promise<AnyLayer> => importILA(pathOrBuffer, assetsDirectory);
+
+    /**
+     * Get ILA Data
+     *
+     * Get data to create an ILA file from this layer
+     *
+     * @private
+     * @param assets An array to add assets to
+     *
+     * @returns {ILAData} The ILA data
+     */
+    _getILAData = (assets: ILAAsset[]): ILAData => getILAData(this, assets);
 
     /**
      * Set Debug Mode

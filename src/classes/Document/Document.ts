@@ -8,6 +8,8 @@ import createLayer from "./createLayer";
 import createPolygon from "./createPolygon";
 import createTextLayer from "./createTextLayer";
 import exportTo from "./exportTo";
+import exportILD from "./ild/exportILD";
+import importILD from "./ild/importILD";
 import mergeLayers from "./mergeLayers";
 
 export interface DocumentData {
@@ -252,6 +254,33 @@ export default class Document {
      * @returns {undefined | Buffer | ExportMetadata} `undefined` if the `exportType` is 'file', `Buffer` if the `exportType` is 'buffer' and `pathOrWithMetadata` is false, or `ExportMetadata` if the `exportType` is 'buffer' and `pathOrWithMetadata` is true
      */
     exportTo = <ExportType extends ExportTypes, PathOrWithMetadata extends PathOrWithMetadataOptions = false>(format: Format, exportType: ExportType, pathOrWithMetadata?: PathOrWithMetadata): Promise<Output<ExportType, PathOrWithMetadata>> => exportTo(this, format, exportType, pathOrWithMetadata);
+
+    /**
+     * Export ILD
+     *
+     * Export this document as an ILD (Illustra Document) file
+     *
+     * @param exportType How this document should be exported - Either 'file' or 'buffer'
+     * @param path The path to write the file to if the `exportType` is 'file'
+     *
+     * @throws {Error} Path must be specified if exportType is 'file'
+     *
+     * @returns {undefined | Buffer} `undefined` if the `exportType` is 'file' or `Buffer` if the `exportType` is 'buffer'
+     */
+    exportILD = <ExportType extends ExportTypes, Path extends string>(exportType: ExportType, path?: Path): Promise<Output<ExportType, Path>> => exportILD(this, exportType, path);
+
+    /**
+     * Import ILD
+     *
+     * Import a document from an ILD (Illustra Document) file
+     *
+     * @param pathOrBuffer The path or buffer to read the file from
+     * @param assetsDirectory The path to a directory to store imported assets in
+     * Omit to store them as an image buffer in memory
+     *
+     * @returns {Document} The document
+     */
+    static importILD = (pathOrBuffer: string | Buffer, assetsDirectory?: string): Promise<Document> => importILD(pathOrBuffer, assetsDirectory);
 
     /**
      * Set Debug Mode

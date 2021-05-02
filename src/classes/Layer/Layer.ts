@@ -24,6 +24,15 @@ export default class Layer extends BaseLayer {
     _inputData?: string | Buffer;
 
     /**
+     * SVG
+     *
+     * Whether or not the input data is an SVG buffer
+     *
+     * @private
+     */
+    _svg: boolean;
+
+    /**
      * Width
      *
      * The width of this layer
@@ -52,7 +61,7 @@ export default class Layer extends BaseLayer {
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
      * @param layerData.debugMode Set to `true` to log debug info to the console
-     * @param inputData Internal: Image data to use for this layer
+     * @param inputData Image data to use for this layer
      */
     constructor(layerData: BaseLayerData, document?: Document, inputData?: string | Buffer) {
 
@@ -62,10 +71,11 @@ export default class Layer extends BaseLayer {
         // Parse input data
         if (layerData.file) inputData = layerData.file;
         else if (layerData.buffer) inputData = layerData.buffer;
-        else if (layerData.svg?.trim().startsWith("<svg")) inputData = Buffer.from(layerData.svg);
+        else if (layerData.svg && layerData.svg.trim().startsWith("<svg")) inputData = Buffer.from(layerData.svg);
 
         // Set data
         this._inputData = inputData;
+        this._svg = Boolean(layerData.svg && layerData.svg.trim().startsWith("<svg"));
 
         // Initialize
         this._initialize = new Promise(async (resolve) => {

@@ -13,6 +13,7 @@ export {
 // Base Layer
 export type BaseLayer = InstanceType<typeof illustra.BaseLayer>;
 export {
+    importILA,
     AlignOptions,
     AlignType,
     AnyLayer,

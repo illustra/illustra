@@ -1,4 +1,4 @@
-import { AnyLayer, BlendMode } from "../../internal";
+import { AnyLayer, BlendMode, BLEND_MODES } from "../../internal";
 
 export default function setBlendMode<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, blendMode?: BlendMode | null): AnyLayerInput {
 
@@ -9,7 +9,7 @@ export default function setBlendMode<AnyLayerInput extends AnyLayer>(layer: AnyL
     layer._debug(`Setting blend mode to ${blendMode}`);
 
     // Invalid blend mode
-    if (!["normal", "darken", "multiply", "colorBurn", "lighten", "screen", "colorDodge", "linearDodge", "overlay", "softLight", "hardLight", "difference", "exclusion"].includes(blendMode)) throw new Error("Invalid blend mode");
+    if (!BLEND_MODES.includes(blendMode)) throw new Error("Invalid blend mode");
 
     // Set blend mode
     layer.blendMode = blendMode;

@@ -5,6 +5,8 @@ export interface ClippingMaskData {
     name: string;
     mask: AnyLayer;
     source: AnyLayer;
+    left?: number;
+    top?: number;
     position?: number;
     debugMode?: boolean;
 }
@@ -33,6 +35,8 @@ export default class ClippingMask extends BaseLayer {
      * @param clippingMaskData.name The name of the layer
      * @param clippingMaskData.mask The layer that the source will clip to
      * @param clippingMaskData.source The layer that will get clipped to the mask
+     * @param clippingMaskData.left The horizontal offset from the left to place this layer
+     * @param clippingMaskData.top The vertical offset from the top to place this layer
      * @param clippingMaskData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
