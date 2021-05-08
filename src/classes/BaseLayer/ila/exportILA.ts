@@ -27,14 +27,17 @@ export default async function exportILA<ExportType extends ExportTypes, Path ext
     // Create image files
     for (let i = 0; i < assets.length; i++) {
 
+        // Get asset
+        const asset: ILAAsset = assets[i];
+
         // If its a string, copy the file
-        if (typeof assets[0].image === "string") fs.copyFile(assets[0].image, `${tempDirectory.path}/data/assets/${i + 1}${pathExtname(assets[0].image)}`);
+        if (typeof asset.image === "string") await fs.copyFile(asset.image, `${tempDirectory.path}/data/assets/${i + 1}${pathExtname(asset.image)}`);
 
         // If its an SVG buffer, write the SVG string to a file
-        else if (assets[i].svg) await fs.writeFile(`${tempDirectory.path}/data/assets/${i + 1}.svg`, assets[i].image.toString());
+        else if (asset.svg) await fs.writeFile(`${tempDirectory.path}/data/assets/${i + 1}.svg`, asset.image.toString());
 
         // Otherwise, create an image file
-        else await sharp(assets[i].image).toFormat("png").toFile(`${tempDirectory.path}/data/assets/${i + 1}.png`);
+        else await sharp(asset.image).toFormat("png").toFile(`${tempDirectory.path}/data/assets/${i + 1}.png`);
     }
 
     // Create tarball
