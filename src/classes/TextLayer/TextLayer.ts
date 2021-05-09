@@ -1,5 +1,5 @@
 import { parseColor, Color } from "../../color";
-import { BaseLayer, Document } from "../../internal";
+import { BaseLayer, Document, LAYER_TYPE_TEXT } from "../../internal";
 import setColor from "./setColor";
 import setFont from "./setFont";
 import setFontSize from "./setFontSize";
@@ -29,6 +29,13 @@ export interface TextLayerData {
 }
 
 export default class TextLayer extends BaseLayer {
+
+    /**
+     * Type
+     *
+     * This layer's type
+     */
+    type: typeof LAYER_TYPE_TEXT;
 
     /**
      * Text
@@ -98,6 +105,7 @@ export default class TextLayer extends BaseLayer {
         super(textLayerData, document);
 
         // Set data
+        this.type = LAYER_TYPE_TEXT;
         this.text = textLayerData.text.text;
         this.font = textLayerData.text.font;
         this.fontSize = textLayerData.text.fontSize || DEFAULT_FONT_SIZE;

@@ -1,4 +1,4 @@
-import { Document, ShapeData, ShapeLayer, ShapeLayerData } from "../../internal";
+import { Document, LAYER_TYPE_ELLIPSE, ShapeData, ShapeLayer, ShapeLayerData } from "../../internal";
 import ellipseSVG from "./ellipseSVG";
 
 export type EllipseShapeData = ShapeData;
@@ -8,6 +8,13 @@ export interface EllipseData extends ShapeLayerData {
 }
 
 export default class Ellipse extends ShapeLayer {
+
+    /**
+     * Type
+     *
+     * This layer's type
+     */
+    type: typeof LAYER_TYPE_ELLIPSE;
 
     /**
      * Ellipse
@@ -32,6 +39,9 @@ export default class Ellipse extends ShapeLayer {
 
         // Super
         super(ellipseData, document);
+
+        // Set data
+        this.type = LAYER_TYPE_ELLIPSE;
     }
 
     /**

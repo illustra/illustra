@@ -1,10 +1,12 @@
 import { parseColor, Color } from "../../color";
-import { BaseLayer, Document, EllipseData, PolygonData } from "../../internal";
+import { BaseLayer, Document, EllipseData, LAYER_TYPE_ELLIPSE, LAYER_TYPE_POLYGON, PolygonData } from "../../internal";
 import setFill from "./setFill";
 import setHeight from "./setHeight";
 import setStroke from "./setStroke";
 import setStrokeWidth from "./setStrokeWidth";
 import setWidth from "./setWidth";
+
+export type ShapeLayerType = typeof LAYER_TYPE_POLYGON | typeof LAYER_TYPE_ELLIPSE;
 
 export interface ShapeData {
     width: number;
@@ -23,6 +25,13 @@ export interface ShapeLayerData {
 }
 
 export default class ShapeLayer extends BaseLayer {
+
+    /**
+     * Type
+     *
+     * This layer's type
+     */
+    type: ShapeLayerType;
 
     /**
      * Width

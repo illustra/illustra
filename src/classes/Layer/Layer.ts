@@ -1,5 +1,5 @@
 import sharp from "sharp";
-import { BaseLayer, BaseLayerData, Document } from "../../internal";
+import { BaseLayer, BaseLayerData, Document, LAYER_TYPE_LAYER } from "../../internal";
 
 export type LayerData = BaseLayerData;
 
@@ -31,6 +31,13 @@ export default class Layer extends BaseLayer {
      * @private
      */
     _svg: boolean;
+
+    /**
+     * Type
+     *
+     * This layer's type
+     */
+    type: typeof LAYER_TYPE_LAYER;
 
     /**
      * Width
@@ -76,6 +83,7 @@ export default class Layer extends BaseLayer {
         // Set data
         this._inputData = inputData;
         this._svg = Boolean(layerData.svg && layerData.svg.trim().startsWith("<svg"));
+        this.type = LAYER_TYPE_LAYER;
 
         // Initialize
         this._initialize = new Promise(async (resolve) => {

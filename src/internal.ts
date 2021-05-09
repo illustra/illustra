@@ -17,6 +17,12 @@ export {
     Edit,
     Hue,
     Invert,
+    LayerType,
+    LAYER_TYPE_CLIPPING_MASK,
+    LAYER_TYPE_ELLIPSE,
+    LAYER_TYPE_LAYER,
+    LAYER_TYPE_POLYGON,
+    LAYER_TYPE_TEXT,
     Reflect,
     Resize,
     Rotate,
@@ -38,7 +44,8 @@ export { default as createLayer } from "./createLayer";
 export {
     default as ShapeLayer,
     ShapeData,
-    ShapeLayerData
+    ShapeLayerData,
+    ShapeLayerType
 } from "./classes/ShapeLayer/ShapeLayer";
 
 // Polygon

@@ -1,4 +1,4 @@
-import { Document, ShapeData, ShapeLayer, ShapeLayerData } from "../../internal";
+import { Document, LAYER_TYPE_POLYGON, ShapeData, ShapeLayer, ShapeLayerData } from "../../internal";
 import polygonSVG from "./polygonSVG";
 import setSides from "./setSides";
 
@@ -11,6 +11,13 @@ export interface PolygonData extends ShapeLayerData {
 }
 
 export default class Polygon extends ShapeLayer {
+
+    /**
+     * Type
+     *
+     * This layer's type
+     */
+    type: typeof LAYER_TYPE_POLYGON;
 
     /**
      * Sides
@@ -45,6 +52,7 @@ export default class Polygon extends ShapeLayer {
         super(polygonData, document);
 
         // Set data
+        this.type = LAYER_TYPE_POLYGON;
         this.sides = polygonData.shape.sides;
     }
 

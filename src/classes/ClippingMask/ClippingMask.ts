@@ -1,4 +1,4 @@
-import { AnyLayer, BaseLayer, Document } from "../../internal";
+import { AnyLayer, BaseLayer, Document, LAYER_TYPE_CLIPPING_MASK } from "../../internal";
 import toBuffer from "./toBuffer";
 
 export interface ClippingMaskData {
@@ -12,6 +12,13 @@ export interface ClippingMaskData {
 }
 
 export default class ClippingMask extends BaseLayer {
+
+    /**
+     * Type
+     *
+     * This layer's type
+     */
+    type: typeof LAYER_TYPE_CLIPPING_MASK;
 
     /**
      * Mask
@@ -48,6 +55,7 @@ export default class ClippingMask extends BaseLayer {
         super(clippingMaskData, document);
 
         // Set data
+        this.type = LAYER_TYPE_CLIPPING_MASK;
         this.mask = clippingMaskData.mask;
         this.source = clippingMaskData.source;
     }

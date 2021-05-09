@@ -22,6 +22,12 @@ export {
     ExportMetadata,
     ExportTypes,
     Format,
+    LayerType,
+    LAYER_TYPE_CLIPPING_MASK,
+    LAYER_TYPE_ELLIPSE,
+    LAYER_TYPE_LAYER,
+    LAYER_TYPE_POLYGON,
+    LAYER_TYPE_TEXT,
     PathOrWithMetadataOptions,
     Units
 } from "./internal";
@@ -37,7 +43,8 @@ export {
 export type ShapeLayer = InstanceType<typeof illustra.ShapeLayer>;
 export {
     ShapeData,
-    ShapeLayerData
+    ShapeLayerData,
+    ShapeLayerType
 } from "./internal";
 
 // Polygon

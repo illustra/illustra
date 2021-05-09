@@ -1,4 +1,4 @@
-import { BlendMode, Edit } from "../../../internal";
+import { BlendMode, Edit, LayerType, LAYER_TYPE_CLIPPING_MASK, LAYER_TYPE_ELLIPSE, LAYER_TYPE_LAYER, LAYER_TYPE_POLYGON, LAYER_TYPE_TEXT, ShapeLayerType } from "../../../internal";
 
 /**
  * ILA Data
@@ -20,6 +20,13 @@ export interface ILABaseData {
      * This layer's name
      */
     name: string;
+
+    /**
+     * Type
+     *
+     * This layer's type
+     */
+    type: LayerType;
 
     /**
      * Left
@@ -144,6 +151,13 @@ export interface ILATextData extends ILABaseData {
 export interface ILAShapeData extends ILABaseData {
 
     /**
+     * Type
+     *
+     * This layer's type
+     */
+    type: ShapeLayerType;
+
+    /**
      * Width
      *
      * The width of this shape layer
@@ -244,18 +258,6 @@ export interface ILAClippingMaskData extends ILABaseData {
      */
     source: ILAData;
 }
-
-/**
- * Layer Type
- *
- * The layer type
- */
-export type LayerType = typeof LAYER_TYPE_LAYER | typeof LAYER_TYPE_TEXT | typeof LAYER_TYPE_POLYGON | typeof LAYER_TYPE_ELLIPSE | typeof LAYER_TYPE_CLIPPING_MASK;
-export const LAYER_TYPE_LAYER = 0;
-export const LAYER_TYPE_TEXT = 1;
-export const LAYER_TYPE_POLYGON = 2;
-export const LAYER_TYPE_ELLIPSE = 3;
-export const LAYER_TYPE_CLIPPING_MASK = 4;
 
 /**
  * ILA Asset

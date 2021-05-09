@@ -27,6 +27,13 @@ import translateBy from "./translateBy";
 
 export type AnyLayer = BaseLayer | Layer | TextLayer | Polygon | Ellipse | ClippingMask;
 
+export type LayerType = typeof LAYER_TYPE_LAYER | typeof LAYER_TYPE_TEXT | typeof LAYER_TYPE_POLYGON | typeof LAYER_TYPE_ELLIPSE | typeof LAYER_TYPE_CLIPPING_MASK;
+export const LAYER_TYPE_LAYER = 0;
+export const LAYER_TYPE_TEXT = 1;
+export const LAYER_TYPE_POLYGON = 2;
+export const LAYER_TYPE_ELLIPSE = 3;
+export const LAYER_TYPE_CLIPPING_MASK = 4;
+
 export interface Rotate {
     type: "rotate";
     degrees: number;
@@ -98,6 +105,13 @@ export default class BaseLayer {
      * This layer's name
      */
     name: string;
+
+    /**
+     * Type
+     *
+     * This layer's type
+     */
+    type: LayerType;
 
     /**
      * Left
