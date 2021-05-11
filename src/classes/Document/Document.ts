@@ -81,6 +81,17 @@ export default class Document {
     }
 
     /**
+     * Set Name
+     *
+     * Set the document's name
+     *
+     * @param name The name
+     */
+    setName(name: string) {
+        this.name = name;
+    }
+
+    /**
      * Create Layer
      *
      * Create a new layer

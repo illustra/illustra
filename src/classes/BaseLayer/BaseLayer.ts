@@ -203,6 +203,17 @@ export default class BaseLayer {
     }
 
     /**
+     * Set Name
+     *
+     * Set the layer's name
+     *
+     * @param name The name
+     */
+    setName(name: string) {
+        this.name = name;
+    }
+
+    /**
      * Duplicate
      *
      * Duplicate this layer
