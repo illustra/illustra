@@ -99,7 +99,9 @@ export default class Document {
      *
      * @returns {Layer} The created layer
      */
-    createLayer = (layerData: LayerData): Promise<Layer> => createLayer(this, layerData);
+    createLayer(layerData: LayerData): Promise<Layer> {
+        return createLayer(this, layerData);
+    }
 
     /**
      * Create Polygon
@@ -124,7 +126,9 @@ export default class Document {
      *
      * @returns {Polygon} The created polygon
      */
-    createPolygon = (polygonData: PolygonData): Polygon => createPolygon(this, polygonData);
+    createPolygon(polygonData: PolygonData): Polygon {
+        return createPolygon(this, polygonData);
+    }
 
     /**
      * Create Ellipse
@@ -148,7 +152,9 @@ export default class Document {
      *
      * @returns {Ellipse} The created ellipse
      */
-    createEllipse = (ellipseData: EllipseData): Ellipse => createEllipse(this, ellipseData);
+    createEllipse(ellipseData: EllipseData): Ellipse {
+        return createEllipse(this, ellipseData);
+    }
 
     /**
      * Create Text Layer
@@ -173,7 +179,9 @@ export default class Document {
      *
      * @returns {TextLayer} The created text layer
      */
-    createTextLayer = (textLayerData: TextLayerData): TextLayer => createTextLayer(this, textLayerData);
+    createTextLayer(textLayerData: TextLayerData): TextLayer {
+        return createTextLayer(this, textLayerData);
+    }
 
     /**
      * Create Clipping Mask
@@ -191,7 +199,9 @@ export default class Document {
      *
      * @returns {ClippingMask} The created text layer
      */
-    createClippingMask = (clippingMaskData: ClippingMaskData): ClippingMask => createClippingMask(this, clippingMaskData);
+    createClippingMask(clippingMaskData: ClippingMaskData): ClippingMask {
+        return createClippingMask(this, clippingMaskData);
+    }
 
     /**
      * Add Layer
@@ -203,7 +213,9 @@ export default class Document {
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
      */
-    addLayer = (layer: AnyLayer, position?: number) => addLayer(this, layer, position);
+    addLayer(layer: AnyLayer, position?: number) {
+        addLayer(this, layer, position);
+    }
 
     /**
      * Get Layer
@@ -214,7 +226,7 @@ export default class Document {
      *
      * @returns {AnyLayer | undefined} The layer if found or `undefined`
      */
-    getLayer = (nameOrIndex: string | number): AnyLayer | undefined => {
+    getLayer(nameOrIndex: string | number): AnyLayer | undefined {
 
         // Get by index
         if (typeof nameOrIndex === "string") return this.layers.find((l: AnyLayer) => l.name === nameOrIndex);
@@ -238,7 +250,9 @@ export default class Document {
      *
      * @returns {Layer} The new layer
      */
-    mergeLayers = (name: string, layers?: Array<AnyLayer | string | number>, copy?: boolean): Promise<Layer> => mergeLayers(this, name, layers, copy);
+    mergeLayers(name: string, layers?: Array<AnyLayer | string | number>, copy?: boolean): Promise<Layer> {
+        return mergeLayers(this, name, layers, copy);
+    }
 
     /**
      * Export To
@@ -253,7 +267,9 @@ export default class Document {
      *
      * @returns {undefined | Buffer | ExportMetadata} `undefined` if the `exportType` is 'file', `Buffer` if the `exportType` is 'buffer' and `pathOrWithMetadata` is false, or `ExportMetadata` if the `exportType` is 'buffer' and `pathOrWithMetadata` is true
      */
-    exportTo = <ExportType extends ExportTypes, PathOrWithMetadata extends PathOrWithMetadataOptions = false>(format: Format, exportType: ExportType, pathOrWithMetadata?: PathOrWithMetadata): Promise<Output<ExportType, PathOrWithMetadata>> => exportTo(this, format, exportType, pathOrWithMetadata);
+    exportTo<ExportType extends ExportTypes, PathOrWithMetadata extends PathOrWithMetadataOptions = false>(format: Format, exportType: ExportType, pathOrWithMetadata?: PathOrWithMetadata): Promise<Output<ExportType, PathOrWithMetadata>> {
+        return exportTo(this, format, exportType, pathOrWithMetadata);
+    }
 
     /**
      * Export ILD
@@ -267,7 +283,9 @@ export default class Document {
      *
      * @returns {undefined | Buffer} `undefined` if the `exportType` is 'file' or `Buffer` if the `exportType` is 'buffer'
      */
-    exportILD = <ExportType extends ExportTypes, Path extends string>(exportType: ExportType, path?: Path): Promise<Output<ExportType, Path>> => exportILD(this, exportType, path);
+    exportILD<ExportType extends ExportTypes, Path extends string>(exportType: ExportType, path?: Path): Promise<Output<ExportType, Path>> {
+        return exportILD(this, exportType, path);
+    }
 
     /**
      * Import ILD
@@ -280,14 +298,18 @@ export default class Document {
      *
      * @returns {Document} The document
      */
-    static importILD = (pathOrBuffer: string | Buffer, assetsDirectory?: string): Promise<Document> => importILD(pathOrBuffer, assetsDirectory);
+    static importILD(pathOrBuffer: string | Buffer, assetsDirectory?: string): Promise<Document> {
+        return importILD(pathOrBuffer, assetsDirectory);
+    }
 
     /**
      * Set Debug Mode
      *
      * @param debugMode Set to `true` to log debug info to the console
      */
-    setDebugMode = (debugMode: boolean) => this.debugMode = debugMode;
+    setDebugMode(debugMode: boolean) {
+        this.debugMode = debugMode;
+    }
 
     /**
      * Debug
@@ -297,5 +319,7 @@ export default class Document {
      * @private
      * @param info Debug info to log
      */
-    _debug = (info: string) => debug(info, this);
+    _debug(info: string) {
+        debug(info, this);
+    }
 }

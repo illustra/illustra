@@ -123,7 +123,9 @@ export default class TextLayer extends BaseLayer {
      *
      * @returns {TextLayer} This text layer
      */
-    setText = (text: string): TextLayer => setText(this, text);
+    setText(text: string): TextLayer {
+        return setText(this, text);
+    }
 
     /**
      * Set Font
@@ -134,7 +136,9 @@ export default class TextLayer extends BaseLayer {
      *
      * @returns {TextLayer} This text layer
      */
-    setFont = (font?: string): TextLayer => setFont(this, font);
+    setFont(font?: string): TextLayer {
+        return setFont(this, font);
+    }
 
     /**
      * Set Font Size
@@ -145,7 +149,9 @@ export default class TextLayer extends BaseLayer {
      *
      * @returns {TextLayer} This text layer
      */
-    setFontSize = (fontSize?: number): TextLayer => setFontSize(this, fontSize);
+    setFontSize(fontSize?: number): TextLayer {
+        return setFontSize(this, fontSize);
+    }
 
     /**
      * Set Font Weight
@@ -156,7 +162,9 @@ export default class TextLayer extends BaseLayer {
      *
      * @returns {TextLayer} This text layer
      */
-    setFontWeight = (fontWeight?: string): TextLayer => setFontWeight(this, fontWeight);
+    setFontWeight(fontWeight?: string): TextLayer {
+        return setFontWeight(this, fontWeight);
+    }
 
     /**
      * Set Color
@@ -167,7 +175,9 @@ export default class TextLayer extends BaseLayer {
      *
      * @returns {TextLayer} This text layer
      */
-    setColor = (color?: Color): TextLayer => setColor(this, color);
+    setColor(color?: Color): TextLayer {
+        return setColor(this, color);
+    }
 
     /**
      * Set Max Width
@@ -178,7 +188,9 @@ export default class TextLayer extends BaseLayer {
      *
      * @returns {TextLayer} This text layer
      */
-    setMaxWidth = (maxWidth?: number): TextLayer => setMaxWidth(this, maxWidth);
+    setMaxWidth(maxWidth?: number): TextLayer {
+        return setMaxWidth(this, maxWidth);
+    }
 
     /**
      * Text Buffer
@@ -195,7 +207,9 @@ export default class TextLayer extends BaseLayer {
      *
      * @returns {Buffer} The image buffer
      */
-    static textBuffer = (textData: TextData): Promise<Buffer> => textBuffer(textData);
+    static textBuffer(textData: TextData): Promise<Buffer> {
+        return textBuffer(textData);
+    }
 
     /**
      * To Buffer
@@ -204,5 +218,7 @@ export default class TextLayer extends BaseLayer {
      *
      * @returns {Buffer} The image buffer
      */
-    toBuffer = (): Promise<Buffer> => TextLayer.textBuffer(this);
+    toBuffer(): Promise<Buffer> {
+        return TextLayer.textBuffer(this);
+    }
 }

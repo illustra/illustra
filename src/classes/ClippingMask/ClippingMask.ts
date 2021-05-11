@@ -67,5 +67,7 @@ export default class ClippingMask extends BaseLayer {
      *
      * @returns {Buffer} The image buffer
      */
-    toBuffer = (): Promise<Buffer> => toBuffer(this);
+    toBuffer(): Promise<Buffer> {
+        return toBuffer(this);
+    }
 }

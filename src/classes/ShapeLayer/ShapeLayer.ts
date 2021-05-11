@@ -109,7 +109,9 @@ export default class ShapeLayer extends BaseLayer {
      *
      * @returns {ShapeLayer} This shape layer
      */
-    setWidth = (width: number): ShapeLayer => setWidth(this, width);
+    setWidth(width: number): ShapeLayer {
+        return setWidth(this, width);
+    }
 
     /**
      * Set Height
@@ -120,7 +122,9 @@ export default class ShapeLayer extends BaseLayer {
      *
      * @returns {ShapeLayer} This shape layer
      */
-    setHeight = (height: number): ShapeLayer => setHeight(this, height);
+    setHeight(height: number): ShapeLayer {
+        return setHeight(this, height);
+    }
 
     /**
      * Set Fill
@@ -131,7 +135,9 @@ export default class ShapeLayer extends BaseLayer {
      *
      * @returns {ShapeLayer} This shape layer
      */
-    setFill = (fill?: Color): ShapeLayer => setFill(this, fill);
+    setFill(fill?: Color): ShapeLayer {
+        return setFill(this, fill);
+    }
 
     /**
      * Set Stroke
@@ -142,7 +148,9 @@ export default class ShapeLayer extends BaseLayer {
      *
      * @returns {ShapeLayer} This shape layer
      */
-    setStroke = (stroke?: Color): ShapeLayer => setStroke(this, stroke);
+    setStroke(stroke?: Color): ShapeLayer {
+        return setStroke(this, stroke);
+    }
 
     /**
      * Set Stroke Width
@@ -153,5 +161,7 @@ export default class ShapeLayer extends BaseLayer {
      *
      * @returns {ShapeLayer} This shape layer
      */
-    setStrokeWidth = (strokeWidth?: number): ShapeLayer => setStrokeWidth(this, strokeWidth);
+    setStrokeWidth(strokeWidth?: number): ShapeLayer {
+        return setStrokeWidth(this, strokeWidth);
+    }
 }

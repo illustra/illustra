@@ -58,7 +58,9 @@ export default class Ellipse extends ShapeLayer {
      *
      * @returns {string} The SVG string
      */
-    static ellipseSVG = (ellipseShapeData: EllipseShapeData): string => ellipseSVG(ellipseShapeData);
+    static ellipseSVG(ellipseShapeData: EllipseShapeData): string {
+        return ellipseSVG(ellipseShapeData);
+    }
 
     /**
      * To SVG
@@ -67,7 +69,9 @@ export default class Ellipse extends ShapeLayer {
      *
      * @returns {string} The SVG string
      */
-    toSVG = (): string => Ellipse.ellipseSVG(this);
+    toSVG(): string {
+        return Ellipse.ellipseSVG(this);
+    }
 
     /**
      * Ellipse Buffer
@@ -83,7 +87,7 @@ export default class Ellipse extends ShapeLayer {
      *
      * @returns {Buffer} The image buffer
      */
-    static ellipseBuffer = (ellipseShapeData: EllipseShapeData): Buffer => {
+    static ellipseBuffer(ellipseShapeData: EllipseShapeData): Buffer {
 
         // Get svg code
         const svgCode: string = Ellipse.ellipseSVG(ellipseShapeData);
@@ -99,5 +103,7 @@ export default class Ellipse extends ShapeLayer {
      *
      * @returns {Buffer} The image buffer
      */
-    toBuffer = (): Buffer => Ellipse.ellipseBuffer(this);
+    toBuffer(): Buffer {
+        return Ellipse.ellipseBuffer(this);
+    }
 }

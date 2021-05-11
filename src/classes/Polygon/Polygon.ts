@@ -65,7 +65,9 @@ export default class Polygon extends ShapeLayer {
      *
      * @returns {Polygon} This polygon
      */
-    setSides = (sides: number): Polygon => setSides(this, sides);
+    setSides(sides: number): Polygon {
+        return setSides(this, sides);
+    }
 
     /**
      * Polygon SVG
@@ -82,7 +84,9 @@ export default class Polygon extends ShapeLayer {
      *
      * @returns {string} The SVG string
      */
-    static polygonSVG = (polygonShapeData: PolygonShapeData): string => polygonSVG(polygonShapeData);
+    static polygonSVG(polygonShapeData: PolygonShapeData): string {
+        return polygonSVG(polygonShapeData);
+    }
 
     /**
      * To SVG
@@ -91,7 +95,9 @@ export default class Polygon extends ShapeLayer {
      *
      * @returns {string} The SVG string
      */
-    toSVG = (): string => Polygon.polygonSVG(this);
+    toSVG(): string {
+        return Polygon.polygonSVG(this);
+    }
 
     /**
      * Polygon Buffer
@@ -108,7 +114,7 @@ export default class Polygon extends ShapeLayer {
      *
      * @returns {Buffer} The image buffer
      */
-    static polygonBuffer = (polygonShapeData: PolygonShapeData): Buffer => {
+    static polygonBuffer(polygonShapeData: PolygonShapeData): Buffer {
 
         // Get svg code
         const svgCode: string = Polygon.polygonSVG(polygonShapeData);
@@ -124,5 +130,7 @@ export default class Polygon extends ShapeLayer {
      *
      * @returns {Buffer} The image buffer
      */
-    toBuffer = (): Buffer => Polygon.polygonBuffer(this);
+    toBuffer(): Buffer {
+        return Polygon.polygonBuffer(this);
+    }
 }

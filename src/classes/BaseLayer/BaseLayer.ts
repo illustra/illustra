@@ -215,7 +215,9 @@ export default class BaseLayer {
      *
      * @returns {this} The new layer
      */
-    duplicate = (name?: string, position?: number, debugMode?: boolean): Promise<this> => duplicate(this, name, position, debugMode);
+    duplicate(name?: string, position?: number, debugMode?: boolean): Promise<this> {
+        return duplicate(this, name, position, debugMode);
+    }
 
     /**
      * Move
@@ -228,7 +230,9 @@ export default class BaseLayer {
      *
      * @returns {number} The layer's new position
      */
-    move = (position: number, relative?: boolean): number => move(this, position, relative);
+    move(position: number, relative?: boolean): number {
+        return move(this, position, relative);
+    }
 
     /**
      * Translate
@@ -240,7 +244,9 @@ export default class BaseLayer {
      *
      * @returns {this} This layer
      */
-    translate = (left?: number, top?: number): this => translate(this, left, top);
+    translate(left?: number, top?: number): this {
+        return translate(this, left, top);
+    }
 
     /**
      * Translate By
@@ -252,7 +258,9 @@ export default class BaseLayer {
      *
      * @returns {this} This layer
      */
-    translateBy = (x?: number, y?: number): this => translateBy(this, x, y);
+    translateBy(x?: number, y?: number): this {
+        return translateBy(this, x, y);
+    }
 
     /**
      * Align
@@ -273,7 +281,9 @@ export default class BaseLayer {
      *
      * @returns {this} This layer
      */
-    align = (alignOptions?: AlignOptions): this => align(this, alignOptions);
+    align(alignOptions?: AlignOptions): this {
+        return align(this, alignOptions);
+    }
 
     /**
      * Rotate
@@ -284,7 +294,9 @@ export default class BaseLayer {
      *
      * @returns {this} This layer
      */
-    rotate = (degrees: number): this => rotate(this, degrees);
+    rotate(degrees: number): this {
+        return rotate(this, degrees);
+    }
 
     /**
      * Resize
@@ -298,7 +310,9 @@ export default class BaseLayer {
      *
      * @returns {this} This layer
      */
-    resize = (width?: number | null, height?: number | null): this => resize(this, width, height);
+    resize(width?: number | null, height?: number | null): this {
+        return resize(this, width, height);
+    }
 
     /**
      * Resize By
@@ -313,7 +327,9 @@ export default class BaseLayer {
      *
      * @returns {this} This layer
      */
-    resizeBy = (width?: number | null, height?: number | null, scale?: boolean): this => resizeBy(this, width, height, scale);
+    resizeBy(width?: number | null, height?: number | null, scale?: boolean): this {
+        return resizeBy(this, width, height, scale);
+    }
 
     /**
      * Reflect
@@ -325,7 +341,9 @@ export default class BaseLayer {
      *
      * @returns {this} This layer
      */
-    reflect = (direction: "vertical" | "horizontal"): this => reflect(this, direction);
+    reflect(direction: "vertical" | "horizontal"): this {
+        return reflect(this, direction);
+    }
 
     /**
      * Set Opacity
@@ -336,7 +354,9 @@ export default class BaseLayer {
      *
      * @returns {this} This layer
      */
-    setOpacity = (opacity: number): this => setOpacity(this, opacity);
+    setOpacity(opacity: number): this {
+        return setOpacity(this, opacity);
+    }
 
     /**
      * Set Blend Mode
@@ -347,7 +367,9 @@ export default class BaseLayer {
      *
      * @returns {this} This layer
      */
-    setBlendMode = (blendMode?: BlendMode | null): this => setBlendMode(this, blendMode);
+    setBlendMode(blendMode?: BlendMode | null): this {
+        return setBlendMode(this, blendMode);
+    }
 
     /**
      * Hue
@@ -358,7 +380,9 @@ export default class BaseLayer {
      *
      * @returns {this} This layer
      */
-    hue = (degrees: number): this => hue(this, degrees);
+    hue(degrees: number): this {
+        return hue(this, degrees);
+    }
 
     /**
      * Saturation
@@ -372,7 +396,9 @@ export default class BaseLayer {
      *
      * @returns {this} This layer
      */
-    saturation = (amount: number): this => saturation(this, amount);
+    saturation(amount: number): this {
+        return saturation(this, amount);
+    }
 
     /**
      * Brightness
@@ -386,7 +412,9 @@ export default class BaseLayer {
      *
      * @returns {this} This layer
      */
-    brightness = (amount: number): this => brightness(this, amount);
+    brightness(amount: number): this {
+        return brightness(this, amount);
+    }
 
     /**
      * Grayscale
@@ -395,7 +423,9 @@ export default class BaseLayer {
      *
      * @returns {this} This layer
      */
-    grayscale = (): this => grayscale(this);
+    grayscale(): this {
+        return grayscale(this);
+    }
 
     /**
      * Invert
@@ -404,7 +434,9 @@ export default class BaseLayer {
      *
      * @returns {this} This layer
      */
-    invert = (): this => invert(this);
+    invert(): this {
+        return invert(this);
+    }
 
     /**
      * Blur
@@ -415,7 +447,9 @@ export default class BaseLayer {
      *
      * @returns {this} This layer
      */
-    blur = (sigma: number): this => blur(this, sigma);
+    blur(sigma: number): this {
+        return blur(this, sigma);
+    }
 
     /**
      * Circular Mask
@@ -428,14 +462,18 @@ export default class BaseLayer {
      *
      * @returns {ClippingMask} The clipping mask
      */
-    circularMask = (name: string, keepSource?: boolean): ClippingMask => circularMask(this, name, keepSource);
+    circularMask(name: string, keepSource?: boolean): ClippingMask {
+        return circularMask(this, name, keepSource);
+    }
 
     /**
      * Remove
      *
      * Remove this layer from its document
      */
-    remove = () => remove(this);
+    remove() {
+        remove(this);
+    }
 
     /**
      * Rasterize
@@ -444,7 +482,9 @@ export default class BaseLayer {
      *
      * @returns {Layer} The clipping mask
      */
-    rasterize = (): Promise<Layer> => rasterize(this);
+    rasterize(): Promise<Layer> {
+        return rasterize(this);
+    }
 
     /**
      * Export To
@@ -459,7 +499,9 @@ export default class BaseLayer {
      *
      * @returns {undefined | Buffer | ExportMetadata} `undefined` if the `exportType` is 'file', `Buffer` if the `exportType` is 'buffer' and `pathOrWithMetadata` is false, or `ExportMetadata` if the `exportType` is 'buffer' and `pathOrWithMetadata` is true
      */
-    exportTo = <ExportType extends ExportTypes, PathOrWithMetadata extends PathOrWithMetadataOptions = false>(format: Format, exportType: ExportType, pathOrWithMetadata?: PathOrWithMetadata): Promise<Output<ExportType, PathOrWithMetadata>> => exportTo(this, format, exportType, pathOrWithMetadata);
+    exportTo<ExportType extends ExportTypes, PathOrWithMetadata extends PathOrWithMetadataOptions = false>(format: Format, exportType: ExportType, pathOrWithMetadata?: PathOrWithMetadata): Promise<Output<ExportType, PathOrWithMetadata>> {
+        return exportTo(this, format, exportType, pathOrWithMetadata);
+    }
 
     /**
      * Export ILA
@@ -473,7 +515,9 @@ export default class BaseLayer {
      *
      * @returns {undefined | Buffer} `undefined` if the `exportType` is 'file' or `Buffer` if the `exportType` is 'buffer'
      */
-    exportILA = <ExportType extends ExportTypes, Path extends string>(exportType: ExportType, path?: Path): Promise<Output<ExportType, Path>> => exportILA(this, exportType, path);
+    exportILA<ExportType extends ExportTypes, Path extends string>(exportType: ExportType, path?: Path): Promise<Output<ExportType, Path>> {
+        return exportILA(this, exportType, path);
+    }
 
     /**
      * Import ILA
@@ -486,7 +530,9 @@ export default class BaseLayer {
      *
      * @returns {AnyLayer} The layer
      */
-    static importILA = (pathOrBuffer: string | Buffer, assetsDirectory?: string): Promise<AnyLayer> => importILA(pathOrBuffer, assetsDirectory);
+    static importILA(pathOrBuffer: string | Buffer, assetsDirectory?: string): Promise<AnyLayer> {
+        return importILA(pathOrBuffer, assetsDirectory);
+    }
 
     /**
      * Get ILA Data
@@ -498,14 +544,18 @@ export default class BaseLayer {
      *
      * @returns {ILAData} The ILA data
      */
-    _getILAData = (assets: ILAAsset[]): ILAData => getILAData(this, assets);
+    _getILAData(assets: ILAAsset[]): ILAData {
+        return getILAData(this, assets);
+    }
 
     /**
      * Set Debug Mode
      *
      * @param debugMode Set to `true` to log debug info to the console
      */
-    setDebugMode = (debugMode: boolean) => this.debugMode = debugMode;
+    setDebugMode(debugMode: boolean) {
+        this.debugMode = debugMode;
+    }
 
     /**
      * Debug
@@ -515,5 +565,7 @@ export default class BaseLayer {
      * @private
      * @param info Debug info to log
      */
-    _debug = (info: string): void => debug(info, this);
+    _debug(info: string) {
+        debug(info, this);
+    }
 }
