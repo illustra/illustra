@@ -88,5 +88,5 @@ export default function polygonSVG(polygonShapeData: PolygonShapeData): string {
     `;
 
     // Return
-    return svgCode.trim();
+    return svgCode.replace(/\n\s+/g, "");
 }

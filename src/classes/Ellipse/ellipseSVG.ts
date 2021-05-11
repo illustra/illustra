@@ -11,5 +11,5 @@ export default function ellipseSVG(ellipseShapeData: EllipseShapeData): string {
     `;
 
     // Return
-    return svgCode.trim();
+    return svgCode.replace(/\n\s+/g, "");
 }
