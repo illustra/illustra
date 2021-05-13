@@ -1,6 +1,6 @@
-import { AnyLayer } from "../../internal";
+import { AnyLayer, ReflectDirection } from "../../internal";
 
-export default function rotate<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, direction: "vertical" | "horizontal"): AnyLayerInput {
+export default function rotate<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, direction: ReflectDirection): AnyLayerInput {
 
     // Debug
     layer._debug(`Reflecting ${direction === "vertical" ? "vertically" : "horizontally"}`);

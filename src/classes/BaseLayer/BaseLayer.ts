@@ -47,7 +47,7 @@ export interface Resize {
 
 export interface Reflect {
     type: "reflect";
-    direction: "vertical" | "horizontal";
+    direction: ReflectDirection;
 }
 
 export interface Hue {
@@ -75,6 +75,8 @@ export interface Blur {
 }
 
 export type Edit = Rotate | Resize | Reflect | Hue | Saturation | Brightness | Invert | Blur;
+
+export type ReflectDirection = "vertical" | "horizontal";
 
 export type BlendMode = "normal" | "darken" | "multiply" | "colorBurn" | "lighten" | "screen" | "colorDodge" | "linearDodge" | "overlay" | "softLight" | "hardLight" | "difference" | "exclusion";
 export const BLEND_MODES: BlendMode[] = ["normal", "darken", "multiply", "colorBurn", "lighten", "screen", "colorDodge", "linearDodge", "overlay", "softLight", "hardLight", "difference", "exclusion"];
@@ -352,7 +354,7 @@ export default class BaseLayer {
      *
      * @returns {this} This layer
      */
-    reflect(direction: "vertical" | "horizontal"): this {
+    reflect(direction: ReflectDirection): this {
         return reflect(this, direction);
     }
 

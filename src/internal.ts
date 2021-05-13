@@ -24,6 +24,7 @@ export {
     LAYER_TYPE_POLYGON,
     LAYER_TYPE_TEXT,
     Reflect,
+    ReflectDirection,
     Resize,
     Rotate,
     Saturation

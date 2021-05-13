@@ -29,6 +29,7 @@ export {
     LAYER_TYPE_POLYGON,
     LAYER_TYPE_TEXT,
     PathOrWithMetadataOptions,
+    ReflectDirection,
     Units
 } from "./internal";
 
