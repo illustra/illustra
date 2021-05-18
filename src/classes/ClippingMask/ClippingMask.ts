@@ -1,14 +1,9 @@
-import { AnyLayer, BaseLayer, Document, LAYER_TYPE_CLIPPING_MASK } from "../../internal";
+import { AnyLayer, BaseLayer, BaseLayerData, Document, LAYER_TYPE_CLIPPING_MASK } from "../../internal";
 import toBuffer from "./toBuffer";
 
-export interface ClippingMaskData {
-    name: string;
+export interface ClippingMaskData extends BaseLayerData {
     mask: AnyLayer;
     source: AnyLayer;
-    left?: number;
-    top?: number;
-    position?: number;
-    debugMode?: boolean;
 }
 
 export default class ClippingMask extends BaseLayer {

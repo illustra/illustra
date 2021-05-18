@@ -1,4 +1,4 @@
-import { createClippingMask, createEllipse, createLayer, createPolygon, createTextLayer, BaseLayer, BaseLayerData, Document } from "../../src/internal";
+import { createClippingMask, createEllipse, createLayer, createPolygon, createTextLayer, BaseLayer, Document, LayerData } from "../../src/internal";
 
 export default async function addLayer(layerType: string, document?: Document): Promise<BaseLayer> {
 
@@ -6,9 +6,9 @@ export default async function addLayer(layerType: string, document?: Document): 
     let layer: BaseLayer;
 
     // Define layer data
-    const layerData: BaseLayerData = {
+    const layerData: LayerData = {
         name: layerType,
-        file: "test/assets/apixel.png",
+        image: "test/assets/apixel.png",
         left: 250,
         top: 200
     };

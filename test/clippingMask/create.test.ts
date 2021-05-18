@@ -20,13 +20,13 @@ describe("creating clipping masks", () => {
         // Create background
         await document.createLayer({
             name: "background",
-            file: "test/assets/black.png"
+            image: "test/assets/black.png"
         });
 
         // Create logo
         logo = await createLayer({
             name: "logo",
-            file: "test/assets/apixel.png",
+            image: "test/assets/apixel.png",
             left: 300,
             top: 300
         });

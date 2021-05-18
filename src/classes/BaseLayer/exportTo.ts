@@ -50,7 +50,7 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
     let inputData: string | Buffer | undefined;
 
     // Get input data from a regular layer
-    if (baseLayer instanceof Layer) inputData = baseLayer._inputData;
+    if (baseLayer instanceof Layer) inputData = baseLayer.image;
 
     // Create an image buffer from polygons and ellipses
     if ((baseLayer instanceof Polygon) || (baseLayer instanceof Ellipse)) inputData = baseLayer.toBuffer();

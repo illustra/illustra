@@ -1,7 +1,9 @@
 import sharp from "sharp";
 import { BaseLayer, BaseLayerData, Document, LAYER_TYPE_LAYER } from "../../internal";
 
-export type LayerData = BaseLayerData;
+export interface LayerData extends BaseLayerData {
+    image: string | Buffer;
+}
 
 export default class Layer extends BaseLayer {
 
@@ -15,18 +17,9 @@ export default class Layer extends BaseLayer {
     _initialize: Promise<void>;
 
     /**
-     * Input Data
-     *
-     * This layer's input data
-     *
-     * @private
-     */
-    _inputData?: string | Buffer;
-
-    /**
      * SVG
      *
-     * Whether or not the input data is an SVG buffer
+     * Whether or not the image is an SVG buffer
      *
      * @private
      */
@@ -38,6 +31,13 @@ export default class Layer extends BaseLayer {
      * This layer's type
      */
     type: typeof LAYER_TYPE_LAYER;
+
+    /**
+     * Image
+     *
+     * This layer's image
+     */
+    image: string | Buffer;
 
     /**
      * Width
@@ -59,40 +59,32 @@ export default class Layer extends BaseLayer {
      * @param document The document this layer is a part of
      * @param layerData Data for the layer
      * @param layerData.name The name of the layer
-     * @param layerData.file An image file to use for this layer
-     * @param layerData.buffer An image buffer to use for this layer
-     * @param layerData.svg An SVG string to use for this layer
+     * @param layerData.image A path to an image file, image buffer, or SVG string to use for this layer
      * @param layerData.left The horizontal offset from the left to place this layer
      * @param layerData.top The vertical offset from the top to place this layer
      * @param layerData.position The position index of the layer. The lower the index, the lower the layer is in the stack.
      * Omit to add the layer to the top of the stack (highest index).
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
      * @param layerData.debugMode Set to `true` to log debug info to the console
-     * @param inputData Image data to use for this layer
      */
-    constructor(layerData: BaseLayerData, document?: Document, inputData?: string | Buffer) {
+    constructor(layerData: LayerData, document?: Document) {
 
         // Super
         super(layerData, document);
 
-        // Parse input data
-        if (layerData.file) inputData = layerData.file;
-        else if (layerData.buffer) inputData = layerData.buffer;
-        else if (layerData.svg && layerData.svg.trim().startsWith("<svg")) inputData = Buffer.from(layerData.svg);
+        // Parse image
+        if ((typeof layerData.image === "string") && (layerData.image.trim().startsWith("<svg"))) this.image = Buffer.from(layerData.image);
+        else this.image = layerData.image;
 
         // Set data
-        this._inputData = inputData;
-        this._svg = Boolean(layerData.svg && layerData.svg.trim().startsWith("<svg"));
+        this._svg = Boolean(typeof layerData.image === "string" && layerData.image.trim().startsWith("<svg"));
         this.type = LAYER_TYPE_LAYER;
 
         // Initialize
         this._initialize = new Promise(async (resolve) => {
 
-            // No input data ie. for text layers
-            if (!this._inputData) return resolve();
-
             // Create sharp canvas
-            const canvas: sharp.Sharp = sharp(inputData);
+            const canvas: sharp.Sharp = sharp(this.image);
 
             // Get metadata
             const metadata: sharp.Metadata = await canvas.metadata();

@@ -19,13 +19,13 @@ describe("exporting documents", () => {
         // Create background
         await document.createLayer({
             name: "background",
-            file: "test/assets/black.png"
+            image: "test/assets/black.png"
         });
 
         // Add logo
         await document.createLayer({
             name: "logo",
-            file: "test/assets/apixel.png"
+            image: "test/assets/apixel.png"
         });
 
         // Get expected image

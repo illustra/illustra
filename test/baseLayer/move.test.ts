@@ -17,7 +17,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("mov
         // Create background
         await document.createLayer({
             name: "background",
-            file: "test/assets/black.png"
+            image: "test/assets/black.png"
         });
 
         // Add layer
@@ -29,7 +29,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("mov
         // Create other background
         const otherBackground: Layer = await createLayer({
             name: "otherBackground",
-            file: "test/assets/black.png"
+            image: "test/assets/black.png"
         });
 
         // Move errors

@@ -14,13 +14,13 @@ describe("logging debug info", () => {
         // Create background
         await document.createLayer({
             name: "background",
-            file: "test/assets/black.png"
+            image: "test/assets/black.png"
         });
 
         // Create other background
         const otherBackground: Layer = await createLayer({
             name: "otherBackground",
-            file: "test/assets/black.png",
+            image: "test/assets/black.png",
             debugMode: true
         });
 

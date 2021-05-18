@@ -18,7 +18,7 @@ describe("creating a text layer", () => {
         // Create background
         await document.createLayer({
             name: "background",
-            file: "test/assets/black.png"
+            image: "test/assets/black.png"
         });
     });
 

@@ -20,7 +20,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("tra
         // Create background
         await document.createLayer({
             name: "background",
-            file: "test/assets/black.png"
+            image: "test/assets/black.png"
         });
 
         // Add layer

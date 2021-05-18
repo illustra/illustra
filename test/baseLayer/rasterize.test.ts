@@ -19,7 +19,7 @@ describe.each([true, false])("rasterizing (with document: %s)", (withDocument: b
             // Create background
             await document.createLayer({
                 name: "background",
-                file: "test/assets/black.png"
+                image: "test/assets/black.png"
             });
 
             // Add layer

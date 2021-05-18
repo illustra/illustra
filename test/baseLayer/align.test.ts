@@ -17,7 +17,7 @@ describe("checking for aligning errors", () => {
         // Create background
         const background: Layer = await createLayer({
             name: "background",
-            file: "test/assets/black.png"
+            image: "test/assets/black.png"
         });
 
         // Add layer
@@ -52,7 +52,7 @@ describe.each(["layer", "polygon", "ellipse"])("aligning a %s", (layerType: stri
         // Create background
         await document.createLayer({
             name: "background",
-            file: "test/assets/black.png"
+            image: "test/assets/black.png"
         });
 
         // Add layer

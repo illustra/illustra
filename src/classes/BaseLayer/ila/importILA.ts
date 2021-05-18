@@ -1,7 +1,7 @@
 import { promises as fs } from "fs";
 import tar from "tar";
 import tmp, { DirectoryResult } from "tmp-promise";
-import { AnyLayer, ILAAsset, ILAData } from "../../../internal";
+import { AnyLayer, ILAData } from "../../../internal";
 import parseILAData from "../../BaseLayer/ila/parseILAData";
 
 export default async function importILA(pathOrBuffer: string | Buffer, assetsDirectory?: string): Promise<AnyLayer> {
@@ -30,7 +30,7 @@ export default async function importILA(pathOrBuffer: string | Buffer, assetsDir
     const assetNames: string[] = (await fs.readdir(`${tempDirectory.path}/data/assets`)).sort((a: string, b: string) => parseInt(a) - parseInt(b));
 
     // Define assets
-    let assets: ILAAsset[] = [];
+    let assets: Array<string | Buffer> = [];
 
     // If the assets directory is specified, copy the assets there
     if (assetsDirectory) for (let asset of assetNames) {
@@ -39,10 +39,7 @@ export default async function importILA(pathOrBuffer: string | Buffer, assetsDir
         await fs.copyFile(`${tempDirectory.path}/data/assets/${asset}`, `${assetsDirectory}/${asset}`);
 
         // Add to assets
-        assets.push({
-            image: `${assetsDirectory}/${asset}`,
-            svg: false
-        });
+        assets.push(`${assetsDirectory}/${asset}`);
     }
 
     // Otherwise, read the assets into an array
@@ -52,10 +49,7 @@ export default async function importILA(pathOrBuffer: string | Buffer, assetsDir
         const image: Buffer = await fs.readFile(`${tempDirectory.path}/data/assets/${asset}`);
 
         // Add to assets
-        assets.push({
-            image: asset.endsWith(".svg") ? image.toString() : image,
-            svg: asset.endsWith(".svg")
-        });
+        assets.push(asset.endsWith(".svg") ? image.toString() : image);
     }
 
     // Create layer

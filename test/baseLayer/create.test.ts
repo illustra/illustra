@@ -13,7 +13,7 @@ describe("creates layers", () => {
         // Create background
         const background: Layer = await document.createLayer({
             name: "background",
-            file: "test/assets/black.png"
+            image: "test/assets/black.png"
         });
 
         // Expect
@@ -26,7 +26,7 @@ describe("creates layers", () => {
         // Create background
         const background: Layer = await createLayer({
             name: "background",
-            file: "test/assets/black.png"
+            image: "test/assets/black.png"
         });
 
         // Expect

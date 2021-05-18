@@ -16,7 +16,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("dup
         // Create background
         await document.createLayer({
             name: "background",
-            file: "test/assets/black.png"
+            image: "test/assets/black.png"
         });
     });
 
@@ -31,7 +31,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("dup
         // Create background
         await document.createLayer({
             name: "background",
-            file: "test/assets/black.png"
+            image: "test/assets/black.png"
         });
 
         // Add layer

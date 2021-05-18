@@ -20,7 +20,7 @@ describe("exporting layers", () => {
         // Create background
         background = await document.createLayer({
             name: "background",
-            file: "test/assets/black.png"
+            image: "test/assets/black.png"
         });
 
         // Get expected image

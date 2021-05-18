@@ -20,7 +20,7 @@ describe.each(["layer", "polygon", "ellipse"])("resizing a %s", (layerType: stri
         // Create background
         await document.createLayer({
             name: "background",
-            file: "test/assets/black.png"
+            image: "test/assets/black.png"
         });
 
         // Add layer

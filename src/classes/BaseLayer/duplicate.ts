@@ -71,11 +71,12 @@ export default async function duplicate<AnyLayerInput extends AnyLayer>(layer: A
     else {
         duplicatedLayer = new Layer({
             name: name || layer.name,
+            image: (layer as Layer).image,
             left: layer.left,
             top: layer.top,
             position: position || layer.position + 1,
             debugMode
-        }, layer.document, (layer as Layer)._inputData) as AnyLayerInput;
+        }, layer.document) as AnyLayerInput;
         await (duplicatedLayer as Layer)._initialize;
         (duplicatedLayer as Layer)._svg = (layer as Layer)._svg;
     }

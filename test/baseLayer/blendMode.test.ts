@@ -19,13 +19,13 @@ describe("changing the blend mode of layers", () => {
         // Create background
         await document.createLayer({
             name: "background",
-            file: "test/assets/black.png"
+            image: "test/assets/black.png"
         });
 
         // Add javascript logo
         await document.createLayer({
             name: "logo",
-            file: "test/assets/javascript.png",
+            image: "test/assets/javascript.png",
             left: 300,
             top: 300
         });
@@ -33,7 +33,7 @@ describe("changing the blend mode of layers", () => {
         // Add typescript logo
         logo = await document.createLayer({
             name: "logo",
-            file: "test/assets/typescript.png",
+            image: "test/assets/typescript.png",
             left: 325,
             top: 325
         });

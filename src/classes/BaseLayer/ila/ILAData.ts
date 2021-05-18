@@ -83,7 +83,7 @@ export interface ILALayerData extends ILABaseData {
      *
      * The ID of the input data's image
      */
-    inputImageID?: number;
+    inputImageID: number;
 }
 
 /**

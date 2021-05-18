@@ -1,5 +1,5 @@
 import { parseColor, Color } from "../../color";
-import { BaseLayer, Document, EllipseData, LAYER_TYPE_ELLIPSE, LAYER_TYPE_POLYGON, PolygonData } from "../../internal";
+import { BaseLayer, BaseLayerData, Document, LAYER_TYPE_ELLIPSE, LAYER_TYPE_POLYGON } from "../../internal";
 import setFill from "./setFill";
 import setHeight from "./setHeight";
 import setStroke from "./setStroke";
@@ -16,12 +16,8 @@ export interface ShapeData {
     strokeWidth?: number;
 }
 
-export interface ShapeLayerData {
-    name: string;
-    left?: number;
-    top?: number;
-    position?: number;
-    debugMode?: boolean;
+export interface ShapeLayerData extends BaseLayerData {
+    shape: ShapeData;
 }
 
 export default class ShapeLayer extends BaseLayer {
@@ -87,7 +83,7 @@ export default class ShapeLayer extends BaseLayer {
      * Pass a negative number to position starting from the top of the stack, ie. `-2` would be make it the 3rd layer from the top
      * @param shapeLayerData.debugMode Set to `true` to log debug info to the console
      */
-    constructor(shapeLayerData: PolygonData | EllipseData, document?: Document) {
+    constructor(shapeLayerData: ShapeLayerData, document?: Document) {
 
         // Super
         super(shapeLayerData, document);

@@ -18,7 +18,7 @@ describe("creating ellipses", () => {
         // Create background
         await document.createLayer({
             name: "background",
-            file: "test/assets/black.png"
+            image: "test/assets/black.png"
         });
     });
 

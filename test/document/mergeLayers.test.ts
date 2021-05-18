@@ -18,7 +18,7 @@ describe("merging layers in a document", () => {
         // Create background
         await document.createLayer({
             name: "background",
-            file: "test/assets/black.png"
+            image: "test/assets/black.png"
         });
     });
 
@@ -33,7 +33,7 @@ describe("merging layers in a document", () => {
         // Create other layer
         const otherLayer: Layer = await otherDocument.createLayer({
             name: "layer",
-            file: "test/assets/apixel.png"
+            image: "test/assets/apixel.png"
         });
 
         // Merge errors
@@ -47,19 +47,19 @@ describe("merging layers in a document", () => {
         // Add apixel logo
         const apixelLogo: Layer = await document.createLayer({
             name: "apixelLogo",
-            file: "test/assets/apixel.png"
+            image: "test/assets/apixel.png"
         });
 
         // Add typescript logo
         const typescriptLogo: Layer = await document.createLayer({
             name: "typescriptLogo",
-            file: "test/assets/typescript.png"
+            image: "test/assets/typescript.png"
         });
 
         // Add javascript logo
         await document.createLayer({
             name: "javascriptLogo",
-            file: "test/assets/javascript.png"
+            image: "test/assets/javascript.png"
         });
 
         // Merge layers as a copy
@@ -91,7 +91,7 @@ describe("merging layers in a document", () => {
         // Add logo
         await document.createLayer({
             name: "logo",
-            file: "test/assets/apixel.png",
+            image: "test/assets/apixel.png",
             left: 1700,
             top: 700
         });
@@ -111,7 +111,7 @@ describe("merging layers in a document", () => {
         // Add logo
         await document.createLayer({
             name: "logo",
-            file: "test/assets/apixel.png",
+            image: "test/assets/apixel.png",
             left: -200,
             top: -300
         });
@@ -131,7 +131,7 @@ describe("merging layers in a document", () => {
         // Add logo
         await document.createLayer({
             name: "logo",
-            file: "test/assets/apixel.png",
+            image: "test/assets/apixel.png",
             left: 2000,
             top: 1100
         });
@@ -151,7 +151,7 @@ describe("merging layers in a document", () => {
         // Add logo
         await document.createLayer({
             name: "logo",
-            file: "test/assets/apixel.png",
+            image: "test/assets/apixel.png",
             left: -800,
             top: -800
         });

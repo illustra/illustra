@@ -16,7 +16,7 @@ describe("exporting and importing a document as an ILD file", () => {
         // Create background
         await document.createLayer({
             name: "background",
-            file: "test/assets/black.png"
+            image: "test/assets/black.png"
         });
     });
 
@@ -90,7 +90,7 @@ it("exports and imports as an ILD file with a buffer asset", async () => {
     // Create layer
     await document.createLayer({
         name: "layer",
-        buffer: image
+        image
     });
 
     // Export document
@@ -111,7 +111,7 @@ it("exports and imports as an ILD file with an SVG asset", async () => {
     // Create layer
     await document.createLayer({
         name: "layer",
-        svg: `
+        image: `
             <svg>
                 <circle cx="200" cy="200" r="200" fill="#ffffff" />
             </svg>

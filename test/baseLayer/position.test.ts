@@ -14,7 +14,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("che
         // Create background
         await document.createLayer({
             name: "background",
-            file: "test/assets/black.png"
+            image: "test/assets/black.png"
         });
 
         // Add layer
@@ -23,7 +23,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("che
         // Create other background
         const otherBackground: Layer = await createLayer({
             name: "otherBackground",
-            file: "test/assets/black.png"
+            image: "test/assets/black.png"
         });
 
         // Expect

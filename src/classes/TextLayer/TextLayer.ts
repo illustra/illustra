@@ -1,5 +1,5 @@
 import { parseColor, Color } from "../../color";
-import { BaseLayer, Document, LAYER_TYPE_TEXT } from "../../internal";
+import { BaseLayer, BaseLayerData, Document, LAYER_TYPE_TEXT } from "../../internal";
 import setColor from "./setColor";
 import setFont from "./setFont";
 import setFontSize from "./setFontSize";
@@ -19,13 +19,8 @@ export interface TextData {
     maxWidth?: number;
 }
 
-export interface TextLayerData {
-    name: string;
+export interface TextLayerData extends BaseLayerData {
     text: TextData;
-    left?: number;
-    top?: number;
-    position?: number;
-    debugMode?: boolean;
 }
 
 export default class TextLayer extends BaseLayer {

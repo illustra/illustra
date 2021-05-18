@@ -83,9 +83,6 @@ export const BLEND_MODES: BlendMode[] = ["normal", "darken", "multiply", "colorB
 
 export interface BaseLayerData {
     name: string;
-    file?: string;
-    buffer?: Buffer;
-    svg?: string;
     left?: number;
     top?: number;
     position?: number;
@@ -174,9 +171,6 @@ export default class BaseLayer {
      * @param document The document this layer is a part of
      * @param baseLayerData Data for the layer
      * @param baseLayerData.name The name of the layer
-     * @param baseLayerData.file An image file to use for this layer
-     * @param baseLayerData.buffer An image buffer to use for this layer
-     * @param baseLayerData.svg An SVG string to use for this layer
      * @param baseLayerData.left The horizontal offset from the left to place this layer
      * @param baseLayerData.top The vertical offset from the top to place this layer
      * @param baseLayerData.position The position index of the layer. The lower the index, the lower the layer is in the stack.

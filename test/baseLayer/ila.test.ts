@@ -181,7 +181,7 @@ it("exports and imports as an ILA file with a buffer asset", async () => {
     // Create layer
     const layer: Layer = await document.createLayer({
         name: "layer",
-        buffer: image
+        image
     });
 
     // Export layer
@@ -202,7 +202,7 @@ it("exports and imports as an ILA file with an SVG asset", async () => {
     // Create layer
     const layer: Layer = await document.createLayer({
         name: "layer",
-        svg: `
+        image: `
             <svg>
                 <circle cx="200" cy="200" r="200" fill="#ffffff" />
             </svg>
@@ -217,26 +217,6 @@ it("exports and imports as an ILA file with an SVG asset", async () => {
 
     // Expect
     expect(importedLayer._svg).toBe(true);
-});
-
-it("exports and imports a layer without any input data as an ILA file", async () => {
-
-    // Create document
-    const document: Document = new Document({
-        width: 1920,
-        height: 1080
-    });
-
-    // Create layer
-    const layer: Layer = await document.createLayer({
-        name: "layer"
-    });
-
-    // Export layer
-    const exportedLayer: Buffer = await layer.exportILA("buffer");
-
-    // Import layer
-    await importILA(exportedLayer);
 });
 
 describe.each(["name", "type", "left", "top", "edits", "opacity", "blendMode", "textLayer/text", "textLayer/font", "textLayer/fontSize", "textLayer/fontWeight", "textLayer/color", "textLayer/maxWidth", "polygon/width", "polygon/height", "polygon/fill", "polygon/stroke", "polygon/strokeWidth", "polygon/sides", "ellipse/width", "ellipse/height", "ellipse/fill", "ellipse/stroke", "ellipse/strokeWidth", "clippingMask/mask", "clippingMask/source", "edits/edit", "edits/rotate/degrees", "edits/resize/width", "edits/resize/height", "edits/reflect/direction", "edits/hue/degrees", "edits/saturation/amount", "edits/brightness/amount", "edits/blur/sigma"])("importing an ILA file with a %s error", (name: string) => {

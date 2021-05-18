@@ -11,11 +11,12 @@ export default async function rasterize(layer: AnyLayer): Promise<Layer> {
     // Create layer
     const newLayer: Layer = new Layer({
         name: layer.name,
+        image: layerData,
         left: layer.left,
         top: layer.top,
         position: layer.position,
         debugMode: layer.debugMode
-    }, layer.document, layerData);
+    }, layer.document);
     await newLayer._initialize;
 
     // Remove the layer from the document

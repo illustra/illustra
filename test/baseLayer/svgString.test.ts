@@ -16,7 +16,7 @@ describe("creating a layer from an svg string", () => {
         // Create background
         await document.createLayer({
             name: "background",
-            svg: `
+            image: `
                 <svg>
                     <circle cx="200" cy="200" r="200" fill="#ffffff" />
                 </svg>

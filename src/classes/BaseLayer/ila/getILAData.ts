@@ -72,8 +72,8 @@ export default function getILAData(baseLayer: BaseLayer, assets: ILAAsset[]): IL
         const layer: Layer = baseLayer as Layer;
 
         // Add to assets
-        if (layer._inputData) assets.push({
-            image: layer._inputData,
+        assets.push({
+            image: layer.image,
             svg: layer._svg
         });
 
@@ -86,7 +86,7 @@ export default function getILAData(baseLayer: BaseLayer, assets: ILAAsset[]): IL
             edits: layer._edits,
             opacity: layer.opacity,
             blendMode: layer.blendMode,
-            inputImageID: layer._inputData ? assets.length : undefined
+            inputImageID: assets.length
         };
     }
 }

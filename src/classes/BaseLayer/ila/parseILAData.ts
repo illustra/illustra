@@ -1,6 +1,6 @@
-import { createClippingMask, createEllipse, createLayer, createPolygon, createTextLayer, AnyLayer, BLEND_MODES, Edit, ILAAsset, ILAData, LayerData, LAYER_TYPE_CLIPPING_MASK, LAYER_TYPE_ELLIPSE, LAYER_TYPE_LAYER, LAYER_TYPE_POLYGON, LAYER_TYPE_TEXT } from "../../../internal";
+import { createClippingMask, createEllipse, createLayer, createPolygon, createTextLayer, AnyLayer, BLEND_MODES, Edit, ILAData, LAYER_TYPE_CLIPPING_MASK, LAYER_TYPE_ELLIPSE, LAYER_TYPE_LAYER, LAYER_TYPE_POLYGON, LAYER_TYPE_TEXT } from "../../../internal";
 
-export default async function parseILAData(ilaData: ILAData, assets: ILAAsset[]): Promise<AnyLayer> {
+export default async function parseILAData(ilaData: ILAData, assets: Array<string | Buffer>): Promise<AnyLayer> {
 
     // Define created layer
     let createdLayer: AnyLayer;
@@ -111,30 +111,12 @@ export default async function parseILAData(ilaData: ILAData, assets: ILAAsset[])
     }
 
     // Layer
-    else {
-
-        // Define layer data
-        const layerData: LayerData = {
-            name: ilaData.name,
-            left: ilaData.left,
-            top: ilaData.top
-        };
-
-        // Set input image
-        if (ilaData.inputImageID) {
-
-            // Get image
-            const image: ILAAsset = assets[ilaData.inputImageID - 1];
-
-            // Set input image
-            if ((image.svg) && (typeof image.image === "string")) layerData.svg = image.image;
-            else if (typeof image.image === "string") layerData.file = image.image;
-            else layerData.buffer = image.image;
-        }
-
-        // Create layer
-        createdLayer = await createLayer(layerData);
-    }
+    else createdLayer = await createLayer({
+        name: ilaData.name,
+        image: assets[ilaData.inputImageID - 1],
+        left: ilaData.left,
+        top: ilaData.top
+    });
 
     // Set data
     ilaData.edits.forEach((e: Edit) => {
