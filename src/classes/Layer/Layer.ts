@@ -1,5 +1,6 @@
 import sharp from "sharp";
 import { BaseLayer, BaseLayerData, Document, LAYER_TYPE_LAYER } from "../../internal";
+import setImage from "./setImage";
 
 export interface LayerData extends BaseLayerData {
     image: string | Buffer;
@@ -96,5 +97,18 @@ export default class Layer extends BaseLayer {
             // Resolve
             resolve();
         });
+    }
+
+    /**
+     * Set Image
+     *
+     * Set the image for this layer
+     *
+     * @param image The image
+     *
+     * @returns {Layer} This layer
+     */
+    setImage(image: string | Buffer): Promise<Layer> {
+        return setImage(this, image);
     }
 }
