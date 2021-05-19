@@ -13,6 +13,6 @@ export default function addLayer(document: Document, layer: AnyLayer, position?:
      *
      * Then set the `document` property of the layer
      */
-    document.layers.splice(position || document.layers.length, 0, layer);
+    document.layers.splice(position === undefined ? document.layers.length : position, 0, layer);
     layer.document = document;
 }
