@@ -1,6 +1,6 @@
 import { AnyLayer, Layer, ShapeLayer } from "../../internal";
 
-export default function rotate<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, degrees: number): AnyLayerInput {
+export default function rotate(layer: AnyLayer, degrees: number): number {
 
     // Throw an error if the layer type doesn't keep track of the width and height
     if ((!(layer instanceof Layer)) && (!(layer instanceof ShapeLayer))) throw new Error("This layer can't be rotated");
@@ -21,11 +21,12 @@ export default function rotate<AnyLayerInput extends AnyLayer>(layer: AnyLayerIn
     layer.height = Math.round(Math.abs(width * Math.sin(rotatedAngle)) + Math.abs(height * Math.cos(rotatedAngle)));
 
     // Add to edits
-    layer._edits.push({
+    layer.edits.push({
+        id: ++layer._lastEditID,
         type: "rotate",
         degrees
     });
 
     // Return
-    return layer;
+    return layer._lastEditID;
 }

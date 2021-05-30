@@ -1,22 +1,17 @@
 import { AnyLayer } from "../../internal";
 
-export default function saturation<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, amount: number): AnyLayerInput {
+export default function saturation(layer: AnyLayer, amount: number): number {
 
     // Debug
     layer._debug(`Saturating image by ${amount}`);
 
-    // No change
-    if (amount === 100) {
-        layer._debug(`Layer saturation adjustment would cause no change, ignoring`);
-        return layer;
-    }
-
     // Add to edits
-    layer._edits.push({
+    layer.edits.push({
+        id: ++layer._lastEditID,
         type: "saturation",
         amount
     });
 
     // Return
-    return layer;
+    return layer._lastEditID;
 }

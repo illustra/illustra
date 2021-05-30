@@ -55,7 +55,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("exp
         expect(importedLayer.name).toBe(layer.name);
         expect(importedLayer.left).toBe(layer.left);
         expect(importedLayer.top).toBe(layer.top);
-        expect(importedLayer._edits).toStrictEqual(layer._edits);
+        expect(importedLayer.edits).toStrictEqual(layer.edits);
         expect(importedLayer.opacity).toBe(layer.opacity);
         expect(importedLayer.blendMode).toBe(layer.blendMode);
 
@@ -107,7 +107,7 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("exp
         expect(importedLayer.name).toBe(layer.name);
         expect(importedLayer.left).toBe(layer.left);
         expect(importedLayer.top).toBe(layer.top);
-        expect(importedLayer._edits).toStrictEqual(layer._edits);
+        expect(importedLayer.edits).toStrictEqual(layer.edits);
         expect(importedLayer.opacity).toBe(layer.opacity);
         expect(importedLayer.blendMode).toBe(layer.blendMode);
 

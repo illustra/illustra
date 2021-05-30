@@ -56,19 +56,4 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("cha
         // Expect
         expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(500);
     });
-
-    it("adjusts the saturation without causing any changes", async () => {
-
-        // Adjust layer saturation
-        layer.saturation(100);
-
-        // Export document
-        const exportedImage: PNGWithMetadata = pngjs.sync.read(await document.exportTo("png", "buffer"));
-
-        // Get expected image
-        const expectedImage: PNGWithMetadata = pngjs.sync.read(fs.readFileSync(`test/baseLayer/exports/saturation/${layerType}/noChange.png`));
-
-        // Expect
-        expect(pixelmatch(exportedImage.data, expectedImage.data, null, 1920, 1080)).toBeLessThanOrEqual(500);
-    });
 });

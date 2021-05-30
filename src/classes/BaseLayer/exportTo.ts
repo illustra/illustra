@@ -66,7 +66,7 @@ export default async function exportTo<ExportType extends ExportTypes, PathOrWit
     let canvas: sharp.Sharp = sharp(inputData);
 
     // Loop through the edits for the layer
-    for (let edit of baseLayer._edits) {
+    for (let edit of baseLayer.edits) {
 
         // Rotate
         if (edit.type === "rotate") canvas.rotate(edit.degrees, {

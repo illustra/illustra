@@ -34,42 +34,46 @@ export const LAYER_TYPE_POLYGON = 2;
 export const LAYER_TYPE_ELLIPSE = 3;
 export const LAYER_TYPE_CLIPPING_MASK = 4;
 
-export interface Rotate {
+export interface BaseEdit {
+    id: number;
+}
+
+export interface Rotate extends BaseEdit {
     type: "rotate";
     degrees: number;
 }
 
-export interface Resize {
+export interface Resize extends BaseEdit {
     type: "resize";
     width?: number;
     height?: number;
 }
 
-export interface Reflect {
+export interface Reflect extends BaseEdit {
     type: "reflect";
     direction: ReflectDirection;
 }
 
-export interface Hue {
+export interface Hue extends BaseEdit {
     type: "hue";
     degrees: number;
 }
 
-export interface Saturation {
+export interface Saturation extends BaseEdit {
     type: "saturation";
     amount: number;
 }
 
-export interface Brightness {
+export interface Brightness extends BaseEdit {
     type: "brightness";
     amount: number;
 }
 
-export interface Invert {
+export interface Invert extends BaseEdit {
     type: "invert";
 }
 
-export interface Blur {
+export interface Blur extends BaseEdit {
     type: "blur";
     sigma: number;
 }
@@ -139,10 +143,8 @@ export default class BaseLayer {
      * Edits
      *
      * The edits for this layer
-     *
-     * @private
      */
-    _edits: Edit[];
+    edits: Edit[];
 
     /**
      * Opacity
@@ -166,6 +168,15 @@ export default class BaseLayer {
     debugMode: boolean;
 
     /**
+     * Last Edit ID
+     *
+     * The last edit ID for this layer
+     *
+     * @private
+     */
+    _lastEditID: number;
+
+    /**
      * Base Layer
      *
      * @param document The document this layer is a part of
@@ -187,9 +198,10 @@ export default class BaseLayer {
         this.name = baseLayerData.name;
         this.left = baseLayerData.left || 0;
         this.top = baseLayerData.top || 0;
-        this._edits = [];
+        this.edits = [];
         this.opacity = 100;
         this.blendMode = "normal";
+        this._lastEditID = 0;
 
         // Set debug mode
         this.setDebugMode(baseLayerData.debugMode || false);
@@ -299,9 +311,9 @@ export default class BaseLayer {
      *
      * @param degrees The amount of degrees to rotate this layer
      *
-     * @returns {this} This layer
+     * @returns {number} The edit's ID
      */
-    rotate(degrees: number): this {
+    rotate(degrees: number): number {
         return rotate(this, degrees);
     }
 
@@ -315,9 +327,9 @@ export default class BaseLayer {
      * @param height The amount of pixels this layer's height should be
      * Pass `null` to stretch or `undefined` to automatically scale based on the `width`
      *
-     * @returns {this} This layer
+     * @returns {number} The edit's ID
      */
-    resize(width?: number | null, height?: number | null): this {
+    resize(width?: number | null, height?: number | null): number {
         return resize(this, width, height);
     }
 
@@ -332,9 +344,9 @@ export default class BaseLayer {
      * Pass `null` to allow the `width` to stretch or `undefined` to automatically scale it
      * @param scale Passing `true` will consider `width` and `height` to be a percent of this layer's current size
      *
-     * @returns {this} This layer
+     * @returns {number} The edit's ID
      */
-    resizeBy(width?: number | null, height?: number | null, scale?: boolean): this {
+    resizeBy(width?: number | null, height?: number | null, scale?: boolean): number {
         return resizeBy(this, width, height, scale);
     }
 
@@ -346,9 +358,9 @@ export default class BaseLayer {
      * @param direction The direction to reflect this layer
      * Either 'vertical' or 'horizontal'
      *
-     * @returns {this} This layer
+     * @returns {number} The edit's ID
      */
-    reflect(direction: ReflectDirection): this {
+    reflect(direction: ReflectDirection): number {
         return reflect(this, direction);
     }
 
@@ -385,9 +397,9 @@ export default class BaseLayer {
      *
      * @param degrees The degrees to rotate this layer's hue by
      *
-     * @returns {this} This layer
+     * @returns {number} The edit's ID
      */
-    hue(degrees: number): this {
+    hue(degrees: number): number {
         return hue(this, degrees);
     }
 
@@ -401,9 +413,9 @@ export default class BaseLayer {
      * 100 causes no change
      * 200 doubles the saturation
      *
-     * @returns {this} This layer
+     * @returns {number} The edit's ID
      */
-    saturation(amount: number): this {
+    saturation(amount: number): number {
         return saturation(this, amount);
     }
 
@@ -417,9 +429,9 @@ export default class BaseLayer {
      * 100 causes no change
      * 200 doubles the brightness
      *
-     * @returns {this} This layer
+     * @returns {number} The edit's ID
      */
-    brightness(amount: number): this {
+    brightness(amount: number): number {
         return brightness(this, amount);
     }
 
@@ -428,9 +440,9 @@ export default class BaseLayer {
      *
      * Grayscale this layer
      *
-     * @returns {this} This layer
+     * @returns {number} The edit's ID
      */
-    grayscale(): this {
+    grayscale(): number {
         return grayscale(this);
     }
 
@@ -439,9 +451,9 @@ export default class BaseLayer {
      *
      * Invert the colors of this layer
      *
-     * @returns {this} This layer
+     * @returns {number} The edit's ID
      */
-    invert(): this {
+    invert(): number {
         return invert(this);
     }
 
@@ -452,9 +464,9 @@ export default class BaseLayer {
      *
      * @param sigma The sigma used to blur this layer
      *
-     * @returns {this} This layer
+     * @returns {number} The edit's ID
      */
-    blur(sigma: number): this {
+    blur(sigma: number): number {
         return blur(this, sigma);
     }
 

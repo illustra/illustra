@@ -82,7 +82,8 @@ export default async function duplicate<AnyLayerInput extends AnyLayer>(layer: A
     }
 
     // Set edits
-    duplicatedLayer._edits = [...layer._edits];
+    duplicatedLayer.edits = JSON.parse(JSON.stringify(layer.edits));
+    duplicatedLayer._lastEditID = layer._lastEditID;
 
     // Set data
     duplicatedLayer.opacity = layer.opacity;

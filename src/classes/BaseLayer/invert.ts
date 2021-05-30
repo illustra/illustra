@@ -1,15 +1,16 @@
 import { AnyLayer } from "../../internal";
 
-export default function invert<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput): AnyLayerInput {
+export default function invert(layer: AnyLayer): number {
 
     // Debug
     layer._debug("Inverting");
 
     // Add to edits
-    layer._edits.push({
+    layer.edits.push({
+        id: ++layer._lastEditID,
         type: "invert"
     });
 
     // Return
-    return layer;
+    return layer._lastEditID;
 }

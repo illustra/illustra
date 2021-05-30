@@ -1,22 +1,17 @@
 import { AnyLayer } from "../../internal";
 
-export default function hue<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, degrees: number): AnyLayerInput {
+export default function hue(layer: AnyLayer, degrees: number): number {
 
     // Debug
     layer._debug(`Rotating hue by ${degrees} degrees`);
 
-    // No change
-    if (degrees % 360 === 0) {
-        layer._debug(`Layer rotation would cause no change, ignoring`);
-        return layer;
-    }
-
     // Add to edits
-    layer._edits.push({
+    layer.edits.push({
+        id: ++layer._lastEditID,
         type: "hue",
         degrees
     });
 
     // Return
-    return layer;
+    return layer._lastEditID;
 }

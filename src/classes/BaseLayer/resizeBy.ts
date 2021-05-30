@@ -1,6 +1,6 @@
 import { AnyLayer, Layer, ShapeLayer } from "../../internal";
 
-export default function resizeBy<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, width?: number | null, height?: number | null, scale?: boolean): AnyLayerInput {
+export default function resizeBy(layer: AnyLayer, width?: number | null, height?: number | null, scale?: boolean): number {
 
     // Throw an error if the layer type doesn't keep track of the width and height
     if ((!(layer instanceof Layer)) && (!(layer instanceof ShapeLayer))) throw new Error("This layer can't be resized");
@@ -10,7 +10,7 @@ export default function resizeBy<AnyLayerInput extends AnyLayer>(layer: AnyLayer
     layer._debug(`Resizing by ${width}${units} (width) by ${height}${units} (height)`);
 
     // Resize
-    layer.resize(
+    const editID: number = layer.resize(
         width && (scale ?
             layer.width * (width / 100) :
             layer.width + width),
@@ -20,5 +20,5 @@ export default function resizeBy<AnyLayerInput extends AnyLayer>(layer: AnyLayer
     );
 
     // Return
-    return layer;
+    return editID;
 }

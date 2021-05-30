@@ -1,22 +1,17 @@
 import { AnyLayer } from "../../internal";
 
-export default function brightness<AnyLayerInput extends AnyLayer>(layer: AnyLayerInput, amount: number): AnyLayerInput {
+export default function brightness(layer: AnyLayer, amount: number): number {
 
     // Debug
     layer._debug(`Brightening image by ${amount}`);
 
-    // No change
-    if (amount === 100) {
-        layer._debug(`Layer brightness adjustment would cause no change, ignoring`);
-        return layer;
-    }
-
     // Add to edits
-    layer._edits.push({
+    layer.edits.push({
+        id: ++layer._lastEditID,
         type: "brightness",
         amount
     });
 
     // Return
-    return layer;
+    return layer._lastEditID;
 }
