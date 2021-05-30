@@ -16,6 +16,7 @@ import move from "./move";
 import rasterize from "./rasterize";
 import reflect from "./reflect";
 import remove from "./remove";
+import removeEdit from "./removeEdit";
 import resize from "./resize";
 import resizeBy from "./resizeBy";
 import rotate from "./rotate";
@@ -468,6 +469,20 @@ export default class BaseLayer {
      */
     blur(sigma: number): number {
         return blur(this, sigma);
+    }
+
+    /**
+     * Remove Edit
+     *
+     * Remove an edit from this layer
+     *
+     * @param editID The edit's ID
+     *
+     * @returns {boolean} Whether or not the edit was removed
+     * If this is `false`, the `editID` was invalid
+     */
+    removeEdit(editID: number): boolean {
+        return removeEdit(this, editID);
     }
 
     /**

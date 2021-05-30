@@ -9,6 +9,7 @@ export * from "./classes/Document/ild/ILDData";
 export {
     default as BaseLayer,
     AnyLayer,
+    BaseEdit,
     BaseLayerData,
     BlendMode,
     Blur,
