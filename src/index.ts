@@ -19,9 +19,14 @@ export {
     AnyLayer,
     BaseLayerData,
     BlendMode,
+    Blur,
+    Brightness,
+    Edit,
     ExportMetadata,
     ExportTypes,
     Format,
+    Hue,
+    Invert,
     LayerType,
     LAYER_TYPE_CLIPPING_MASK,
     LAYER_TYPE_ELLIPSE,
@@ -29,7 +34,11 @@ export {
     LAYER_TYPE_POLYGON,
     LAYER_TYPE_TEXT,
     PathOrWithMetadataOptions,
+    Reflect,
     ReflectDirection,
+    Resize,
+    Rotate,
+    Saturation,
     Units
 } from "./internal";
 
