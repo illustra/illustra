@@ -37611,7 +37611,27 @@
 					"target": 1624
 				},
 				{
-					"id": 1668,
+					"id": 1636,
+					"name": "Blur",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {
+						"isExported": true
+					},
+					"target": 1491
+				},
+				{
+					"id": 1637,
+					"name": "Brightness",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {
+						"isExported": true
+					},
+					"target": 1484
+				},
+				{
+					"id": 1677,
 					"name": "ClippingMaskData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37621,7 +37641,7 @@
 					"target": 1127
 				},
 				{
-					"id": 1670,
+					"id": 1679,
 					"name": "Color",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37651,7 +37671,17 @@
 					"target": 86
 				},
 				{
-					"id": 1662,
+					"id": 1638,
+					"name": "Edit",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {
+						"isExported": true
+					},
+					"target": 1622
+				},
+				{
+					"id": 1671,
 					"name": "EllipseData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37661,7 +37691,7 @@
 					"target": 769
 				},
 				{
-					"id": 1661,
+					"id": 1670,
 					"name": "EllipseShapeData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37671,7 +37701,7 @@
 					"target": 920
 				},
 				{
-					"id": 1636,
+					"id": 1639,
 					"name": "ExportMetadata",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37681,7 +37711,7 @@
 					"target": 2
 				},
 				{
-					"id": 1637,
+					"id": 1640,
 					"name": "ExportTypes",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37691,7 +37721,7 @@
 					"target": 7
 				},
 				{
-					"id": 1638,
+					"id": 1641,
 					"name": "Format",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37701,7 +37731,27 @@
 					"target": 6
 				},
 				{
-					"id": 1640,
+					"id": 1642,
+					"name": "Hue",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {
+						"isExported": true
+					},
+					"target": 1476
+				},
+				{
+					"id": 1643,
+					"name": "Invert",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {
+						"isExported": true
+					},
+					"target": 1488
+				},
+				{
+					"id": 1645,
 					"name": "LAYER_TYPE_CLIPPING_MASK",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37711,7 +37761,7 @@
 					"target": 1621
 				},
 				{
-					"id": 1641,
+					"id": 1646,
 					"name": "LAYER_TYPE_ELLIPSE",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37721,7 +37771,7 @@
 					"target": 1620
 				},
 				{
-					"id": 1642,
+					"id": 1647,
 					"name": "LAYER_TYPE_LAYER",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37731,7 +37781,7 @@
 					"target": 1617
 				},
 				{
-					"id": 1643,
+					"id": 1648,
 					"name": "LAYER_TYPE_POLYGON",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37741,7 +37791,7 @@
 					"target": 1619
 				},
 				{
-					"id": 1644,
+					"id": 1649,
 					"name": "LAYER_TYPE_TEXT",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37751,7 +37801,7 @@
 					"target": 1618
 				},
 				{
-					"id": 1650,
+					"id": 1659,
 					"name": "LayerData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37761,7 +37811,7 @@
 					"target": 271
 				},
 				{
-					"id": 1639,
+					"id": 1644,
 					"name": "LayerType",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37771,7 +37821,7 @@
 					"target": 1616
 				},
 				{
-					"id": 1645,
+					"id": 1650,
 					"name": "PathOrWithMetadataOptions",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37781,7 +37831,7 @@
 					"target": 8
 				},
 				{
-					"id": 1658,
+					"id": 1667,
 					"name": "PolygonData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37791,7 +37841,7 @@
 					"target": 605
 				},
 				{
-					"id": 1657,
+					"id": 1666,
 					"name": "PolygonShapeData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37801,7 +37851,7 @@
 					"target": 598
 				},
 				{
-					"id": 1671,
+					"id": 1680,
 					"name": "RGBA",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37811,7 +37861,17 @@
 					"target": 405
 				},
 				{
-					"id": 1646,
+					"id": 1651,
+					"name": "Reflect",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {
+						"isExported": true
+					},
+					"target": 1472
+				},
+				{
+					"id": 1652,
 					"name": "ReflectDirection",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37821,7 +37881,37 @@
 					"target": 1623
 				},
 				{
-					"id": 1652,
+					"id": 1653,
+					"name": "Resize",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {
+						"isExported": true
+					},
+					"target": 1467
+				},
+				{
+					"id": 1654,
+					"name": "Rotate",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {
+						"isExported": true
+					},
+					"target": 1463
+				},
+				{
+					"id": 1655,
+					"name": "Saturation",
+					"kind": 16777216,
+					"kindString": "Reference",
+					"flags": {
+						"isExported": true
+					},
+					"target": 1480
+				},
+				{
+					"id": 1661,
 					"name": "ShapeData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37831,7 +37921,7 @@
 					"target": 440
 				},
 				{
-					"id": 1653,
+					"id": 1662,
 					"name": "ShapeLayerData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37841,7 +37931,7 @@
 					"target": 446
 				},
 				{
-					"id": 1654,
+					"id": 1663,
 					"name": "ShapeLayerType",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37851,7 +37941,7 @@
 					"target": 587
 				},
 				{
-					"id": 1665,
+					"id": 1674,
 					"name": "TextData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37861,7 +37951,7 @@
 					"target": 960
 				},
 				{
-					"id": 1666,
+					"id": 1675,
 					"name": "TextLayerData",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37871,7 +37961,7 @@
 					"target": 967
 				},
 				{
-					"id": 1647,
+					"id": 1656,
 					"name": "Units",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37881,7 +37971,7 @@
 					"target": 168
 				},
 				{
-					"id": 1669,
+					"id": 1678,
 					"name": "createClippingMask",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37891,7 +37981,7 @@
 					"target": 1254
 				},
 				{
-					"id": 1660,
+					"id": 1669,
 					"name": "createEllipse",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37901,7 +37991,7 @@
 					"target": 922
 				},
 				{
-					"id": 1649,
+					"id": 1658,
 					"name": "createLayer",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37911,7 +38001,7 @@
 					"target": 401
 				},
 				{
-					"id": 1656,
+					"id": 1665,
 					"name": "createPolygon",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37921,7 +38011,7 @@
 					"target": 761
 				},
 				{
-					"id": 1664,
+					"id": 1673,
 					"name": "createTextLayer",
 					"kind": 16777216,
 					"kindString": "Reference",
@@ -37971,7 +38061,7 @@
 					}
 				},
 				{
-					"id": 1667,
+					"id": 1676,
 					"name": "ClippingMask",
 					"kind": 4194304,
 					"kindString": "Type alias",
@@ -37981,7 +38071,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 76,
+							"line": 85,
 							"character": 24
 						}
 					],
@@ -38001,7 +38091,7 @@
 					}
 				},
 				{
-					"id": 1659,
+					"id": 1668,
 					"name": "Ellipse",
 					"kind": 4194304,
 					"kindString": "Type alias",
@@ -38011,7 +38101,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 60,
+							"line": 69,
 							"character": 19
 						}
 					],
@@ -38031,7 +38121,7 @@
 					}
 				},
 				{
-					"id": 1648,
+					"id": 1657,
 					"name": "Layer",
 					"kind": 4194304,
 					"kindString": "Type alias",
@@ -38041,7 +38131,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 37,
+							"line": 46,
 							"character": 17
 						}
 					],
@@ -38061,7 +38151,7 @@
 					}
 				},
 				{
-					"id": 1655,
+					"id": 1664,
 					"name": "Polygon",
 					"kind": 4194304,
 					"kindString": "Type alias",
@@ -38071,7 +38161,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 52,
+							"line": 61,
 							"character": 19
 						}
 					],
@@ -38091,7 +38181,7 @@
 					}
 				},
 				{
-					"id": 1651,
+					"id": 1660,
 					"name": "ShapeLayer",
 					"kind": 4194304,
 					"kindString": "Type alias",
@@ -38101,7 +38191,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 44,
+							"line": 53,
 							"character": 22
 						}
 					],
@@ -38121,7 +38211,7 @@
 					}
 				},
 				{
-					"id": 1663,
+					"id": 1672,
 					"name": "TextLayer",
 					"kind": 4194304,
 					"kindString": "Type alias",
@@ -38131,7 +38221,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 68,
+							"line": 77,
 							"character": 21
 						}
 					],
@@ -38161,38 +38251,47 @@
 						1633,
 						1634,
 						1635,
-						1668,
-						1670,
-						1627,
-						1628,
-						1662,
-						1661,
 						1636,
 						1637,
+						1677,
+						1679,
+						1627,
+						1628,
 						1638,
+						1671,
+						1670,
+						1639,
 						1640,
 						1641,
 						1642,
 						1643,
+						1645,
+						1646,
+						1647,
+						1648,
+						1649,
+						1659,
 						1644,
 						1650,
-						1639,
-						1645,
-						1658,
-						1657,
-						1671,
-						1646,
+						1667,
+						1666,
+						1680,
+						1651,
 						1652,
 						1653,
 						1654,
-						1665,
-						1666,
-						1647,
-						1669,
-						1660,
-						1649,
+						1655,
+						1661,
+						1662,
+						1663,
+						1674,
+						1675,
 						1656,
-						1664,
+						1678,
+						1669,
+						1658,
+						1665,
+						1673,
 						1630
 					]
 				},
@@ -38201,12 +38300,12 @@
 					"kind": 4194304,
 					"children": [
 						1629,
-						1667,
-						1659,
-						1648,
-						1655,
-						1651,
-						1663
+						1676,
+						1668,
+						1657,
+						1664,
+						1660,
+						1672
 					]
 				}
 			],
