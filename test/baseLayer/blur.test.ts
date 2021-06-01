@@ -23,6 +23,10 @@ describe.each(["layer", "textLayer", "polygon", "ellipse", "clippingMask"])("blu
         // Add layer
         const layer: BaseLayer = await addLayer(layerType, document);
 
+        // Export errors
+        expect(() => layer.blur(0)).toThrow("The sigma can't be less than 0.3");
+        expect(() => layer.blur(1200)).toThrow("The sigma can't be more than 1,000");
+
         // Blur layer
         layer.blur(10);
 
