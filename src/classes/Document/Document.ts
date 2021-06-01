@@ -1,5 +1,5 @@
 import debug from "../../debug";
-import { AnyLayer, ClippingMask, ClippingMaskData, Ellipse, EllipseData, Layer, LayerData, Polygon, PolygonData, TextLayer, TextLayerData } from "../../internal";
+import { AlignType, AnyLayer, ClippingMask, ClippingMaskData, Ellipse, EllipseData, Layer, LayerData, Polygon, PolygonData, TextLayer, TextLayerData } from "../../internal";
 import { ExportTypes, Format, Output, PathOrWithMetadataOptions } from "../BaseLayer/exportTo";
 import addLayer from "./addLayer";
 import createClippingMask from "./createClippingMask";
@@ -11,6 +11,7 @@ import exportTo from "./exportTo";
 import exportILD from "./ild/exportILD";
 import importILD from "./ild/importILD";
 import mergeLayers from "./mergeLayers";
+import resize from "./resize";
 
 export interface DocumentData {
     name?: string;
@@ -89,6 +90,22 @@ export default class Document {
      */
     setName(name: string) {
         this.name = name;
+    }
+
+    /**
+     * Resize
+     *
+     * Resize the document
+     *
+     * @param width The width
+     * @param height The height
+     * @param anchorPointLeft The alignment of the anchor point from the left to resize the document from
+     * Defaults to 'center'
+     * @param anchorPointTop The alignment of the anchor point from the top to resize the document from
+     * Defaults to 'center'
+     */
+    resize(width?: number, height?: number, anchorPointLeft?: AlignType, anchorPointTop?: AlignType) {
+        resize(this, width, height, anchorPointLeft, anchorPointTop);
     }
 
     /**
